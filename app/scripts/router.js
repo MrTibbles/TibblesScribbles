@@ -8,7 +8,6 @@ define([
   var AppRouter = Backbone.Router.extend({
     routes: {     
       '': 'base_route',
-      'exterior-spin': "spin_route",
       'exterior': 'exterior_route',
       'interior': 'interior_route',
       'video': 'video_route'      
@@ -20,11 +19,6 @@ define([
   app_router.on('route:base_route', function(actions) {    
     var base_view = new Base();
     base_view.render();
-  });
-
-  app_router.on('route:spin_route', function(actions){
-    var spins_view = new Base();
-    spins_view.render('spinner');
   });
 
   app_router.on('route:exterior_route', function(actions){

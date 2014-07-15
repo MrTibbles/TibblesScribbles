@@ -9,5 +9,14 @@ require.config({
 });
 require(['jquery','backbone','loader','mixins/spin','router'], function($,Backbone){
 	//Not sure what to put in here tbh!!! 
+
+	//Temp Drupal settings object
+	var Drupal = {
+		settings: {
+			gallery_widget: {
+				RC : 'AY5'
+			}
+		}
+	};
 	//Car Chapter Gallery v0.1
 })
