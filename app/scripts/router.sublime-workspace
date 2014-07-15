@@ -1,0 +1,872 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"via",
+				"viaRoute"
+			],
+			[
+				"tyoe",
+				"typeof"
+			],
+			[
+				"thumb",
+				"thumb_inner"
+			],
+			[
+				"exterior",
+				"exterior_imgs"
+			],
+			[
+				"type",
+				"view_type"
+			],
+			[
+				"view",
+				"view_type"
+			],
+			[
+				"vid",
+				"vid_arr"
+			],
+			[
+				"load",
+				"load_content"
+			],
+			[
+				"show",
+				"show_content"
+			],
+			[
+				"video",
+				"video_ID"
+			],
+			[
+				"ad",
+				"addClass	addClass"
+			],
+			[
+				"first",
+				"first_load"
+			],
+			[
+				"ty",
+				"typeof"
+			],
+			[
+				"reder",
+				"render_img"
+			],
+			[
+				"out",
+				"outerWidth	.outerWidth"
+			],
+			[
+				"has",
+				"hasClass	.hasClass"
+			],
+			[
+				"parse",
+				"parse_img"
+			],
+			[
+				"exterio",
+				"exterior_view"
+			],
+			[
+				"render",
+				"render_thumb"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"app",
+				"app_view"
+			],
+			[
+				"E",
+				"Exterior"
+			],
+			[
+				"main_",
+				"main_src"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"ex",
+				"exteriors"
+			],
+			[
+				"Ex",
+				"exteriors"
+			],
+			[
+				"ext",
+				"exterior"
+			],
+			[
+				"uniq",
+				"uniq_cats"
+			],
+			[
+				"in",
+				"Invincible"
+			],
+			[
+				"grade",
+				"grade_map"
+			],
+			[
+				"id",
+				"idFixed"
+			],
+			[
+				"slice",
+				"splice"
+			],
+			[
+				"sub",
+				"substr"
+			],
+			[
+				"outer",
+				"outerHeight	.outerHeight"
+			],
+			[
+				"var_",
+				"var_dump"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"relia",
+				"reliable-color"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"txet",
+				"text-align"
+			],
+			[
+				"t",
+				"toyotadisplay_bd"
+			],
+			[
+				"backg",
+				"background-size"
+			],
+			[
+				"toyota",
+				"toyotadisplay_bd"
+			],
+			[
+				"font-",
+				"font-family"
+			],
+			[
+				"toyot",
+				"toyotadisplay_bd"
+			],
+			[
+				"TEXT",
+				"text-align"
+			],
+			[
+				"content",
+				"content_height"
+			],
+			[
+				"window",
+				"window_scroll"
+			],
+			[
+				"togg",
+				"toggleClass	.toggleClass()"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"windo",
+				"window_scroll"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"set",
+				"setAvailable"
+			],
+			[
+				"colou",
+				"Colour"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"off",
+				"offset	.offset"
+			],
+			[
+				"scroll",
+				"scroll_top"
+			],
+			[
+				"stic",
+				"Sticky"
+			],
+			[
+				"wid",
+				"width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 147.0,
+		"selected_items":
+		[
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"ht",
+				"HTMLPrettify: Set Prettify Preferences"
+			],
+			[
+				"jslint",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"linter",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"jslin",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"ja",
+				"JSHint: Set `node` Path"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"sq",
+				"Set Syntax: SQL"
+			],
+			[
+				"txt",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"plain ",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"hm",
+				"HTMLPrettify: Set `node` Path"
+			],
+			[
+				"htmlpre",
+				"HTMLPrettify: Set `node` Path"
+			],
+			[
+				"htmlprettify",
+				"HTMLPrettify: Set `node` Path"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"scs",
+				"Set Syntax: SCSS"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"plain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"offs",
+				"Snippet: .offset"
+			],
+			[
+				"offse",
+				"Snippet: .offset"
+			],
+			[
+				"coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"Snippet: change",
+				"Snippet: .change"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"J",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"format",
+				"Format Code"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"shell",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"cs",
+				"Set Syntax: CSS"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"view.options().get('wordWrap')",
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/freddie.tibbles/Sites/ViA/svn/js/controller.js",
+		"/Users/freddie.tibbles/Sites/ViA/svn/css/style.css",
+		"/Users/freddie.tibbles/Sites/ViA/svn/js/library.js",
+		"/Users/freddie.tibbles/Sites/ViA/svn/js/view.js",
+		"/Users/freddie.tibbles/Sites/ViA/svn/js/model.js",
+		"/Users/freddie.tibbles/Sites/ViA/svn/index.html",
+		"/Users/freddie.tibbles/Sites/ViA/svn/js/config.js",
+		"/Users/freddie.tibbles/Desktop/#####/blogFeed.js",
+		"/Users/freddie.tibbles/.s3cfg-tcw",
+		"/Users/freddie.tibbles/Sites/ViA/svn/data/blog_feed.xml",
+		"/Volumes/Production_London/5. Toyota/TOY0814 - PWS February/4-Development/#Owners-Menu/owners-chapter_service.css",
+		"/Users/freddie.tibbles/Sites/ViA/svn/fixedPricesHolding.html",
+		"/Users/freddie.tibbles/Sites/ViA/fixed_prices.js",
+		"/Users/freddie.tibbles/Desktop/BW Work/TCW/g2e_finance.xml",
+		"/Applications/MAMP/htdocs/retail-website/www/data/owners/aftersales_new.xml",
+		"/Users/freddie.tibbles/Desktop/httpd-vhosts.conf",
+		"/Users/freddie.tibbles/Desktop/127.0.0.1       localhost",
+		"/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf",
+		"/Users/freddie.tibbles/Sites/Toyota/via/js/config.js",
+		"/Users/freddie.tibbles/Sites/Toyota/via/js/jquery-1.5.min.js",
+		"/Users/freddie.tibbles/Sites/Toyota/via/js/controller.js",
+		"/Users/freddie.tibbles/Sites/Toyota/via/index.html",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/image-model.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/exterior-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/video-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/video-model.js",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/User/console_log.sublime-snippet",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/User/console_error.sublime-snippet",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/interior-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/router.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/app.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/main.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/collections/exterior-collection.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/collections/interior-collection.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/interiors-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/mixins/spin.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/styles/_steez.scss",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/main-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/collections/request.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/base.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/npm-debug.log",
+		"/Applications/MAMP/htdocs/TCW/node_modules/npm-check-updates/node_modules/npm/html/doc/misc/npm-config.html",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/slider-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/interior-model.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/exteriors-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/exterior-model.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/styles/main.scss",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/index.html",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/bower_components/spinjs/spin.min.js",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/_example/views/base.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/_example/router.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/_example/main.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/_example/views/colour-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/_app.js",
+		"/Users/freddie.tibbles/Desktop/index.html",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/_exterior-view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/collections/_exterior-collection.js",
+		"/Users/freddie.tibbles/Downloads/service-chooser-app/assets/js/script.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/_exterior-model.js",
+		"/Users/freddie.tibbles/Downloads/service-chooser-app/index.html",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/parse_img.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/models/img_data.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/features/features_car_chapter_display/features_car_chapter_display.pages_default.inc",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/features/features_car_chapter_display/features_car_chapter_display.views_default.inc",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/features/features_car_chapter_display/features_car_chapter_display.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/features/features_car_chapter_display/features_car_chapter_display.info",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/features/features_car_chapter_display/features_car_chapter_display.features.inc",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/bower_components/backbone-amd/examples/backbone.localStorage.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/Gruntfile.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/_example/model/exterior-model.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/request.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_misc/tgb_misc.module",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/app.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/backbone.sublime-project",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/bower_components/modernizr/feature-detects/battery-api.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/bower.json",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/package.json",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts/views/app_view.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/bower_components/underscore-amd/underscore.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/bower_components/backbone-amd/backbone.js",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Volumes/Production_London/5. Toyota/TOY0730 - PWS January 2014/4-Development/#516/taxability.toyota.co.uk/www/TaxCalculatorApp.html",
+		"/Volumes/Production_London/5. Toyota/TOY0730 - PWS January 2014/4-Development/#516/taxability.toyota.co.uk/www/css/v2/app_styles.css",
+		"/Volumes/Production_London/5. Toyota/TOY0730 - PWS January 2014/4-Development/#516/chapter-assets/tools_styles.css",
+		"/Volumes/Production_London/5. Toyota/TOY0730 - PWS January 2014/4-Development/#516/fleet/tools/tools-calculator.html",
+		"/Volumes/Production_London/5. Toyota/TOY0730 - PWS January 2014/4-Development/#516/taxability.toyota.co.uk/www/www/test/TaxCalculatorApp.html",
+		"/Applications/MAMP/htdocs/retail-website/www/data/configure/HL9.json",
+		"/Users/freddie.tibbles/Downloads/HL9 2.json",
+		"/Volumes/Production_London/5. Toyota/TOY0730 - PWS January 2014/4-Development/#516/tools-calculator.html",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/HL9.json",
+		"/Volumes/Production_London/5. Toyota/TOY0684 - Hybrid Section Mobile/4-Development/Hello/hello.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_request_brochure/tgb_request_brochure.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_request_brochure/css/requestbrochure.css",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_request_brochure/js/requestbrochure.js",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/GitGutter/GitGutter.sublime-settings",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/User/GitGutter.sublime-settings",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/specsandprices.js",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/Volumes/Production_London/5. Toyota/-- Centre Sites Dev/Database Update Scripts/2014 01 NewCarPrices update/live/proace.sql",
+		"/Volumes/Production_London/5. Toyota/-- Centre Sites Dev/Database Update Scripts/2014 01 NewCarPrices update/misc-prices.sql",
+		"/Users/freddie.tibbles/Downloads/hybrid-nonhybrid_REG.txt",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-rav4-R1V.coffee",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-rav4.coffee",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-auris.coffee",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-AYGO.coffee",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-yaris.coffee",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-LC.coffee",
+		"/Users/freddie.tibbles/Desktop/BW Work/New-Mobile-Spins/specs-spins-GT.coffee",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters_mobile.css",
+		"/Users/freddie.tibbles/Desktop/BW Work/TCW-Spins/LC-TCW-spins.coffee",
+		"/Applications/MAMP/htdocs/TCW/_pricing/live/avensis-AV8.sql",
+		"/Applications/MAMP/htdocs/TCW/_pricing/misc-prices.sql",
+		"/Applications/MAMP/htdocs/TCW/_pricing/yarisiconplushybrid.sql",
+		"/Applications/MAMP/htdocs/TCW/_pricing/yarishybrid.sql",
+		"/Applications/MAMP/htdocs/TCW/_pricing/dev/avensis-AV8.sql",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/main.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/chapter/accessory.view.class.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/accessory.view.class.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/accessories.head.class.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/accessories.view.class.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/accessories.filter.class.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/chapter/main.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/toyota/css/header.css",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/css/accessories_style.css",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/Users/freddie.tibbles/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/freddie.tibbles/Sites/ViA/svn",
+			"/Users/freddie.tibbles/Sites/ViA/svn/js",
+			"/Users/freddie.tibbles/Sites/ViA/svn/",
+			"/Users/freddie.tibbles/Sites/ViA/svn/js",
+			"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/new-tgb-gallery/app/scripts",
+			"<open files>",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Applications/MAMP/htdocs/retail-website",
+			"/Applications/MAMP/htdocs/TCW",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/chapter",
+			"/Applications/MAMP/htdocs/TCW/sites/all/themes/toyota/templates",
+			"<open files>",
+			"/Applications/MAMP/htdocs/TCW",
+			"<open files>",
+			"/Applications/MAMP/htdocs/TCW/",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"<open files>",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"<open files>",
+			"/Applications/MAMP/htdocs/TCW/",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes",
+			"<open files>",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/mtoyota",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"multipleVehicleList",
+			"getVINForMultipleVehicle",
+			"searchAttempted",
+			"multipleVehicleList",
+			"getVINForMultipleVehicle",
+			"showMessage",
+			"\"VIAFeedback@tgb.toyota.co.uk\";",
+			"1.0.20",
+			"searchAttempted",
+			"verif",
+			"verification",
+			"ownershipVerification",
+			"SHOW_FEEDBACK_LINK",
+			"FEEDBACK_EMAIL_ADDRESS",
+			"feedbackLink",
+			"openta",
+			"tabs",
+			"FIXED_PRICE_URL",
+			"fixedPrices_",
+			"fixed_price",
+			"duplicate",
+			"NEWS_FEED_URL",
+			"callservice",
+			"FIXED_PRICE_SERVICING_URL",
+			"populateLatestNews",
+			"serviceManager",
+			"FIXED_PRICE_SERVICING_URL",
+			"news_",
+			"FIXED_PRICE_SERVICING_URL",
+			"serviceManager",
+			"callService",
+			"FIXED_PRICE_SERVICING_URL",
+			"onError",
+			"domain",
+			"cross",
+			"doaman",
+			"cross",
+			"news",
+			"Loading Latest News Feed...",
+			"NEWS_FEED_URL",
+			"outer",
+			"inner",
+			"terms",
+			"price",
+			"fixed",
+			"FIXED_PRICE_SERVICING_URL",
+			"tabSpec",
+			"console",
+			"terms",
+			"inner",
+			"2.0p",
+			"RAV4 Invincible AWD",
+			"fixedPricesFrame",
+			"src",
+			"populateFixedPrices",
+			"console",
+			"fixed",
+			"closeOverlay",
+			"#tabs",
+			"tabs",
+			"toggleOver",
+			"shortcutToServiceOverlay",
+			"FIXED_PRICE_URL",
+			"FIXED_PRICE_SERVICING_URL",
+			"via",
+			"viaView",
+			"via_route",
+			"VIA_Route",
+			"via_route",
+			"_this",
+			"buildUserEvents",
+			"View",
+			"split",
+			"searchAttempted",
+			"introSearchBtn",
+			"img",
+			"set_active_img",
+			"_this",
+			"_",
+			"this.load_collections();",
+			"type",
+			"ints_view",
+			"exts_view",
+			"type",
+			"ex",
+			"this.$('.top_nav li').eq(0).addClass('active_pane');",
+			"this.load_collections();",
+			"type",
+			"img_thumb_temp",
+			".collections.",
+			"this.exteriors",
+			"ext",
+			"img",
+			"ex",
+			"ext",
+			"img",
+			"exts",
+			"ext_img",
+			">>",
+			"ex",
+			"ext",
+			"ex",
+			"id",
+			"start",
+			"http://[tgbs3:s3-path]",
+			"$img.data",
+			"paneu",
+			"exterior_view",
+			"ext",
+			"'models/exterior-model'",
+			"this.exteriors",
+			"$icon-font-path",
+			"750",
+			"730px",
+			"colour-template",
+			"ext_view",
+			"item",
+			"exterior_view",
+			"exterior_imgs",
+			"that",
+			"ext",
+			"Service",
+			"this.model",
+			"\"",
+			"img_id",
+			"thumbs",
+			"class",
+			"jqXHR"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"thumb_temp",
+			"'models/image-model'",
+			"",
+			"`",
+			"//s3-eu-west-1.amazonaws.com/sharedstage.toyotaretail.co.uk/",
+			"",
+			"<",
+			"chapter-new-hybrid-mobile",
+			"sharedstage",
+			"",
+			"sharedstage",
+			"<a href=\"\">find out</a>",
+			"<div class=\"accordion_frame PAN-EU\">",
+			"",
+			"/test-drive-auris"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 551.0
+	},
+	"project": "router.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 704.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 190.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

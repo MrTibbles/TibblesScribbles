@@ -1,0 +1,64 @@
+#thumbs{
+	padding:10px 0;
+	background:#000000;
+	position: relative;
+
+	.thumb_cover{
+		height:75px;
+		overflow:hidden;
+		margin:0 5%;
+	}
+	#thumb_slider{
+		position:relative;
+		
+		li{
+			float:left;
+			padding:5px;
+			margin:0 10px 0 0;
+			background-color:#c0c2c6;
+
+			&.active_thumb{
+				background-color:#ffffff;			
+			}
+
+			span{
+				display:block; 						
+
+				img{
+					border: none;
+					display: block;
+					width:101px;
+				}
+			}				
+		}
+	}
+	.thumb_slider_nav{
+		width: 40px;
+		height:91px;
+		position: absolute;
+		top:0;		
+		border:none;
+		outline:none; 
+		background: {
+			image: url('../images/thumbnail-slider_lrg.png');
+			repeat: no-repeat;
+		}
+
+		&.left{
+			left:0;
+			background-position: 0 0;
+
+			&:hover{
+				background-position: 0 bottom;
+			}
+		}		
+		&.right{
+			right:0;
+			background-position: -32px 0;
+
+			&:hover{
+				background-position: -32px bottom;
+			}
+		}
+	}
+}	

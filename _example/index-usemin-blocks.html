@@ -1,0 +1,131 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>new tgb gallery</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+
+  <!-- endbower -->
+  <!-- endbuild -->
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/general.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/print.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css">
+  <link rel="stylesheet" href="styles/reset.css">
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <script src="bower_components/modernizr/modernizr.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+      <h1 id="main_title">Yaris</h1>
+      <div id="gallery-wrap">
+        <ul class="top_nav">
+          <li data-view="spinner" id="three-six">360</li>
+          <li data-view="exteriors" id="exteriors">Exterior</li>
+          <li data-view="interiors" id="interiors">Interior</li>
+          <li data-view="videos" id="videos">Video</li>          
+        </ul>
+        <div id="main_viewport"></div>
+        <div id="thumbs">
+          <div class="thumb_cover">
+            <ul id="thumb_slider"></ul>
+          </div>
+          <nav id="left" class="thumb_slider_nav left"></nav>
+          <nav id="right" class="thumb_slider_nav right"></nav>
+        </div>
+      </div>
+  </div>
+
+  
+  <script id="img_main_temp" type="text/template">
+    <img src="<%= main_src %>" alt="<%= desc %>" title="<%= title %>" />
+    <div id="descr_box">
+      <h2><%= title %></h2>
+      <p><%= desc %></p>
+    </div>
+    <aside id="magnify"></aside>
+  </script>
+
+  <script id="video_template" type="text/template">
+    <iframe class="youtube-player" type="text/html" width="940" height="486" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
+  </script>
+
+  <script id="thumb_temp" type="text/template">
+    <span id="<%= model_ID %>" class="thumb_inner" data-title="<%= title %>">
+      <img src="<%= thumb_src %>" alt="<%= desc %>" />
+    </span>
+  </script>
+
+  <script id="360_temp" type="text/template">
+    <div class="buffer current">
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+    </div>
+    <div class="buffer">
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+      <div class="pane"></div>
+    </div>
+    <div class="interact"></div>
+    <div id="colour-info">
+      <img class="<%= active_colour.name %>" src="/images/swatches/<%= active_colour.name %>.png" alt="Toyota UK <%= name %>" />
+      <h4 class="colour_title">Colour:</h4>
+      <h4><%= active_colour.name %></h4>
+    </div>
+    <ul id="body_switcher">
+      <% _.each(avail_bodies, function(ele,idx){ %>
+        <li class="body_choice body_<%= ele %>" data-body-id="<%= ele %>">
+      <% }); %>
+    </ul>
+  </script>
+
+  <script id="grade_temp" type="text/template">
+    <div class="grade_draw <%= mach_name %>" data-grade-code="<%= code %>">
+      <h2><%= name %></h2>
+      <h3>&pound;<%= price %></h3>      
+    </div>
+    <div class="grade_inner">
+      <h3>Colours:</h3>
+      <ul class="colour_swatches">
+        <% _.each(colours, function(ele,idx){ %>
+          <li class="swatch <%= ele.mach_name %>" data-name="<%= ele.name %>" data-hex="<%= ele.code %>"><img src="/images/swatches/<%= ele.name %>.png" alt="Toyota UK | <%= ele.name %>"</li>
+        <% }); %>
+      </ul>
+      <span id="tool_tip" class="hide_tool" />
+      <ul class="spec_listings">
+        <% _.each(mdata, function(ele, idx){ %>
+          <li class="mdata"><p><%= ele %></p></li>
+        <% }); %>
+      </ul>
+    </div>
+  </script>
+  <!-- build:js({app,.tmp}) scripts/main.js -->
+  <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

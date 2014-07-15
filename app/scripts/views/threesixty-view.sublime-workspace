@@ -1,0 +1,940 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"co",
+				"color"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"bold",
+				"bold_chat"
+			],
+			[
+				"outer",
+				"outerWidth	.outerWidth"
+			],
+			[
+				"bakc",
+				"background-position"
+			],
+			[
+				"out",
+				"outerWidth	.outerWidth"
+			],
+			[
+				"toyota",
+				"toyotatext_rg"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"quote",
+				"quoteView"
+			],
+			[
+				"Con",
+				"ContactUs"
+			],
+			[
+				"bc",
+				"bc_load"
+			],
+			[
+				"Co",
+				"ContactUs"
+			],
+			[
+				"Test",
+				"TestDrive"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"in",
+				"inherit"
+			],
+			[
+				"td",
+				"text-indent"
+			],
+			[
+				"ce",
+				"cellspacing	Attr"
+			],
+			[
+				"toyotadispla",
+				"toyotadisplay_bd"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"toyotatext_",
+				"toyotatext_rg"
+			],
+			[
+				"fn",
+				"font-size"
+			],
+			[
+				"backgorund-c",
+				"background-color"
+			],
+			[
+				"backgorund-",
+				"background-color"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"Tes",
+				"TestDrive"
+			],
+			[
+				"se",
+				"selectcar"
+			],
+			[
+				"select",
+				"selections"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"j",
+				"jquery"
+			],
+			[
+				"un",
+				"unescaped"
+			],
+			[
+				"hide",
+				"hide_accessories"
+			],
+			[
+				"rs",
+				"result"
+			],
+			[
+				"VIA",
+				"VIA_Router"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"set",
+				"setCenter"
+			],
+			[
+				"sc",
+				"scrollTo"
+			],
+			[
+				"dealer",
+				"dealerid"
+			],
+			[
+				"accessories",
+				"accessories-img"
+			],
+			[
+				"backg",
+				"background-position"
+			],
+			[
+				"expl",
+				"explore-path"
+			],
+			[
+				"l",
+				"line-height"
+			],
+			[
+				"colo",
+				"colourCode"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"dat",
+				"datasheet"
+			],
+			[
+				"drupal",
+				"drupal_add_js"
+			],
+			[
+				"toyot",
+				"Toyotadisplay_bd"
+			],
+			[
+				"var_",
+				"var_dump"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"relia",
+				"reliable-color"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"txet",
+				"text-align"
+			],
+			[
+				"t",
+				"toyotadisplay_bd"
+			],
+			[
+				"grade",
+				"gradeName"
+			],
+			[
+				"font-",
+				"font-family"
+			],
+			[
+				"TEXT",
+				"text-align"
+			],
+			[
+				"content",
+				"content_height"
+			],
+			[
+				"window",
+				"window_scroll"
+			],
+			[
+				"togg",
+				"toggleClass	.toggleClass()"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"windo",
+				"window_scroll"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"colou",
+				"Colour"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"off",
+				"offset	.offset"
+			],
+			[
+				"scroll",
+				"scroll_top"
+			],
+			[
+				"stic",
+				"Sticky"
+			],
+			[
+				"wid",
+				"width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 347.0,
+		"selected_items":
+		[
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"hmtl",
+				"HTMLPrettify"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"hrml",
+				"Set Syntax: HTML (Rails)"
+			],
+			[
+				"sq",
+				"Set Syntax: SQL"
+			],
+			[
+				"csss",
+				"Convert Case: Swap Case"
+			],
+			[
+				"scsss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"package",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"txt",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"scs",
+				"Set Syntax: SCSS"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"plain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"offs",
+				"Snippet: .offset"
+			],
+			[
+				"offse",
+				"Snippet: .offset"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"Snippet: change",
+				"Snippet: .change"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"J",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"format",
+				"Format Code"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"shell",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"cs",
+				"Set Syntax: CSS"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"view.options().get('wordWrap')",
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Volumes/Production_London/5. Toyota/TOY1103 - Hybrid Brand eTM 0514/4-Development/email.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/tgb_codeweaver_qfq.module",
+		"/Applications/MAMP/htdocs/retail-website/src/scss/_shared/_offers.scss",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/tgb_codeweaver_qfq.tpl.php",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/scss/tfs-quick-finance.scss",
+		"/Applications/MAMP/htdocs/retail-website/src/scss/_CC-style-build/cc-builder.sh",
+		"/Applications/MAMP/htdocs/retail-website/www/profiles/toyota/toyota.install",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles/_shared.scss",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/js/app_ini.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/default/settings.php",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles/_quote.scss",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/templates/offers.tpl.php",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.module",
+		"/Applications/MAMP/htdocs/retail-website/www/profiles/toyota/toyota.profile",
+		"/Volumes/Production_London/5. Toyota/TOY1111 - PWS May 2014/4-Development/#688/my-toyota.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/libraries/awssdk/services/s3.class.php",
+		"/Volumes/Production_London/5. Toyota/TOY0815 - Quick Finance Quote Front End Build/4-Development/css/qfq.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1028 - PWS April 2014/4-Development/#688/my-toyota.html",
+		"/Volumes/Production_London/5. Toyota/TOY1028 - PWS April 2014/4-Development/#688/raw_myToyota.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1028 - PWS April 2014/4-Development/#688/my-toyota-page.css",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/what-we-look-for/raw_myToyota.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/what-we-look-for/look-for.html",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/what-we-look-for/raw_look-for.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1093 - Hybrid Launch eTM April 2014/4-Development/email.html",
+		"/Volumes/Production_London/5. Toyota/TOY1104 - After Sales multi message eTM/4-Development/email.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_offers/tgb_offers.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_offers/templates/offers_calculator.tpl.php",
+		"/Volumes/Production_London/5. Toyota/TOY0815 - Quick Finance Quote Front End Build/4-Development/codeweaver-toyotaUAT.html",
+		"/Applications/MAMP/htdocs/retail-website/www/profiles/toyota/toyota.info",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/offers_calculator.tpl.php",
+		"/Users/freddie.tibbles/Downloads/A1V-equipment (1).html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/templates/offers_calculator.tpl.php",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/index.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_boldchat/tgb_boldchat.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_codeweaver_qfq/tgb_codeweaver_qfq.info",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_boldchat/tgb_boldchat.info",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_misc/tgb_misc.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_chapters/tgb_chapters.module",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/toyota/CDN/data/desk-equipment/A1V.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/toyota/CDN/data/desk-specification/A1V.html",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/config.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/A1V.json",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/app.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/models/vehicle-model.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/models/summary-model.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/views/summary-view.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/models/model-model.coffee",
+		"/Volumes/Production_London/5. Toyota/-- PAN-EU Data Testing/Data/HL8.html",
+		"/Applications/MAMP/htdocs/retail-website/www/data/desk-equipment/A1V.html",
+		"/Applications/MAMP/htdocs/retail-website/www/data/desk-specification/A1V.html",
+		"/Applications/MAMP/htdocs/TCW/scripts/sync.sh",
+		"/Volumes/Production_London/5. Toyota/-- Development Documentation/TCW/sync.sh",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_configure/styles/configure.css",
+		"/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/Gruntfile.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_configure/tgb_configure.tpl.php",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/experienced-professionals/experienced-professionals.html",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/views/quote-view.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles/range/_aygo.scss",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/dist/index.html",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/models/quote-model.coffee",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/student-placement/raw_student.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/student-placement/student.html",
+		"/Volumes/Production_London/5. Toyota/TOY1073 - Toyota HQ Careers Updates/4-Development/what-we-look-for/chapter-assets/hr-what-to-look-for_revision_0.css",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/compare-range.js",
+		"/Volumes/Production_London/5. Toyota/-- PAN-EU Data Testing/Data/configure/pan-e/28.04.14/GT2.json",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/GT2.json",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_test_drive/css/testdrive.css",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_request_brochure/css/requestbrochure.css",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_test_drive/js/testdrive.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_blocks/prefer_to_talk.tpl.php",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_request_brochure/js/requestbrochure.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_contactus/assets/contactus.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_boldchat/js/tgb_boldchat.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_contactus/assets/contactus.tpl.php",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_contactus/assets/contactus.css",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_request_brochure/templates/request_brochure.tpl.php",
+		"/Volumes/Production_London/5. Toyota/TOY0962 - Chat functionaility Change /4-Development/supplied-txt-files/static-btn.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_contactus/tgb_contactus.module",
+		"/Volumes/Production_London/5. Toyota/TOY0962 - Chat functionaility Change /4-Development/static-and-new-BR/Toyota Contact Us button.txt",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/AU6.json",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all/main.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/toyota/CDN/data/desk-specification/GT2.html",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/toyota/CDN/data/desk-equipment/GT2.html",
+		"/Applications/MAMP/htdocs/retail-website/src/scss/Avensis/_chapter-overrides.scss",
+		"/Applications/MAMP/htdocs/TCW/sites/all/themes/toyota/_shared/js/jquery.gallery.js",
+		"/Applications/MAMP/htdocs/retail-website/www/data/specs/GT2-specs.json",
+		"/Applications/MAMP/htdocs/retail-website/www/data/gallery_spins/GT2-spins.json",
+		"/Applications/MAMP/htdocs/retail-website/src/scss/Verso/_car_offers.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/touring-accessories.html",
+		"/Applications/MAMP/htdocs/retail-website/www/redirectsmap.txt",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/app/config/local/database.php",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/app/config/local/app.php",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/bootstrap/start.php",
+		"/Applications/MAMP/htdocs/retail-website/www/data/desk-specification/R1V.html",
+		"/Applications/MAMP/logs/apache_error.log",
+		"/Applications/MAMP/logs/php_error.log",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/README.md",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/Vagrantfile",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/package.json",
+		"/Users/freddie.tibbles/Sites/dig_dashboard/server.php",
+		"/Volumes/Production_London/5. Toyota/TOY1028 - PWS April 2014/4-Development/676/chapter-assets/Yaris-scripts-q1.js",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/raw-touring.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/owners-chapter_accessories.scss",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/chapter-assets/touring-accessories-slider.js",
+		"/Users/freddie.tibbles/Desktop/Personal Work/Widgets/full-page-slider/scripts.js",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/touring-accessories-slider.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_alm/tgb_alm.module",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/PH1.json",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/chapter-assets/touring-accessories.css",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/untitled.scss",
+		"/Volumes/Production_London/5. Toyota/TOY0815 - Quick Finance Quote Front End Build/2-Production/Testing/requests/localhost-request-error500",
+		"/Volumes/Production_London/5. Toyota/TOY1034 - Accessories Touring Campaign page/4-Development/chapter-assets/owners-chapter_accessories.scss",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts/views/accessories-view.coffee",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/chapter/main.js",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/chapter/model.js",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/accessories/a1v",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles/range/_avensis.scss",
+		"/Applications/MAMP/htdocs/retail-website/www/data/specs/PS4-specs.json",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/css/newcar_mobile_specs.css",
+		"/Users/freddie.tibbles/Desktop/#####/transfer/A1V.json",
+		"/Users/freddie.tibbles/Desktop/#####/verso-chapter.js",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/AV9.json",
+		"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_offers/css/style.css",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/bin/spins/spins.coffee",
+		"/Users/freddie.tibbles/NG-Auris-Configurator/bin/spins/create-spins-yaris.coffee",
+		"/Users/freddie.tibbles/ToyotaSpins/Configure/Spins/create-spins-yaris.coffee",
+		"/Volumes/Production_London/5. Toyota/-- PAN-EU Data Testing/Data/configure/pan-e/11.04.14/CV8.json"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/freddie.tibbles/NG-Auris-Configurator",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles/",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"<open files>",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Applications/MAMP/htdocs/TCW",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/",
+			"",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"",
+			"/Applications/MAMP/htdocs/TCW",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator",
+			"/Applications/MAMP/htdocs/retail-website",
+			"/Applications/MAMP/htdocs/TCW/sites",
+			"/Applications/MAMP/htdocs/TCW/sites/all/themes",
+			"",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"/Applications/MAMP/htdocs/TCW",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"/Applications/MAMP/htdocs/retail-website/www/sites",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/TCW",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/rest/pan-e",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles",
+			"/Applications/MAMP/htdocs/retail-website/www/",
+			"/Applications/MAMP/htdocs/retail-website/src/scss/Rav4",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/styles",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website",
+			"/Applications/MAMP/htdocs/TCW",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"<open files>",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"<open files>",
+			"",
+			"/Applications/MAMP/htdocs/retail-website/www",
+			"/Applications/MAMP/htdocs/retail-website/",
+			"/Applications/MAMP/htdocs/TCW/",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes",
+			"<open files>",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app/scripts",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/themes/mtoyota",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"",
+			"/Users/freddie.tibbles/NG-Auris-Configurator/app",
+			"/Applications/MAMP/htdocs/retail-website/www/sites/all/modules/custom/tgb_car_chapters/js/accessories/all",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"hybrid_brand",
+			"Q214_Hybrid_Launch",
+			"RC78099",
+			"RC78100",
+			"C5074",
+			"$('.codeweaversAccessoriesList')",
+			"$('.codeweaversAccessoriesList').on('click', function() {",
+			">>>>",
+			"stage",
+			"codeweaver_qfq",
+			"offers",
+			"_offers",
+			"#3785b5",
+			"#47a5db",
+			"codeweaversCurrency",
+			"toyotatext_it",
+			"http://[tgbs3:s3-path]/chapter-assets/",
+			"http://[tgbs3:s3-path]/chapter-assets",
+			"C5074_hybrid_launch",
+			"https://cdnassets.toyotaretail.co.uk.s3.amazonaws.com/cdnassets.toyotaretail.co.uk/e_Toyota_Mail/images/Hybrid-brand-14/",
+			"GGGG/images/",
+			"white",
+			"Grey_Spacer",
+			"<img src=\"GGGG/images/pod-hybrid-family.jpg\" width=\"175\" height=\"90\" alt=\"Our hybrid family has something for everyone | Find out more about Toyota Hybrid | Toyota UK\" style=\"display:block; padding:0; margin:0; border:0;\">",
+			"Grey",
+			"height=\"40\"",
+			"Yaris",
+			"width=\"4",
+			"width=\"200",
+			"200",
+			"height=\"43\"",
+			"width=\"241\"",
+			"height=\"125\" ",
+			"41",
+			"tgb_liveperson",
+			"tgb_offers",
+			"offers_page",
+			"tgb_offers",
+			"feature_customer_request_tag",
+			"_finance",
+			"_offers",
+			"mobile",
+			"C5074_Q214_Retail",
+			"Icon Bus",
+			"business",
+			"modelChanged",
+			"updateRoute",
+			"<div class=\"feature_model\"><span>",
+			"C5074_Q214_Retail_aabw_",
+			"RC77809",
+			"RC77808",
+			"C5031",
+			"images/Hybrid-Launch",
+			"GGGG/images/",
+			"20",
+			"65",
+			"27",
+			"height=\"37\"",
+			"37",
+			"153",
+			"27",
+			"width=\"27\"",
+			"169",
+			"27",
+			"40",
+			"\"33\"",
+			"\"30\"",
+			"30",
+			"27",
+			"7",
+			"153",
+			"27",
+			"37",
+			"153",
+			"45",
+			"height=\"326\"",
+			"height=\"135\"",
+			"height=\"120\"",
+			"120",
+			"27",
+			"AYGO",
+			"#quote #qfq_wrapper #codeweaversVehicles .codeweaversFinanceOptions ",
+			".codeweaversCurrency",
+			"codeweaversFinanceOptions ",
+			"input[type=\"text\"]",
+			"#quote #qfq_wrapper #codeweaversVehicles .codeweaversFinanceOptions .codeweaversCurrency",
+			"toyota_update_7503",
+			"====",
+			"codeweaversCosts",
+			"child",
+			"codeweaversOptionsAndPrices",
+			"input[type=\"text\"]",
+			"qfq-style",
+			"codeweaversCosts",
+			"dataCaveat",
+			"showQuote",
+			"su",
+			"Su",
+			"su",
+			"totalPrice",
+			"showQuote",
+			"price",
+			"@summary",
+			"summar",
+			"<!",
+			"job",
+			"455",
+			"820",
+			"<p>This video provides us with an overview of life at Toyota (GB) PLC, including our goals, culture and insights about how we work together from a selection of our employees.</p>",
+			"quote-container",
+			"http://",
+			"o>",
+			"o",
+			"ChooseBrochure",
+			"Choose",
+			"bc_load",
+			"static_bc",
+			"prefertotalk.jpg",
+			"prefer-to-talk",
+			"block-tgb-blocks-prefer-to-talk",
+			"bcLoad",
+			"step_1",
+			"step1",
+			"download",
+			"ConversionStage",
+			"conversation_ID",
+			"toyota-contact-right",
+			"$"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"RC78111",
+			"RC78110",
+			"hybrid_brand",
+			"http://www.toyota.co.uk/e_Toyota_Mail/images/Hybrid-brand-14/",
+			"images/",
+			"C5074_Q214_Hybrid_Launch",
+			"C5074",
+			"http://www.toyota.co.uk/e_Toyota_Mail/images/Hybrid-Launch/",
+			"<a href=\"https://www.toyota.co.uk/optout?Csrc=Email&CampaignID=C5033&TestdriveRCode=RC77858&BrochureRCode=RC77857&DCSext.idMain=C5033_Q214_SpringEventApril_opt_out\"",
+			"",
+			"<a href=\"https://www.toyota.co.uk/optout\" target=\"blank\">click here</a>",
+			"order",
+			"",
+			"sharedstage",
+			"<a href=\"\">find out</a>",
+			"<div class=\"accordion_frame PAN-EU\">",
+			"",
+			"/test-drive-auris"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 294.0
+	},
+	"project": "threesixty-view.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"html",
+				"TCW/modules/system/html.tpl.php"
+			],
+			[
+				"pre",
+				"retail-website/www/includes/database/prefetch.inc"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 837.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 223.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
