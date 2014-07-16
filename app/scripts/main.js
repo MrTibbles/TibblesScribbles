@@ -8,7 +8,7 @@ require.config({
 		'loader' : '../bower_components/spinjs/spin.min'
 	}
 });
-require(['jquery','backbone','loader', 'mixins/spin','router'], function($,Backbone){
+require(['jquery', 'jqueryui', 'backbone','loader', 'mixins/spin','router'], function($,Backbone){
 	//Not sure what to put in here tbh!!! 	
 	//Car Chapter Gallery v0.1
 })

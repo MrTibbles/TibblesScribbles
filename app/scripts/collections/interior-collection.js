@@ -1,7 +1,7 @@
 define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) {
   var exts = Backbone.Collection.extend({
     model: img,
-    url: 'http://www.toyota.co.uk/services/gallery-interior.jsonp?rc=',
+    url: 'http://127.0.0.1/services/gallery-interior.jsonp?rc=',
     parse: function(response) {
       var ints_arr = [];
       $.each(response, function(idx, ele) {

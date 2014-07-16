@@ -25,7 +25,7 @@
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/navigation.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/print.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/libraries/shadowbox/shadowbox.css">
-  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css">  
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
@@ -39,8 +39,8 @@
     <div id="gallery-wrap">
       <div id="overlay_bg"></div>
       <nav>
-        <button id="exterior">exterior</button>
-        <button id="interior">interior</button>
+        <button id="exterior" class="exterior">exterior</button>
+        <button id="interior" class="interior">interior</button>
       </nav>
       <div id="main_viewport">
         <ul class="interior img-lists"></ul>
@@ -51,14 +51,13 @@
 
   <script id="thumb_temp" type="text/template">
     <span id="<%= model_ID %>" class="thumb_inner" data-title="<%= title %>">
-      <a href="<%= main_src %>" rel="shadowbox;width=940;height=470;">
-        <img src="<%= thumb_src %>" alt="<%= desc %>" />
-      </a>
+      <img src="<%= thumb_src %>" alt="<%= desc %>" />
     </span>
   </script> 
   
-  <script id="img_main_temp" type="text/template">
+  <script id="img_main_temp" type="text/template">    
     <div class="active_viewport">
+      <button class="close-overlay"></button>
       <img src="<%= main_src %>" alt="<%= desc %>" title="<%= title %>" />
       <div id="descr_box">
         <h2><%= title %></h2>

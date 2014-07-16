@@ -1,22 +1,24 @@
-define(['underscore', 'backbone', 'collections/interior-collection', 'views/interior-view'], function(_, Backbone, interiors, interior_item) {
+define(['underscore', 'backbone', 'collections/interior-collection', 'views/interior-view', 'views/main-view'], function(_, Backbone, interiors, interior_item, main_overlay) {
   var interiors_view = Backbone.View.extend({
     el: $('#main_viewport .interior'),
+    collection: interiors,
     events: {
       'click .int_thumb_out': 'change_int'
     },
-    // template: _.template(
-    //   $('#thumb_temp').html()
-    // ),
+    viewport: $('#overlay_bg'),
     initialize: function() {
       this.active_int = null;
       this.$el.addClass('active_list');
+      
       return this.collection.on('change:active', this.display_img, this);      
     },
     render: function() {
       var _this = this,
         ints_leng = this.collection.length;
 
-      this.collection.each(function(int_img, idx) {
+      this.$el.empty();
+
+      this.collection.each(function(int_img, idx) {                
         _this.parse_img(int_img,idx);
       });
       return this;
@@ -35,27 +37,21 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       return this.$el.append(interior_img.render().el);
     },
     display_img: function() {
-      if(this.active_int === null || this.active_int === undefined){
-        return;
-      }
-      this.view_port = new main_view({
+      this.viewport.empty();
+
+      this.overlay = new main_overlay({
         model: this.active_int
       });
-      this.viewport.append(this.view_port.render_img().el)
+      this.viewport.addClass('active_overlay').append(this.overlay.render_img().el);
     },
     change_int: function(img) {
-      var $img = $(img.currentTarget).find('.thumb_inner');      
-      this.active_int = this.collection.get($img.attr('id'));      
+      var $img = $(img.currentTarget).find('.thumb_inner');              
 
-      if($img.hasClass('active_thumb')) {
-        return;
-      }
-      this.viewport.empty()
+      this.active_int = this.collection.get($img.attr('id'));    
+
       this.$('.thumb_inner').parent('li').removeClass('active_thumb');
 
-      this.view_port.model.set('active', false);
       this.collection.set_active_img(this.active_int);
-      $img.parent('li').addClass('active_thumb');
     }
   });
   return interiors_view;

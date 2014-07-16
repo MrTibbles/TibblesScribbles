@@ -1,37 +1,17 @@
 define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-collection', 'views/exteriors-view', 'collections/interior-collection', 'views/interiors-view'], function($, _, Backbone, loader, exteriors, exteriors_view, interiors, interiors_view) {
   var slanted_gallery = Backbone.View.extend({
     el: $('#gallery-wrap'),
+    viewport: $('#overlay_bg'),
     events: {
-      'click button#exterior': 'display_exteriors',
-      'click button#interior': 'display_interiors'
+      'click nav button': 'change_img_type'
     },
     initialize: function() {
-      // window.console && console.info('Starting')
-    },
-    set_loader: function() {
-      var options = {
-        lines: 12,
-        length: 12,
-        width: 4,
-        radius: 10,
-        corners: 1,
-        rotate: 35,
-        direction: 1,
-        color: '#000',
-        speed: 1,
-        trail: 53,
-        shadow: true,
-        hwaccel: false,
-        zIndex: 2e9,
-        className: 'loading_spinner',
-        top: 'auto',
-        left: 'auto'
-      };
-      return this.loader = new loader(options).spin(this.$('#main_viewport')[0]);
+      this.resize_overlay();
+      $(window).on('resize', this.resize_overlay);
     },
     render: function(type) {
-      this.set_loader();
-      this.$('.loading_spinner').stop().fadeIn();
+      // this.set_loader();
+      this.show_loader(this.$('#main_viewport')[0]);
 
       switch (type) {
         case 'exterior':
@@ -85,7 +65,7 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
     },
     load_collections: function() {
       //Hide loading spinner as view has been rendered
-      this.$('.loading_spinner').stop().fadeOut();
+      this.hide_loader();
 
       if (!this.exterior_imgs) {
         this.exterior_imgs = new exteriors;
@@ -95,13 +75,19 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
         this.interior_imgs = new interiors;
 
         this.interior_imgs.fetch();
+
+        this.InteriorView = new interiors_view({
+          collection: this.interior_imgs
+        });
       }
     },
-    display_exteriors: function(e) {
+    change_img_type: function(e) {
       if ($(e.currentTarget).hasClass('active_menu')) {
         return false;
       }
-      $('buttton').removeClass('active_menu');
+      this.hide_loader();
+
+      $('nav button').removeClass('active_menu');
       $(e.currentTarget).addClass('active_menu');
 
       //Hide all other img lists
@@ -111,29 +97,52 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
       this.$el.find('ul.img-lists').removeClass('active_list');
       this.$el.find('ul.' + img_type).addClass('active_list');
 
-      this.ExteriorView = new exteriors_view({
-        collection: _this.exterior_imgs
-      });
-      this.ExteriorView.render();
-    },
-    //Havin to repeast myself due to collections and views having different names
-    display_interiors: function(e) {
-      if ($(e.currentTarget).hasClass('active_menu')) {
-        return false;
+      if ($(e.currentTarget).hasClass('exterior')) {
+        this.ExteriorView.render();
+        this.listenTo(this.ExteriorView, 'render', this.$('.loading_spinner').stop().fadeOut());
+      } else if ($(e.currentTarget).hasClass('interior')) {
+        this.InteriorView.render();
+        this.listenTo(this.InteriorView, 'render', this.$('.loading_spinner').stop().fadeOut());
       }
-      $('buttton').removeClass('active_menu');
-      $(e.currentTarget).addClass('active_menu');
-      //Hide all other img lists
-      var img_type = e.currentTarget.getAttribute('id'),
-        _this = this;
+    },
+    resize_overlay: function(e) {
+      //this has lost its scope, think its linked to jQ event handler rather thn backbone?
+      var _this = this;
+      this.avail_width = $('html').outerWidth();
+      this.avail_height = $('html').outerHeight();
 
-      this.$el.find('ul.img-lists').removeClass('active_list');
-      this.$el.find('ul.' + img_type).addClass('active_list');
-
-      this.InteriorView = new interiors_view({
-        collection: _this.interior_imgs
-      });
-      this.InteriorView.render();
+      //Throttle the resize of the overlay, to avoid killin the DOM
+      setInterval(function() {
+        $('#overlay_bg').css({
+          'width': this.avail_width + 'px',
+          'height': this.avail_height + 'px'
+        });
+      }, 50);
+    },
+    show_loader: function(target) {
+      var options = {
+        lines: 12,
+        length: 12,
+        width: 4,
+        radius: 10,
+        corners: 1,
+        rotate: 35,
+        direction: 1,
+        color: '#FD532E',
+        speed: 1,
+        trail: 53,
+        shadow: true,
+        hwaccel: false,
+        zIndex: 2e9,
+        className: 'loading_spinner',
+        top: 'auto',
+        left: 'auto'
+      };
+      return this.loader = new loader(options).spin(target);
+    },
+    hide_loader: function(){
+      //this.$('#main_viewport')[0]
+      this.loader.stop();
     }
   });
   return slanted_gallery;
