@@ -1,58 +1,50 @@
-define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exterior-view', 'views/main-view', 'loader'], function(_, Backbone, exts, ext_view, main_view, loader) {
+define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exterior-view', 'views/main-view'], function(_, Backbone, exteriors, ext_view, main_overlay) {
   var exteriors_view = Backbone.View.extend({
-    el: $('#thumb_slider'),
-    collection: exts,
+    el: $('#main_viewport .exterior'),
+    collection: exteriors,
     events: {
-      'click .ext_thumb_out': 'change_ext',
-      // 'mouseover .thumb_slider_nav': 'slide_thumbs'
+      // 'click .ext_thumb_out': 'change_ext'
     },
-    template: _.template(
-      $('#img_main_temp').html()
-    ),
-    viewport: $('#main_viewport'),
+    viewport: $('#overlay_bg'),
     initialize: function() {
       this.active_ext = null;
-      this.collection.on('change:active', this.display_img, this);
+      this.$el.addClass('active_list');
+      return this.collection.on('change:active', this.display_img, this);
     },
     render: function() {
       var _this = this,
         exts_leng = this.collection.length;
-      this.thumb_width = 111; // Width of thumbnails 
 
       this.collection.each(function(ext_img, idx) {
         _this.parse_img(ext_img, idx);
-      });
-      // var first_li = this.$el
-      // $(first_li).addClass('active_thumb')
-      this.$el.css('width', exts_leng * this.thumb_width);
+      });      
+      // this.$el.css('width', exts_leng * this.thumb_width);
       return this;
     },
     parse_img: function(img, idx) {
-      if(img.get('thumb_src')) {
-        var ext_thumb = new ext_view({
-          model: img
-        });
-        if(idx === 0) {
-          this.collection.set_active_img(img);
-          this.view_port = new main_view({
-            model: img
-          });
-          this.viewport.append(this.view_port.render_img().el)
-          this.$el.find('li').eq(0).addClass('active_thumb');
-        }
-        return this.$el.append(ext_thumb.render().el);
-      } else {
-        window.console && console.error('missing thumb src');
-      }
+      var ext_thumb = new ext_view({
+        model: img
+      });
+      // if(idx === 0) {
+      //   this.collection.set_active_img(img);
+      //   this.view_port = new main_view({
+      //     model: img
+      //   });
+      //   this.viewport.append(this.view_port.render_img().el)
+      //   this.$el.find('li').eq(0).addClass('active_thumb');
+      // }
+      return this.$el.append(ext_thumb.render().el);
     },
     display_img: function() {
       if(this.active_ext === null || this.active_ext === undefined){
         return;
       }
-      this.view_port = new main_view({
+      this.viewport.empty();
+
+      this.overlay = new main_overlay({
         model: this.active_ext
       });
-      this.viewport.append(this.view_port.render_img().el)
+      this.viewport.prepend(this.overlay.render_img().el);
     },
     change_ext: function(img) {
       var $img = $(img.currentTarget).find('.thumb_inner');      
@@ -61,37 +53,10 @@ define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exte
       if($img.hasClass('active_thumb')) {
         return;
       }
-      this.viewport.empty()
-      this.$('.thumb_inner').parent('li').removeClass('active_thumb');
 
-      this.view_port.model.set('active', false);
+      // this.main_overlay.model.set('active', false);
       this.collection.set_active_img(this.active_ext);
       $img.parent('li').addClass('active_thumb');
-    },
-    slide_thumbs: function(e){
-      window.console && console.log(e)
-      var $nav = $(e.currentTarget),        
-        _this = this,
-        interval = 20,
-        orig_offset = _this.$('#thumb_slider').offset().left,
-        anim_timer, thumb_offset;
-
-      var off_set = $nav.offset();
-      clearInterval(anim_timer);
-      if($nav.attr('id') === 'right'){
-        anim_timer = setInterval(this.scroll_thumbs_R, interval);
-      }else{
-        anim_timer = setInterval(this.scroll_thumbs_L, interval);
-      }
-      $nav.on('mouseleave', function(){
-        clearInterval(anim_timer);
-        _this.$('#thumb_slider').stop(true, true);
-        thumb_offset = _this.$('#thumb_slider').position().left;
-        var frames_per = (Math.round((thumb_offset - orig_offset) / this.thumb_width) * this.thumb_width) + orig_offset;
-        _this.$('#thumb_slider').animate({
-          'left': frames_per
-        }, (interval * 5))
-      });
     }
   });
   return exteriors_view;

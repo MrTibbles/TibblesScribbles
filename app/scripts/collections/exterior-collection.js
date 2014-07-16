@@ -1,20 +1,20 @@
-define(['jquery', 'backbone', 'models/image-model','app_config'], function($, Backbone, ext, app_config) {
+define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) {
   var exts = Backbone.Collection.extend({
-    model: ext,
+    model: img,
     url: 'http://www.toyota.co.uk/services/gallery-exterior.jsonp?rc=',
     parse: function(response) {
       var exts_arr = [];
       $.each(response, function(idx, ele) {
+        if (!ele.main_image.length) {
+          return;
+        };
         var ext_img = {
           main_src: ele.main_image,
           thumb_src: ele.thumbnail,
           desc: ele.description,
           title: ele.title
         };
-        if(idx === 0) {
-          ext_img.active = true;
-        }
-        exts_arr.push(new ext(ext_img))
+        exts_arr.push(new img(ext_img))
       });
       return exts_arr;
     },
@@ -23,11 +23,10 @@ define(['jquery', 'backbone', 'models/image-model','app_config'], function($, Ba
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: _this.url + app_config.range_code,
+        url: _this.url + 'AY5',
         jsonpCallback: 'exterior_imgs',
         processData: true
       }, options);
-
       return $.ajax(params);
     },
     set_active_img: function(img) {

@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'models/image-model', 'collections/interior-collection'], function(_, Backbone, img, ints) {
+define(['underscore', 'backbone'], function(_, Backbone) {
   var interior_view = Backbone.View.extend({
     tagName: 'li',
     className: 'int_thumb_out',

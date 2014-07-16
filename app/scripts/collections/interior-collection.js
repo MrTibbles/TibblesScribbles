@@ -1,19 +1,19 @@
-define(['jquery', 'backbone', 'models/image-model','app_config'], function($, Backbone, img, app_config) {
+define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) {
   var exts = Backbone.Collection.extend({
     model: img,
     url: 'http://www.toyota.co.uk/services/gallery-interior.jsonp?rc=',
     parse: function(response) {
       var ints_arr = [];
       $.each(response, function(idx, ele) {
+        if (!ele.main_image.length) {
+          return;
+        };
         var int_img = {
           main_src: ele.main_image,
           thumb_src: ele.thumbnail,
           desc: ele.description,
           title: ele.title
         };
-        if(idx === 0) {
-          int_img.active = true;
-        }
         ints_arr.push(new img(int_img))
       });
       return ints_arr;
@@ -23,7 +23,7 @@ define(['jquery', 'backbone', 'models/image-model','app_config'], function($, Ba
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: _this.url + app_config.range_code,
+        url: _this.url + 'AY5',
         jsonpCallback: 'interior_imgs',
         processData: true
       }, options);

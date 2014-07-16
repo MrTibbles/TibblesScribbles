@@ -21,8 +21,10 @@
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/reset.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/general.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/header.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/navigation.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/print.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/libraries/shadowbox/shadowbox.css">
   <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css">
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -33,35 +35,44 @@
 
 <body> 
   <div class="container">
+    <header id="fake-header"></header>
     <div id="gallery-wrap">
+      <div id="overlay_bg"></div>
       <nav>
-        <button id="exteriors"></button>
-        <button id="interiors"></button>
+        <button id="exterior">exterior</button>
+        <button id="interior">interior</button>
       </nav>
-      <div id="main_viewport"></div>      
+      <div id="main_viewport">
+        <ul class="interior img-lists"></ul>
+        <ul class="exterior img-lists"></ul>
+      </div>      
     </div>
   </div>
 
   <script id="thumb_temp" type="text/template">
     <span id="<%= model_ID %>" class="thumb_inner" data-title="<%= title %>">
-      <img src="<%= thumb_src %>" alt="<%= desc %>" />
+      <a href="<%= main_src %>" rel="shadowbox;width=940;height=470;">
+        <img src="<%= thumb_src %>" alt="<%= desc %>" />
+      </a>
     </span>
   </script> 
   
-<!--   <script id="img_main_temp" type="text/template">
-    <img src="<%= main_src %>" alt="<%= desc %>" title="<%= title %>" />
-    <div id="descr_box">
-      <h2><%= title %></h2>
-      <p><%= desc %></p>
+  <script id="img_main_temp" type="text/template">
+    <div class="active_viewport">
+      <img src="<%= main_src %>" alt="<%= desc %>" title="<%= title %>" />
+      <div id="descr_box">
+        <h2><%= title %></h2>
+        <p><%= desc %></p>
+      </div>
     </div>
-    <aside id="magnify"></aside>
-  </script> -->
+  </script>
 
   <script id="video_template" type="text/template">
     <iframe class="youtube-player" type="text/html" width="940" height="486" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
   </script>
+  
+  <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>  
 
-  <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
 </body>
 
 </html>

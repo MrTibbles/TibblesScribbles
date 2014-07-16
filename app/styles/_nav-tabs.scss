@@ -1,160 +1,38 @@
-ul.ng-gallery-nav{
-	height:50px;
-	margin:0;		
-	background: #ff0033;
+#gallery-wrap{
+	nav{
+		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
 
-	li{
-		width:233px;
-		height:36px;
-		float:left;
-		padding:14px 0 0;
-		font-size:18px;
-		color:#333333;
-		text-align: center;
-		cursor:pointer;
-		border:{
-			width:0 1px 0 0;
-			style:solid;
-			color:#000;
-		}
-		font:{
-			size:18px;
-			family:'toyotadisplay_bd';
-			weight:normal;
-		}
+		display: block;
+		width: 880px;
+		margin: 0 auto;
+		padding: 0 0 0 60px;
 
-		&.active_pane{
-			height:34px;
-			background:#95021f;
-			color:#fff;
-		}
-
-		&.deactivated_pane{
-			color:#000 !important;
-		} 
-	}
-}
-#grade-list, #alt-grade-list{
-	display: block;
-	list-style: none;
-	width:345px;
-	float:left;			
-	background-color:#DCDCD8;
-
-	.grade_handle{		
-		background: #333333;
-		color: #ffffff;
-		// @include grade_tabs_gradient($gradient-light, $gradient-dark);
-
-		h2{
-			float: left;
-			width:65%;
-			font:{
-				size:15px;
-				family:'toyotadisplay_bd';
-				weight:normal;
+		button{
+			display: inline-block;
+			border: none;
+			outline: none;
+			padding: 10px 22px;
+			margin: 0 8px;			
+			color: #ffffff;
+			background-color: $aygo-orange;
+			letter-spacing: 2px;
+			text: {
+				align: center;
+				transform: uppercase;
 			}
-		}
-		h3{
-			font:{
-				size:15px;
-				family:'toyotadisplay_rg';
-				weight:normal;
+			border: {
+				width: 4px;
+				style: solid;
+				color: #ffffff;
 			}
-		}
-
-		.grade_draw{
-			padding: 10px 15px;
-			cursor: pointer;
-		}
-
-		.grade_inner{
-			display: none; 
-		}
-		&.active_grade{
-			.grade_inner{
-				display: block;
-				position: relative;
-				padding: 10px 15px;
-				background-color:#DCDCD8;
-
-				h3{
-					color: #333333;
-					margin:0 0 12px;
-					font-family: 'toyotadisplay_bd';
-				}
-
-				.colour_swatches{
-					width: 100%;
-					padding:0;
-					margin:0 0 15px;
-					float: left;
-					clear:both;
-
-					li.swatch{
-						width: 36px;
-						height: 36px;
-						float: left;
-						margin: 0 2px 2px 0;						
-						outline: none;
-						cursor: pointer;
-
-						img{
-							display: block;
-							width: 36px;
-							height:36px;
-						}
-					}
-				}
-				.spec_listings{
-					clear:both;
-					list-style:outside disc;
-					margin:0 0 0 15px;
-					padding:0px;
-
-					li{
-						margin:7px 0 4px;
-						color:#CC0033;
-						line-height:14px;
-						list-style: outside disc;
-						font:{
-							size:11px;
-							family:'toyotatext_rg';
-							weight:normal;
-						}
-
-						p{
-							color: #333333;
-							padding: 0;
-							// display: inline-block;
-						}
-					}
-				}
-				#tool_tip{					
-					display: block;
-					min-width:100px;
-					text-align: center;
-					padding:5px 10px;
-					background-color: #ffffff;
-					position: absolute;
-
-					&.hide_tool{
-						display: none;
-					}
-
-					p{
-						color: #333333;
-						font: {
-							size:13px;
-							family:'toyotadisplay_bd';
-							weight:normal;
-						}
-					}
-				}
+			font: {
+				size: 14px;
+				family: 'toyotadisplay_rg';
+			}
+			&.active_menu{
+				background: #ffffff;
+				color: $aygo-orange;
 			}
 		}
 	}
-}	
-#alt-grade-list{
-	display: none;
 }

@@ -1,470 +1,73 @@
+body{
+	background: url("http://sharedlive.toyotaretail.co.uk.s3.amazonaws.com/car-chapter-assets/AYGO/explore/images/central-orange-bg.gif") repeat-y center 0 transparent;
+}
+
 #gallery-wrap{
-	width:940px;
-	background: #f7f7f7;
-	margin: 0 auto;	
+	width: 100%;
+	overflow: hidden;	
 
 	#main_viewport{		
-		overflow:hidden;
-		position: relative;
-		min-height:486px;
+		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
 
-		#no_content{
-			color:#333333;
-			margin:200px auto 0;
-			text-align: center;
-			font:{
-				family: 'toyotadisplay_bd';
-				size:18px;
-			} 
+		min-width: 940px;
+		max-width: 1460px;
+		min-height: 1000px;
+		background: $bg-colour;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+
+		ul{
+			width: 100%;
+			height: 100%;
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;			
+
+			&.active_list{
+				display: block;
+			}
+			li{
+				display: block;
+				float: left;
+				max-width: 460px;
+				position: relative;
+
+				img{
+					width: 101px;
+				}
+			}
+		}
+
+		.loading_spinner{
+			@include add_prefix('transform',skew(0deg) rotate(0deg));
+		}
+	}
+	#overlay_bg{
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 0;
+		min-width: 100%;
+		min-height: 100%;
+		background: rgba(0,0,0,0.75);
+		z-index: 5000;
+
+		&.active_overlay{
+			display: block;
 		}
 
 		.active_viewport{
-			height:486px;
+			width: 940px;
+			max-height: 470px;
+			margin: 0 auto;
+			position: relative;
+			top: -470px;
 
 			img{
-				width:940px;
-			}
-			#descr_box{
-				width:290px;
-				background-color: rgb(0,0,0);
-				background-color: rgba(0,0,0,0.75);
-				position: absolute;
-				left:0;
-				padding:10px 15px 10px;
-
-				&.title_visible{
-					display: block;
-				}
-
-				h2{
-					color:#ffffff;
-					margin:0 0 8px;
-					font:{
-						family: 'Arial';
-						size:14px;
-						weight: bold;
-					}					
-				}
-				p{
-					color:#ffffff;
-					margin:0;
-					font:{
-						family:'Arial';
-						size:12px;
-						weight:normal;
-					}
-				}				
+				width: 940px;
 			}
 		}
-		.three_sixty_wrap, .active_spin_viewport{
-			width:595px;
-			height:490px;
-			padding:85px 0 0;
-			float:left;
-			overflow:hidden;
-			position: relative;
-			background:url('../images/360-icon.png') no-repeat center 420px #ffffff;
-
-			#colour-info{
-				width:150px;
-				position:absolute;
-				bottom:15px;
-				left:15px;
-
-				img{
-					float:left;
-					margin: 0 10px 0 0;
-					width: 36px;
-					height: 36px;
-				}
-				h4{
-					float:left;
-					font-size: 14px;
-					margin:1px 0 0;
-					text-transform: capitalize;
-					font-family: 'toyotatext_rg';
-
-					&.colour_title{
-						color:#8E969C;
-					}
-				}
-			}
-			
-			#body_switcher{
-				position: absolute;
-				bottom:15px;
-				right:15px;
-
-				li{
-					float:left;
-					width:36px;
-					height:28px;
-					background:{
-						image: url('../images/door-selectors.gif');
-						repeat: no-repeat;
-						position: 0 0;
-					}
-
-					&.body_183{
-						background-position: 0 bottom;
-						&.active_body{
-							background-position: right bottom;
-						}
-					}
-					&.body_184{
-						background-position: 0 -112px;
-						&.active_body{
-							background-position: right -112px;
-						}
-					}
-					&.body_185{
-						background-position: 0 -168px;
-						&.active_body{
-							background-position: right -168px;
-						}
-					}
-					&.body_186{
-						background-position: 0 -140px;
-						&.active_body{
-							background-position: right -140px;
-						}
-					}
-					&.body_206, &.body_194{
-						background-position: 0 -28px;
-						&.active_body{
-							background-position: right -28px;
-						}
-					}
-					&.body_207, &.body_196{
-						background-position: 0 -84px;
-						&.active_body{
-							background-position: right -84px;
-						}
-					}
-					&.body_208{
-						background-position: 0px -196px;
-						&.active_body{
-							background-position: right -196px;
-						}
-					}					
-				}
-			}
-
-			img.hidden_sprite{
-				display: none;
-			}
-
-			.interact{
-				position: absolute;
-				z-index: 25;
-				top: 0;
-				bottom: 60px;
-				left: 0;
-				right: 0;
-				cursor: ew-resize;
-			}
-			.buffer {
-				opacity: 0;
-				-webkit-transition: opacity 2s;
-				-moz-transition: opacity 2s;
-				-o-transition: opacity 2s;
-				transition: opacity 2s;
-				
-				&.current{
-					opacity: 1;
-					-webkit-transition: opacity 2s;
-					-moz-transition: opacity 2s;
-					-o-transition: opacity 2s;
-					transition: opacity 2s;
-				}
-			  .pane {
-			    width: $spin-width;
-			    height: $spin-height;
-			    position: absolute;
-			    overflow: hidden;
-			    left:-30px; 
-			    
-			    &.pane-hide {
-			      width: 1px;
-			      overflow: hidden;
-			    }
-			  }
-
-			}
-		}
-	}	
-}
-
-.auris, .verso, .iq, .prius, .priusplus, .priusplugin, .rav4, .landcruiserv8, .gt86{
-	#body_switcher{
-		display: none;
 	}
-}
-
-@mixin spin-sprite($index) {
-  @if $index < 6 {
-    background-position: -$index * $spin-width 0;
-  } @else if $index < 12  {
-    background-position: -($index - 12) * $spin-width 0;
-  } @else if $index < 18 {
-    background-position: -($index - 18) * $spin-width 0;
-  } @else if $index < 24 {
-    background-position: -($index - 24) * $spin-width 0;
-  } @else if $index < 30 {
-    background-position: -($index - 30) * $spin-width 0;
-  } @else {
-    background-position: -($index - 36) * $spin-width 0;
-  }
-}
-
-@mixin webp-spin-sprite($index) {
-  @if $index < 18 {
-    background-position: -$index * $spin-width 0;
-  } @else {
-    background-position: -($index - 18) * $spin-width $spin-height;
-  }
-}
-
-.three_sixty_wrap{
-	&.spin0 .pane {
-	  @include spin-sprite(0);
-	}
-	&.spin1 .pane {
-	  @include spin-sprite(1);
-	}
-	&.spin2 .pane {
-	  @include spin-sprite(2);
-	}
-	&.spin3 .pane {
-	  @include spin-sprite(3);
-	}
-	&.spin4 .pane {
-	  @include spin-sprite(4);
-	}
-	&.spin5 .pane {
-	  @include spin-sprite(5);
-	}
-	&.spin6 .pane {
-	  @include spin-sprite(6);
-	}
-	&.spin7 .pane {
-	  @include spin-sprite(7);
-	}
-	&.spin8 .pane {
-	  @include spin-sprite(8);
-	}
-	&.spin9 .pane {
-	  @include spin-sprite(9);
-	}
-	&.spin10 .pane {
-	  @include spin-sprite(10);
-	}
-	&.spin11 .pane {
-	  @include spin-sprite(11);
-	}
-	&.spin12 .pane {
-	  @include spin-sprite(12);
-	}
-	&.spin13 .pane {
-	  @include spin-sprite(13);
-	}
-	&.spin14 .pane {
-	  @include spin-sprite(14);
-	}
-	&.spin15 .pane {
-	  @include spin-sprite(15);
-	}
-	&.spin16 .pane {
-	  @include spin-sprite(16);
-	}
-	&.spin17 .pane {
-	  @include spin-sprite(17);
-	}
-	&.spin18 .pane {
-	  @include spin-sprite(18);
-	}
-	&.spin19 .pane {
-	  @include spin-sprite(19);
-	}
-	&.spin20 .pane {
-	  @include spin-sprite(20);
-	}
-	&.spin21 .pane {
-	  @include spin-sprite(21);
-	}
-	&.spin22 .pane {
-	  @include spin-sprite(22);
-	}
-	&.spin23 .pane {
-	  @include spin-sprite(23);
-	}
-	&.spin24 .pane {
-	  @include spin-sprite(24);
-	}
-	&.spin25 .pane {
-	  @include spin-sprite(25);
-	}
-	&.spin26 .pane {
-	  @include spin-sprite(26);
-	}
-	&.spin27 .pane {
-	  @include spin-sprite(27);
-	}
-	&.spin28 .pane {
-	  @include spin-sprite(28);
-	}
-	&.spin29 .pane {
-	  @include spin-sprite(29);
-	}
-	&.spin30 .pane {
-	  @include spin-sprite(30);
-	}
-	&.spin31 .pane {
-	  @include spin-sprite(31);
-	}
-	&.spin32 .pane {
-	  @include spin-sprite(32);
-	}
-	&.spin33 .pane {
-	  @include spin-sprite(33);
-	}
-	&.spin34 .pane {
-	  @include spin-sprite(34);
-	}
-	&.spin35 .pane {
-	  @include spin-sprite(35);
-	}
-}	
-
-.msie.v8 #spins {
-  .interact {
-    cursor: e-resize;
-  }
-  .buffer {
-    display: none;
-
-    &.current {
-      display: block;
-    }
-  }
-}
-
-.three_sixty_wrap{
-  &.spin0 .pane {
-    @include webp-spin-sprite(0);
-  }
-  &.spin1 .pane {
-    @include webp-spin-sprite(1);
-  }
-  &.spin2 .pane {
-    @include webp-spin-sprite(2);
-  }
-  &.spin3 .pane {
-    @include webp-spin-sprite(3);
-  }
-  &.spin4 .pane {
-    @include webp-spin-sprite(4);
-  }
-  &.spin5 .pane {
-    @include webp-spin-sprite(5);
-  }
-  &.spin6 .pane {
-    @include webp-spin-sprite(6);
-  }
-  &.spin7 .pane {
-    @include webp-spin-sprite(7);
-  }
-  &.spin8 .pane {
-    @include webp-spin-sprite(8);
-  }
-  &.spin9 .pane {
-    @include webp-spin-sprite(9);
-  }
-  &.spin10 .pane {
-    @include webp-spin-sprite(10);
-  }
-  &.spin11 .pane {
-    @include webp-spin-sprite(11);
-  }
-  &.spin12 .pane {
-    @include webp-spin-sprite(12);
-  }
-  &.spin13 .pane {
-    @include webp-spin-sprite(13);
-  }
-  &.spin14 .pane {
-    @include webp-spin-sprite(14);
-  }
-  &.spin15 .pane {
-    @include webp-spin-sprite(15);
-  }
-  &.spin16 .pane {
-    @include webp-spin-sprite(16);
-  }
-  &.spin17 .pane {
-    @include webp-spin-sprite(17);
-  }
-  &.spin18 .pane {
-    @include webp-spin-sprite(18);
-  }
-  &.spin19 .pane {
-    @include webp-spin-sprite(19);
-  }
-  &.spin20 .pane {
-    @include webp-spin-sprite(20);
-  }
-  &.spin21 .pane {
-    @include webp-spin-sprite(21);
-  }
-  &.spin22 .pane {
-    @include webp-spin-sprite(22);
-  }
-  &.spin23 .pane {
-    @include webp-spin-sprite(23);
-  }
-  &.spin24 .pane {
-    @include webp-spin-sprite(24);
-  }
-  &.spin25 .pane {
-    @include webp-spin-sprite(25);
-  }
-  &.spin26 .pane {
-    @include webp-spin-sprite(26);
-  }
-  &.spin27 .pane {
-    @include webp-spin-sprite(27);
-  }
-  &.spin28 .pane {
-    @include webp-spin-sprite(28);
-  }
-  &.spin29 .pane {
-    @include webp-spin-sprite(29);
-  }
-  &.spin30 .pane {
-    @include webp-spin-sprite(30);
-  }
-  &.spin31 .pane {
-    @include webp-spin-sprite(31);
-  }
-  &.spin32 .pane {
-    @include webp-spin-sprite(32);
-  }
-  &.spin33 .pane {
-    @include webp-spin-sprite(33);
-  }
-  &.spin34 .pane {
-    @include webp-spin-sprite(34);
-  }
-  &.spin35 .pane {
-    @include webp-spin-sprite(35);
-  }
-}
-
-.msie.v9 #spins .buffer {
-  position: absolute;
-  z-index: 20;
-
-  &.buffer.current {
-    z-index: 21;
-  }
 }

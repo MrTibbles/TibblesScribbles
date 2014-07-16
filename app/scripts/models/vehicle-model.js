@@ -5,7 +5,6 @@ define(['jquery', 'backbone',], function($, Backbone) {
       window.console && console.info(response);
     },
     sync: function(method, model, options) {
-      window.console && console.info(Drupal);
       var _this = this;
       var params = _.extend({
         type: 'GET',
