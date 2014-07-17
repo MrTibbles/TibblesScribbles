@@ -1,4 +1,4 @@
-define(['underscore', 'backbone'], function(_, Backbone) {
+define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbone, loader) {
   var exterior_view = Backbone.View.extend({
     tagName: 'div',
     className: 'viewport_openening',
@@ -12,13 +12,14 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     vid_template: _.template(
       $('#video_template').html()
     ),
+    initialize: function(){
+      this.loader = new loader;      
+    },
     render_img: function() {      
       if(this.model.get('active') === false){
         return false;
       }else{
-        this.$el.html(this.img_template(this.model.toJSON()));
-        // $('.loading_spinner').stop().fadeOut();
-
+        this.$el.html(this.img_template(this.model.toJSON()));      
         this.slide_content();
 
         return this;
@@ -29,7 +30,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
         return false;
       }else{
         this.$el.html(this.vid_template(this.model.toJSON()));
-        // $('.loading_spinner').stop().fadeOut();
+        window.console && console.info(this)
 
         this.slide_content();
 
@@ -45,12 +46,27 @@ define(['underscore', 'backbone'], function(_, Backbone) {
         duration: 500,
         easing: 'easeInOutQuart',
         complete: function(){
-          window.console && console.info(this)
+          window.console && console.info(_this)
+          _this.loader.show_loader($('#active_viewport'));
+
+          // $('.main-image').load(function(){
+          //   $('.main-image').fadeIn();
+          // });
         }
       });
     },
     close_overlay: function(){
       this.viewport.removeClass('active_overlay');
+      // this.$el.animate({
+      //   'top': -470
+      // },{
+      //   duration: 500,
+      //   easing: 'easeInOutQuart',
+      //   complete: function(){
+      //     window.console && console.info(_this)
+      //     _this.loader.show_loader(_this.$el)
+      //   }
+      // });
     }
   });
   return exterior_view;

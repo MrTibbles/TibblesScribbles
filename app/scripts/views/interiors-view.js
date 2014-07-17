@@ -10,7 +10,7 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       this.active_int = null;
       this.$el.addClass('active_list');
       
-      return this.collection.on('change:active', this.display_img, this);      
+      // return this.collection.on('change:active', this.display_img, this);      
     },
     render: function() {
       var _this = this,
@@ -52,6 +52,13 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       this.$('.thumb_inner').parent('li').removeClass('active_thumb');
 
       this.collection.set_active_img(this.active_int);
+
+      this.viewport.empty();
+
+      this.overlay = new main_overlay({
+        model: this.active_int
+      });
+      this.viewport.addClass('active_overlay').append(this.overlay.render_img().el);
     }
   });
   return interiors_view;

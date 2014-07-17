@@ -12,7 +12,8 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
           main_src: ele.main_image,
           thumb_src: ele.thumbnail,
           desc: ele.description,
-          title: ele.title
+          title: ele.title,
+          display_type: ele.item_type
         };
         exts_arr.push(new img(ext_img))
       });
@@ -30,13 +31,13 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
       return $.ajax(params);
     },
     set_active_img: function(img) {
-      this.active = {
-        main_src: img.get('main_src'),
-        title: img.get('title'),
-        desc: img.get('desc'),
-        model_ID: img.cid,
-        active: true
-      };
+      // this.active = {
+      //   main_src: img.get('main_src'),
+      //   title: img.get('title'),
+      //   desc: img.get('desc'),
+      //   model_ID: img.cid,
+      //   active: true
+      // };
       img.set('active', true);
     },
     reset_active: function() {

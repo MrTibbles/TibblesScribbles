@@ -9,7 +9,7 @@ define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exte
     initialize: function() {
       this.$el.addClass('active_list');
 
-      return this.collection.on('change:active', this.display_img, this);
+      // return this.collection.on('change:active', this.display_img, this);
     },
     render: function() {
       var _this = this,
@@ -47,11 +47,18 @@ define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exte
     },
     change_ext: function(img) {      
       var $img = $(img.currentTarget).find('.thumb_inner');
-        
-      this.active_ext = this.collection.get($img.attr('id'));
-
-      // this.main_overlay.model.set('active', false);
+      this.collection.reset_active();
+      
+      this.active_ext = this.collection.get($img.attr('id'));     
+      
       this.collection.set_active_img(this.active_ext);
+
+      this.viewport.empty();
+
+      this.overlay = new main_overlay({
+        model: this.active_ext
+      });
+      this.viewport.addClass('active_overlay').append(this.overlay.render_img().el);
     }
   });
   return exteriors_view;

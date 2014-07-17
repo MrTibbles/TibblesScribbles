@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-collection', 'views/exteriors-view', 'collections/interior-collection', 'views/interiors-view'], function($, _, Backbone, loader, exteriors, exteriors_view, interiors, interiors_view) {
+define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collections/exterior-collection', 'views/exteriors-view', 'collections/interior-collection', 'views/interiors-view'], function($, _, Backbone, loader, exteriors, exteriors_view, interiors, interiors_view) {
   var slanted_gallery = Backbone.View.extend({
     el: $('#gallery-wrap'),
     viewport: $('#overlay_bg'),
@@ -10,8 +10,8 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
       $(window).on('resize', this.resize_overlay);
     },
     render: function(type) {
-      // this.set_loader();
-      this.show_loader(this.$('#main_viewport')[0]);
+      this.loader = new loader;
+      this.loader.show_loader(this.$('#main_viewport')[0]);
 
       switch (type) {
         case 'exterior':
@@ -65,7 +65,7 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
     },
     load_collections: function() {
       //Hide loading spinner as view has been rendered
-      this.hide_loader();
+      this.loader.hide_loader();
 
       if (!this.exterior_imgs) {
         this.exterior_imgs = new exteriors;
@@ -85,7 +85,7 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
       if ($(e.currentTarget).hasClass('active_menu')) {
         return false;
       }
-      this.hide_loader();
+      this.loader.hide_loader();
 
       $('nav button').removeClass('active_menu');
       $(e.currentTarget).addClass('active_menu');
@@ -99,10 +99,10 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
 
       if ($(e.currentTarget).hasClass('exterior')) {
         this.ExteriorView.render();
-        this.listenTo(this.ExteriorView, 'render', this.$('.loading_spinner').stop().fadeOut());
+        this.listenTo(this.ExteriorView, 'render', this.loader.hide_loader());
       } else if ($(e.currentTarget).hasClass('interior')) {
         this.InteriorView.render();
-        this.listenTo(this.InteriorView, 'render', this.$('.loading_spinner').stop().fadeOut());
+        this.listenTo(this.InteriorView, 'render', this.loader.hide_loader());
       }
     },
     resize_overlay: function(e) {
@@ -118,31 +118,6 @@ define(['jquery', 'underscore', 'backbone', 'loader', 'collections/exterior-coll
           'height': this.avail_height + 'px'
         });
       }, 50);
-    },
-    show_loader: function(target) {
-      var options = {
-        lines: 12,
-        length: 12,
-        width: 4,
-        radius: 10,
-        corners: 1,
-        rotate: 35,
-        direction: 1,
-        color: '#FD532E',
-        speed: 1,
-        trail: 53,
-        shadow: true,
-        hwaccel: false,
-        zIndex: 2e9,
-        className: 'loading_spinner',
-        top: 'auto',
-        left: 'auto'
-      };
-      return this.loader = new loader(options).spin(target);
-    },
-    hide_loader: function(){
-      //this.$('#main_viewport')[0]
-      this.loader.stop();
     }
   });
   return slanted_gallery;
