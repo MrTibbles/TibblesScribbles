@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collections/exterior-collection', 'views/exteriors-view', 'collections/interior-collection', 'views/interiors-view'], function($, _, Backbone, loader, exteriors, exteriors_view, interiors, interiors_view) {
+define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collections/exterior-collection', 'views/exteriors-view', 'collections/video-collection', 'views/videos-view', 'collections/interior-collection', 'views/interiors-view'], function($, _, Backbone, loader, exteriors, exteriors_view, videos, videos_view, interiors, interiors_view) {
   var slanted_gallery = Backbone.View.extend({
     el: $('#gallery-wrap'),
     viewport: $('#overlay_bg'),
@@ -8,6 +8,11 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
     initialize: function() {
       this.resize_overlay();
       $(window).on('resize', this.resize_overlay);
+
+      //Construct dummy Drupal settigns object
+      if(window.location.hostname === 'localhost'){
+        window.Drupal={setting:{gallery_widget:{RC:"AY5"}}};
+      }
     },
     render: function(type) {
       this.loader = new loader;
@@ -20,6 +25,7 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
 
           var _this = this;
           this.exterior_imgs = new exteriors;
+
           this.exterior_imgs.fetch({
             success: function() {
               _this.ExteriorView = new exteriors_view({
@@ -27,7 +33,7 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               });
               //Place Exterior list above exterior for deep linking
               _this.$el.find('#main_viewport').prepend(_this.ExteriorView.$el);
-              
+
               _this.ExteriorView.render();
               _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
             }
@@ -39,16 +45,37 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
 
           var _this = this;
           this.interior_imgs = new interiors;
+
           this.interior_imgs.fetch({
             success: function() {
               _this.InteriorView = new interiors_view({
                 collection: _this.interior_imgs
               });
-              //Place Interior list above exterior for deep linking
+              //Place Interior list above others for deep linking
               _this.$el.find('#main_viewport').prepend(_this.InteriorView.$el);
               
               _this.InteriorView.render();
               _this.listenToOnce(_this.InteriorView, 'render', _this.load_collections());
+            }
+          });
+          break;
+        case 'video':
+          //Add active state to menu item
+          this.$el.find('#video').addClass('active_menu');
+
+          var _this = this;
+          this.video_items = new videos;
+
+          this.video_items.fetch({
+            success: function() {
+              _this.VideoView = new interiors_view({
+                collection: _this.videos
+              });
+              //Place Video list above others for deep linking
+              _this.$el.find('#main_viewport').prepend(_this.VideoView.$el);
+              
+              _this.VideoView.render();
+              _this.listenToOnce(_this.VideoView, 'render', _this.load_collections());
             }
           });
           break;
@@ -58,12 +85,13 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
 
           var _this = this;
           this.exterior_imgs = new exteriors;
+
           this.exterior_imgs.fetch({
             success: function() {
               _this.ExteriorView = new exteriors_view({
                 collection: _this.exterior_imgs
               });
-              //Place Exterior list above exterior for deep linking
+              //Place Exterior list above others for deep linking
               _this.$el.find('#main_viewport').prepend(_this.ExteriorView.$el);
               
               _this.ExteriorView.render();
@@ -85,7 +113,7 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               collection: _this.exterior_imgs
             });
             _this.ExteriorView.render();
-            _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
+            // _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
           }
         });
       };
@@ -99,10 +127,24 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               collection: _this.interior_imgs
             });            
             _this.InteriorView.render();
-            _this.listenToOnce(_this.InteriorView, 'render', _this.load_collections());
+            // _this.listenToOnce(_this.InteriorView, 'render', _this.load_collections());
           }
         });
       }
+      // if(!this.video_items){
+      //   this.video_items = new videos;
+
+      //   this.video_items.fetch({
+      //     success: function() {
+      //       _this.VideoView = new interiors_view({
+      //         collection: _this.videos
+      //       });
+            
+      //       _this.VideoView.render();
+      //       // _this.listenToOnce(_this.VideoView, 'render', _this.load_collections());
+      //     }
+      //   });
+      // }
     },
     change_img_type: function(e) {
       if ($(e.currentTarget).hasClass('active_menu')) {

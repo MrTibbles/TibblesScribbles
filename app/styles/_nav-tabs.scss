@@ -1,8 +1,8 @@
 #gallery-wrap{
-	nav{
+	nav{		
 		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
 
-		display: block;
+		display: none;
 		width: 880px;
 		margin: 0 auto;
 		padding: 0 0 0 60px;

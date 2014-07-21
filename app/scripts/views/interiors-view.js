@@ -15,6 +15,8 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       var _this = this,
         ints_leng = this.collection.length;
 
+        window.console && console.info(this.collection.length)
+
       this.$el.empty();
       this.$el.addClass('active_list');
 

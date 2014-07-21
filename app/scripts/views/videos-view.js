@@ -1,69 +1,64 @@
-define(['underscore', 'backbone', 'collections/video-collection', 'views/video-view','views/main-view','loader'], function(_, Backbone, vids, vid_view, main_view, loader) {
+define(['underscore', 'backbone', 'collections/video-collection', 'views/video-view','views/main-view'], function(_, Backbone, videos, vid_view, main_overlay) {
   var exteriors_view = Backbone.View.extend({
-    el: $('#thumb_slider'),
+    el: $('#main_viewport .video'),
+    collections: videos,
     events: {
       'click .vid_thumb_out': 'change_vid'
     },
-    template: _.template(
-      $('#video_template').html()
-    ),
-    viewport: $('#main_viewport'),
+    viewport: $('#overlay_bg'),
     initialize: function() {
-      return this.collection.on('change:active', this.display_vid, this);
+      this.$el.addClass('active_list');
+      
+      //return this.collection.on('change:active', this.display_vid, this);
     },
     render: function() {
       var _this = this,
-        vids_leng = this.collection.length,
-        thumb_width = 111; // Width of thumbnails 
+        vids_leng = this.collection.length;
+
+      this.$el.empty();
 
       this.collection.each(function(vid_img, idx) {
         _this.parse_vid(vid_img,idx);
       });
 
-      this.$el.css('width', vids_leng * thumb_width)
+      // this.$el.css('width', vids_leng * thumb_width)
       return this;
     },
     parse_vid: function(vid,idx) {
-      if(vid.get('video_ID')) {
-        var vid_thumb = new vid_view({
-          model: vid
-        });
-        if(idx === 0){
-          this.collection.set_active_vid(vid);
-          this.view_port = new main_view({
-            model: vid
-          });
-          this.viewport.append(this.view_port.render_vid().el)
-        }
-        return this.$el.append(vid_thumb.render().el);
-      } else {
-        this.$('.loading_spinner').stop().fadeOut();
-        this.viewport.html('<h1 id="no_content">Sorry, there are no videos available.</h1>')
-        window.console && console.error('missing video URL');
-      }
+      var vid_thumb = new vid_view({
+        model: vid
+      });
+      // if(idx === 0){
+      //   this.collection.set_active_vid(vid);
+      //   this.view_port = new main_overlay({
+      //     model: vid
+      //   });
+      //   this.viewport.append(this.view_port.render_vid().el)
+      // }
+      return this.$el.append(vid_thumb.render().el);
     },
     display_vid: function() {
-      if(this.active_vid === null || this.active_vid === undefined){
-        return;
-      }
-      this.view_port = new main_view({
+      this.viewport.empty();
+
+      this.overlay = new main_overlay({
         model: this.active_vid
       });
-      this.viewport.append(this.view_port.render_vid().el)
+      this.viewport.addClass('active_overlay').append(this.overlay.render_vid().el);
     },
     change_vid: function(vid) { 
       var $vid = $(vid.currentTarget).find('.thumb_inner');
+      this.collection.reset_active();
+
       this.active_vid = this.collection.get($vid.attr('id'));
 
-      if($vid.hasClass('active_thumb')) {
-        return;
-      }
-      this.viewport.empty()
-      this.$('.thumb_inner').parent('li').removeClass('active_thumb');
-
-      this.view_port.model.set('active', false);
       this.collection.set_active_vid(this.active_vid);
-      $vid.parent('li').addClass('active_thumb');
+
+      this.viewport.empty()
+      
+      this.overlay = new main_overlay({
+        model: this.active_vid
+      });
+      this.viewport.addClass('active_overlay').append(this.overlay.render_vid().el);
     }
   });
   return exteriors_view;

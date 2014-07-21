@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
+define(['jquery', 'backbone'], function($, Backbone) {
   var video = Backbone.Model.extend({
     defaults: {
       video_ID: null,

@@ -1,22 +1,13 @@
-define(['jquery', 'backbone', 'models/video-model', 'app_config'], function($, Backbone, vid, app_config) {
+define(['jquery', 'backbone', 'models/video-model'], function($, Backbone, vid) {
   var vids = Backbone.Collection.extend({
     model: vid,
-    url: 'http://www.toyota.co.uk/services/gallery-video.jsonp?rc=',
-    sync: function(method, model, options) {
-      var _this = this;
-      var params = _.extend({
-        type: 'GET',
-        dataType: 'jsonp',
-        url: _this.url + app_config.range_code,
-        jsonpCallback: 'videos',
-        processData: true
-      }, options);
-
-      return $.ajax(params);
-    },
+    url: 'http://127.0.0.1/services/gallery-video.jsonp?rc=',
     parse: function(response) {
       var vid_arr = [];
       $.each(response, function(idx, ele) {
+        if (!ele.youtube.video_id.length) {
+          return;
+        };
         var vid_item = {
           video_ID: ele.youtube.video_id,
           thumb_src: ele.thumbnail,
@@ -27,13 +18,19 @@ define(['jquery', 'backbone', 'models/video-model', 'app_config'], function($, B
       });      
       return vid_arr;
     },
+    sync: function(method, model, options) {
+      var _this = this;
+      var params = _.extend({
+        type: 'GET',
+        dataType: 'jsonp',
+        url: _this.url + window.Drupal.setting.gallery_widget.RC,
+        jsonpCallback: 'videos',
+        processData: true
+      }, options);
+
+      return $.ajax(params);
+    },    
     set_active_vid: function(vid) {
-      this.active = {
-        video_ID: vid.get('video_ID'),
-        thumb_src: vid.get('thumb_src'),
-        title: vid.get('title'),
-        desc: vid.get('desc')
-      };
       vid.set('active', true);
     },
     reset_active: function() {

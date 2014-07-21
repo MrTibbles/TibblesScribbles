@@ -14,6 +14,7 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
     ),
     initialize: function(){
       this.loader = new loader;      
+      this.resize_overlay();
     },
     render_img: function() {      
       if(this.model.get('active') === false){
@@ -30,8 +31,6 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         return false;
       }else{
         this.$el.html(this.vid_template(this.model.toJSON()));
-        window.console && console.info(this)
-
         this.slide_content();
 
         return this;
@@ -39,8 +38,12 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
     },
     slide_content: function(){
       var _this = this;      
+      
+      //Height of overlay is  not available until it is present, 250 is half of the height
+      window.position = $(window).scrollTop() + 250;
+
       this.$el.animate({
-        'top': 250
+        'top': window.position
       },{
         duration: 500,
         easing: 'easeInOutQuart',
@@ -49,9 +52,9 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
           
           var img = _this.$el.find("img")[0];
           //Wait for image to load, then hide loader and show image
-          if($(img).outerWidth() >= 1){
-            _this.loader.hide_loader();
+          if($(img).outerWidth() >= 1){            
             $(img).fadeIn(500);
+            _this.loader.hide_loader();
           }
         }
       });
@@ -71,14 +74,14 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
     resize_overlay: function(e) {
       //this has lost its scope, think its linked to jQ event handler rather thn backbone?
       var _this = this;
-      this.avail_width = $('html').outerWidth();
-      this.avail_height = $('html').outerHeight();
+      _this.avail_width = $('html').outerWidth();
+      _this.avail_height = $('html').outerHeight();
 
       //Throttle the resize of the overlay, to avoid killin the DOM
-      setInterval(function() {
+      setTimeout(function() {
         _this.viewport.css({
-          'width': this.avail_width + 'px',
-          'height': this.avail_height + 'px'
+          'width': _this.avail_width + 'px',
+          'height': _this.avail_height + 'px'
         });
       }, 50);
     }

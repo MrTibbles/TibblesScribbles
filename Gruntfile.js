@@ -216,7 +216,7 @@ module.exports = function(grunt) {
           preserveLicenseComments: false,
           useStrict: false,
           name: 'main',
-          out: '<%= yeoman.dist %>/scripts/main.js',
+          out: '<%= yeoman.dist %>/scripts/amd-cc-gallery.js',
           mainConfigFile: '<%= yeoman.app %>/scripts/main.js'
         }
       }
@@ -310,19 +310,20 @@ module.exports = function(grunt) {
     // },
 
     replace: {
-      paths: [{
-        file: 'scripts/models/vehicle-model.js',
+      dev_aids: [{
+        file: 'scripts/amd-cc-gallery.js',
         replace: {
-          '/rest/': '/sites/all/themes/toyota/_data/vehicle-data/'
+          'window.Drupal=\{setting:\{gallery_widget:\{RC:"AY5"\}\}\};': '//',
+          'http://127.0.0.1/': '//'
         }
       }]
-    },    
+    },
 
     uglify: {
       dist: {
         files: {
-          '<%= yeoman.dist %>/scripts/main.js': [
-            '<%= yeoman.dist %>/scripts/main.js'
+          '<%= yeoman.dist %>/scripts/amd-cc-gallery.js': [
+            '<%= yeoman.dist %>/scripts/amd-cc-gallery.js'
           ]
         }
       },
@@ -400,7 +401,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('serve', function(target) {
-    if(target === 'dist') {
+    if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
 
@@ -419,7 +420,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', function(target) {
-    if(target !== 'watch') {
+    if (target !== 'watch') {
       grunt.task.run([
         'clean:server',
         'concurrent:test',
@@ -436,18 +437,19 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
-    // 'replace:paths',    
     'requirejs',
     'concurrent:dist',
     'autoprefixer',
     'concat',
     'cssmin',
-    'uglify:dist',
     'copy:dist',
+    'uglify:dist',
     'copy:requirejs',
     'uglify:requirejs',
     'modernizr',
-    'rev',
+    'replace',
+    // 'toyota-crm',
+    // 'rev',
     'usemin'
     // 'htmlmin'
   ]);
@@ -466,7 +468,7 @@ module.exports = function(grunt) {
     this.data.forEach(function(config) {
       var filename = 'dist/' + config.file;
       fs.readFile(filename, function(err, content) {
-        if(err) {
+        if (err) {
           grunt.log.error('Cannot open file ' + err.path);
         }
         content = content.toString();
@@ -480,13 +482,45 @@ module.exports = function(grunt) {
         });
 
         fs.writeFile(filename, content, function() {
-          if(count === 0) {
+          if (count === 0) {
             done();
           }
         });
 
         count--;
       });
+    });
+  });
+
+  grunt.registerTask('toyota-crm', 'Cuts out html for deployment to Toyota website', function() {
+    var fs = require('fs'),
+      jsdom = require('jsdom'),
+      done = this.async();
+
+    jsdom.env({
+      file: __dirname + '/dist/index.html',
+      scripts: __dirname + '/app/components/jquery/jquery.min.js',
+      done: function(err, window) {
+        grunt.log.subhead('Removing reference to Drupal.settings for production');
+
+        if (err) {
+          grunt.log.error(err);
+        }
+
+        var document = window.document,
+          $ = window.$,
+          $body = $('body');
+
+        // move stylesheet into body
+        $body.first().prepend($('link[href$="configure.css"]'));
+
+        // remove last script element
+        $body.find('script:last()').remove();
+
+        fs.writeFile('dist/index.html', $body.html(), function() {
+          done();
+        });
+      }
     });
   });
 

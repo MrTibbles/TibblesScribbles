@@ -24,7 +24,7 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: _this.url + 'AY5',
+        url: _this.url + window.Drupal.setting.gallery_widget.RC,
         jsonpCallback: 'exterior_imgs',
         processData: true
       }, options);
