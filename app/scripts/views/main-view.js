@@ -46,7 +46,6 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         duration: 500,
         easing: 'easeInOutQuart',
         complete: function(){
-          window.console && console.info(_this)
           _this.loader.show_loader($('#active_viewport'));
 
           // $('.main-image').load(function(){
@@ -55,18 +54,32 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         }
       });
     },
-    close_overlay: function(){
-      this.viewport.removeClass('active_overlay');
-      // this.$el.animate({
-      //   'top': -470
-      // },{
-      //   duration: 500,
-      //   easing: 'easeInOutQuart',
-      //   complete: function(){
-      //     window.console && console.info(_this)
-      //     _this.loader.show_loader(_this.$el)
-      //   }
-      // });
+    close_overlay: function(){      
+      var _this = this;
+      this.$el.animate({
+        'top': -550
+      },{
+        duration: 500,
+        easing: 'easeInOutQuart',
+        complete: function(){
+          _this.viewport.removeClass('active_overlay');
+          _this.loader.hide_loader()
+        }
+      });
+    },
+    resize_overlay: function(e) {
+      //this has lost its scope, think its linked to jQ event handler rather thn backbone?
+      var _this = this;
+      this.avail_width = $('html').outerWidth();
+      this.avail_height = $('html').outerHeight();
+
+      //Throttle the resize of the overlay, to avoid killin the DOM
+      setInterval(function() {
+        _this.viewport.css({
+          'width': this.avail_width + 'px',
+          'height': this.avail_height + 'px'
+        });
+      }, 50);
     }
   });
   return exterior_view;

@@ -29,13 +29,10 @@ body{
 				display: block;
 			}
 			li{
-				display: block;
-				float: left;
-				width: 101px;
-				max-width: 460px;
+				float: left;				
 				margin: 5px 5px 7px;
 				position: relative;
-				cursor: pointer;
+				cursor: pointer;				
 
 				&:before{
 					display: block;
@@ -47,24 +44,109 @@ body{
 					top: 10px;
 					left: 5px;
 					overflow: visible;
-					z-index: 100;
+					z-index: 500;
 				}
 
-				img{
-					width: 100%;
-					z-index: 50;
+				span{
+					display: block;
+					width: inherit;
+					position: relative;
+					// overflow: hidden;
+					z-index: 100;				
+
+					img{
+						width: 100%;
+						max-height: 100%;				
+						z-index: 50;
+					}					
 				}
 				//Class system for the differing sizes of content item size
-				&.wide_large{
-					width: 355px;
-					height: 200px;
-				}
+				&.wide-and-large{
+					width: 495px;
+					height: 280px;
 
+					&:before{
+						width: 100%;
+						height: 80%;
+						left: 10px;
+						top: 40px;
+					}
+
+				}
+				&.narrow-and-large{
+					width: 495px;
+					height: 210px;
+
+					&:before{
+						width: 90%;
+						height: 98%;
+						left: 10px;
+						top: 5px;
+					}
+
+				}
+				&.wide-and-medium{
+					width: 350px;
+					height: 200px;
+
+					&:before{
+						width: 98%;
+						height: 85%;
+						top: 20px;
+					}
+
+				}
+				&.narrow-and-medium{
+					width: 175px;
+					height: 170px;
+
+					&:before{
+						width: 170px;
+						height: 150px;
+						left: 5px;
+						top: 15px;
+					}
+
+				}
+				&.tall-and-small{
+					width: 85px;
+					height: 135px;
+
+					&:before{
+						width: 100%;
+						height: 105%;
+						left: 10px;
+						top: 15px;
+					}
+
+				}
+				&.square-and-small{
+					width: 65px;
+					height: 60px;
+
+					&:before{
+						width: 100%;
+						height: 105%;
+						left: 10px;
+						top: 5px;
+					}
+
+				}
+				&.default{
+					width: 210px;
+					height: 105px;
+
+					&:before{
+						width: 95%;
+						height: 90%;
+						top: 10px;
+					}
+
+				}
 			}
 		}
-
 		.loading_spinner{
-			@include add_prefix('transform',skew(0deg) rotate(0deg));
+			@include add_prefix('transform',skew(10deg) rotate(10deg));
 		}
 	}
 	#overlay_bg{
