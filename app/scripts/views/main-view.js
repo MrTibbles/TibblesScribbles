@@ -38,19 +38,21 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
       }
     },
     slide_content: function(){
-      var _this = this;
-
+      var _this = this;      
       this.$el.animate({
         'top': 250
       },{
         duration: 500,
         easing: 'easeInOutQuart',
         complete: function(){
-          _this.loader.show_loader($('#active_viewport'));
-
-          // $('.main-image').load(function(){
-          //   $('.main-image').fadeIn();
-          // });
+          _this.loader.show_loader(_this.$el.find('#active_viewport')[0]);
+          
+          var img = _this.$el.find("img")[0];
+          //Wait for image to load, then hide loader and show image
+          if($(img).outerWidth() >= 1){
+            _this.loader.hide_loader();
+            $(img).fadeIn(500);
+          }
         }
       });
     },
@@ -63,7 +65,6 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         easing: 'easeInOutQuart',
         complete: function(){
           _this.viewport.removeClass('active_overlay');
-          _this.loader.hide_loader()
         }
       });
     },

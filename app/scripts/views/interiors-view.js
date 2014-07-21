@@ -7,8 +7,7 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
-      this.active_int = null;
-      this.$el.addClass('active_list');
+      this.active_int = null;    
       
       // return this.collection.on('change:active', this.display_img, this);      
     },
@@ -17,6 +16,7 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
         ints_leng = this.collection.length;
 
       this.$el.empty();
+      this.$el.addClass('active_list');
 
       this.collection.each(function(int_img, idx) {                
         _this.parse_img(int_img,idx);

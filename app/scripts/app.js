@@ -25,6 +25,9 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               _this.ExteriorView = new exteriors_view({
                 collection: _this.exterior_imgs
               });
+              //Place Exterior list above exterior for deep linking
+              _this.$el.find('#main_viewport').prepend(_this.ExteriorView.$el);
+              
               _this.ExteriorView.render();
               _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
             }
@@ -41,6 +44,9 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               _this.InteriorView = new interiors_view({
                 collection: _this.interior_imgs
               });
+              //Place Interior list above exterior for deep linking
+              _this.$el.find('#main_viewport').prepend(_this.InteriorView.$el);
+              
               _this.InteriorView.render();
               _this.listenToOnce(_this.InteriorView, 'render', _this.load_collections());
             }
@@ -57,6 +63,9 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               _this.ExteriorView = new exteriors_view({
                 collection: _this.exterior_imgs
               });
+              //Place Exterior list above exterior for deep linking
+              _this.$el.find('#main_viewport').prepend(_this.ExteriorView.$el);
+              
               _this.ExteriorView.render();
               _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
             }
@@ -66,18 +75,32 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
     load_collections: function() {
       //Hide loading spinner as view has been rendered
       this.loader.hide_loader();
+      var _this = this;
 
       if (!this.exterior_imgs) {
         this.exterior_imgs = new exteriors;
-        this.exterior_imgs.fetch();
+        this.exterior_imgs.fetch({
+          success: function() {
+            _this.ExteriorView = new exteriors_view({
+              collection: _this.exterior_imgs
+            });
+            _this.ExteriorView.render();
+            _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
+          }
+        });
       };
       if (!this.interior_imgs) {
         this.interior_imgs = new interiors;
 
-        this.interior_imgs.fetch();
-
-        this.InteriorView = new interiors_view({
-          collection: this.interior_imgs
+        // this.interior_imgs.fetch();        
+        this.interior_imgs.fetch({
+          success: function() {
+            _this.InteriorView = new interiors_view({
+              collection: _this.interior_imgs
+            });            
+            _this.InteriorView.render();
+            _this.listenToOnce(_this.InteriorView, 'render', _this.load_collections());
+          }
         });
       }
     },
