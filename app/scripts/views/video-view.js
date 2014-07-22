@@ -8,6 +8,12 @@ define(['underscore', 'backbone', 'models/video-model', 'collections/video-colle
     render: function() {
       this.model.set('model_ID',this.model.cid)
       this.$el.html(this.template(this.model.toJSON()));
+      
+      this.$el.attr({
+        'id': this.model.cid,
+        'class': this.model.get('thumb_size') +' '+'vid_thumb_out'
+      });
+
       return this;
     }
   });

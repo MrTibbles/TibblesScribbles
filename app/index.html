@@ -45,18 +45,19 @@
       <div id="main_viewport">        
         <ul class="exterior img-lists"></ul>
         <ul class="interior img-lists"></ul>
+        <ul class="video img-lists"></ul>
       </div>      
     </div>
   </div>
 
   <script id="thumb_temp" type="text/template">
-    <span id="<%= model_ID %>" class="thumb_inner <%= display_type %>" data-title="<%= title %>">
+    <span id="<%= model_ID %>" class="thumb_inner <%= thumb_size %>" data-title="<%= title %>">
       <img src="<%= main_src %>" alt="<%= desc %>" />
     </span>
   </script> 
   
   <script id="img_main_temp" type="text/template">    
-    <div id="active_viewport">
+    <div class="active_viewport">
       <button class="close-overlay"></button>
       <img src="<%= main_src %>" alt="<%= desc %>" title="<%= title %>" class="main-image"/>
       <div id="descr_box">
@@ -67,7 +68,10 @@
   </script>
 
   <script id="video_template" type="text/template">
-    <iframe class="youtube-player" type="text/html" width="940" height="486" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
+    <div class="active_viewport">
+      <button class="close-overlay"></button>
+      <iframe class="youtube-player" type="text/html" width="940" height="470" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
+    </div>
   </script>
   
   <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>  

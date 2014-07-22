@@ -9,6 +9,6 @@ require.config({
 	}
 });
 require(['jquery', 'jqueryui', 'backbone','loader', 'mixins/spin','router'], function($,Backbone){
-	//Not sure what to put in here tbh!!! 	
-	//Car Chapter Gallery v0.1
-})
+	//Not sure what to put in here tbh!!!
+	//New Car Chapter Gallery v0.2
+});

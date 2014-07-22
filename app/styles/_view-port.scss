@@ -9,18 +9,19 @@ body{
 	#main_viewport{		
 		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
 
-		min-width: 940px;
-		max-width: 1460px;
+		width: 940px;
+		// max-width: 1460px;
 		min-height: 1000px;
 		background: $bg-colour;
-		margin: 0 auto;
-		overflow: hidden;
+		margin: 40px auto;
+		padding: 75px 0 0;
+		overflow: visible;
 		position: relative;
 
 		ul{
-			width: 1460px;
+			// width: 1460px;
 			height: 100%;
-			display: none;
+			display: block;
 			position: relative;
 			top: 0;
 			left: 0;			
@@ -30,7 +31,9 @@ body{
 			}
 			li{
 				float: left;				
-				margin: 5px 5px 7px;
+				width: 180px;
+				height: 180px;
+				margin: 4px;
 				position: relative;
 				cursor: pointer;				
 
@@ -38,7 +41,7 @@ body{
 					display: block;
 					content: '';
 					width: 95%;
-					height:98%;
+					height: 98%;
 					border: 4px solid #ffffff;
 					position: absolute;					
 					top: 10px;
@@ -50,6 +53,7 @@ body{
 				span{
 					display: block;
 					width: inherit;
+					height: inherit;
 					position: relative;
 					// overflow: hidden;
 					z-index: 100;				
@@ -61,9 +65,13 @@ body{
 					}					
 				}
 				//Class system for the differing sizes of content item size
-				&.wide-and-large{
-					width: 495px;
-					height: 280px;
+				&.default{
+					width: 180px;
+					height: 180px;
+				}				
+				&.one-x-one{
+					width: 180px;
+					height: 180px;
 
 					&:before{
 						width: 100%;
@@ -73,21 +81,19 @@ body{
 					}
 
 				}
-				&.narrow-and-large{
-					width: 495px;
-					height: 210px;
+				&.one-x-two{
+					width: 180px;
+					height: 360px;
 
 					&:before{
 						width: 90%;
-						height: 98%;
 						left: 10px;
 						top: 5px;
 					}
-
 				}
-				&.wide-and-medium{
-					width: 350px;
-					height: 200px;
+				&.two-x-two{
+					width: 360px;
+					height: 360px;
 
 					&:before{
 						width: 98%;
@@ -96,57 +102,20 @@ body{
 					}
 
 				}
-				&.narrow-and-medium{
-					width: 175px;
-					height: 170px;
+				&.two-x-one{
+					width: 360px;
+					height: 180px;
 
 					&:before{
-						width: 150px;
-						height: 80px;
+						height: 90%;
 						left: 5px;
 						top: 10px;
 					}
-
-				}
-				&.tall-and-small{
-					width: 85px;
-					height: 135px;
-
-					&:before{
-						width: 100%;
-						height: 105%;
-						left: 10px;
-						top: 15px;
-					}
-
-				}
-				&.square-and-small{
-					width: 65px;
-					height: 60px;
-
-					&:before{
-						width: 100%;
-						height: 105%;
-						left: 10px;
-						top: 5px;
-					}
-
-				}
-				&.default{
-					width: 210px;
-					height: 105px;
-
-					&:before{
-						width: 95%;
-						height: 90%;
-						top: 10px;
-					}
-
-				}
+				}						
 			}
 		}
 		.loading_spinner{
-			@include add_prefix('transform',skew(10deg) rotate(10deg));
+			@include add_prefix('transform', skew(10deg) rotate(10deg));
 		}
 	}
 	#overlay_bg{
@@ -167,7 +136,11 @@ body{
 			position: relative;
 			top: -470px;
 
-			#active_viewport{
+			.youtube-player{
+				width: 940px;
+			}
+
+			.active_viewport{
 				width: 940px;
 				min-height: 470px;
 				background-color: $bg-colour;

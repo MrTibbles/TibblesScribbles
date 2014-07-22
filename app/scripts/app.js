@@ -7,16 +7,19 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
     },
     initialize: function() {
       this.resize_overlay();
-      $(window).on('resize', this.resize_overlay);
+      $(window).on('resize', this.resize_overlay);    
 
-      //Construct dummy Drupal settigns object
+      // this.listenToOnce(this.ExteriorView, 'render', this.shuffle_elements);
+      // this.when_all([this.ExteriorView, this.InteriorView], 'render', this.shuffle_elements, this);
+
+      //Construct dummy Drupal settigns object, Grunt task to replace isnt playing ball!
       if(window.location.hostname === 'localhost'){
         window.Drupal={setting:{gallery_widget:{RC:"AY5"}}};
       }
     },
     render: function(type) {
       this.loader = new loader;
-      this.loader.show_loader(this.$('#main_viewport')[0]);
+      this.loader.show_loader(this.$('#main_viewport')[0]);      
 
       switch (type) {
         case 'exterior':
@@ -107,13 +110,13 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
 
       if (!this.exterior_imgs) {
         this.exterior_imgs = new exteriors;
+
         this.exterior_imgs.fetch({
           success: function() {
             _this.ExteriorView = new exteriors_view({
               collection: _this.exterior_imgs
             });
             _this.ExteriorView.render();
-            // _this.listenToOnce(_this.ExteriorView, 'render', _this.load_collections());
           }
         });
       };
@@ -127,24 +130,38 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
               collection: _this.interior_imgs
             });            
             _this.InteriorView.render();
-            // _this.listenToOnce(_this.InteriorView, 'render', _this.load_collections());
           }
         });
       }
-      // if(!this.video_items){
-      //   this.video_items = new videos;
+      if(!this.video_items){
+        this.video_items = new videos;
 
-      //   this.video_items.fetch({
-      //     success: function() {
-      //       _this.VideoView = new interiors_view({
-      //         collection: _this.videos
-      //       });
-            
-      //       _this.VideoView.render();
-      //       // _this.listenToOnce(_this.VideoView, 'render', _this.load_collections());
-      //     }
-      //   });
-      // }
+        this.video_items.fetch({
+          success: function() {
+            _this.VideoView = new videos_view({
+              collection: _this.video_items
+            });            
+            _this.VideoView.render();
+          }
+        });        
+      }  
+      // this.shuffle_elements();
+    },
+    when_all: function(objects, event, callback, context){
+      var callbackWrapper =  _.after(objects.length, callback);
+      context = context || this;
+      _.each(objects, function(obj){
+        obj.once(event, callbackWrapper, context);
+      })
+    },
+    shuffle_elements: function(e){
+      var ul = document.getElementById('all-content');
+      
+      window.console && console.info(ul.children.length)
+
+      for (var i = ul.children.length; i >= 0; i--) {
+        ul.appendChild(ul.children[Math.random() * i | 0]);
+      }
     },
     change_img_type: function(e) {
       if ($(e.currentTarget).hasClass('active_menu')) {

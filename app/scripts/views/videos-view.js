@@ -1,13 +1,13 @@
-define(['underscore', 'backbone', 'collections/video-collection', 'views/video-view','views/main-view'], function(_, Backbone, videos, vid_view, main_overlay) {
+define(['backbone', 'collections/video-collection', 'views/video-view','views/main-view'], function(Backbone, videos, vid_view, main_overlay) {
   var exteriors_view = Backbone.View.extend({
     el: $('#main_viewport .video'),
-    collections: videos,
+    collection: videos,
     events: {
       'click .vid_thumb_out': 'change_vid'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
-      this.$el.addClass('active_list');
+      // this.$el.addClass('active_list');
       
       //return this.collection.on('change:active', this.display_vid, this);
     },

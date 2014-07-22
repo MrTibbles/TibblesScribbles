@@ -13,7 +13,7 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
           thumb_src: ele.thumbnail,
           desc: ele.description,
           title: ele.title,
-          display_type: !ele.item_type.length ? 'default' : ele.item_type.replace(/ /g, '-')
+          thumb_size: !ele.thumb_size.length ? 'default' : ele.thumb_size.replace(/ /g, '-')
         };
         ints_arr.push(new img(int_img))
       });

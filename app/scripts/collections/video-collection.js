@@ -10,9 +10,11 @@ define(['jquery', 'backbone', 'models/video-model'], function($, Backbone, vid) 
         };
         var vid_item = {
           video_ID: ele.youtube.video_id,
-          thumb_src: ele.thumbnail,
+          main_src: ele.thumbnail,
+          thumb_src: ele.thumbnail,          
           title: ele.title,
-          desc: ele.description
+          desc: ele.description,
+          thumb_size: !ele.thumb_size.length ? 'default' : ele.thumb_size.replace(/ /g, '-')         
         };
         vid_arr.push(new vid(vid_item));
       });      

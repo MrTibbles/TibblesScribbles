@@ -15,10 +15,7 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       var _this = this,
         ints_leng = this.collection.length;
 
-        window.console && console.info(this.collection.length)
-
       this.$el.empty();
-      this.$el.addClass('active_list');
 
       this.collection.each(function(int_img, idx) {                
         _this.parse_img(int_img,idx);

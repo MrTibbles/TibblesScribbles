@@ -9,7 +9,10 @@ define(['underscore', 'backbone'], function(_, Backbone) {
       this.model.set('model_ID',this.model.cid)
       this.$el.html(this.template(this.model.toJSON()));
 
-      this.$el.addClass(this.model.get('display_type'));
+      this.$el.attr({
+        'id': this.model.cid,
+        'class': this.model.get('thumb_size') +' '+'ext_thumb_out'
+      });
 
       return this;
     }

@@ -1,7 +1,7 @@
 define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) {
   var exts = Backbone.Collection.extend({
     model: img,
-    url: 'http://127.0.0.1/services/gallery-exterior.jsonp?rc=',
+    url: 'http://uat.toyotabeta.co.uk/services/gallery-exterior.jsonp?rc=',
     parse: function(response) {
       var exts_arr = [];
       $.each(response, function(idx, ele) {
@@ -13,7 +13,7 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
           thumb_src: ele.thumbnail,
           desc: ele.description,
           title: ele.title,
-          display_type: !ele.item_type.length ? 'default' : ele.item_type.replace(/ /g, '-')
+          thumb_size: !ele.thumb_size.length ? 'default' : ele.thumb_size.replace(/ /g, '-')
         };
         exts_arr.push(new img(ext_img))
       });

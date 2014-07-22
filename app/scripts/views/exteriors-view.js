@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exterior-view', 'views/main-view'], function(_, Backbone, exteriors, exterior_item, main_overlay) {
+define(['backbone', 'collections/exterior-collection', 'views/exterior-view', 'views/main-view'], function(Backbone, exteriors, exterior_item, main_overlay) {
   var exteriors_view = Backbone.View.extend({
     el: $('#main_viewport .exterior'),
     collection: exteriors,
@@ -7,7 +7,7 @@ define(['underscore', 'backbone', 'collections/exterior-collection', 'views/exte
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
-      this.$el.addClass('active_list');
+      // this.$el.addClass('active_list');
 
       // return this.collection.on('change:active', this.display_img, this);
     },

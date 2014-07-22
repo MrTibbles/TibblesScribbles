@@ -48,14 +48,14 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         duration: 500,
         easing: 'easeInOutQuart',
         complete: function(){
-          _this.loader.show_loader(_this.$el.find('#active_viewport')[0]);
+          _this.loader.show_loader(_this.$el.find('.active_viewport')[0]);
           
           var img = _this.$el.find("img")[0];
           //Wait for image to load, then hide loader and show image
-          if($(img).outerWidth() >= 1){            
+          if(img && $(img).outerWidth() >= 1){            
             $(img).fadeIn(500);
             _this.loader.hide_loader();
-          }
+          }else _this.loader.hide_loader();
         }
       });
     },
