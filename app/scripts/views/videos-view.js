@@ -1,9 +1,9 @@
 define(['backbone', 'collections/video-collection', 'views/video-view','views/main-view'], function(Backbone, videos, vid_view, main_overlay) {
   var exteriors_view = Backbone.View.extend({
-    el: $('#main_viewport .video'),
+    el: $('#gallery-thumbs'),
     collection: videos,
     events: {
-      'click .vid_thumb_out': 'change_vid'
+      'click .thumb_out': 'change_vid'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
@@ -14,8 +14,6 @@ define(['backbone', 'collections/video-collection', 'views/video-view','views/ma
     render: function() {
       var _this = this,
         vids_leng = this.collection.length;
-
-      this.$el.empty();
 
       this.collection.each(function(vid_img, idx) {
         _this.parse_vid(vid_img,idx);
@@ -28,13 +26,7 @@ define(['backbone', 'collections/video-collection', 'views/video-view','views/ma
       var vid_thumb = new vid_view({
         model: vid
       });
-      // if(idx === 0){
-      //   this.collection.set_active_vid(vid);
-      //   this.view_port = new main_overlay({
-      //     model: vid
-      //   });
-      //   this.viewport.append(this.view_port.render_vid().el)
-      // }
+
       return this.$el.append(vid_thumb.render().el);
     },
     display_vid: function() {

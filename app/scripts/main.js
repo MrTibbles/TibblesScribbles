@@ -5,10 +5,11 @@ require.config({
 		'jqueryui': '../bower_components/jquery-ui/ui/jquery-ui',
 		'underscore': '../bower_components/underscore-amd/underscore-min',
 		'backbone': '../bower_components/backbone-amd/backbone-min',
-		'loader' : '../bower_components/spinjs/spin.min'
+		'loader' : '../scripts/libs/spin.min',
+		'free-wall': '../scripts/libs/freewall'
 	}
 });
-require(['jquery', 'jqueryui', 'backbone','loader', 'mixins/spin','router'], function($,Backbone){
+require(['jquery', 'jqueryui', 'backbone', 'free-wall', 'router'], function($,Backbone){
 	//Not sure what to put in here tbh!!!
 	//New Car Chapter Gallery v0.2
 });

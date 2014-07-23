@@ -13,8 +13,8 @@ body{
 		// max-width: 1460px;
 		min-height: 1000px;
 		background: $bg-colour;
-		margin: 40px auto;
-		padding: 75px 0 0;
+		margin: 55px auto;
+		padding: 35px 0 0;
 		overflow: visible;
 		position: relative;
 
@@ -24,7 +24,7 @@ body{
 			display: block;
 			position: relative;
 			top: 0;
-			left: 0;			
+			left: 0;
 
 			&.active_list{
 				display: block;
@@ -171,6 +171,12 @@ body{
 					background-color: $bg-colour;
 					position: absolute;
 					bottom: -50px;
+					-webkit-border-bottom-right-radius: 3px;
+					-webkit-border-bottom-left-radius: 3px;
+					-moz-border-radius-bottomright: 3px;
+					-moz-border-radius-bottomleft: 3px;
+					border-bottom-right-radius: 3px;
+					border-bottom-left-radius: 3px;
 
 					h2{
 						margin: 0 0 8px;

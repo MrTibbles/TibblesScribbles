@@ -1,19 +1,21 @@
-define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collections/exterior-collection', 'views/exteriors-view', 'collections/video-collection', 'views/videos-view', 'collections/interior-collection', 'views/interiors-view'], function($, _, Backbone, loader, exteriors, exteriors_view, videos, videos_view, interiors, interiors_view) {
+define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'collections/exterior-collection', 'views/exteriors-view', 'collections/video-collection', 'views/videos-view', 'collections/interior-collection', 'views/interiors-view'], function($, Backbone, loader, free_wall, exteriors, exteriors_view, videos, videos_view, interiors, interiors_view) {
   var slanted_gallery = Backbone.View.extend({
-    el: $('#gallery-wrap'),
+    el: $('#main_viewport'),
     viewport: $('#overlay_bg'),
     events: {
       'click nav button': 'change_img_type'
     },
+    card_wall: function(){
+      var card_wall = new free_wall;
+
+      return card_wall.render(this.$el.find('#gallery-thumbs'));
+    },
     initialize: function() {
       this.resize_overlay();
-      $(window).on('resize', this.resize_overlay);    
-
-      // this.listenToOnce(this.ExteriorView, 'render', this.shuffle_elements);
-      // this.when_all([this.ExteriorView, this.InteriorView], 'render', this.shuffle_elements, this);
+      $(window).on('resize', this.resize_overlay);          
 
       //Construct dummy Drupal settigns object, Grunt task to replace isnt playing ball!
-      if(window.location.hostname === 'localhost'){
+      if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
         window.Drupal={setting:{gallery_widget:{RC:"AY5"}}};
       }
     },
@@ -116,20 +118,19 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
             _this.ExteriorView = new exteriors_view({
               collection: _this.exterior_imgs
             });
-            _this.ExteriorView.render();
+            _this.ExteriorView.render();            
           }
         });
       };
       if (!this.interior_imgs) {
         this.interior_imgs = new interiors;
-
-        // this.interior_imgs.fetch();        
+  
         this.interior_imgs.fetch({
           success: function() {
             _this.InteriorView = new interiors_view({
               collection: _this.interior_imgs
             });            
-            _this.InteriorView.render();
+            _this.InteriorView.render();            
           }
         });
       }
@@ -141,11 +142,11 @@ define(['jquery', 'underscore', 'backbone', 'views/loading_animation', 'collecti
             _this.VideoView = new videos_view({
               collection: _this.video_items
             });            
-            _this.VideoView.render();
+            _this.VideoView.render();            
           }
         });        
-      }  
-      // this.shuffle_elements();
+      }
+      this.card_wall();
     },
     when_all: function(objects, event, callback, context){
       var callbackWrapper =  _.after(objects.length, callback);

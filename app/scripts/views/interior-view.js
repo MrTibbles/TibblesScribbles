@@ -1,7 +1,7 @@
 define(['underscore', 'backbone'], function(_, Backbone) {
   var interior_view = Backbone.View.extend({
     tagName: 'li',
-    className: 'int_thumb_out',
+    className: 'thumb_out',
     template: _.template(
       $('#thumb_temp').html()
     ),
@@ -11,7 +11,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
       
       this.$el.attr({
         'id': this.model.cid,
-        'class': this.model.get('thumb_size') +' '+'int_thumb_out'
+        'class': this.model.get('thumb_size') +' '+'thumb_out'
       });
       
       return this;

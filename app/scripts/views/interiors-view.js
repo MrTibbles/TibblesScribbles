@@ -1,9 +1,9 @@
 define(['underscore', 'backbone', 'collections/interior-collection', 'views/interior-view', 'views/main-view'], function(_, Backbone, interiors, interior_item, main_overlay) {
   var interiors_view = Backbone.View.extend({
-    el: $('#main_viewport .interior'),
+    el: $('#gallery-thumbs'),
     collection: interiors,
     events: {
-      'click .int_thumb_out': 'change_int'
+      'click .thumb_out': 'change_int'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
@@ -15,8 +15,6 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       var _this = this,
         ints_leng = this.collection.length;
 
-      this.$el.empty();
-
       this.collection.each(function(int_img, idx) {                
         _this.parse_img(int_img,idx);
       });
@@ -26,13 +24,7 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       var interior_img = new interior_item({
         model: img
       });
-      // if(idx === 0){
-      //   this.collection.set_active_img(img);
-      //   this.view_port = new main_view({
-      //     model: img
-      //   });
-      //   this.viewport.append(this.view_port.render_img().el);
-      // }
+
       return this.$el.append(interior_img.render().el);
     },
     display_img: function() {

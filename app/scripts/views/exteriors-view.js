@@ -1,9 +1,9 @@
 define(['backbone', 'collections/exterior-collection', 'views/exterior-view', 'views/main-view'], function(Backbone, exteriors, exterior_item, main_overlay) {
   var exteriors_view = Backbone.View.extend({
-    el: $('#main_viewport .exterior'),
+    el: $('#gallery-thumbs'),
     collection: exteriors,
     events: {
-      'click .ext_thumb_out': 'change_ext'
+      'click .thumb_out': 'change_ext'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
@@ -13,9 +13,7 @@ define(['backbone', 'collections/exterior-collection', 'views/exterior-view', 'v
     },
     render: function() {
       var _this = this,
-        exts_leng = this.collection.length;
-      
-      this.$el.empty();
+        exts_leng = this.collection.length;    
       
       this.collection.each(function(ext_img, idx) {
         _this.parse_img(ext_img, idx);
@@ -27,14 +25,7 @@ define(['backbone', 'collections/exterior-collection', 'views/exterior-view', 'v
       var ext_thumb = new exterior_item({
         model: img
       });
-      // if(idx === 0) {
-      //   this.collection.set_active_img(img);
-      //   this.view_port = new main_view({
-      //     model: img
-      //   });
-      //   this.viewport.append(this.view_port.render_img().el)
-      //   this.$el.find('li').eq(0).addClass('active_thumb');
-      // }
+
       return this.$el.append(ext_thumb.render().el);
     },
     display_img: function() {

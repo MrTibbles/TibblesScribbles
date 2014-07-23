@@ -39,7 +39,7 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
     slide_content: function(){
       var _this = this;      
       
-      //Height of overlay is  not available until it is present, 250 is half of the height
+      //Height of overlay is not available until it is present/visible, 250 is half of the height
       window.position = $(window).scrollTop() + 250;
 
       this.$el.animate({
@@ -59,7 +59,7 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         }
       });
     },
-    close_overlay: function(){      
+    close_overlay: function(){
       var _this = this;
       this.$el.animate({
         'top': -550
@@ -67,6 +67,7 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
         duration: 500,
         easing: 'easeInOutQuart',
         complete: function(){
+          _this.$el.empty();
           _this.viewport.removeClass('active_overlay');
         }
       });

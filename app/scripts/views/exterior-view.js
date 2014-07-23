@@ -1,7 +1,7 @@
-define(['underscore', 'backbone'], function(_, Backbone) {
+define(['backbone'], function(Backbone) {
   var exterior_view = Backbone.View.extend({
     tagName: 'li',
-    className: 'ext_thumb_out',
+    className: 'thumb_out',
     template: _.template(
       $('#thumb_temp').html()
     ),
@@ -11,7 +11,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 
       this.$el.attr({
         'id': this.model.cid,
-        'class': this.model.get('thumb_size') +' '+'ext_thumb_out'
+        'class': this.model.get('thumb_size') +' '+'thumb_out'
       });
 
       return this;

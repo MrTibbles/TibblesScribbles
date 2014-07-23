@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'models/video-model', 'collections/video-collection'], function(_, Backbone, vid, vids) {
+define(['backbone',], function(Backbone) {
   var video_view = Backbone.View.extend({
     tagName: 'li',
-    className: 'vid_thumb_out',
+    className: 'thumb_out',
     template: _.template(
       $('#thumb_temp').html()
     ),
@@ -11,7 +11,7 @@ define(['underscore', 'backbone', 'models/video-model', 'collections/video-colle
       
       this.$el.attr({
         'id': this.model.cid,
-        'class': this.model.get('thumb_size') +' '+'vid_thumb_out'
+        'class': this.model.get('thumb_size') +' '+'thumb_out'
       });
 
       return this;
