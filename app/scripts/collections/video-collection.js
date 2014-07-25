@@ -25,7 +25,7 @@ define(['jquery', 'backbone', 'models/video-model'], function($, Backbone, vid) 
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: _this.url + window.Drupal.setting.gallery_widget.RC,
+        url: _this.url + window.Drupal.settings.gallery_widget.RC,
         jsonpCallback: 'videos',
         processData: true
       }, options);

@@ -5,9 +5,9 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
     parse: function(response) {
       var ints_arr = [];
       $.each(response, function(idx, ele) {
-        if (!ele.main_image.length) {
-          return;
-        };
+        // if (!ele.main_image.length) {
+        //   return;
+        // };
         var int_img = {
           main_src: ele.main_image,
           thumb_src: ele.thumbnail,
@@ -24,20 +24,13 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
       var params = _.extend({
         type: 'GET',
         dataType: 'jsonp',
-        url: _this.url + window.Drupal.setting.gallery_widget.RC,
+        url: _this.url + window.Drupal.settings.gallery_widget.RC,
         jsonpCallback: 'interior_imgs',
         processData: true
       }, options);
       return $.ajax(params);
     },
     set_active_img: function(img) {
-      // this.active = {
-      //   main_src: img.get('main_src'),
-      //   title: img.get('title'),
-      //   desc: img.get('desc'),
-      //   model_ID: img.cid,
-      //   active: true
-      // };
       img.set('active', true);
     },
     reset_active: function() {

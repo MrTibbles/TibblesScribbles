@@ -3,7 +3,7 @@ define(['backbone', 'collections/exterior-collection', 'views/exterior-view', 'v
     el: $('#gallery-thumbs'),
     collection: exteriors,
     events: {
-      'click .thumb_out': 'change_ext'
+      'click .ext_thumb': 'change_ext'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
@@ -43,8 +43,6 @@ define(['backbone', 'collections/exterior-collection', 'views/exterior-view', 'v
       this.active_ext = this.collection.get($img.attr('id'));     
       
       this.collection.set_active_img(this.active_ext);
-
-      this.viewport.empty();
 
       this.overlay = new main_overlay({
         model: this.active_ext

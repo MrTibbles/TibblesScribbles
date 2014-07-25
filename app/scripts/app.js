@@ -5,11 +5,6 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
     events: {
       'click nav button': 'change_img_type'
     },
-    card_wall: function(){
-      var card_wall = new free_wall;
-
-      return card_wall.render(this.$el.find('#gallery-thumbs'));
-    },
     initialize: function() {
       this.resize_overlay();
       $(window).on('resize', this.resize_overlay);          
@@ -21,7 +16,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
     },
     render: function(type) {
       this.loader = new loader;
-      this.loader.show_loader(this.$('#main_viewport')[0]);      
+      this.loader.show_loader(this.$el[0]);      
 
       switch (type) {
         case 'exterior':
@@ -107,7 +102,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
     },
     load_collections: function() {
       //Hide loading spinner as view has been rendered
-      this.loader.hide_loader();
+      // this.loader.hide_loader();
       var _this = this;
 
       if (!this.exterior_imgs) {
@@ -121,7 +116,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
             _this.ExteriorView.render();            
           }
         });
-      };
+      }
       if (!this.interior_imgs) {
         this.interior_imgs = new interiors;
   
@@ -130,7 +125,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
             _this.InteriorView = new interiors_view({
               collection: _this.interior_imgs
             });            
-            _this.InteriorView.render();            
+            _this.InteriorView.render();   
           }
         });
       }
@@ -142,11 +137,23 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
             _this.VideoView = new videos_view({
               collection: _this.video_items
             });            
-            _this.VideoView.render();            
+            _this.VideoView.render();
+
+            //Shuffle elements to get a varied list content types
+            // _this.shuffle_elements(); 
+
+            //Render the card wall style background - CURRENTLY INTERIOR SERVICE IS SLOWEST SO MOVED CARD WALL TO INTERIOR SUCCESS CALLBACK
+            _this.card_wall();
           }
         });        
       }
-      this.card_wall();
+      // this.listenToOnce(this.InteriorView, 'render', this.card_wall());
+    },
+    card_wall: function(){
+      var card_wall = new free_wall;
+
+      this.loader.hide_loader();
+      return card_wall.render(this.$el.find('#gallery-thumbs'));
     },
     when_all: function(objects, event, callback, context){
       var callbackWrapper =  _.after(objects.length, callback);
@@ -156,7 +163,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
       })
     },
     shuffle_elements: function(e){
-      var ul = document.getElementById('all-content');
+      var ul = document.getElementById('gallery-thumbs');
       
       window.console && console.info(ul.children.length)
 

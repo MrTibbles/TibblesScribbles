@@ -50,10 +50,17 @@
 
   <script id="thumb_temp" type="text/template">
     <span id="<%= model_ID %>" class="thumb_inner <%= thumb_size %>" data-title="<%= title %>">
-      <img src="<%= main_src %>" alt="<%= desc %>" />
+      <img src="<%= thumb_src %>" alt="<%= desc %>" />
     </span>
   </script> 
-  
+
+  <script id="video_template" type="text/template">
+    <div class="active_viewport">
+      <button class="close-overlay"></button>
+      <iframe class="youtube-player" type="text/html" width="940" height="470" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
+    </div>
+  </script>
+
   <script id="img_main_temp" type="text/template">    
     <div class="active_viewport">
       <button class="close-overlay"></button>
@@ -62,18 +69,15 @@
         <h2><%= title %></h2>
         <p><%= desc %></p>
       </div>
+      
+        
+      </div>
     </div>
   </script>
 
-  <script id="video_template" type="text/template">
-    <div class="active_viewport">
-      <button class="close-overlay"></button>
-      <iframe class="youtube-player" type="text/html" width="940" height="470" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
-    </div>
-  </script>
   
-  <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>  
-
+  
+  <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>    
 </body>
 
 </html>

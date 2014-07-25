@@ -3,7 +3,7 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
     el: $('#gallery-thumbs'),
     collection: interiors,
     events: {
-      'click .thumb_out': 'change_int'
+      'click .int_thumb': 'change_int'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
@@ -14,6 +14,8 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
     render: function() {
       var _this = this,
         ints_leng = this.collection.length;
+
+      window.console && console.info(this.collection.length)
 
       this.collection.each(function(int_img, idx) {                
         _this.parse_img(int_img,idx);
@@ -43,8 +45,6 @@ define(['underscore', 'backbone', 'collections/interior-collection', 'views/inte
       this.$('.thumb_inner').parent('li').removeClass('active_thumb');
 
       this.collection.set_active_img(this.active_int);
-
-      this.viewport.empty();
 
       this.overlay = new main_overlay({
         model: this.active_int

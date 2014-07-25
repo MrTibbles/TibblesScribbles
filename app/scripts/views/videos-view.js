@@ -3,7 +3,7 @@ define(['backbone', 'collections/video-collection', 'views/video-view','views/ma
     el: $('#gallery-thumbs'),
     collection: videos,
     events: {
-      'click .thumb_out': 'change_vid'
+      'click .vid_thumb': 'change_vid'
     },
     viewport: $('#overlay_bg'),
     initialize: function() {
@@ -14,6 +14,8 @@ define(['backbone', 'collections/video-collection', 'views/video-view','views/ma
     render: function() {
       var _this = this,
         vids_leng = this.collection.length;
+
+      window.console && console.info(vids_leng)
 
       this.collection.each(function(vid_img, idx) {
         _this.parse_vid(vid_img,idx);
@@ -44,8 +46,6 @@ define(['backbone', 'collections/video-collection', 'views/video-view','views/ma
       this.active_vid = this.collection.get($vid.attr('id'));
 
       this.collection.set_active_vid(this.active_vid);
-
-      this.viewport.empty()
       
       this.overlay = new main_overlay({
         model: this.active_vid

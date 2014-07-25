@@ -1,10 +1,20 @@
 body{
-	background: url("http://sharedlive.toyotaretail.co.uk.s3.amazonaws.com/car-chapter-assets/AYGO/explore/images/central-orange-bg.gif") repeat-y center 0 transparent;
+	background: url("http://sharedstage.toyotaretail.co.uk.s3.amazonaws.com/car-chapter-assets/AYGO/gallery/NGAYGO-gallery-bg.png") repeat-y center 0 transparent;
+}
+
+.page-new-car-gallery #main{
+	#content{
+		width: 100%;
+	}
+	#page-content-wrapper{
+		padding: 0;
+	}
 }
 
 #gallery-wrap{
 	width: 100%;
 	overflow: hidden;	
+	-webkit-backface-visibility: hidden;
 
 	#main_viewport{		
 		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
@@ -21,7 +31,7 @@ body{
 		ul{
 			// width: 1460px;
 			height: 100%;
-			display: block;
+			display: none;
 			position: relative;
 			top: 0;
 			left: 0;
@@ -33,7 +43,6 @@ body{
 				float: left;				
 				width: 180px;
 				height: 180px;
-				margin: 4px;
 				position: relative;
 				cursor: pointer;				
 
@@ -55,12 +64,16 @@ body{
 					width: inherit;
 					height: inherit;
 					position: relative;
-					// overflow: hidden;
+					overflow: hidden;
 					z-index: 100;				
 
 					img{
-						width: 100%;
-						max-height: 100%;				
+						@include add_prefix('transform', skew(10deg) rotate(10deg));
+
+						-webkit-backface-visibility: hidden;
+						width: 102%;
+						position: absolute;
+						top: -18px;
 						z-index: 50;
 					}					
 				}
@@ -77,9 +90,8 @@ body{
 						width: 100%;
 						height: 80%;
 						left: 10px;
-						top: 40px;
+						top: -10px;
 					}
-
 				}
 				&.one-x-two{
 					width: 180px;
@@ -89,6 +101,10 @@ body{
 						width: 90%;
 						left: 10px;
 						top: 5px;
+					}
+
+					img{
+						top: -18px;
 					}
 				}
 				&.two-x-two{
@@ -101,6 +117,10 @@ body{
 						top: 20px;
 					}
 
+					img{
+						top: -40px;
+					}
+
 				}
 				&.two-x-one{
 					width: 360px;
@@ -108,8 +128,12 @@ body{
 
 					&:before{
 						height: 90%;
-						left: 5px;
+						left: -15px;
 						top: 10px;
+					}
+
+					img{
+						top: -40px;
 					}
 				}						
 			}
@@ -132,12 +156,23 @@ body{
 			display: block;
 		}
 
-		.viewport_openening{
+		.inner-overlay{
+			position: relative;
+		}
+
+		.viewport_openening, .overlay_content{
 			position: relative;
 			top: -470px;
 
 			.youtube-player{
 				width: 940px;
+			}
+
+			.overlay-social{
+				display: block;
+				position: absolute;
+				right: 0;
+				bottom: -50px;
 			}
 
 			.active_viewport{
@@ -148,6 +183,8 @@ body{
 				margin: 0 auto;				
 
 				.close-overlay{
+					@include add_prefix('transform', skew(-10deg) rotate(-10deg));
+
 					border: none;
 					outline: none;
 					display: block;
@@ -155,8 +192,20 @@ body{
 					height:26px;
 					position: absolute;
 					top: -35px;
-					right: 0;
-					background: url('../images/close-overlay.png') no-repeat 0 0 transparent;
+					right: 0;					
+					border: 2px solid #ffffff;
+					background: none;
+					padding: 0;
+					// background: url('../images/close-overlay.png') no-repeat 0 0 transparent;
+
+					&:after{				
+						width: 22px;	
+						display: block;	
+						content: 'X';
+						font-size: 16px;
+						color: #ffffff;
+						text-indent: -3px;
+					}
 				}
 
 				img{
@@ -166,10 +215,10 @@ body{
 
 				#descr_box{
 					display: block;
-					float: left;
 					padding: 5px 8px;
 					background-color: $bg-colour;
 					position: absolute;
+					left: 0;
 					bottom: -50px;
 					-webkit-border-bottom-right-radius: 3px;
 					-webkit-border-bottom-left-radius: 3px;
@@ -195,7 +244,7 @@ body{
 							size: 14px;
 						}
 					}
-				}
+				}				
 			}
 		}
 	}

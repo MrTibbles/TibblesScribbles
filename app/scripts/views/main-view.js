@@ -15,6 +15,8 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
     initialize: function(){
       this.loader = new loader;      
       this.resize_overlay();
+
+      this.viewport.empty();
     },
     render_img: function() {      
       if(this.model.get('active') === false){

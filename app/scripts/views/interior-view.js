@@ -11,7 +11,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
       
       this.$el.attr({
         'id': this.model.cid,
-        'class': this.model.get('thumb_size') +' '+'thumb_out'
+        'class': this.model.get('thumb_size') +' '+'int_thumb thumb_out'
       });
       
       return this;

@@ -23,7 +23,10 @@ define(['underscore', 'backbone', 'loader'], function(_, Backbone, loader) {
   		return this.loader = new loader(this.options).spin(target);
   	},
   	hide_loader: function(){
-  		this.loader.stop();
+  		if(!this.loader){
+        this.loader = this.$el.find('.loading_spinner');
+      }
+      this.loader.stop();
   	}
   });
   return loading_animation;
