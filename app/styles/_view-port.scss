@@ -15,6 +15,8 @@ body{
 	width: 100%;
 	overflow: hidden;	
 	-webkit-backface-visibility: hidden;
+	position: relative;
+	background: url('http://s3-eu-west-1.amazonaws.com/shareduat.toyotaretail.co.uk/car/background/NGAYGO-gallery-header.png') no-repeat center 0;
 
 	#main_viewport{		
 		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
@@ -23,8 +25,8 @@ body{
 		// max-width: 1460px;
 		min-height: 1000px;
 		background: $bg-colour;
-		margin: 55px auto;
-		padding: 35px 0 0;
+		margin: 60px auto;
+		padding: 40px 0 0;
 		overflow: visible;
 		position: relative;
 
@@ -180,7 +182,7 @@ body{
 				min-height: 470px;
 				background-color: $bg-colour;
 				position: relative;
-				margin: 0 auto;				
+				margin: 120px auto 0;				
 
 				.close-overlay{
 					@include add_prefix('transform', skew(-10deg) rotate(-10deg));

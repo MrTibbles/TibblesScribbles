@@ -31,7 +31,7 @@ define(['backbone', 'views/loading_animation'], function(Backbone, loader) {
     shuffle_elements: function(e){
       var ul = document.getElementById('gallery-thumbs');
       
-      window.console && console.info(ul.children.length)
+      // window.console && console.info(ul.children.length)
 
       for (var i = ul.children.length; i >= 0; i--) {
         ul.appendChild(ul.children[Math.random() * i | 0]);

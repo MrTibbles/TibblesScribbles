@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'collections/interior-collection', 'views/interior-view', 'views/main-view'], function(_, Backbone, interiors, interior_item, main_overlay) {
+define(['backbone', 'collections/interior-collection', 'views/interior-view', 'views/main-view'], function(Backbone, interiors, interior_item, main_overlay) {
   var interiors_view = Backbone.View.extend({
     el: $('#gallery-thumbs'),
     collection: interiors,

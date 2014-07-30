@@ -5,7 +5,7 @@ define(['jquery', 'backbone', 'models/video-model'], function($, Backbone, vid) 
     parse: function(response) {
       var vid_arr = [];
       $.each(response, function(idx, ele) {
-        if (!ele.youtube.video_id.length) {
+        if (!ele.youtube.length || !ele.youtube.video_id.length) {
           return;
         };
         var vid_item = {

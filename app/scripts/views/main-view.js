@@ -41,8 +41,7 @@ define(['underscore', 'backbone', 'views/loading_animation'], function(_, Backbo
     slide_content: function(){
       var _this = this;      
       
-      //Height of overlay is not available until it is present/visible, 250 is half of the height
-      window.position = $(window).scrollTop() + 250;
+      window.position = $(window).scrollTop();
 
       this.$el.animate({
         'top': window.position

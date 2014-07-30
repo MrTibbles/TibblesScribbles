@@ -314,7 +314,14 @@ module.exports = function(grunt) {
         file: 'scripts/amd-cc-gallery.js',
         replace: {
           'window.Drupal=\{setting:\{gallery_widget:\{RC:"AY5"\}\}\};': '//',
-          'http://127.0.0.1/': '//'
+          'http://127.0.0.1/': '/'
+        }
+      },{
+        file: 'index.html',
+        replace: {
+          '<header id="fake-header"></header>': '',
+          'bower_components/requirejs/require.js': '/sites/all/modules/custom/tgb_car_chapters/js/bower_components/requirejs/require.js',
+          'scripts/main.js': '/sites/all/modules/custom/tgb_car_chapters/js/amd-cc-gallery'
         }
       }]
     },
@@ -448,7 +455,7 @@ module.exports = function(grunt) {
     'uglify:requirejs',
     'modernizr',
     'replace',
-    // 'toyota-crm',
+    // 'strip-html',
     // 'rev',
     'usemin'
     // 'htmlmin'
@@ -492,7 +499,7 @@ module.exports = function(grunt) {
     });
   });
 
-  grunt.registerTask('toyota-crm', 'Cuts out html for deployment to Toyota website', function() {
+  grunt.registerTask('strip-html', 'Cuts out html for deployment to Toyota website', function() {
     var fs = require('fs'),
       jsdom = require('jsdom'),
       done = this.async();

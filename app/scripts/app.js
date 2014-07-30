@@ -11,7 +11,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
 
       //Construct dummy Drupal settigns object, Grunt task to replace isnt playing ball!
       if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
-        window.Drupal={setting:{gallery_widget:{RC:"AY5"}}};
+        window.Drupal={settings:{gallery_widget:{RC:"AY5"}}};
       }
     },
     render: function(type) {
