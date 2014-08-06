@@ -8,9 +8,9 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
     initialize: function() {
       this.resize_overlay();
       $(window).on('resize', this.resize_overlay);          
-
+      
       //Construct dummy Drupal settigns object, Grunt task to replace isnt playing ball!
-      if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
+      if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '10.0.2.2'){
         window.Drupal={settings:{gallery_widget:{RC:"AY5"}}};
       }
     },
@@ -125,7 +125,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
             _this.InteriorView = new interiors_view({
               collection: _this.interior_imgs
             });            
-            _this.InteriorView.render();   
+            _this.InteriorView.render();               
           }
         });
       }
@@ -165,7 +165,7 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
     shuffle_elements: function(e){
       var ul = document.getElementById('gallery-thumbs');
       
-      window.console && console.info(ul.children.length)
+      window.console && console.info('item length -' + ul.children.length);
 
       for (var i = ul.children.length; i >= 0; i--) {
         ul.appendChild(ul.children[Math.random() * i | 0]);

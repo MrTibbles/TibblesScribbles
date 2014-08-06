@@ -1,253 +1,246 @@
-body{
-	background: url("http://sharedstage.toyotaretail.co.uk.s3.amazonaws.com/car-chapter-assets/AYGO/gallery/NGAYGO-gallery-bg.png") repeat-y center 0 transparent;
+body {
+  background: url("http://sharedstage.toyotaretail.co.uk.s3.amazonaws.com/car-chapter-assets/AYGO/gallery/NGAYGO-gallery-bg.png") repeat-y center 0 transparent;
 }
-
-.page-new-car-gallery #main{
-	#content{
-		width: 100%;
-	}
-	#page-content-wrapper{
-		padding: 0;
-	}
+.page-new-car-gallery #main {
+  #content {
+    width: 100%;
+  }
+  #page-content-wrapper {
+    padding: 0;
+  }
 }
+#gallery-wrap {
+  width: 100%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  position: relative;
+  background: url('http://s3-eu-west-1.amazonaws.com/shareduat.toyotaretail.co.uk/car/background/NGAYGO-gallery-header.png') no-repeat center 0;
+  #main_viewport {
+    @include add_prefix('transform', skew(-10deg) rotate(-10deg));
+    width: 940px;
+    // max-width: 1460px;
+    min-height: 1000px;
+    background: $bg-colour;
+    margin: 0 auto;
+    padding: 0;
+    overflow: visible;
+    position: relative;
+    ul {
+      // width: 1460px;
+      height: 100%;
+      display: none;
+      position: relative;
+      top: 0;
+      left: 0;
+      &.active_list {
+        display: block;
+      }
+      li {
+        float: left;
+        width: 180px;
+        height: 180px;
+        position: relative;
+        cursor: pointer;
+        z-index: 500;
+        &:before {
+          display: block;
+          content: '';
+          width: 95%;
+          height: 98%;
+          border: 4px solid #ffffff;
+          position: absolute;
+          top: 10px;
+          left: 5px;
+          overflow: visible;
+          z-index: 500;
+        }
+        span {
+          display: block;
+          width: inherit;
+          height: inherit;
+          position: relative;
+          overflow: hidden;
+          z-index: 100;
+          img {
+            @include add_prefix('transform', skew(10deg) rotate(10deg));
+            -webkit-backface-visibility: hidden;
+            width: 102%;
+            position: absolute;
+            top: -18px;
+            z-index: 5;
+          }
+        }
+        //Class system for the differing sizes of content item size
+        &.default {
+          width: 180px;
+          height: 180px;
+        }
+        &.one-x-one {
+          width: 180px;
+          height: 180px;
+          &:before {
+            width: 100%;
+            height: 80%;
+            left: 10px;
+            top: -10px;
+          }
+        }
+        &.one-x-two {
+          width: 180px;
+          height: 360px;
+          &:before {
+            width: 90%;
+            left: 10px;
+            top: 5px;
+          }
+          img {
+            top: -18px;
+          }
+        }
+        &.two-x-two {
+          width: 360px;
+          height: 360px;
+          &:before {
+            width: 98%;
+            height: 85%;
+            top: 20px;
+          }
+          img {
+            top: -40px;
+          }
+        }
+        &.two-x-one {
+          width: 360px;
+          height: 180px;
+          &:before {
+            height: 90%;
+            left: -15px;
+            top: 10px;
+          }
+          img {
+            top: -40px;
+          }
+        }
+      }
+    }
+    .loading_spinner {
+      @include add_prefix('transform', skew(10deg) rotate(10deg));
+    }
+  }
+  #overlay_bg {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 5000;
+    &.active_overlay {
+      display: block;
+    }
+    .inner-overlay {
+      position: relative;
+    }
+    .viewport_openening, .overlay_content {
+      position: relative;
+      top: -470px;
+      .youtube-player {
+        width: 940px;
+      }
+      .overlay-social {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: -50px;
+      }
+      .active_viewport {
+        width: 940px;
+        min-height: 470px;
+        background-color: $bg-colour;
+        position: relative;
+        margin: 120px auto 0;
+        .close-overlay {
+          @include add_prefix('transform', skew(-10deg) rotate(-10deg));
+          border: none;
+          outline: none;
+          display: block;
+          width: 22px;
+          height: 26px;
+          position: absolute;
+          top: -35px;
+          right: 0;
+          border: 2px solid #ffffff;
+          background: none;
+          padding: 0;
+          // background: url('../images/close-overlay.png') no-repeat 0 0 transparent;
+          &:after {
+            width: 22px;
+            display: block;
+            content: 'X';
+            font-size: 16px;
+            color: #ffffff;
+            text-indent: -3px;
+          }
+        }
+        img {
+          width: 940px;
+          display: none;
+        }
+        #descr_box {
+          display: block;
+          padding: 5px 8px;
+          background-color: $bg-colour;
+          position: absolute;
+          left: 0;
+          bottom: -50px;
+          -webkit-border-bottom-right-radius: 3px;
+          -webkit-border-bottom-left-radius: 3px;
+          -moz-border-radius-bottomright: 3px;
+          -moz-border-radius-bottomleft: 3px;
+          border-bottom-right-radius: 3px;
+          border-bottom-left-radius: 3px;
+          h2 {
+            margin: 0 0 8px;
+            color: #333333;
+            font: {
+              family: 'toyotadisplay_bd';
+              size: 18px;
+            }
+          }
+          p {
+            margin: 0;
+            padding: 0;
+            color: #333333;
+            font: {
+              family: 'toyotadisplay_rg';
+              size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.msie {
+  &.v8 {
+    #gallery-wrap {
+      #main_viewport {
+        ul {
+          li {
 
-#gallery-wrap{
-	width: 100%;
-	overflow: hidden;	
-	-webkit-backface-visibility: hidden;
-	position: relative;
-	background: url('http://s3-eu-west-1.amazonaws.com/shareduat.toyotaretail.co.uk/car/background/NGAYGO-gallery-header.png') no-repeat center 0;
-
-	#main_viewport{		
-		@include add_prefix('transform', skew(-10deg) rotate(-10deg));
-
-		width: 940px;
-		// max-width: 1460px;
-		min-height: 1000px;
-		background: $bg-colour;
-		margin: 60px auto;
-		padding: 40px 0 0;
-		overflow: visible;
-		position: relative;
-
-		ul{
-			// width: 1460px;
-			height: 100%;
-			display: none;
-			position: relative;
-			top: 0;
-			left: 0;
-
-			&.active_list{
-				display: block;
-			}
-			li{
-				float: left;				
-				width: 180px;
-				height: 180px;
-				position: relative;
-				cursor: pointer;				
-
-				&:before{
-					display: block;
-					content: '';
-					width: 95%;
-					height: 98%;
-					border: 4px solid #ffffff;
-					position: absolute;					
-					top: 10px;
-					left: 5px;
-					overflow: visible;
-					z-index: 500;
-				}
-
-				span{
-					display: block;
-					width: inherit;
-					height: inherit;
-					position: relative;
-					overflow: hidden;
-					z-index: 100;				
-
-					img{
-						@include add_prefix('transform', skew(10deg) rotate(10deg));
-
-						-webkit-backface-visibility: hidden;
-						width: 102%;
-						position: absolute;
-						top: -18px;
-						z-index: 50;
-					}					
-				}
-				//Class system for the differing sizes of content item size
-				&.default{
-					width: 180px;
-					height: 180px;
-				}				
-				&.one-x-one{
-					width: 180px;
-					height: 180px;
-
-					&:before{
-						width: 100%;
-						height: 80%;
-						left: 10px;
-						top: -10px;
-					}
-				}
-				&.one-x-two{
-					width: 180px;
-					height: 360px;
-
-					&:before{
-						width: 90%;
-						left: 10px;
-						top: 5px;
-					}
-
-					img{
-						top: -18px;
-					}
-				}
-				&.two-x-two{
-					width: 360px;
-					height: 360px;
-
-					&:before{
-						width: 98%;
-						height: 85%;
-						top: 20px;
-					}
-
-					img{
-						top: -40px;
-					}
-
-				}
-				&.two-x-one{
-					width: 360px;
-					height: 180px;
-
-					&:before{
-						height: 90%;
-						left: -15px;
-						top: 10px;
-					}
-
-					img{
-						top: -40px;
-					}
-				}						
-			}
-		}
-		.loading_spinner{
-			@include add_prefix('transform', skew(10deg) rotate(10deg));
-		}
-	}
-	#overlay_bg{
-		display: none;
-		position: absolute;
-		left: 0;
-		top: 0;
-		min-width: 100%;
-		min-height: 100%;
-		background: rgba(0,0,0,0.75);
-		z-index: 5000;
-
-		&.active_overlay{
-			display: block;
-		}
-
-		.inner-overlay{
-			position: relative;
-		}
-
-		.viewport_openening, .overlay_content{
-			position: relative;
-			top: -470px;
-
-			.youtube-player{
-				width: 940px;
-			}
-
-			.overlay-social{
-				display: block;
-				position: absolute;
-				right: 0;
-				bottom: -50px;
-			}
-
-			.active_viewport{
-				width: 940px;
-				min-height: 470px;
-				background-color: $bg-colour;
-				position: relative;
-				margin: 120px auto 0;				
-
-				.close-overlay{
-					@include add_prefix('transform', skew(-10deg) rotate(-10deg));
-
-					border: none;
-					outline: none;
-					display: block;
-					width: 22px;
-					height:26px;
-					position: absolute;
-					top: -35px;
-					right: 0;					
-					border: 2px solid #ffffff;
-					background: none;
-					padding: 0;
-					// background: url('../images/close-overlay.png') no-repeat 0 0 transparent;
-
-					&:after{				
-						width: 22px;	
-						display: block;	
-						content: 'X';
-						font-size: 16px;
-						color: #ffffff;
-						text-indent: -3px;
-					}
-				}
-
-				img{
-					width: 940px;
-					display: none;			
-				}
-
-				#descr_box{
-					display: block;
-					padding: 5px 8px;
-					background-color: $bg-colour;
-					position: absolute;
-					left: 0;
-					bottom: -50px;
-					-webkit-border-bottom-right-radius: 3px;
-					-webkit-border-bottom-left-radius: 3px;
-					-moz-border-radius-bottomright: 3px;
-					-moz-border-radius-bottomleft: 3px;
-					border-bottom-right-radius: 3px;
-					border-bottom-left-radius: 3px;
-
-					h2{
-						margin: 0 0 8px;
-						color: #333333;
-						font: {
-							family: 'toyotadisplay_bd';
-							size: 18px;
-						}
-					}
-					p{
-						margin: 0;
-						padding: 0;
-						color: #333333;
-						font:{
-							family: 'toyotadisplay_rg';
-							size: 14px;
-						}
-					}
-				}				
-			}
-		}
-	}
+          	&:before{
+          		z-index: 500;
+          	}
+            span {
+              z-index: -50;
+              img {
+                z-index: -200;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
