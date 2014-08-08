@@ -1,0 +1,14 @@
+.page-content, #sliding-popup {
+  display: none !important; }
+
+#main-content-wrapper {
+  min-height: 1500px;
+  position: relative; }
+  #main-content-wrapper .spin-cover {
+    overflow: hidden;
+    width: 1480px;
+    margin: 0 auto;
+    position: absolute; }
+    #main-content-wrapper .spin-cover img {
+      width: 1480px;
+      margin: 0 auto; }
