@@ -1,7 +1,7 @@
 define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) {
   var exts = Backbone.Collection.extend({
     model: img,
-    url: 'http://127.0.0.1/services/gallery-interior.jsonp?rc=',
+    url: 'http://127.0.0.1/services/gallery-interior-service.jsonp?range_code=',
     parse: function(response) {
       var ints_arr = [];
       $.each(response, function(idx, ele) {
@@ -9,11 +9,11 @@ define(['jquery', 'backbone', 'models/image-model'], function($, Backbone, img) 
         //   return;
         // };
         var int_img = {
-          main_src: ele.main_image,
-          thumb_src: ele.thumbnail,
-          desc: ele.description,
-          title: ele.title,
-          thumb_size: !ele.thumb_size.length ? 'default' : ele.thumb_size.replace(/ /g, '-')
+          main_src: ele.Main_Image,
+          thumb_src: ele.Thumbnail,
+          desc: ele.Description,
+          title: ele.Name,
+          thumb_size: !ele.Thumb_size_Int.length ? 'default' : ele.Thumb_size_Int.replace(/ /g, '-')
         };
         ints_arr.push(new img(int_img))
       });

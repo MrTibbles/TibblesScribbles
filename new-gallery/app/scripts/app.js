@@ -117,18 +117,18 @@ define(['jquery', 'backbone', 'views/loading_animation', 'views/card-wall', 'col
           }
         });
       }
-      if (!this.interior_imgs) {
-        this.interior_imgs = new interiors;
+      // if (!this.interior_imgs) {
+      //   this.interior_imgs = new interiors;
   
-        this.interior_imgs.fetch({
-          success: function() {
-            _this.InteriorView = new interiors_view({
-              collection: _this.interior_imgs
-            });            
-            _this.InteriorView.render();               
-          }
-        });
-      }
+      //   this.interior_imgs.fetch({
+      //     success: function() {
+      //       _this.InteriorView = new interiors_view({
+      //         collection: _this.interior_imgs
+      //       });            
+      //       _this.InteriorView.render();               
+      //     }
+      //   });
+      // }
       if(!this.video_items){
         this.video_items = new videos;
 

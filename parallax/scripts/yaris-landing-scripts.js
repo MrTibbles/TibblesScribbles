@@ -20,7 +20,7 @@ var yarisScroll,
 
 
 
-yarisScroll = (function($){
+yarisScroll = (function(yarisScroll, $){
 
 	//Check that its the only instance of Yaris scroll obj on page
 	yarisScroll.getInstance = function() {
@@ -108,7 +108,7 @@ yarisScroll = (function($){
 
 	return yarisScroll;
 
-})(jQuery);
+})(yarisScroll || {}, jQuery);
 
 //Wait for page load prior to instantiate 
 yarisScroll.addEventListener(window, 'load', yarisScroll.init);
