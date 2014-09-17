@@ -1,0 +1,77 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>new tgb gallery</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="styles/vendor.css"/>
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/general.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/header.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/print.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/libraries/shadowbox/shadowbox.css">
+  <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css">  
+  <link rel="stylesheet" href="styles/main.css"/>
+  <script src="bower_components/modernizr/modernizr.js"></script>
+
+</head>
+
+<body> 
+  <div class="container">
+    
+    <div id="gallery-wrap">
+      <div id="overlay_bg"></div>
+      <nav>
+        <button id="exterior" class="exterior">exterior</button>
+        <button id="interior" class="interior">interior</button>
+      </nav>
+      <div id="main_viewport">   
+        <ul id="gallery-thumbs"></ul>
+      </div>      
+    </div>
+  </div>
+
+  <script id="thumb_temp" type="text/template">
+    <span id="<%= model_ID %>" class="thumb_inner <%= thumb_size %>" data-title="<%= title %>">
+      <img src="<%= thumb_src %>" alt="<%= desc %>" />
+    </span>
+  </script> 
+
+  <script id="video_template" type="text/template">
+    <div class="active_viewport">
+      <button class="close-overlay"></button>
+      <iframe class="youtube-player" type="text/html" width="940" height="470" src="http://www.youtube.com/embed/<%= video_ID %>?wmode=transparent" frameborder="0"></iframe>
+    </div>
+  </script>
+
+  <script id="img_main_temp" type="text/template">    
+    <div class="active_viewport">
+      <button class="close-overlay"></button>
+      <img src="<%= main_src %>" alt="<%= desc %>" title="<%= title %>" class="main-image"/>
+      <div id="descr_box">
+        <h2><%= title %></h2>
+        <p><%= desc %></p>
+      </div>
+      
+        
+      </div>
+    </div>
+  </script>
+
+  
+  
+  <script src="/sites/all/modules/custom/tgb_car_chapters/js/bower_components/requirejs/require.js" data-main="/sites/all/modules/custom/tgb_car_chapters/js/amd-cc-gallery"></script>    
+</body>
+
+</html>
