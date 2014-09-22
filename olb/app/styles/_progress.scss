@@ -1,0 +1,90 @@
+#progess{
+	border: {
+		style: solid;
+		color: $border-colour;
+		width: 0 0 1px 0;
+	}
+	.progess-bar{
+			position: relative;
+			height: 70px;	 		
+
+			li{
+				float: left;
+				color: $inactive-state;
+				position: relative;
+				font-family: 'toyotadisplay_bd';
+				overflow: visible;
+				text: {
+					align: center;
+					transform: capitalize;
+				}
+
+				&:before{
+					display: block;
+					width: 10px;
+					height: 10px;
+					margin: 0 auto 20px;
+					content: '';
+					@include add_prefix(border-radius, 50%);
+					border: 1px solid	$inactive-state;
+					position: relative;
+					top: 5px;
+					z-index: 20;
+					background-color: $content-area;
+				}
+				&:after{
+					display: block;
+					height: 2px;
+					width: 175px;
+					position: absolute;
+					left: 50%;
+					top: 10px;
+					content: '';
+					background: url('../images/inactive-step-bg.png') repeat-x 0 0;
+					z-index: 10;
+				}
+				&.first{
+					margin: 0 120px 0 0;
+				}
+				&.second{
+					margin: 0 90px 0 0;
+				}
+				&.third{
+					margin: 0 110px 0 0;
+				}
+				&.fourth{
+					margin: 0 130px 0 0;	 				
+				}
+				&.fifth{
+					&:after{
+						display: none;
+					}
+				}
+				&.active{
+					color: $active-state;
+
+					&:before{
+						top: 0;
+						border-width: 6px;
+						border-color: $active-state;
+						margin-bottom: 10px;
+					}
+					&:after{
+						height: 2px;
+						background: $active-state;
+						left: 40px;
+					}
+				}
+				&.completed{
+					color: $proceed-step;
+
+					&:before{
+						border-color: $proceed-step;
+					}
+					&:after{
+						background: $proceed-step;
+					}
+				}
+			}
+	}
+}

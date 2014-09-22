@@ -1,0 +1,236 @@
+/*
+*
+* Toyota Online booking application
+* global variables and base styles
+*
+*/
+@import url(fonts.css);
+@import url(reset.css);
+.pod {
+  float: left; }
+
+.clear {
+  clear: both; }
+
+.wide-wrap {
+  min-width: 940px;
+  max-width: 1480px;
+  padding: 50px 0;
+  margin: 0 auto;
+  background-color: #e6e6e6; }
+
+.content-area {
+  width: 880px;
+  margin: 0 auto;
+  padding: 35px 30px;
+  background-color: #ffffff; }
+  .content-area h2, .content-area h3, .content-area h4, .content-area p, .content-area a, .content-area li, .content-area span {
+    color: #414248;
+    line-height: 22px; }
+  .content-area h2, .content-area h3, .content-area h4 {
+    font-family: 'toyotadisplay_bd';
+    text-transform: uppercase; }
+  .content-area p, .content-area a, .content-area li, .content-area span {
+    font-family: 'toyotatext_rg';
+    font-size: 12px; }
+  .content-area h2 {
+    font-size: 22px;
+    margin: 0 0 28px; }
+  .content-area h3 {
+    font-size: 18px;
+    margin: 0 0 8px; }
+  .content-area h4 {
+    margin: 12px 0;
+    font-size: 14px; }
+    .content-area h4.sub-title {
+      text-transform: capitalize; }
+  .content-area p {
+    font-size: 12px; }
+    .content-area p.lite {
+      color: #999999; }
+    .content-area p.sub-title {
+      font-family: 'toyotatext_bd';
+      font-size: 14px; }
+
+#olb-content {
+  background-color: #fcfcfc;
+  min-height: 200px; }
+  #olb-content #olb-steps {
+    width: 623px;
+    float: left;
+    margin: 0 20px 0 0; }
+
+button {
+  width: 100%;
+  height: 40px;
+  float: left;
+  padding: 10px 15px;
+  display: block;
+  position: relative;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  background-color: #78b1cc;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-align: center;
+  font-family: 'toyotadisplay_bd';
+  font-size: 14px; }
+  button.disabled {
+    background-color: #ebebeb; }
+  button.proceed {
+    text-align: left; }
+    button.proceed:after {
+      display: block;
+      width: 8px;
+      height: 12px;
+      content: '>';
+      position: absolute;
+      right: 10px;
+      top: 10px; }
+
+#progess {
+  border-style: solid;
+  border-color: #ebebeb;
+  border-width: 0 0 1px 0; }
+  #progess .progess-bar {
+    position: relative;
+    height: 70px; }
+    #progess .progess-bar li {
+      float: left;
+      color: #b5d2e1;
+      position: relative;
+      font-family: 'toyotadisplay_bd';
+      overflow: visible;
+      text-align: center;
+      text-transform: capitalize; }
+      #progess .progess-bar li:before {
+        display: block;
+        width: 10px;
+        height: 10px;
+        margin: 0 auto 20px;
+        content: '';
+        -o-border-radius: 50%;
+        border-radius: 50%;
+        border: 1px solid #b5d2e1;
+        position: relative;
+        top: 5px;
+        z-index: 20;
+        background-color: #ffffff; }
+      #progess .progess-bar li:after {
+        display: block;
+        height: 2px;
+        width: 175px;
+        position: absolute;
+        left: 50%;
+        top: 10px;
+        content: '';
+        background: url("../images/inactive-step-bg.png") repeat-x 0 0;
+        z-index: 10; }
+      #progess .progess-bar li.first {
+        margin: 0 120px 0 0; }
+      #progess .progess-bar li.second {
+        margin: 0 90px 0 0; }
+      #progess .progess-bar li.third {
+        margin: 0 110px 0 0; }
+      #progess .progess-bar li.fourth {
+        margin: 0 130px 0 0; }
+      #progess .progess-bar li.fifth:after {
+        display: none; }
+      #progess .progess-bar li.active {
+        color: #78b1cc; }
+        #progess .progess-bar li.active:before {
+          top: 0;
+          border-width: 6px;
+          border-color: #78b1cc;
+          margin-bottom: 10px; }
+        #progess .progess-bar li.active:after {
+          height: 2px;
+          background: #78b1cc;
+          left: 40px; }
+      #progess .progess-bar li.completed {
+        color: #71beba; }
+        #progess .progess-bar li.completed:before {
+          border-color: #71beba; }
+        #progess .progess-bar li.completed:after {
+          background: #71beba; }
+
+#summary {
+  width: 237px;
+  min-height: 415px;
+  float: left;
+  overflow: visible;
+  margin: -25px 0 0;
+  background-image: url("../images/summary-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #ffffff; }
+  #summary.empty .summary-pod .add-some, #summary.empty .add-some {
+    display: block; }
+  #summary h2 {
+    text-transform: none;
+    width: 115px;
+    margin: 25px 0 0;
+    padding: 0 10px; }
+  #summary .sub-title {
+    color: #78b1cc;
+    text-transform: capitalize;
+    padding: 0 10px; }
+  #summary .summary-pod {
+    padding: 20px 10px;
+    border-width: 1px 1px 0;
+    border-style: solid;
+    border-color: #ebebeb; }
+    #summary .summary-pod .add-some {
+      display: none; }
+    #summary .summary-pod .sub-title {
+      color: #414248;
+      margin: 0;
+      padding: 0; }
+    #summary .summary-pod > h4 {
+      margin: 0 0 12px; }
+
+#olb-steps .wide-input {
+  width: 458px;
+  height: 18px;
+  float: left;
+  margin: 6px 0;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: #ebebeb; }
+#olb-steps button {
+  margin: 6px 0;
+  width: 134px; }
+#olb-steps #booking {
+  margin: 40px 0 0; }
+  #olb-steps #booking .lite {
+    padding: 0 95px 0 0;
+    margin: 0 0 25px; }
+  #olb-steps #booking .service-parent {
+    padding: 15px 20px;
+    height: 22px;
+    margin: 0 0 10px;
+    border: 1px solid #ebebeb;
+    position: relative; }
+    #olb-steps #booking .service-parent:before {
+      display: block;
+      width: 25px;
+      height: 25px;
+      content: '';
+      border: 2px solid #e3e3e4;
+      position: absolute;
+      left: 15px;
+      top: 12px;
+      -o-border-radius: 50%;
+      border-radius: 50%; }
+    #olb-steps #booking .service-parent.selected h3 {
+      color: #78b1cc; }
+    #olb-steps #booking .service-parent h3 {
+      font-size: 16px;
+      margin: 0 0 0 35px;
+      color: #414248; }
+    #olb-steps #booking .service-parent .service-inner {
+      display: none; }

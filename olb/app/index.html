@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Toyota Online Booking</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- TGB Live style assets -->
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/themes/toyota/css/reset.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/themes/toyota/css/normalize.css"> -->
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/themes/toyota/css/general.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/themes/toyota/css/header.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/themes/toyota/css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/themes/toyota/css/print.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/libraries/shadowbox/shadowbox.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css"> 
+    <!-- end TGB assets -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <div class="wide-wrap">
+      <div id="olb-wrap">
+        <section id="progess" class="content-area">
+          <h2>your booking</h2>
+          <ul class="progess-bar">
+            <li class="first step active">your car</li>
+            <li class="second step">your dealer &amp; quote</li>
+            <li class="third step">select date &amp; time</li>
+            <li class="fourth step">your details</li>
+            <li class="fifth step">confirmation</li>
+          </ul>
+          <div class="clear"></div>
+        </section>
+        <div id="olb-content" class="content-area">
+          <section id="olb-steps">
+            <div id="your-car" class="pod">
+              <h3>your car</h3>
+              <p class="lite sub-title">Registration or VIN</p>
+              <input id="reg-vin" class="wide-input" type="text" name="reg-vin" value="" />
+              <button id="find-car">find my car</button>
+            </div>
+            <div id="booking" class="pod">
+              <h3>booking options</h3>
+              <p class="lite info">By providing us with your registration and approximate mileage, we can ensure that you get the right service for your vehicle. Browse the booking options available and click on the relevant section.</p>
+              <!-- Service types -->
+              <div class="service-parent selected" data-service="car-servicing">
+                <h3>Car servicing</h3>  
+                <div class="service-inner expand">
+                  <p class="sub-title">You must search for Your Car above before we can find the right service for you.</p>
+                  <p class="lite sub-title">Mileage*</p>
+                  <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
+                  <button id="find-service" class="disabled">find service</button>
+                </div>
+              </div>
+              <div class="service-parent" data-service="car-servicing">
+                <h3>Hybrid Health Check</h3>
+              </div>
+              <div class="service-parent" data-service="car-servicing">
+                <h3>Repairs</h3>
+              </div>
+              <div class="service-parent" data-service="car-servicing">
+                <h3>General Diagnosis</h3>
+              </div>
+              <div class="service-parent" data-service="car-servicing">
+                <h3>MOT</h3>
+              </div>
+              <div class="service-parent" data-service="car-servicing">
+                <h3>Visual Safety Report</h3>
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- Summary of users Online Booking -->
+          <section id="summary" class="empty">
+            <h2>Toyota for a Reason</h2>
+            <h4 class="sub-title">Find out more</h4>
+            <div id="your-quote" class="summary-pod">
+              <h4>your quote</h4>
+              <h4 class="sub-title">Your Car</h4>
+              <p class="add-some">Please add a car by conducting a registration or VIN search.</p>
+            </div>
+            <div id="service-selections" class="summary-pod">
+              <h4 class="sub-title">your booking selections</h4>
+              <p class="add-some">Please add at least one booking option.</p>
+              <button class="disabled proceed">continue booking</button>
+            </div>
+          </section>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

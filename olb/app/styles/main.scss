@@ -1,0 +1,26 @@
+/*
+*
+* Toyota Online booking application
+* global variables and base styles
+*
+*/
+
+//Below font import gets removed with Grunt task
+@import 'fonts.css';
+
+$bg-colour: #e6e6e6;
+$content-area: #ffffff;
+$content-bg: #fcfcfc;
+$disabled-state: #ebebeb;
+$proceed-step: #71beba;
+$border-colour: #ebebeb;
+$txt-colour: #414248;
+$lite-txt: #999999;
+$button-txt: #ffffff;
+$active-state: #78b1cc;
+$inactive-state: #b5d2e1;
+$disabled-border: #e3e3e4;
+
+@import 'reset.css', 'mixins.scss';
+
+@import 'base.scss', 'progress.scss', 'summary.scss', 'step1.scss';

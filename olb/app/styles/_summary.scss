@@ -1,0 +1,50 @@
+#summary{
+	width: 237px;
+	min-height: 415px;
+	float: left;
+	overflow: visible;
+	margin: -25px 0 0;	
+	background: {
+		image: url('../images/summary-bg.jpg');
+		repeat: no-repeat;
+		position: 0 0;
+		color: $content-area;
+	}
+	&.empty{
+		.summary-pod .add-some, .add-some{
+			display: block;
+		}
+	}
+
+	h2{
+		text-transform: none;
+		width: 115px;
+		margin: 25px 0 0;
+		padding: 0 10px;
+	}
+	.sub-title{
+		color: $active-state;
+		text-transform: capitalize;
+		padding: 0 10px;		
+	}
+
+	.summary-pod{
+		padding: 20px 10px;
+		border: {
+			width: 1px 1px 0;
+			style: solid;
+			color: $border-colour;
+		}
+		.add-some{
+			display: none;
+		}	
+		.sub-title{
+			color: $txt-colour;
+			margin: 0;
+			padding: 0;			
+		}
+		&> h4{
+			margin: 0 0 12px;
+		}
+	}
+}

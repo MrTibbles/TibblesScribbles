@@ -1,7 +1,7 @@
 define(['jquery', 'backbone', 'models/video-model'], function($, Backbone, vid) {
   var vids = Backbone.Collection.extend({
     model: vid,
-    url: 'http://127.0.0.1/services/gallery-video-service.jsonp?range_code=',
+    url: 'http://toyota.prod/services/gallery-video-service.jsonp?range_code=',
     parse: function(response) {
       var vid_arr = [];
       $.each(response, function(idx, ele) {
