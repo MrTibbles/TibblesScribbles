@@ -20,13 +20,8 @@
 				}
 
 				&:before{
-					display: block;
-					width: 10px;
-					height: 10px;
+					@include empty_circle(10px, 10px, 1px, $inactive-state);
 					margin: 0 auto 20px;
-					content: '';
-					@include add_prefix(border-radius, 50%);
-					border: 1px solid	$inactive-state;
 					position: relative;
 					top: 5px;
 					z-index: 20;
@@ -53,7 +48,7 @@
 					margin: 0 110px 0 0;
 				}
 				&.fourth{
-					margin: 0 130px 0 0;	 				
+					margin: 0 138px 0 0;	 				
 				}
 				&.fifth{
 					&:after{

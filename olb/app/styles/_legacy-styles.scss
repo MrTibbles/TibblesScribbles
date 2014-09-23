@@ -1,0 +1,10 @@
+body.msie{
+	&.v8{
+		#progess .progess-bar{
+			li.active:before{
+				background: url('../images/ie-sprite.png') no-repeat 0 0;
+				border: none;
+			}
+		}
+	}
+}

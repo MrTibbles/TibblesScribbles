@@ -52,35 +52,96 @@
               <input id="reg-vin" class="wide-input" type="text" name="reg-vin" value="" />
               <button id="find-car">find my car</button>
             </div>
-            <div id="booking" class="pod">
+            <div id="booking-choices" class="pod">
               <h3>booking options</h3>
               <p class="lite info">By providing us with your registration and approximate mileage, we can ensure that you get the right service for your vehicle. Browse the booking options available and click on the relevant section.</p>
               <!-- Service types -->
-              <div class="service-parent selected" data-service="car-servicing">
-                <h3>Car servicing</h3>  
-                <div class="service-inner expand">
-                  <p class="sub-title">You must search for Your Car above before we can find the right service for you.</p>
-                  <p class="lite sub-title">Mileage*</p>
-                  <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
-                  <button id="find-service" class="disabled">find service</button>
-                </div>
-              </div>
-              <div class="service-parent" data-service="car-servicing">
-                <h3>Hybrid Health Check</h3>
-              </div>
-              <div class="service-parent" data-service="car-servicing">
-                <h3>Repairs</h3>
-              </div>
-              <div class="service-parent" data-service="car-servicing">
-                <h3>General Diagnosis</h3>
-              </div>
-              <div class="service-parent" data-service="car-servicing">
-                <h3>MOT</h3>
-              </div>
-              <div class="service-parent" data-service="car-servicing">
-                <h3>Visual Safety Report</h3>
-              </div>
-
+              <ul>
+                <li class="service-parent icon-checkmark selected" data-service="car-servicing">
+                  <h3>Car servicing</h3>  
+                  <div class="clear"></div>
+                  <div class="service-inner expand">
+                    <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
+                    <p class="lite sub-title">Mileage*</p>
+                    <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
+                    <button id="find-service" class="disabled">find service</button>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                  <h3>Hybrid Health Check</h3>
+                  <h3 class="price">From FREE</h3>
+                  <div class="clear"></div>
+                  <div class="service-inner">
+                    <p class="sub-title">Protect the heart of your hybrid with an annual Health Check. Safeguard your investment by catching any issues early, extend the warranty on your hybrid battery, and ensure optimal performance, all for just &pound;39, or FREE when booked as part of a service.</p>
+                  </div>
+                </li>
+                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                  <h3>Repairs</h3>
+                  <div class="clear"></div>
+                  <div class="service-inner">
+                    <ul class="repair-choices">
+                      <li>
+                        <h4 class="sub-title" data-repair="">Front Brake Pads</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Battery (Petrol)</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Rear Brake Pads</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Battery (Diesel)</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Front Pads &amp; Discs</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Front whiperBlades</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Rear pads &amp; discs</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <li>
+                        <h4 class="sub-title" data-repair="">Exhaust (rear box)</h4>
+                        <h4 class="price">&pound;XX</h4>
+                      </li>
+                      <div class="clear"></div>
+                    </ul>                    
+                    <p class="sub-title">All prices are inclusive so there are no hidden extras or nasty surprises on your bill. And we only ever use Toyota genuine parts that come with a minimum 1-year guarantee.</p> 
+                  </div>
+                </li>
+                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                  <h3>General Diagnosis</h3>
+                  <h3 class="price">FREE</h3>
+                  <div class="clear"></div>
+                  <div class="service-inner">
+                    <p class="sub-title">If your car is giving you signals it might have something wrong with it but you don’t know what, then  book in for a general diagnosis appointment.</p>
+                  </div>
+                </li>
+                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                  <h3>MOT</h3>
+                  <div class="clear"></div>
+                  <div class="service-inner">
+                    <p class="sub-title">MOTs are compulsory and have to be done each year, so make it as quick and efficient as possible. Your local Toyota dealer can arrange your MOT with a Toyota approved expert who authorised to carry out any necessary repair work.</p>
+                  </div>
+                </li>
+                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                  <h3>Visual Safety Report</h3>
+                  <h3 class="price">FREE</h3>
+                  <div class="clear"></div>
+                  <div class="service-inner">
+                    <p class="sub-title">The only thing worse than failing your MOT, is failing on something that could have been spotted by a Toyota approved expert. Our free 37 point visual health check identifies issues that need fixing urgently.</p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </section>
 
@@ -97,7 +158,7 @@
             <div id="service-selections" class="summary-pod">
               <h4 class="sub-title">your booking selections</h4>
               <p class="add-some">Please add at least one booking option.</p>
-              <button class="disabled proceed">continue booking</button>
+              <button id="continue" class="disabled proceed">continue booking</button>
             </div>
           </section>
           <div class="clear"></div>

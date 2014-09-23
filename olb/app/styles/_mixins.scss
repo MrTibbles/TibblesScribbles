@@ -7,11 +7,13 @@
   background: -ms-linear-gradient(top, $gradient-light 0%, $gradient-dark 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$gradient-light}', endColorstr='#{$gradient-dark}');
 }
+
 @mixin border-radius($radius){
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   border-radius: $radius;
 }
+
 @mixin add_prefix($property, $value, $prefixes: webkit moz ms o spec){
   @each $p in $prefixes {
     @if $p == spec {
@@ -20,4 +22,13 @@
       -#{$p}-#{$property}: $value;
     }
   }
+}
+
+@mixin empty_circle($width, $height, $border-width, $colour){
+  display: block;
+  width: $width;
+  height: $height;
+  content: '';
+  border: $border-width solid $colour;
+  @include add_prefix(border-radius, 50%);
 }

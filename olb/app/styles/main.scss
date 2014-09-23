@@ -21,6 +21,6 @@ $active-state: #78b1cc;
 $inactive-state: #b5d2e1;
 $disabled-border: #e3e3e4;
 
-@import 'reset.css', 'mixins.scss';
+@import 'reset.css', 'mixins.scss', 'icons.css';
 
-@import 'base.scss', 'progress.scss', 'summary.scss', 'step1.scss';
+@import 'base.scss', 'main-content.scss', 'progress.scss', 'summary.scss', 'step1.scss', 'legacy-styles.scss';

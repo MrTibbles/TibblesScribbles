@@ -6,6 +6,7 @@
 */
 @import url(fonts.css);
 @import url(reset.css);
+@import url(icons.css);
 .pod {
   float: left; }
 
@@ -22,7 +23,7 @@
 .content-area {
   width: 880px;
   margin: 0 auto;
-  padding: 35px 30px;
+  padding: 35px 30px 0;
   background-color: #ffffff; }
   .content-area h2, .content-area h3, .content-area h4, .content-area p, .content-area a, .content-area li, .content-area span {
     color: #414248;
@@ -49,8 +50,10 @@
     .content-area p.lite {
       color: #999999; }
     .content-area p.sub-title {
-      font-family: 'toyotatext_bd';
+      margin: 0 0 6px;
       font-size: 14px; }
+      .content-area p.sub-title.heavy {
+        font-family: 'toyotatext_bd'; }
 
 #olb-content {
   background-color: #fcfcfc;
@@ -78,7 +81,8 @@ button {
   font-family: 'toyotadisplay_bd';
   font-size: 14px; }
   button.disabled {
-    background-color: #ebebeb; }
+    background-color: #ebebeb;
+    cursor: auto; }
   button.proceed {
     text-align: left; }
     button.proceed:after {
@@ -89,6 +93,15 @@ button {
       position: absolute;
       right: 10px;
       top: 10px; }
+
+#olb-content {
+  background-color: #fcfcfc;
+  min-height: 200px;
+  padding-top: 0; }
+  #olb-content #olb-steps {
+    width: 623px;
+    float: left;
+    margin: 0 20px 0 0; }
 
 #progess {
   border-style: solid;
@@ -109,11 +122,11 @@ button {
         display: block;
         width: 10px;
         height: 10px;
-        margin: 0 auto 20px;
         content: '';
+        border: 1px solid #b5d2e1;
         -o-border-radius: 50%;
         border-radius: 50%;
-        border: 1px solid #b5d2e1;
+        margin: 0 auto 20px;
         position: relative;
         top: 5px;
         z-index: 20;
@@ -135,7 +148,7 @@ button {
       #progess .progess-bar li.third {
         margin: 0 110px 0 0; }
       #progess .progess-bar li.fourth {
-        margin: 0 130px 0 0; }
+        margin: 0 138px 0 0; }
       #progess .progess-bar li.fifth:after {
         display: none; }
       #progess .progess-bar li.active {
@@ -157,21 +170,31 @@ button {
           background: #71beba; }
 
 #summary {
-  width: 237px;
+  width: 235px;
   min-height: 415px;
   float: left;
   overflow: visible;
-  margin: -25px 0 0;
-  background-image: url("../images/summary-bg.jpg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-color: #ffffff; }
+  margin: 25px 0 0;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  position: relative; }
+  #summary:before {
+    display: block;
+    width: 96px;
+    height: 110px;
+    content: '';
+    position: absolute;
+    right: 2px;
+    top: -15px;
+    background-image: url("../images/summary-bg.png");
+    background-repeat: no-repeat;
+    background-position: 0 0; }
   #summary.empty .summary-pod .add-some, #summary.empty .add-some {
     display: block; }
   #summary h2 {
     text-transform: none;
     width: 115px;
-    margin: 25px 0 0;
+    margin: 12px 0 0;
     padding: 0 10px; }
   #summary .sub-title {
     color: #78b1cc;
@@ -179,7 +202,7 @@ button {
     padding: 0 10px; }
   #summary .summary-pod {
     padding: 20px 10px;
-    border-width: 1px 1px 0;
+    border-width: 1px 0 0;
     border-style: solid;
     border-color: #ebebeb; }
     #summary .summary-pod .add-some {
@@ -190,47 +213,112 @@ button {
       padding: 0; }
     #summary .summary-pod > h4 {
       margin: 0 0 12px; }
+    #summary .summary-pod #continue {
+      margin: 20px 0 0; }
 
-#olb-steps .wide-input {
-  width: 458px;
-  height: 18px;
-  float: left;
-  margin: 6px 0;
-  padding: 10px 15px;
-  background-color: #ffffff;
-  border-width: 1px 0 1px 1px;
-  border-style: solid;
-  border-color: #ebebeb; }
-#olb-steps button {
-  margin: 6px 0;
-  width: 134px; }
-#olb-steps #booking {
-  margin: 40px 0 0; }
-  #olb-steps #booking .lite {
-    padding: 0 95px 0 0;
-    margin: 0 0 25px; }
-  #olb-steps #booking .service-parent {
-    padding: 15px 20px;
-    height: 22px;
-    margin: 0 0 10px;
-    border: 1px solid #ebebeb;
-    position: relative; }
-    #olb-steps #booking .service-parent:before {
-      display: block;
-      width: 25px;
-      height: 25px;
-      content: '';
-      border: 2px solid #e3e3e4;
-      position: absolute;
-      left: 15px;
-      top: 12px;
-      -o-border-radius: 50%;
-      border-radius: 50%; }
-    #olb-steps #booking .service-parent.selected h3 {
-      color: #78b1cc; }
-    #olb-steps #booking .service-parent h3 {
-      font-size: 16px;
-      margin: 0 0 0 35px;
-      color: #414248; }
-    #olb-steps #booking .service-parent .service-inner {
-      display: none; }
+#olb-steps {
+  padding-top: 35px; }
+  #olb-steps .wide-input {
+    width: 458px;
+    height: 18px;
+    float: left;
+    margin: 6px 0;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #ebebeb; }
+  #olb-steps button {
+    margin: 6px 0;
+    width: 134px; }
+  #olb-steps #booking-choices {
+    margin: 40px 0 0; }
+    #olb-steps #booking-choices .lite {
+      padding: 0 95px 0 0; }
+    #olb-steps #booking-choices ul {
+      margin: 25px 0; }
+      #olb-steps #booking-choices ul .service-parent {
+        padding: 15px 20px;
+        min-height: 22px;
+        margin: 0 0 10px;
+        border: 1px solid #ebebeb;
+        position: relative;
+        line-height: auto; }
+        #olb-steps #booking-choices ul .service-parent:before, #olb-steps #booking-choices ul .service-parent:after {
+          position: absolute;
+          color: #e3e3e4;
+          font-size: 16px;
+          font-family: 'icomoon'; }
+        #olb-steps #booking-choices ul .service-parent:before {
+          left: 21px;
+          top: 16px;
+          z-index: 20; }
+        #olb-steps #booking-choices ul .service-parent:after {
+          display: block;
+          width: 25px;
+          height: 25px;
+          content: '';
+          border: 2px solid #e3e3e4;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          left: 15px;
+          top: 12px;
+          z-index: 10; }
+        #olb-steps #booking-choices ul .service-parent .service-inner {
+          display: none;
+          padding: 20px 0 0; }
+          #olb-steps #booking-choices ul .service-parent .service-inner .wide-input {
+            width: 415px; }
+        #olb-steps #booking-choices ul .service-parent h3 {
+          font-size: 16px;
+          margin: 0 0 0 35px;
+          color: #414248;
+          float: left; }
+          #olb-steps #booking-choices ul .service-parent h3.price {
+            color: #78b1cc;
+            float: right;
+            margin: 0; }
+        #olb-steps #booking-choices ul .service-parent.selected h3 {
+          color: #78b1cc; }
+        #olb-steps #booking-choices ul .service-parent.selected:before {
+          color: #ffffff; }
+        #olb-steps #booking-choices ul .service-parent.selected:after {
+          border-color: #78b1cc;
+          background-color: #78b1cc; }
+        #olb-steps #booking-choices ul .service-parent.selected .service-inner {
+          display: block; }
+        #olb-steps #booking-choices ul .service-parent .repair-choices {
+          margin: 5px 0 15px; }
+          #olb-steps #booking-choices ul .service-parent .repair-choices li {
+            width: 280px;
+            float: left;
+            position: relative;
+            margin: 0 10px 5px 0; }
+            #olb-steps #booking-choices ul .service-parent .repair-choices li h4 {
+              margin: 4px 0 0;
+              float: left; }
+              #olb-steps #booking-choices ul .service-parent .repair-choices li h4.price {
+                float: right;
+                margin-right: 35px; }
+            #olb-steps #booking-choices ul .service-parent .repair-choices li:before {
+              display: block;
+              content: '+';
+              color: #e3e3e4;
+              font-size: 24px;
+              position: absolute;
+              right: 8px;
+              top: 2px; }
+            #olb-steps #booking-choices ul .service-parent .repair-choices li:after {
+              display: block;
+              width: 25px;
+              height: 25px;
+              content: '';
+              border: 2px solid #e3e3e4;
+              -o-border-radius: 50%;
+              border-radius: 50%;
+              position: absolute;
+              right: 0; }
+
+body.msie.v8 #progess .progess-bar li.active:before {
+  background: url("../images/ie-sprite.png") no-repeat 0 0;
+  border: none; }

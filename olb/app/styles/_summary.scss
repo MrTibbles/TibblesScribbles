@@ -1,15 +1,28 @@
 #summary{
-	width: 237px;
+	width: 235px;
 	min-height: 415px;
 	float: left;
 	overflow: visible;
-	margin: -25px 0 0;	
-	background: {
-		image: url('../images/summary-bg.jpg');
-		repeat: no-repeat;
-		position: 0 0;
-		color: $content-area;
+	margin: 25px 0 0;
+	background-color: $content-area;
+	border: 1px solid $border-colour;
+	position: relative;
+
+	&:before{
+		display: block;
+		width: 96px;
+		height: 110px;
+		content: '';
+		position: absolute;
+		right: 2px;
+		top: -15px;
+		background: {
+			image: url('../images/summary-bg.png');
+			repeat: no-repeat;
+			position: 0 0;
+		}
 	}
+
 	&.empty{
 		.summary-pod .add-some, .add-some{
 			display: block;
@@ -19,7 +32,7 @@
 	h2{
 		text-transform: none;
 		width: 115px;
-		margin: 25px 0 0;
+		margin: 12px 0 0;
 		padding: 0 10px;
 	}
 	.sub-title{
@@ -31,7 +44,7 @@
 	.summary-pod{
 		padding: 20px 10px;
 		border: {
-			width: 1px 1px 0;
+			width: 1px 0 0;
 			style: solid;
 			color: $border-colour;
 		}
@@ -45,6 +58,9 @@
 		}
 		&> h4{
 			margin: 0 0 12px;
+		}
+		#continue{
+			margin: 20px 0 0;
 		}
 	}
 }
