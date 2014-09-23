@@ -1,4 +1,4 @@
-define(['jquery', 'backbone',], function($, Backbone) {
+define(['jquery', 'backbone'], function($, Backbone) {
   var vehicle = Backbone.Model.extend({
     url: 'https://rsc.toyota.co.uk/recall_lookup_fps.php',
     parse: function(response) {

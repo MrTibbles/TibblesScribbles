@@ -1,12 +1,10 @@
 {
-  "name": "olb",
+  "name": "onlinebooking",
   "private": true,
   "dependencies": {
     "jquery": "~1.11.1",
-    "modernizr": "~2.8.2"
-  },
-  "devDependencies": {
-    "underscore-amd": "~1.1.7",
-    "backbone-amd": "~1.1.0"    
+    "modernizr": "~2.8.2",
+    "underscore-amd": "1.5.2",
+    "backbone-amd": "~1.1.0"
   }
 }

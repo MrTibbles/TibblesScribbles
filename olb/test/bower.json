@@ -1,5 +1,5 @@
 {
-  "name": "olb",
+  "name": "onlinebooking",
   "private": true,
   "dependencies": {
     "chai": "~1.8.0",
