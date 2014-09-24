@@ -57,7 +57,7 @@
               <p class="lite info">By providing us with your registration and approximate mileage, we can ensure that you get the right service for your vehicle. Browse the booking options available and click on the relevant section.</p>
               <!-- Service types -->
               <ul>
-                <li class="service-parent icon-checkmark selected" data-service="car-servicing">
+                <li class="service-parent icon-checkmark" data-service="car-servicing">
                   <h3>Car servicing</h3>  
                   <div class="clear"></div>
                   <div class="service-inner expand">
@@ -154,6 +154,8 @@
               <h4>your quote</h4>
               <h4 class="sub-title">Your Car</h4>
               <p class="add-some">Please add a car by conducting a registration or VIN search.</p>
+              <div id="your-car"></div>
+              <button id="remove-car">remove</button>
             </div>
             <div id="service-selections" class="summary-pod">
               <h4 class="sub-title">your booking selections</h4>
@@ -166,10 +168,14 @@
       </div>
     </div>
 
+    <!-- Start script templates for OLB -->
+    <script id="your-car-tpl" type="text/template">
+      <p><%= requested %></p>
+      <p><%= model %> <%= engine %></p>
+    </script>
+    <!-- End templates -->
+
     <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>

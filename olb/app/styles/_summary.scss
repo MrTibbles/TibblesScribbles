@@ -29,6 +29,12 @@
 		}
 	}
 
+	&.empty{
+		.summary-pod #remove-car{
+			display: none;
+		}
+	}
+
 	h2{
 		text-transform: none;
 		width: 115px;
@@ -43,6 +49,7 @@
 
 	.summary-pod{
 		padding: 20px 10px;
+		position: relative;
 		border: {
 			width: 1px 0 0;
 			style: solid;
@@ -50,6 +57,24 @@
 		}
 		.add-some{
 			display: none;
+		}
+		#remove-car{
+			display: block;
+			width: auto;
+			height: auto;
+			position: absolute;
+			right: 10px;
+			top: 79px;
+			color: $error-colour;
+			text-transform: capitalize;
+			background: none;
+			padding: 0;
+			text-align: left;
+			margin: 0; 
+			font: { 
+				family: 'toyotatext_rg';
+				size: 12px;
+			}
 		}	
 		.sub-title{
 			color: $txt-colour;

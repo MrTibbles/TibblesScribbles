@@ -191,6 +191,8 @@ button {
     background-position: 0 0; }
   #summary.empty .summary-pod .add-some, #summary.empty .add-some {
     display: block; }
+  #summary.empty .summary-pod #remove-car {
+    display: none; }
   #summary h2 {
     text-transform: none;
     width: 115px;
@@ -202,11 +204,27 @@ button {
     padding: 0 10px; }
   #summary .summary-pod {
     padding: 20px 10px;
+    position: relative;
     border-width: 1px 0 0;
     border-style: solid;
     border-color: #ebebeb; }
     #summary .summary-pod .add-some {
       display: none; }
+    #summary .summary-pod #remove-car {
+      display: block;
+      width: auto;
+      height: auto;
+      position: absolute;
+      right: 10px;
+      top: 79px;
+      color: #cc0033;
+      text-transform: capitalize;
+      background: none;
+      padding: 0;
+      text-align: left;
+      margin: 0;
+      font-family: 'toyotatext_rg';
+      font-size: 12px; }
     #summary .summary-pod .sub-title {
       color: #414248;
       margin: 0;
@@ -225,6 +243,7 @@ button {
     margin: 6px 0;
     padding: 10px 15px;
     background-color: #ffffff;
+    text-transform: uppercase;
     border-width: 1px 0 1px 1px;
     border-style: solid;
     border-color: #ebebeb; }

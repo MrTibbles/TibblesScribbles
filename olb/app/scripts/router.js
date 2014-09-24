@@ -13,9 +13,6 @@ define([
 
   var olbRouter = new AppRouter();
 
-  var BaseView = new Olb();
-  BaseView.render();
-
   olbRouter.on('route:base_route', function() {    
     var BaseView = new Olb();
     BaseView.render();
