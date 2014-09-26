@@ -64,11 +64,15 @@
                     <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
                     <p class="lite sub-title">Mileage*</p>
                     <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
-                    <button id="find-service" class="disabled">find service</button>
+                    <button id="find-service" class="">find service</button>
                     <div class="clear"></div>
+                    <div id="service-type">
+                      <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
+                      <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
+                    </div>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                <li class="service-parent icon-checkmark" data-service="hsd-check">
                   <h3>Hybrid Health Check</h3>
                   <h3 class="price">From FREE</h3>
                   <div class="clear"></div>
@@ -76,7 +80,7 @@
                     <p class="sub-title">Protect the heart of your hybrid with an annual Health Check. Safeguard your investment by catching any issues early, extend the warranty on your hybrid battery, and ensure optimal performance, all for just &pound;39, or FREE when booked as part of a service.</p>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                <li class="service-parent icon-checkmark" data-service="repairs">
                   <h3>Repairs</h3>
                   <div class="clear"></div>
                   <div class="service-inner">
@@ -118,7 +122,7 @@
                     <p class="sub-title">All prices are inclusive so there are no hidden extras or nasty surprises on your bill. And we only ever use Toyota genuine parts that come with a minimum 1-year guarantee.</p> 
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                <li class="service-parent icon-checkmark" data-service="general-diagnostic">
                   <h3>General Diagnosis</h3>
                   <h3 class="price">FREE</h3>
                   <div class="clear"></div>
@@ -126,14 +130,14 @@
                     <p class="sub-title">If your car is giving you signals it might have something wrong with it but you don’t know what, then  book in for a general diagnosis appointment.</p>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                <li class="service-parent icon-checkmark" data-service="mot">
                   <h3>MOT</h3>
                   <div class="clear"></div>
                   <div class="service-inner">
                     <p class="sub-title">MOTs are compulsory and have to be done each year, so make it as quick and efficient as possible. Your local Toyota dealer can arrange your MOT with a Toyota approved expert who authorised to carry out any necessary repair work.</p>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="car-servicing">
+                <li class="service-parent icon-checkmark" data-service="vsr">
                   <h3>Visual Safety Report</h3>
                   <h3 class="price">FREE</h3>
                   <div class="clear"></div>
@@ -172,6 +176,12 @@
     <script id="your-car-tpl" type="text/template">
       <p><%= requested %></p>
       <p><%= model %> <%= engine %></p>
+      <p class="mileage"><%= bookingDetails.get('mileage') %> Miles</p>
+    </script>
+
+    <script id="suggested-service" type="text/template">
+      <h3 class="<%= bookingDetails.get('servicetype') %>"><%= bookingDetails.get('servicetype') %> (<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</h3>
+      <h3 class="service-price">£<%= bookingDetails.get('serviceprice') %></h3>
     </script>
     <!-- End templates -->
 

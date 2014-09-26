@@ -84,6 +84,14 @@
 		&> h4{
 			margin: 0 0 12px;
 		}
+		p{
+			&.mileage{
+				display: none;
+				&.available{
+					display: block;
+				}
+			}
+		}
 		#continue{
 			margin: 20px 0 0;
 		}

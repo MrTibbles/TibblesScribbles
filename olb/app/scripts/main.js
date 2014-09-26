@@ -4,10 +4,11 @@ require.config({
 		'jquery': '../bower_components/jquery/dist/jquery.min',
 		'underscore': '../bower_components/underscore-amd/underscore-min',
 		'backbone': '../bower_components/backbone-amd/backbone-min',
+		'backboneRelational': '../bower_components/backbone-amd/backbone-relational',
 		'loader' : '../scripts/libs/spin.min'
 	}
 });
-require(['jquery', 'underscore', 'backbone', 'router'], function($,_,Backbone){
+require(['jquery', 'underscore', 'backbone', 'backboneRelational', 'router'], function($,_,Backbone, bbr){
 	/*
 	*
 	* Toyota Online Booking Application
