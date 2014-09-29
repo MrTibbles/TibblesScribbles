@@ -1,4 +1,4 @@
-#olb-steps{
+.olb-steps{
 	padding-top: 35px;
 
 	.wide-input{
@@ -25,7 +25,7 @@
 		margin: 40px 0 0;
 
 		.lite{
-			padding: 0 95px 0 0;
+			// padding: 0 95px 0 0;
 		}
 
 		ul{
@@ -38,10 +38,11 @@
 				border: 1px solid $border-colour;
 				position: relative;
 				line-height: auto;
+				cursor: pointer;
 
 				&:before, &:after{
 					position: absolute;
-					color: $disabled-border;
+					color: $disabled-state;
 					font: {
 						size: 16px;
 						family: 'icomoon';
@@ -55,10 +56,23 @@
 				}
 
 				&:after{
-					@include empty_circle(25px, 25px, 2px, $disabled-border);
+					@include empty_circle(25px, 25px, 2px, $disabled-state);
 					left: 15px;
 					top: 12px;
 					z-index: 10;					
+				}
+
+				&.disabled a, &.inactive a{
+					display: none;
+				}
+
+				.menu-handle{
+					display: block;
+					width: 100%;
+					height: 54px;
+					position: absolute;
+					top: 0;
+					left: 0;
 				}
 
 				.service-inner{
@@ -99,7 +113,14 @@
 						display: block;						
 					}
 				}
-				.repair-choices{
+				&.disabled{
+					cursor: auto;
+
+					h3{					
+						color: $disabled-state;
+					}
+				}
+				#repair-choices{
 					margin: 5px 0 15px;
 
 					li{
@@ -121,16 +142,27 @@
 						&:before{
 							display: block;
 							content: '+';
-							color: $disabled-border;
+							color: $disabled-state;
 							font-size: 24px;
 							position: absolute;
 							right: 8px;
 							top: 2px;
 						}
 						&:after{
-							@include empty_circle(25px, 25px, 2px, $disabled-border);
+							@include empty_circle(25px, 25px, 2px, $disabled-state);
 							position: absolute;
 							right: 0;
+						}
+						&.visual-safety-check{
+							display: none;
+						}
+						&.repair-selected{
+							&:before{
+								color: $active-state;
+							}
+							&:after{
+								border-color: $active-state;;
+							}
 						}
 					}	
 				}	
@@ -152,10 +184,11 @@
 								text-transform: none;	
 								padding: 5px 0 0 40px;
 								position: relative;
+								cursor: pointer;
 
 								&:before, &:after{
 									position: absolute;
-									color: $disabled-border;
+									color: $disabled-state;
 									font: {
 										size: 16px;
 										family: 'icomoon';
@@ -170,8 +203,50 @@
 								&:after{
 									left: 0;
 									top: 3px;
-									@include empty_circle(25px, 25px, 2px, $disabled-border);
+									@include empty_circle(25px, 25px, 2px, $disabled-state);
 								}
+
+								&.active{
+									&:before, &:after{
+										color: $active-state;
+										border-color: $active-state;
+									}
+								}
+							}
+						}
+						#available-service{
+							margin: 20px 0 0;
+							padding: 8px 0 0;
+
+							h3{
+								color: $full;
+
+								&.service-badge{
+									float: left;
+									padding: 4px 0 5px 40px;
+									background: url('../images/service-badge-sprite.png') no-repeat 0 0;									
+
+									span{
+										color: $full;
+										font: {
+											family: 'toyotadisplay_rg';
+											size: 13px;
+										}
+									}
+								}
+								&.service-price{
+									float: right;
+									padding: 5px 0 0;									
+								}
+							}
+						}
+						#maintenance-options{
+							padding: 15px 0;
+							border-top: 1px solid $service-divider;
+
+							li{
+								border-bottom: 1px solid $service-divider;
+								padding: 15px 0;
 							}
 						}
 					}

@@ -1,15 +1,15 @@
-define(['backbone', 'models/vehicle'], function(Backbone, vehicle) {
+define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, vehicle) {
   var bookingSummary = Backbone.View.extend({
-    el: $('#booking-choices'),
+    el: $('#service-type'),
     template: _.template(
     	$('#suggested-service').html()
   	),
-    initialize: function() {
-    	this.model.on('change', this.render, this);  	
-    },
+    initialize: function() {},
     render: function(){
-    	window.console && console.info(this.model)
-    	this.$el.find('#service-type').addClass('available').append(this.template(this.model.toJSON()));
+    	// register.loader.hideLoader();
+    	$('.service-parent').removeClass('inactive');
+
+    	this.$el.addClass('available').append(this.template(this.model.toJSON()));
     }
   });
   return bookingSummary;

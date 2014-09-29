@@ -45,19 +45,22 @@
           <div class="clear"></div>
         </section>
         <div id="olb-content" class="content-area">
-          <section id="olb-steps">
+          <section class="olb-steps step-one">
             <div id="your-car" class="pod">
               <h3>your car</h3>
               <p class="lite sub-title">Registration or VIN</p>
               <input id="reg-vin" class="wide-input" type="text" name="reg-vin" value="" />
               <button id="find-car">find my car</button>
             </div>
+
             <div id="booking-choices" class="pod">
               <h3>booking options</h3>
               <p class="lite info">By providing us with your registration and approximate mileage, we can ensure that you get the right service for your vehicle. Browse the booking options available and click on the relevant section.</p>
               <!-- Service types -->
               <ul>
+                <!-- Car Servicing -->
                 <li class="service-parent icon-checkmark" data-service="car-servicing">
+                  <a href="javascript:void(0)" class="menu-handle"></a>
                   <h3>Car servicing</h3>  
                   <div class="clear"></div>
                   <div class="service-inner expand">
@@ -69,10 +72,16 @@
                     <div id="service-type">
                       <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
                       <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
+                      <!-- Suggested service for customer -->
+                      
+                      <!-- Potential additonal service options -->
+                      
                     </div>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="hsd-check">
+                <!-- HSD check -->
+                <li class="service-parent icon-checkmark option-item disabled" data-service="hsd-check">
+                  <a href="javascript:void(0)" class="menu-handle"></a>
                   <h3>Hybrid Health Check</h3>
                   <h3 class="price">From FREE</h3>
                   <div class="clear"></div>
@@ -80,49 +89,21 @@
                     <p class="sub-title">Protect the heart of your hybrid with an annual Health Check. Safeguard your investment by catching any issues early, extend the warranty on your hybrid battery, and ensure optimal performance, all for just &pound;39, or FREE when booked as part of a service.</p>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="repairs">
+                <!-- Fixed Price Repair -->
+                <li class="service-parent icon-checkmark inactive" data-service="repairs">
+                  <a href="javascript:void(0)" class="menu-handle"></a>
                   <h3>Repairs</h3>
                   <div class="clear"></div>
                   <div class="service-inner">
-                    <ul class="repair-choices">
-                      <li>
-                        <h4 class="sub-title" data-repair="">Front Brake Pads</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Battery (Petrol)</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Rear Brake Pads</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Battery (Diesel)</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Front Pads &amp; Discs</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Front whiperBlades</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Rear pads &amp; discs</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
-                      <li>
-                        <h4 class="sub-title" data-repair="">Exhaust (rear box)</h4>
-                        <h4 class="price">&pound;XX</h4>
-                      </li>
+                    <ul id="repair-choices">
                       <div class="clear"></div>
                     </ul>                    
                     <p class="sub-title">All prices are inclusive so there are no hidden extras or nasty surprises on your bill. And we only ever use Toyota genuine parts that come with a minimum 1-year guarantee.</p> 
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="general-diagnostic">
+                <!-- General diagnostic -->
+                <li class="service-parent icon-checkmark option-item inactive" data-service="general-diagnostic">
+                  <a href="javascript:void(0)" class="menu-handle"></a>
                   <h3>General Diagnosis</h3>
                   <h3 class="price">FREE</h3>
                   <div class="clear"></div>
@@ -130,14 +111,18 @@
                     <p class="sub-title">If your car is giving you signals it might have something wrong with it but you don’t know what, then  book in for a general diagnosis appointment.</p>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="mot">
+                <!-- MOT -->
+                <li class="service-parent icon-checkmark option-item inactive" data-service="MOT">
+                  <a href="javascript:void(0)" class="menu-handle"></a>
                   <h3>MOT</h3>
                   <div class="clear"></div>
                   <div class="service-inner">
                     <p class="sub-title">MOTs are compulsory and have to be done each year, so make it as quick and efficient as possible. Your local Toyota dealer can arrange your MOT with a Toyota approved expert who authorised to carry out any necessary repair work.</p>
                   </div>
                 </li>
-                <li class="service-parent icon-checkmark" data-service="vsr">
+                <!-- Visual Safety Report -->
+                <li class="service-parent icon-checkmark option-item inactive" data-service="visual-safety-report">
+                  <a href="javascript:void(0)" class="menu-handle"></a>
                   <h3>Visual Safety Report</h3>
                   <h3 class="price">FREE</h3>
                   <div class="clear"></div>
@@ -155,15 +140,22 @@
             <h2>Toyota for a Reason</h2>
             <h4 class="sub-title">Find out more</h4>
             <div id="your-quote" class="summary-pod">
-              <h4>your quote</h4>
-              <h4 class="sub-title">Your Car</h4>
-              <p class="add-some">Please add a car by conducting a registration or VIN search.</p>
-              <div id="your-car"></div>
-              <button id="remove-car">remove</button>
+              <div class="pod-inner">
+                <h4>your quote</h4>
+                <h4 class="sub-title">Your Car</h4>
+                <p class="add-some">Please add a car by conducting a registration or VIN search.</p>
+                <div id="your-car"></div>
+                <button id="remove-car" class="remove-item">remove</button>
+              </div>
             </div>
             <div id="service-selections" class="summary-pod">
-              <h4 class="sub-title">your booking selections</h4>
-              <p class="add-some">Please add at least one booking option.</p>
+              <div class="pod-inner description">
+                <h4 class="sub-title">your booking selections</h4>
+                <p class="add-some">Please add at least one booking option.</p>
+              </div>
+              <div id="selected-service" class="service-item"></div>
+              <div id="selected-repairs" class="service-item"></div>              
+              <ul id="selected-options"></ul>              
               <button id="continue" class="disabled proceed">continue booking</button>
             </div>
           </section>
@@ -179,9 +171,67 @@
       <p class="mileage"><%= bookingDetails.get('mileage') %> Miles</p>
     </script>
 
+    <script id="selected-servicing-tpl" type="text/template">
+      <h4 class="sub-title item-title">car servicing</h4>
+      <h4 class="sub-title price">£<%= bookingDetails.get('serviceprice') %></h4>
+      <div class="clear"></div>
+      <p><%= bookingDetails.get('servicetype') %> service</p>
+      <p>(<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</p>
+
+      <button class="remove-item">remove</button>
+    </script>
+
+    <script id="selected-repairs-tpl" type="text/template">
+      <h4 class="sub-title">Repairs</h4>
+      <ul>
+        <% selectedRepairs.each(function(ele){ %>          
+          <li class="">
+            <p class="sub-title item-title"><%= ele.get('title') %></p>
+            <p class="sub-title price">£<%= ele.get('price') %></p>
+            <div class="clear"></div>
+          </li>
+        <% }); %>
+      </ul>
+    </script>
+
+    <script id="selected-options-tpl" type="text/template">
+      <li class="service-item selected">
+        <h4 class="sub-title item-title"><%= title %></h4>
+        <h4 class="sub-title price"><%= price %></h4>
+        <div class="clear"></div>
+
+        <button class="remove-item">remove</button>
+      </li>
+    </script>
+
     <script id="suggested-service" type="text/template">
-      <h3 class="<%= bookingDetails.get('servicetype') %>"><%= bookingDetails.get('servicetype') %> (<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</h3>
-      <h3 class="service-price">£<%= bookingDetails.get('serviceprice') %></h3>
+      <div id="available-service">
+        <h3 class="service-badge <%= bookingDetails.get('servicetype') %> left"><%= bookingDetails.get('servicetype') %> <span>(<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</span></h3>
+        <h3 class="service-price">£<%= bookingDetails.get('serviceprice') %></h3>
+        <div class="clear"></div>
+      </div>
+      <div id="maintenance-options">
+        <p class="sub-title">Dependant on your service history, the following maintenance items may be required:</p>
+        <ul>
+          <% _.each(bookingDetails.get('options'), function(ele, idx){ %>
+            <li class="mdata">
+              <p class="sub-title left"><%= ele.description %></p>
+              <p class="sub-title right">£<%= ele.price %></p>
+              <div class="clear"></div>
+            </li>
+          <% }); %>
+        </ul>
+        <p class="lite">We will discuss your individual requirements before any work is completed. If the recommended service does not match your requirements, please contact your local Toyota Dealer.</p>       
+      </div>
+    </script>
+
+    <script id="fixed-repair-list" type="text/template">
+      <% _.each(fixedPrices, function(ele, idx){ %>
+        <li class="repair-item <%= ele.get('cleanRepair') %>" data-repair="<%= ele.get('title') %>">
+          <h4 class="sub-title"><%= ele.get('title') %></h4>
+          <h4 class="price">£<%= ele.get('price') %></h4>
+        </li>
+      <% }); %>
     </script>
     <!-- End templates -->
 

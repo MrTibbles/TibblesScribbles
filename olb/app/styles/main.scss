@@ -14,13 +14,17 @@ $content-bg: #fcfcfc;
 $disabled-state: #ebebeb;
 $proceed-step: #71beba;
 $border-colour: #ebebeb;
+$service-divider: #a0a0a3;
 $txt-colour: #414248;
 $lite-txt: #999999;
 $button-txt: #ffffff;
 $active-state: #78b1cc;
 $inactive-state: #b5d2e1;
-$disabled-border: #e3e3e4;
+$disabled-state: #e3e3e4;
 $error-colour: #cc0033;
+
+//Service types colours
+$full: #ca0034;
 
 @import 'reset.css', 'mixins.scss', 'icons.css';
 

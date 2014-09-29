@@ -10,11 +10,9 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       //create a vehicle instance
       this.vehicle = register.vehicle = new vehicle();      
       this.bookingOptions = new optionsView();
-
-      register.vehicle.on('change:all', this.render, this);
     },
     vehicleLookUp: function(e){
-      // register.loader.showLoader(this.$el[0]);
+      register.loader.showLoader(this.$el[0]);
 
       var _this = this;
       this.vehicle.query = this.$('#reg-vin').val().toUpperCase();
@@ -23,7 +21,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
 
       this.vehicle.fetch({
         success: function() {
-          _this.bookingSummaryView = new summaryView({
+          _this.bookingSummaryView = register.bookingSummaryView = new summaryView({
             model: _this.vehicle
           });
 
@@ -37,6 +35,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
     },
     modelNotFound: function(){
       window.console && console.info('NOT FOUND');
+      register.loader.hideLoader();
     },
     startAgain: function(e){
       this.model.clear();

@@ -4,6 +4,7 @@
 	float: left;
 	overflow: visible;
 	margin: 25px 0 0;
+	padding: 0 0 40px;
 	background-color: $content-area;
 	border: 1px solid $border-colour;
 	position: relative;
@@ -23,8 +24,12 @@
 		}
 	}
 
+	.description{
+		display: none;
+	}
+
 	&.empty{
-		.summary-pod .add-some, .add-some{
+		.summary-pod .add-some, .add-some, .description{
 			display: block;
 		}
 	}
@@ -48,23 +53,21 @@
 	}
 
 	.summary-pod{
-		padding: 20px 10px;
+		padding: 20px 0 10px;
 		position: relative;
-		border: {
-			width: 1px 0 0;
-			style: solid;
-			color: $border-colour;
+		.pod-inner{
+			padding: 0 10px;
 		}
 		.add-some{
 			display: none;
 		}
-		#remove-car{
+		.remove-item{
 			display: block;
 			width: auto;
 			height: auto;
 			position: absolute;
 			right: 10px;
-			top: 79px;
+			top: 40px;
 			color: $error-colour;
 			text-transform: capitalize;
 			background: none;
@@ -76,15 +79,34 @@
 				size: 12px;
 			}
 		}	
+		&#your-quote{
+			border: {
+				width: 1px 0 0;
+				style: solid;
+				color: $border-colour;
+			}
+			.remove-item{
+				top: 89px;
+			}
+		}
 		.sub-title{
 			color: $txt-colour;
 			margin: 0;
 			padding: 0;			
 		}
-		&> h4{
-			margin: 0 0 12px;
+		.pod-inner h4, .pod-inner h4.sub-title{
+			margin: 0 0 12px;			
+		}
+		.item-title{
+			float: left;			
+			margin: 0 0 6px;
+		}
+		.price{
+			float: right;
+			text-transform: uppercase;
 		}
 		p{
+			font-size: 12px;
 			&.mileage{
 				display: none;
 				&.available{
@@ -93,7 +115,18 @@
 			}
 		}
 		#continue{
-			margin: 20px 0 0;
+			margin: 20px 10px 0;
+			width: 215px;
+		}
+		.service-item{			
+			min-height: 70px;
+			padding: 10px;
+			position: relative;
+
+			&.selected{
+				border-top: 1px solid $border-colour;
+			}
 		}
 	}
+
 }
