@@ -16,10 +16,6 @@ module.exports = function(grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
-
-  grunt.loadNpmTasks('grunt-dom-munger');
-
   // Configurable paths
   var config = {
     app: 'app',
@@ -230,25 +226,6 @@ module.exports = function(grunt) {
       }
     },
 
-    requirejs: {
-      dist: {
-        // Options: http://github.com/jrburke/r.js/blob/master/build/example.build.js
-        options: {
-          // dir: "app/",
-          baseUrl: '<%= config.app %>/scripts',
-          optimize: 'none',
-          // paths: {
-          //   'main': '../../.tmp/js/templates'
-          // },
-          preserveLicenseComments: false,
-          useStrict: false,
-          name: 'main',
-          out: '<%= config.dist %>/scripts/amd-olb.js',
-          mainConfigFile: '<%= config.app %>/scripts/main.js'
-        }
-      }
-    },
-
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -311,51 +288,7 @@ module.exports = function(grunt) {
           dest: '<%= config.dist %>'
         }]
       }
-    },    
-
-    replace: {
-      retail: [{
-        file: 'scripts/amd-olb.js',
-        replace: {
-          '../images/': '/sites/all/modules/custom/tgb_osb/images/',
-        }
-      },
-      {
-        file: 'styles/main.css',
-        replace: {
-          '../images/': '/sites/all/modules/custom/tgb_osb/images/'
-        }
-      },
-      {
-        file: 'index.html',
-        replace: {
-          'bower_components/requirejs/require.js': '/sites/all/modules/custom/tgb_osb/js/bower/requirejs/require.js',
-          'scripts/main.js': '/sites/all/modules/custom/tgb_osb/js/amd-olb'
-        }
-      }]
     },
-
-    // replace: {
-    //   tcw: [{
-    //     file: 'scripts/amd-olb.js',
-    //     replace: {
-    //       '../images/': '/sites/all/modules/custom/service_booking/images/'
-    //     }
-    //   },
-    //   {
-    //     file: 'styles/main.css',
-    //     replace: {
-    //       '../images/': '/sites/all/modules/custom/service_booking/images/'
-    //     }
-    //   },
-    //   {
-    //     file: 'index.html',
-    //     replace: {
-    //       'bower_components/requirejs/require.js': '/sites/all/modules/custom/service_booking/js/bower/requirejs/require.js',
-    //       'scripts/main.js': '/sites/all/modules/custom/service_booking/js/amd-olb'
-    //     }
-    //   }]
-    // },
 
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
@@ -370,26 +303,22 @@ module.exports = function(grunt) {
         }
       }
     },
-    uglify: {
-      dist: {
-        files: {
-          '<%= config.dist %>/scripts/amd-olb.js': [
-            '<%= config.dist %>/scripts/amd-olb.js'
-          ]
-        }
-      },
-      requirejs: {
-        files: {
-          '<%= config.dist %>/bower_components/requirejs/require.js': [
-            '<%= config.dist %>/scripts/bower/requirejs/require.js'
-          ]
-        }
-      }
-    },
+    // uglify: {
+    //   dist: {
+    //     files: {
+    //       '<%= config.dist %>/scripts/scripts.js': [
+    //         '<%= config.dist %>/scripts/scripts.js'
+    //       ]
+    //     }
+    //   }
+    // },
+    // concat: {
+    //   dist: {}
+    // },
 
     // Copies remaining files to places other tasks can use
     copy: {
-      retail: {
+      dist: {
         files: [{
           expand: true,
           dot: true,
@@ -397,29 +326,13 @@ module.exports = function(grunt) {
           dest: '<%= config.dist %>',
           src: [
             '*.{ico,png,txt}',
-            '.htaccess',
-            'images/{,*/}*.png',
+            'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/ico/{,*/}*.*',
-            'bower_components/' + (this.includeCompass ? 'sass-' : '') + 'bootstrap/' + (this.includeCompass ? 'fonts/' : 'dist/fonts/') + '*.*'
+            'styles/fonts/{,*/}*.*'
           ]
-        }]
-      },
-      tcw: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= config.app %>',
-          dest: '<%= config.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            '.htaccess',
-            'images/{,*/}*.png',
-            '{,*/}*.html',
-            'styles/fonts/{,*/}*.*',
-            'styles/ico/{,*/}*.*',
-            'bower_components/' + (this.includeCompass ? 'sass-' : '') + 'bootstrap/' + (this.includeCompass ? 'fonts/' : 'dist/fonts/') + '*.*'
-          ]
+        }, {
+          src: 'node_modules/apache-server-configs/dist/.htaccess',
+          dest: '<%= config.dist %>/.htaccess'
         }]
       },
       styles: {
@@ -428,10 +341,6 @@ module.exports = function(grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      },
-      requirejs: {
-        src: '<%= config.app %>/bower_components/requirejs/require.js',
-        dest: '<%= config.dist %>/scripts/bower/requirejs/require.js'
       }
     },
 
@@ -512,32 +421,15 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    // 'replace:devAids',
     'wiredep',
-    // 'useminPrepare',    
-    'requirejs',
+    // 'useminPrepare',
     'concurrent:dist',
-    'autoprefixer',
+    // 'autoprefixer',
     // 'concat',
     'cssmin',
-    'uglify',    
-    'copy:requirejs',
+    // 'uglify',
+    'copy:dist',
     'modernizr',
-  ]);
-
-  grunt.registerTask('build:retail', [
-    'build',
-    'copy:retail',
-    'replace:retail',    
-    // 'rev'
-    // 'usemin'
-    // 'htmlmin'
-  ]);
-
-  grunt.registerTask('build:tcw', [
-    'build',
-    'copy:tcw',
-    'replace:tcw',    
     // 'rev'
     // 'usemin'
     // 'htmlmin'
@@ -548,37 +440,4 @@ module.exports = function(grunt) {
     'test',
     'build'
   ]);
-
-  grunt.registerMultiTask('replace', 'Replaces text in a file', function() {
-    var fs = require('fs'),
-      done = this.async(),
-      count = this.data.length;
-
-    this.data.forEach(function(config) {
-      var filename = 'dist/' + config.file;
-      fs.readFile(filename, function(err, content) {
-        if (err) {
-          grunt.log.error('Cannot open file ' + err.path);
-        }
-        content = content.toString();
-        grunt.log.subhead('Replacing text in file ' + config.file);
-
-        Object.keys(config.replace).forEach(function(search) {
-          var replace = config.replace[search];
-          grunt.log.writeln('Replacing ' + search.cyan + ' -> ' + replace.cyan);
-
-          content = content.replace(new RegExp(search, 'g'), replace);
-        });
-
-        fs.writeFile(filename, content, function() {
-          if (count === 0) {
-            done();
-          }
-        });
-
-        count--;
-      });
-    });
-  });
-
 };

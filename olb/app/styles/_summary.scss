@@ -1,13 +1,13 @@
 #summary{
 	width: 235px;
 	min-height: 415px;
-	float: left;
 	overflow: visible;
 	margin: 25px 0 0;
 	padding: 0 0 40px;
 	background-color: $content-area;
 	border: 1px solid $border-colour;
-	position: relative;
+	position: absolute;
+	right: 30px;
 
 	&:before{
 		display: block;
@@ -115,8 +115,8 @@
 			}
 		}
 		#continue{
-			margin: 20px 10px 0;
 			width: 215px;
+			margin: 20px 10px 0;			
 		}
 		.service-item{			
 			min-height: 70px;

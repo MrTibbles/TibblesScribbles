@@ -1,6 +1,6 @@
 define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
   var serviceDetails = Backbone.Model.extend({
-    url: 'https://www.toyota.co.uk/tgb_osb/service_details.jsonp',
+    url: '//www.toyota.co.uk/tgb_osb/service_details.jsonp',
     relations: [],
     parse: function(response) {
       var data = response[0];

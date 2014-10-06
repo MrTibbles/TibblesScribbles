@@ -1,11 +1,19 @@
 #olb-content{
 	background-color: $content-bg;
-	min-height: 200px;
+	min-height: 930px;
 	padding-top: 0;
+	position: relative;
 
-	.olb-steps{
-		width: 623px;
-		float: left;
-		margin: 0 20px 0 0;
+	#step-slider{
+		.olb-steps{
+			width: 623px;
+			float: left;
+			margin: 0 20px 0 0;
+			display: none;
+
+			&.current-step{
+				display: block;
+			} 
+		}
 	}
 }

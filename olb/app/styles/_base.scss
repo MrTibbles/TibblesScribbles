@@ -22,10 +22,10 @@
   background-color: $bg-colour;
 }
 
-.content-area{
+.olb-content-area{
   width: 880px;
   margin: 0 auto;
-  padding: 35px 30px 0;
+  padding: 35px 30px;
   background-color: $content-area;
 
   h2, h3, h4, p, a, li, span{
@@ -52,6 +52,10 @@
     font-size: 18px;
     margin: 0 0 8px;
     text-transform: capitalize;
+
+    &.sub-title{
+      font-size: 16px;
+    }
   }
 
   h4{
@@ -92,7 +96,7 @@
 }
 
 button{
-  width: 100%;
+  // width: 100%;
   height: 40px;
   float: left;
   padding: 10px 15px;
@@ -111,13 +115,14 @@ button{
   font: {
     family: 'toyotadisplay_bd';
     size: 14px;
-  }
-  &.disabled{
-    background-color: $disabled-state;
-    cursor: auto;
+  }  
+  &.wide{
+    width: 134px;
   }
   &.proceed{
     text-align: left;
+    background-color: $proceed-step;
+    padding: 10px 25px;
 
     &:after{
       display: block;
@@ -126,7 +131,39 @@ button{
       content: '>';
       position: absolute;
       right: 10px;
-      top: 10px;
+      top: 12px;
     }
+  }
+  &.disabled{
+    background-color: $disabled-state;
+    cursor: auto;
+  }
+  &.go-back{
+    width: 105px;
+    padding: 10px 10px;
+    color: $active-state;
+    border: 1px solid $active-state;
+    text-transform: none;
+    background: none;
+
+    &:before{
+      float: left;
+      content: '<';
+    }
+  }
+}
+.wide-input{
+  width: 458px;
+  height: 18px;
+  float: left;
+  margin: 6px 0;
+  padding: 10px 15px;
+  background-color: $content-area;
+  text-transform: uppercase;
+  font-size: 10px;
+  border: {
+    width: 1px 0 1px 1px;
+    style: solid;
+    color: $border-colour;
   }
 }

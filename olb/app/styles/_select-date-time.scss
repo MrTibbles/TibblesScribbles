@@ -1,0 +1,194 @@
+.olb-steps{
+	&.step-four{
+		.date-wrapper{
+			margin: 25px 0;
+			background-color: #ffffff;
+			border: 1px solid $border-colour;
+			padding: 40px;
+			// width: 
+
+			#service-date{
+				width: 275px;
+				float: left;
+				padding: 0 45px 0 0;
+				border: {
+					width: 0 1px 0 0;
+					style: solid;
+					color: $active-state;
+				}
+
+				.ui-datepicker{
+					width: 100%
+				}
+
+				.ui-datepicker-header{
+					position: relative;
+					height: 25px;
+					margin: 10px 0;
+
+					.ui-datepicker-title{						
+						position: absolute;
+						left: 70px;
+						margin: 0;
+
+						span{
+							font-family: 'toyotadisplay_bd';
+							font-size: 18px;
+							color: $txt-colour;
+							text-transform: uppercase;
+						}		
+					}
+
+					a{
+						float: left;						
+						margin: 0 0 0 10px;
+
+						&.ui-datepicker-prev, &.ui-datepicker-next{						
+							width: auto;
+							height: auto;
+							position: static;	
+
+							&:before{								
+								color: $active-state;
+								font:{
+									family: 'toyotadisplay_bd';
+									weight: bold;
+									size: 14px;
+								} 
+							}
+							&.ui-state-disabled:before{
+								color: $disabled-state;
+							}
+							span{
+								display: none;
+							}
+						}
+						&.ui-datepicker-prev:before{
+							content: '<';
+						}
+						&.ui-datepicker-next{
+							float: right;
+							margin: 0 20px 0 0;
+
+							&:before{
+								content: '>';
+							}
+						}
+					}
+				}
+				.ui-datepicker-calendar{
+					thead{
+						padding: 0 0 6px;
+					}
+
+					th, td{
+						width: 30px;
+						text-align: center;
+						padding: 0 10px 15px 0;
+
+						span{
+							color: $txt-colour;
+							font:{
+								family: 'toyotadisplay_bd';
+								size: 14px;
+							} 
+						}					
+					}
+					a{
+						color: $active-state;
+						text-decoration: none;
+						font:{
+							family: 'toyotadisplay_bd';
+							size: 14px;
+						} 
+
+						&:hover, &:visited, &:link{
+							text-decoration: none;
+						}
+						&.ui-state-active{
+							background-color: $active-state;
+							color: #ffffff;
+							display: block;
+							padding: 0;
+							text-align: center;
+						}
+					}
+					.ui-datepicker-unselectable{
+						span, a{
+							color: $disabled-state;
+						}
+					}
+				}
+			}
+			#service-time{
+				float: left;
+				padding: 40px 0 0 50px;
+				height: 280px;
+
+				.selected-date{
+					height: 55px;
+					h2{
+						font-size: 70px;
+						float: left;
+						line-height: 55px;
+					}
+					.date-right{
+						width: 70px;
+						float: left;
+						margin: 0 0 0 10px;
+					
+						p{
+							margin: 0;
+							text-transform: uppercase;
+							line-height: 18px;
+
+							&.sub-title{
+								font-family: 'toyotadisplay_rg';
+								font-weight: 300;
+							}
+							&.selected-month, &.selected-year{
+								font-size: 22px;
+								font-family: 'toyotadisplay_bd';
+							}
+						}
+					}
+				}				
+				.time-choice{
+					width: 80px;
+					height: 70px;
+					padding: 0 10px;
+					margin: 0 5px 0 0;
+					position: relative;
+					float: left;
+					display: block;
+					background-color: $active-state;
+					border: none;
+					color: #ffffff;
+					background: url('../images/select-dropdown-blue.png') no-repeat center 60px $active-state;
+					font: {
+						family: 'toyotadisplay_bd';
+						size: 44px;
+					}
+					@include add_prefix(appearance, none);
+					@include border_radius(0);
+
+					option{
+						text-align: center;
+						color: #ffffff;			
+						font-size: 32px;			
+					}
+				}
+				.time-titles{
+					float: left;
+					width: 80px;
+					margin: 10px 0;
+					text-align: center;
+					text-transform: uppercase;
+				}
+			}
+		}		
+		#step-details{
+			float: right;
+		}
+	}
+}

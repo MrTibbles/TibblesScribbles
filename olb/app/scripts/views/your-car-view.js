@@ -6,10 +6,15 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       'click #remove-car': 'startAgain'
       // 'keyup #reg-vin': 'vehicleLookUp'
     },
-    initialize: function() {
-      //create a vehicle instance
-      this.vehicle = register.vehicle = new vehicle();      
+    initialize: function() {      
       this.bookingOptions = new optionsView();
+
+      this.vehicle = register.vehicle;
+    },
+    render: function(){
+      this.$el.parent('.step-one').addClass('current-step');
+
+      $('#continue').show();
     },
     vehicleLookUp: function(e){
       register.loader.showLoader(this.$el[0]);

@@ -1,0 +1,91 @@
+.olb-steps{
+	&.step-six{		
+		h3{
+			text-transform: uppercase;
+
+			&.left-title{
+				float: left;
+			}
+			&.right-title{
+				float: right;
+			}
+		}
+
+		.title{
+			float: left;
+		}
+		.price{
+			float: right;
+			font-family: 'toyotatext_bd';
+		}
+
+		.summary-pod{
+			border: 1px solid #ebebeb;
+			padding: 20px 15px;
+			margin: 0 0 20px;
+
+			h3{
+				text-transform: capitalize;
+				font-size: 16px;
+			}
+
+			&.left-pod{
+				float: left;
+				width: 270px;
+				margin: 0 15px 0 0;
+			}
+			&.right-pod{
+				float: right;
+				width: 270px;
+			}
+
+			p{
+				width: 100%;
+				font-size: 14px;
+
+				&.date{
+					margin: 0 0 45px;
+					text-transform: capitalize;
+				}
+
+				&.dealership{
+					margin: 20px 0;
+				}
+
+				span{
+					float: right;
+					font-family: 'toyotatext_bd';
+					font-size: 14px;
+					margin: 0 40px 0 0;
+				}
+			}
+
+			.service-choice{
+				margin: 15px 0;
+				padding: 15px 0 25px 100px;
+				background: {
+					image: url('../images/service-badge-sprite-lrg.png');
+					repeat: no-repeat;					
+				}
+
+				&.full{
+					background-position: 0 0;
+				}
+			}
+			ul{
+				margin: 20px 0;
+				li{
+					width: 100%;
+					margin: 0 0 10px;
+
+					p{
+						width: auto;
+					}
+				}
+			}
+		}
+		#step-thanks{
+			float: right;
+		}
+	}
+}

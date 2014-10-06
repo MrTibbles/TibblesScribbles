@@ -1,6 +1,14 @@
 define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/fixed-price-collection'], function($, Backbone, register, bookingModel, fixedPrices) {
   var vehicle = Backbone.Model.extend({
-    url: 'https://rsc.toyota.co.uk/recall_lookup_fps.php',
+    url: '//rsc.toyota.co.uk/recall_lookup_fps.php',
+    defaults:{
+      bookingDetails: new bookingModel(),
+      fixedPrices: new fixedPrices(), 
+      selected: new Backbone.Collection(),
+      selectedOptions: new Backbone.Collection(),
+      selectedRepairs: new Backbone.Collection(),
+      customer: new Backbone.Model(),
+    },
     parse: function(response) {
       if(response.found > 0){
         var vehicleModel = {

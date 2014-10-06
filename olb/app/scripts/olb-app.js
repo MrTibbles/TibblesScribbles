@@ -1,40 +1,108 @@
-define(['jquery', 'backbone', 'register', 'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/loading-animation'], function($, Backbone, register, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, loader) {
-	'use strict';
+define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view'], function($, Backbone, register, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView) {
   var olbApp = Backbone.View.extend({
     el: $('#olb-wrap'),
     events: {
-      'click .menu-handle': 'showServiceDetails'
+      'click .menu-handle': 'showServiceDetails',
+      'click .move-step': 'moveToStep'
     },
     initialize: function() {
       //set up global instances
+      //create loading spinner 
       this.loader = register.loader = new loader();
-    },
-    render: function(){      
-      //set up initial car search
+      //create a vehicle instance
+      this.vehicle = register.vehicle = new vehicle();
+      //create summary view
+      this.bookingSummaryView = register.bookingSummaryView = new summaryView({
+        model: register.vehicle
+      });
+
+      //set up initial car search view
       this.yourCarView = new yourCarView();
-      // this.bookingOptionsView = new bookingOptionsView();
+      //set up find dealer view
+      this.dealerView = new dealerView();
+      //set up dealer & quote view
+      this.dealerQuote = new dealerQuote();
+      //set up select date & time view
+      this.selectTime = new selectTime();
+      //set up customer detials view
+      this.customerDetails = new customerDetails();
+      //set up confirmation view
+      // this.confirmSummary = new confirmSummary();
+      //set up thanks view
+      this.thanksView = new thanksView();
+    },
+    render: function(step){      
+      window.console && console.info(step)
+      switch(step){
+        case 'your-car':
+          this.yourCarView.render();
+          break;
+        case 'your-dealer':
+          this.dealerQuote.render();
+          break;
+        default:
+          this.yourCarView.render();
+          break;
+      }
     },
     showServiceDetails: function(e){
       var $parent = $(e.currentTarget).parent('.service-parent');
-      if($parent.data('service') !== 'car-servicing' && !$parent.hasClass('disabled') && !$parent.hasClass('inactive')){
+      if(!$parent.hasClass('disabled') && !$parent.hasClass('inactive')){
         $parent.toggleClass('selected');
       }
     },
-    addOption: function(e){
-      if(!$(e.currentTarget).hasClass('disabled') && !$(e.currentTarget).hasClass('inactive')){
-        var chosenOption = {
-          title: $(e.currentTarget).data('service'),
-          state: true
-        };
-        
-        // register.summaryView.addItem(chosenOption);
+    moveToStep: function(e){
+      if($(e.currentTarget).hasClass('disabled')){
+        return false;
+      }else{
+        var destination = $(e.currentTarget).data('step');
 
-        // chosenOption && register.vehicle.get('selectedOption').push({
-        //   title: chosenOption,
-        //   state: true
-        // });
+        this.$('.olb-steps').removeClass('current-step');
 
-        window.console && console.info(register.vehicle);
+        this.$('.step-'+destination).addClass('current-step');
+
+        switch(destination){
+          case 'one':
+            window.console && console.info('first step')
+            break;
+          case 'two':
+            this.dealerView.render();
+            break;
+          case 'three':
+            window.console && console.info('third step');
+            break;
+          case 'four':
+            window.console && console.info('fourth step');
+            this.selectTime.render();
+            break;
+          case 'five':
+            window.console && console.info('fifth step');
+            this.customerDetails.render();
+            break;
+          case 'six':
+            window.console && console.info('Sixth step');
+            // this.confirmSummary.render();
+            break;
+          case 'seven':
+            window.console && console.info('Final step, Thanks!')
+            this.thanksView.render();
+            break;
+          default:
+            window.console && console.info('first');
+            break;
+        }
+        // var scrollType = 
+        var scrollTarget = this.$el.offset();
+        $("html,body").animate({
+          scrollTop: scrollTarget.top
+        }, 500);
+      }
+    },
+    keyBoard: function(e){
+      // $('#edit-dealer').on('keydown', function(e) {
+      if(e.keyCode == 13) {
+        e.preventDefault();
+        $('#postcode_search').click();
       }
     }
   })

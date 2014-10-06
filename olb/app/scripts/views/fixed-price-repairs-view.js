@@ -1,6 +1,6 @@
 define(['backbone', 'register'], function(Backbone, register) {
   var fixedRepair = Backbone.View.extend({
-    el: $('#repair-choices'),
+    el: $('#olb-content'),
     events: {
     	'click .repair-item': 'addRepair',
     	'click .repair-selected': 'removeRepair'
@@ -9,10 +9,10 @@ define(['backbone', 'register'], function(Backbone, register) {
     	$('#fixed-repair-list').html()
   	),
     initialize: function() {},
-    render: function(){
+    render: function(parent){
     	var _this = this;
-
-    	this.$el.prepend(this.template(register.vehicle.toJSON()));
+     
+      this.$(parent).find('.repair-choices').prepend(this.template(register.vehicle.toJSON()));
     },
     addItem: function(item){
       register.vehicle.get('selected').add(item);
@@ -26,16 +26,24 @@ define(['backbone', 'register'], function(Backbone, register) {
       register.vehicle.get('selected').each(function(element){
       	window.console && console.info(element.get('title'))
         if(element.get('title') === item){
-          register.vehicle.get('selected').remove(element);
-          return register.vehicle.get('selectedRepairs').remove(element);
+          return register.vehicle.get('selected').remove(element);
+          // return register.vehicle.get('selectedRepairs').remove(element);
         }
       });
+
+      this.filteredRepairs = register.vehicle.get('selectedRepairs').filter(function(repair){
+        return repair.get('title') !== item;
+      });
+      this.selectedRepairs = new Backbone.Collection(this.filteredRepairs);
+      //reset selectRepair collection with users new filtered collection
+      register.vehicle.set('selectedRepairs', this.selectedRepairs);
+
       register.bookingSummaryView.renderRepairs();
     },
     addRepair: function(e){
 			var $this = $(e.currentTarget),
     		selectedRepairs, 
-    		_this = this
+    		_this = this;
 
   		_.each(this.collection, function(ele){
   			if($this.data('repair') === ele.get('title')){
