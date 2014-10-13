@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/fixed-price-collection'], function($, Backbone, register, bookingModel, fixedPrices) {
+define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/fixed-price-collection', 'models/customer-model'], function($, Backbone, register, bookingModel, fixedPrices, customerModel) {
   var vehicle = Backbone.Model.extend({
     url: '//rsc.toyota.co.uk/recall_lookup_fps.php',
     defaults:{
@@ -7,7 +7,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       selected: new Backbone.Collection(),
       selectedOptions: new Backbone.Collection(),
       selectedRepairs: new Backbone.Collection(),
-      customer: new Backbone.Model(),
+      customer: new customerModel(),
     },
     parse: function(response) {
       if(response.found > 0){
@@ -22,11 +22,6 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
           prodDate: response.date,
           age: response.age,
           ageMonth: response.ageM,
-          bookingDetails: new bookingModel(),
-          fixedPrices: new fixedPrices(), 
-          selected: new Backbone.Collection(),
-          selectedOptions: new Backbone.Collection(),
-          selectedRepairs: new Backbone.Collection(),
           servicePlan: false
         };
         return vehicleModel;

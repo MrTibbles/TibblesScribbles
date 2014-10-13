@@ -313,49 +313,49 @@ module.exports = function(grunt) {
       }
     },    
 
-    replace: {
-      retail: [{
-        file: 'scripts/amd-olb.js',
-        replace: {
-          '../images/': '/sites/all/modules/custom/tgb_osb/images/',
-        }
-      },
-      {
-        file: 'styles/main.css',
-        replace: {
-          '../images/': '/sites/all/modules/custom/tgb_osb/images/'
-        }
-      },
-      {
-        file: 'index.html',
-        replace: {
-          'bower_components/requirejs/require.js': '/sites/all/modules/custom/tgb_osb/js/bower/requirejs/require.js',
-          'scripts/main.js': '/sites/all/modules/custom/tgb_osb/js/amd-olb'
-        }
-      }]
-    },
-
     // replace: {
-    //   tcw: [{
+    //   retail: [{
     //     file: 'scripts/amd-olb.js',
     //     replace: {
-    //       '../images/': '/sites/all/modules/custom/service_booking/images/'
+    //       '../images/': '/sites/all/modules/custom/tgb_osb/images/',
     //     }
     //   },
     //   {
     //     file: 'styles/main.css',
     //     replace: {
-    //       '../images/': '/sites/all/modules/custom/service_booking/images/'
+    //       '../images/': '/sites/all/modules/custom/tgb_osb/images/'
     //     }
     //   },
     //   {
     //     file: 'index.html',
     //     replace: {
-    //       'bower_components/requirejs/require.js': '/sites/all/modules/custom/service_booking/js/bower/requirejs/require.js',
-    //       'scripts/main.js': '/sites/all/modules/custom/service_booking/js/amd-olb'
+    //       'bower_components/requirejs/require.js': '/sites/all/modules/custom/tgb_osb/js/bower/requirejs/require.js',
+    //       'scripts/main.js': '/sites/all/modules/custom/tgb_osb/js/amd-olb'
     //     }
     //   }]
     // },
+
+    replace: {
+      tcw: [{
+        file: 'scripts/amd-olb.js',
+        replace: {
+          '../images/': '/sites/all/modules/custom/service_booking/images/'
+        }
+      },
+      {
+        file: 'styles/main.css',
+        replace: {
+          '../images/': '/sites/all/modules/custom/service_booking/images/'
+        }
+      },
+      {
+        file: 'index.html',
+        replace: {
+          'bower_components/requirejs/require.js': '/sites/all/modules/custom/service_booking/js/bower/requirejs/require.js',
+          'scripts/main.js': '/sites/all/modules/custom/service_booking/js/amd-olb'
+        }
+      }]
+    },
 
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not

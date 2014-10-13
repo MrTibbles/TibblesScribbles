@@ -7,10 +7,10 @@ define(['backbone', 'register'], function(Backbone, register) {
     initialize: function() {
       this.renderMapMarker();
     },
-    render: function(){
-    	this.$('#local-dealers').append(this.template(this.model.toJSON()));
+    render: function() {
+      this.$('#local-dealers').append(this.template(this.model.toJSON()));
     },
-    renderMapMarker: function(){
+    renderMapMarker: function() {
       this.marker = new google.maps.Marker({
         position: new google.maps.LatLng(this.model.get('centerMX'), this.model.get('centerMY')),
         map: register.map,
@@ -21,14 +21,14 @@ define(['backbone', 'register'], function(Backbone, register) {
         centerUrl: this.model.get('centerUrl')
       });
       register.map.markers.push(this.marker);
-      
+
       // register.map.bounds = new google.maps.LatLngBounds();
 
       register.map.bounds.extend(this.marker.position);
 
       this.triggerMarker(this.marker);
     },
-    triggerMarker: function(marker){
+    triggerMarker: function(marker) {
       var _this = this;
       google.maps.event.addListener(this.marker, 'click', function() {
 
@@ -41,9 +41,9 @@ define(['backbone', 'register'], function(Backbone, register) {
         dealer_name = _this.marker.title; //$(obj).find('p.title').html();
 
         _this.$('#local-dealers li').removeClass('selected');
-        _this.$('li#'+_this.marker.centerID).addClass('selected');
+        _this.$('li#' + _this.marker.centerID).addClass('selected');
 
-        _this.buildBookingForm();
+        _this.setDealerDestination();
         $('.proceed').removeClass('disabled');
 
         // if(Drupal.analyticsCookies() && typeof _gaq == 'function') {
@@ -51,35 +51,35 @@ define(['backbone', 'register'], function(Backbone, register) {
         // }
       });
     },
-    queryOptionsCollection: function(key, parameter){
+    queryOptionsCollection: function(key, parameter) {
       var result;
-      if(key){
-        register.vehicle.get('selectedOptions').find(function(model){
-          if(model.get(key).toLowerCase() === parameter){
+      if (key) {
+        register.vehicle.get('selectedOptions').find(function(model) {
+          if (model.get(key).toLowerCase() === parameter) {
             result = 'Y';
           }
         });
-      }else{
-        register.vehicle.get('selectedOptions').find(function(model){
-          if(model.get('title').toLowerCase() === parameter){
+      } else {
+        register.vehicle.get('selectedOptions').find(function(model) {
+          if (model.get('title').toLowerCase() === parameter) {
             result = model.get('price');
           }
         });
       }
       return result;
     },
-    getSelectedRepairs: function(){
+    getSelectedRepairs: function() {
       var repairs = [];
-      register.vehicle.get('selectedRepairs').each(function(ele){
+      register.vehicle.get('selectedRepairs').each(function(ele) {
         var repair = {
           Repair: ele.get('title'),
-          RepairCost: ele.get('price') 
+          RepairCost: ele.get('price')
         };
         return repairs.push(repair);
       });
       return repairs;
     },
-    buildBookingForm: function(){
+    setDealerDestination: function() {
       var formData = register.formData = new Backbone.Model({
         years: register.vehicle.get('prodDate'),
         age: register.vehicle.get('age'),
@@ -90,11 +90,12 @@ define(['backbone', 'register'], function(Backbone, register) {
         engine: register.vehicle.get('engine'),
         colour: register.vehicle.get('colour'),
         mileage: register.vehicle.get('approxMiles'),
+        serviceObj: register.vehicle.get('bookingDetails'),
         serviceplan: register.vehicle.get('servicePlan'),
         HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
         HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
         GeneralDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
-        GeneralDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
+        GeneralDiagnosisCost: this.queryOptionsCollection('', 'general diagnosis'),
         VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
         VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
         MOT: this.queryOptionsCollection('title', 'mot'),
@@ -102,25 +103,21 @@ define(['backbone', 'register'], function(Backbone, register) {
         dealerId: this.marker.centerID,
         dealerName: this.marker.title
       });
-      
-      if(!formData.get('HybridHealthCheck')){
-        formData.set('HybridHealthCheck','N');
-      }
-      if(!formData.get('GeneralDiagnosis')){
-        formData.set('GeneralDiagnosis','N');
-      }
-      if(!formData.get('VisualSafetyReport')){
-        formData.set('VisualSafetyReport','N');
-      }
-      if(!formData.get('VisualSafetyReport')){
-        formData.set('VisualSafetyReport','N');
-      }
-      if(!formData.get('MOT')){
-        formData.set('MOT','N');
-      }
-      if(!formData.get('serviceplan')){
-        formData.set('MOT','N');
-      }
+
+      formData.get('HybridHealthCheck') || formData.set('HybridHealthCheck', 'N');
+
+      formData.get('GeneralDiagnosis') || formData.set('GeneralDiagnosis', 'N');
+
+      formData.get('VisualSafetyReport') || formData.set('VisualSafetyReport', 'N');
+
+      formData.get('VisualSafetyReport') || formData.set('VisualSafetyReport', 'N');
+
+      formData.get('MOT') || formData.set('MOT', 'N');
+
+      formData.get('serviceplan') || formData.set('MOT', 'N');
+
+
+      register.vehicle.get('customer').set('dealerId', this.marker.centerID);
 
       //TCW destination
       $('#olb-form').attr('action', this.marker.centerUrl + '/owners/service-booking/view/#/your-dealer');

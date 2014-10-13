@@ -57,11 +57,11 @@ define(['backbone', 'register'], function(Backbone, register) {
 
       register.vehicle.get('customer').set({
         serviceDate: fullDate,
+        serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val(),
         dateDay: fullDate.getDate(),
         weekDay: _this.days[fullDate.getDay()],
         month: _this.months[fullDate.getMonth()],
-        bookingYear: fullDate.getFullYear(),
-        serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val()
+        bookingYear: fullDate.getFullYear()        
       });
 
       this.$el.find('.selected-date').html(this.template(register.vehicle.get('customer').toJSON()));

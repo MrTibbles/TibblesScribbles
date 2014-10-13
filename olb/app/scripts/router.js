@@ -38,6 +38,23 @@ define(['jquery', 'backbone', 'olb-app'], function($, Backbone, Olb) {
         VisualSafetyReport: 'Y',
         VisualSafetyReportCost: 'free',
         MOT: 'N',
+        "serviceObj": {
+          "age": "10",
+          "katashiki": "KSP90",
+          "mileage": "100000",
+          "serviceprice": "195",
+          "servicetype": "Full",
+          "options": [
+            {
+              "description": "Brake Fluid - (change every 2 years)",
+              "price": "39"
+            },
+            {
+              "description": "Coolant",
+              "price": "65"
+            }
+          ]
+        },
         repairs: [{
           "Repair": "Front Brake Pads",
           "RepairCost": "95"

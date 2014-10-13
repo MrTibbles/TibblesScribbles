@@ -11,8 +11,12 @@ define(['backbone', 'register'], function(Backbone, register) {
     initialize: function() {},
     render: function(parent){
     	var _this = this;
-     
+      
+      this.$(parent).find('.repair-choices').empty();
+
       this.$(parent).find('.repair-choices').prepend(this.template(register.vehicle.toJSON()));
+
+      this.$(parent).find('.repair-choices').append('<br class="clear"/>')
     },
     addItem: function(item){
       register.vehicle.get('selected').add(item);

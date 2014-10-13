@@ -122,8 +122,10 @@
 			min-height: 70px;
 			padding: 10px;
 			position: relative;
+			display: none;
 
 			&.selected{
+				display: block;
 				border-top: 1px solid $border-colour;
 			}
 		}

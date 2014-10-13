@@ -3,9 +3,9 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
     el: $('#customer-details'),
     events: {
       'click #find-address': 'findAddress',
-      'click .hear-about': 'hereAbout',
-      'click .opt-out': 'optOut',
-      'click #step-confirm': 'submitData'
+      'click .hear-about': 'hearAbout',
+      'click .opt-out': 'setOptOuts',
+      'click #step-confirm': 'confirmationPage'
     },
     initialize: function() {      
       this.vehicle = register.vehicle;
@@ -13,6 +13,13 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       this.addressFinder = new addressFinder();
 
       this.confirmSummary = new confirmSummary();
+
+      register.vehicle.get('customer').set({
+        futureContactEmail: 1,
+        futureContactSms: 1,
+        futureContactMail: 1,
+        futureContactPhone: 1
+      });
     },
     template: _.template(
       $('#address-details').html()
@@ -102,25 +109,30 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
             required: 'Please enter your postcode. In case we need to get in touch about your booking.'
           }
         }
-      });      
-      return this.buildData();
+      });
     },
     buildData: function(){
       //Set up data to be submitted
       register.vehicle.get('customer').set({
+        vehicleReg: register.vehicle.get('requested'),
         vehicleModel: register.vehicle.get('model'),
+        grade: register.vehicle.get('grade'),
         ident: register.vehicle.get('requested'),
         colour: register.vehicle.get('colour'),
-        engine: register.vehicle.get('colour'),
-        dealerId: '',
-        mileage: register.vehicle.get('approxMiles'),
+        engine: register.vehicle.get('engine'),
+        mileage: register.vehicle.get('bookingDetails').get('mileage'),
         age: register.vehicle.get('age'),
-        serviceType: register.vehicle.get('bookingDetails').get('servicetype'),
+        serviceType: register.vehicle.get('bookingDetails').get('servicetype'), //need to get numerical figure
         servicePrice: register.vehicle.get('bookingDetails').get('serviceprice'),
         servicePlan: register.vehicle.get('servicePlan'),
-        whileYouWait: 'SOME TIME',
-        mot: 'MOT DATA',
-        motCost: 99999,
+        HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
+        HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
+        GeneralDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
+        GeneralDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
+        VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
+        VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
+        mot: this.queryOptionsCollection('title', 'mot'),
+        motCost: window.motPrice || 0,
         title: this.$('#title').val(),
         firstname: this.$('#firstname').val(),
         surname: this.$('#surname').val(),
@@ -131,14 +143,26 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         town: this.$('#town').val(),
         county: this.$('#county').val(),
         postcode: this.$('#postcode').val(),
-        phone: this.$('#phone').val(),
-        futureContactEmail: 0,
-        futureContactSms: 0,
-        futureContactMail: 0,
-        futureContactPhone: 0
+        additionalNotes: $('#add-info').val()
       });
-
-      window.console && console.info(register.vehicle.get('customer'))
+      this.getPhoneType(this.$('#phonetype').val());
+    },
+    queryOptionsCollection: function(key, parameter){
+      var result;
+      if(key){
+        register.vehicle.get('selectedOptions').find(function(model){
+          if(model.get(key).toLowerCase() === parameter){
+            result = 'Y';
+          }
+        });
+      }else{
+        register.vehicle.get('selectedOptions').find(function(model){
+          if(model.get('title').toLowerCase() === parameter){
+            result = model.get('price');
+          }
+        });
+      }
+      return result;
     },
     findAddress: function(){
       var _this = this;
@@ -153,30 +177,28 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         }
       })
     },
-    hereAbout: function(e){
+    hearAbout: function(e){
       var $this = $(e.currentTarget);
 
       $this.siblings('li').removeClass('selected');
       $this.addClass('selected');
 
       if($this.data('hear-about') === 'Other'){
-        this.vehicle.get('customer').set('marketingGroup', 'Other: '+this.$('#other-source').val());  
-      }else{ 
+        this.vehicle.get('customer').set('marketingGroup', 'Other: '+this.$('#other-source').val());
+      }else{
         this.vehicle.get('customer').set('marketingGroup', $this.data('hear-about'));
       }
 
     },
-    optOut: function(e){
-      var $this = $(e.currentTarget);
-      if(!$this.hasClass('selected')){
-        $this.addClass('selected');
-        this.vehicle.get('customer').set($this.data('opt-out'), 1);
-      }else{
-        $this.removeClass('selected');
-        this.vehicle.get('customer').set($this.data('opt-out'), 0);
-      }
+    getPhoneType: function(phoneType){
+      window.console && console.info(phoneType)
+      return register.vehicle.get('customer').set({ 
+        homeTel: phoneType === 'home' ? this.$('#phone').val() : '',
+        workTel: phoneType === 'office' ? this.$('#phone').val() : '',
+        mobileTel: phoneType === 'mobile' ? this.$('#phone').val() : ''
+      });
     },
-    submitData: function(){
+    confirmationPage: function(){
       // if(this.$('#customer-details-form').valid()){
       //   this.buildData();
       // }
@@ -187,6 +209,16 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       // $('.step-six').addClass('current-step');
 
       window.console && console.info(register.vehicle.get('customer').toJSON());
+    },
+    setOptOuts: function(e){
+      var $this = $(e.currentTarget);
+      if(!$this.hasClass('selected')){
+        $this.addClass('selected');
+        return this.vehicle.get('customer').set($this.data('opt-out'), 0);
+      }else{
+        $this.removeClass('selected');
+        return this.vehicle.get('customer').set($this.data('opt-out'), 1);
+      }
     }
   });
   return userDetails;

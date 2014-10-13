@@ -4,9 +4,9 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
     events: {
       'click #find-service': 'serviceLookUp',
       'click .service-plan': 'servicePlanActive',
-      'click .option-item': 'addOption',
-      'click .selected-option': 'removeOption',
-      'click .user-wait': 'setWaiting'
+      'click .option-child': 'addOption',
+      'click .selected-child': 'removeOption',
+      'click .user-wait': 'setWaiting'      
     },
     initialize: function() {
       this.serviceBooking = register.serviceBooking = new serviceBooking();        
@@ -45,7 +45,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         });
         // this.checkHSD();
       }else{
-        window.console && console.error('NOT FOUND TCW OBJECT');
+        window.console && console.error('NOT FOUND osbInitValues OBJECT');
       }
     },
     getFixedPrices: function() {
@@ -67,7 +67,22 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         }
       });
     },
-    getSelectedBookings: function(){     
+    getSelectedBookings: function(){ 
+      var _this = this;
+      this.serviceBooking.query = this.data;
+ 
+      window.osbInitValues.serviceObj && this.serviceBooking.fetch({
+        success: function(){
+          _this.$('li[data-service="car-servicing"]').addClass('selected');
+          _this.suggestedService = new suggestedService({
+            model: register.vehicle
+          });          
+          _this.suggestedService.render();
+
+          register.bookingSummaryView.render();
+        }
+      })
+
       window.osbInitValues.repairs.length && _.each(window.osbInitValues.repairs, function(repairObj, idx){
         this.$('li[data-service="repairs"]').addClass('selected');
 
@@ -81,23 +96,18 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
             return register.bookingSummaryView.renderRepairs();
           }
         }))
-      });
-
-        
+      });        
       // })).pluck("name");
 
-      if(window.osbInitValues.GeneralDiagnosis === 'Y'){
-        this.$('li[data-service="general diagnosis"]').click();
-      }
-      if(window.osbInitValues.HybridHealthCheck === 'Y'){
-        this.$('li[data-service="Hybrid Health Check"]').click();
-      }
-      if(window.osbInitValues.MOT === 'Y'){
-        this.$('li[data-service="MOT"]').click();
-      }
-      if(window.osbInitValues.VisualSafetyReport === 'Y'){
-        this.$('li[data-service="visual safety report"]').click();
-      }      
+      window.osbInitValues.GeneralDiagnosis === 'Y' && this.$('li[data-service="general diagnosis"]').click();
+
+      window.osbInitValues.HybridHealthCheck === 'Y' && this.$('li[data-service="Hybrid Health Check"]').click();
+
+      window.osbInitValues.MOT === 'Y' && this.$('li[data-service="MOT"]').click();
+
+      window.osbInitValues.VisualSafetyReport === 'Y' && this.$('li[data-service="visual safety report"]').click();
+
+      // register.bookingSummaryView.render();
     },
     serviceLookUp: function() {
       register.loader.showLoader(this.$el[0]);
@@ -124,7 +134,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
           _this.suggestedService = new suggestedService({
             model: register.vehicle
           });          
-          // _this.suggestedService.render();
+          _this.suggestedService.render();
           // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
         }
       });
@@ -168,25 +178,29 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       register.bookingSummaryView.renderOptions();
     },
     addOption: function(e) {
-      if (!$(e.currentTarget).hasClass('disabled') && !$(e.currentTarget).hasClass('inactive')) {
+      var $parent = $(e.currentTarget).parent('.service-parent');
+      if (!$parent.hasClass('disabled') && !$parent.hasClass('inactive') && !$parent.hasClass('parent-object')) {
         var chosenOption = {
-          title: $(e.currentTarget).data('service'),
-          price: 'free'
+          title: $parent.data('service'),
+          price: $parent.data('price')
         };
 
         this.addItem(chosenOption);
 
-        $(e.currentTarget).removeClass('option-item').addClass('selected-option');
+        $parent.addClass('selected-option');
+        $(e.currentTarget).removeClass('option-child').addClass('selected-child');
       }
     },
     removeOption: function(e) {
+      var $parent = $(e.currentTarget).parent('.service-parent');
       var chosenOption = {
-        title: $(e.currentTarget).data('service'),
+        title: $parent.data('service'),
         state: true
       };
       this.removeItem(chosenOption);
 
-      $(e.currentTarget).removeClass('selected-option').addClass('option-item');
+      $parent.removeClass('selected-option');
+      $(e.currentTarget).addClass('option-child').removeClass('selected-child')
     },
     setWaiting: function(e){
       var $this = $(e.currentTarget);
@@ -194,7 +208,11 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       $this.addClass('selected');
       this.$('.proceed').removeClass('disabled');
       
-      return register.vehicle.get('customer').set('customer-waiting',$this.data('wait'));
+      return register.vehicle.get('customer').set({ 
+        optionCourtesyCar: $this.data('wait') === 'courtesy' ? 'Y' : 'N',
+        optionPickDrop: $this.data('wait') === 'collect' ? 'Y' : 'N',
+        optionWhileYouWait: $this.data('wait') === 'wait' ? 'Y' : 'N'
+      });
     }
   });
   return bookingOptions;

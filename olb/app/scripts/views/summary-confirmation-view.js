@@ -2,7 +2,7 @@ define(['backbone', 'register'], function(Backbone, register) {
   var confirmation = Backbone.View.extend({
     el: $('#customer-summary'),
     events: {
-      'click #find-car': 'selectDate'
+      'click #step-thanks': 'submitData'
     },
     initialize: function() {      
       this.vehicle = register.vehicle;
@@ -22,6 +22,19 @@ define(['backbone', 'register'], function(Backbone, register) {
 
       window.console && console.info(register.vehicle)
       this.$el.html(this.template(register.vehicle.toJSON()));
+    },
+    submitData: function(){
+      register.vehicle.get('customer').query = register.vehicle.get('customer').toJSON();
+
+      register.vehicle.get('customer').confirmBooking({
+        success: function(){
+          window.console && console.info('Booking confirmed')
+
+        },
+        error: function(){
+          window.console && console.error('Failed to submit booking')
+        }
+      });
     }
   });
   return confirmation;

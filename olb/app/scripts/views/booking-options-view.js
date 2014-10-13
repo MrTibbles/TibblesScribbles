@@ -5,13 +5,12 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       'click #find-service': 'serviceLookUp',
       'click .service-plan': 'servicePlanActive',
       // 'click .car-servicing': addService
-      'click .option-item': 'addOption',
-      'click .selected-option': 'removeOption'
+      'click .option-child': 'addOption',
+      'click .selected-child': 'removeOption'
     },
     initialize: function() {
       this.serviceBooking = register.serviceBooking = new serviceBooking();
 
-      // this.suggestedService.on('render')
       this.selected = new Backbone.Collection();
 
       // this.selected.on('change', register.bookingSummaryView.render, this);
@@ -21,7 +20,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       // this.$el.find('li[data-service="car-servicing"]').addClass('selected')
       this.checkHSD();
 
-      this.getFixedPrices();
+      // this.getFixedPrices();
     },
     serviceLookUp: function() {
       register.loader.showLoader(this.$el[0]);
@@ -106,25 +105,29 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       register.bookingSummaryView.renderOptions();
     },
     addOption: function(e) {
-      if (!$(e.currentTarget).hasClass('disabled') && !$(e.currentTarget).hasClass('inactive')) {
+      var $parent = $(e.currentTarget).parent('.service-parent');
+      if (!$parent.hasClass('disabled') && !$parent.hasClass('inactive') && !$parent.hasClass('parent-object')) {
         var chosenOption = {
-          title: $(e.currentTarget).data('service'),
-          price: $(e.currentTarget).data('price'),
+          title: $parent.data('service'),
+          price: $parent.data('price')
         };
 
         this.addItem(chosenOption);
 
-        $(e.currentTarget).removeClass('option-item').addClass('selected-option');
+        $parent.addClass('selected-option');
+        $(e.currentTarget).removeClass('option-child').addClass('selected-child');
       }
     },
     removeOption: function(e) {
+      var $parent = $(e.currentTarget).parent('.service-parent');
       var chosenOption = {
-        title: $(e.currentTarget).data('service'),
+        title: $parent.data('service'),
         state: true
       };
       this.removeItem(chosenOption);
 
-      $(e.currentTarget).removeClass('selected-option').addClass('option-item');
+      $parent.removeClass('selected-option');
+      $(e.currentTarget).addClass('option-child').removeClass('selected-child')
     }
   });
   return bookingOptions;

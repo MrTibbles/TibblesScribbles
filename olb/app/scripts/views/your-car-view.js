@@ -35,6 +35,9 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
           }else return _this.modelNotFound();
 
           _this.bookingOptions.render();
+
+          //query fixed price service based upon the katashiki code
+          _this.bookingOptions.getFixedPrices();
         }
       });
     },
