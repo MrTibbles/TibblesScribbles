@@ -1,0 +1,38 @@
+.olb-steps{
+	.invalid{
+		border: {
+			width: 1px 0 1px 1px;
+			color: $error-red;
+			style: solid;
+		}
+
+
+		// &::-webkit-input-placeholder {
+		// 	color: $error-red;
+		// }
+
+		// &:-moz-placeholder { /* Firefox 18- */
+		//    color: $error-red;  
+		// }
+
+		// &::-moz-placeholder {  /* Firefox 19+ */
+		//    color: $error-red;  
+		// }
+
+		// &:-ms-input-placeholder {  
+		//    color: $error-red;  
+		// }
+	}
+	.error{
+		color: $error-red;
+		font: {
+			family: 'toyotatext_bd';
+			size: 12px;
+		}
+
+		span{
+			font-size: 11px;
+			color: $lite-txt;
+		}
+	}
+}

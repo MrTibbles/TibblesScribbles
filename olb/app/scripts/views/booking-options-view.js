@@ -23,6 +23,11 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       // this.getFixedPrices();
     },
     serviceLookUp: function() {
+      if(!$('#mileage').val()) {
+        return register.validationView.showError('no-mileage', '#mileage');
+      }else if($('#mileage').val().length >= 6){
+        return register.validationView.showError('high-mileage', '#mileage');
+      }
       register.loader.showLoader(this.$el[0]);
 
       var _this = this;
@@ -44,6 +49,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
           _this.suggestedService = new suggestedService({
             model: register.vehicle
           });          
+          register.validationView.clearError('#mileage');
           _this.suggestedService.render();
           // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
         }

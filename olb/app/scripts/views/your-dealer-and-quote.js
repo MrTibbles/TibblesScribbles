@@ -127,10 +127,6 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
 
       this.serviceBooking.fetch({
         success: function() {
-          // //need to get selected here
-          // register.vehicle.set('selected', _this.selected);
-          // register.vehicle.set('approxMiles', this.$('#mileage').val());
-
           _this.suggestedService = new suggestedService({
             model: register.vehicle
           });          

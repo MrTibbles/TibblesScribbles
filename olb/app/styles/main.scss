@@ -4,10 +4,6 @@
 * global variables and base styles
 *
 */
-
-//Below font import gets removed with Grunt task
-@import 'fonts.css';
-
 $bg-colour: #e6e6e6;
 $content-area: #ffffff;
 $content-bg: #fcfcfc;
@@ -26,6 +22,9 @@ $error-colour: #cc0033;
 //Service types colours
 $full: #ca0034;
 
-@import 'reset.css', 'mixins.scss', 'icons.css';
+//validation colours
+$error-red: #e01e30;
 
-@import 'base.scss', 'main-content.scss', 'progress.scss', 'summary.scss', 'car-details.scss', 'find-dealer.scss', 'dealer-quote.scss', 'select-date-time.scss', 'customer-details.scss', 'booking-summary.scss', 'thanks.scss', 'legacy-styles.scss';
+@import 'mixins.scss', 'icons.css';
+
+@import 'base.scss', 'validation.scss', 'main-content.scss', 'progress.scss', 'summary.scss', 'car-details.scss', 'find-dealer.scss', 'dealer-quote.scss', 'select-date-time.scss', 'customer-details.scss', 'booking-summary.scss', 'thanks.scss', 'legacy-styles.scss';

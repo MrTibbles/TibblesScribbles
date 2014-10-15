@@ -12,17 +12,17 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       this.vehicle = register.vehicle;
     },
     render: function(){
-      this.$el.parent('.step-one').addClass('current-step');
-
+      this.$el.parent('.step-one').addClass('current-step');      
       $('#continue').show();
     },
     vehicleLookUp: function(e){
+      if(!$('#reg-vin').val()) {
+        return register.validationView.showError('empty-reg', '#reg-vin');
+      }
       register.loader.showLoader(this.$el[0]);
 
       var _this = this;
       this.vehicle.query = this.$('#reg-vin').val().toUpperCase();
-
-      if(this.vehicle.query === undefined) return;
 
       this.vehicle.fetch({
         success: function() {
@@ -32,18 +32,15 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
 
           if(_this.vehicle.get('requested')){
             _this.bookingSummaryView.render();
-          }else return _this.modelNotFound();
+          }else return register.validationView.showError('invalid-reg', '#reg-vin');
 
+          register.validationView.clearError('#reg-vin');
           _this.bookingOptions.render();
 
           //query fixed price service based upon the katashiki code
           _this.bookingOptions.getFixedPrices();
         }
       });
-    },
-    modelNotFound: function(){
-      window.console && console.info('NOT FOUND');
-      register.loader.hideLoader();
     },
     startAgain: function(e){
       this.model.clear();

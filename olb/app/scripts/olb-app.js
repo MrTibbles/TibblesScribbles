@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view'], function($, Backbone, register, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView) {
+define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view', 'views/validation-view'], function($, Backbone, register, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView, validationView) {
   var olbApp = Backbone.View.extend({
     el: $('#olb-wrap'),
     events: {
@@ -30,6 +30,9 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       // this.confirmSummary = new confirmSummary();
       //set up thanks view
       this.thanksView = new thanksView();
+
+      //set up validation view
+      this.validationView = register.validationView = new validationView();
     },
     render: function(step){      
       window.console && console.info(step)

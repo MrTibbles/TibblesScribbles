@@ -90,7 +90,7 @@ define(['backbone', 'register'], function(Backbone, register) {
         engine: register.vehicle.get('engine'),
         colour: register.vehicle.get('colour'),
         mileage: register.vehicle.get('approxMiles'),
-        serviceObj: register.vehicle.get('bookingDetails'),
+        serviceObj: register.vehicle.get('bookingDetails').attributes,
         serviceplan: register.vehicle.get('servicePlan'),
         HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
         HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
