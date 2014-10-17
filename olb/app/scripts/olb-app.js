@@ -35,7 +35,6 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       this.validationView = register.validationView = new validationView();
     },
     render: function(step){      
-      window.console && console.info(step)
       switch(step){
         case 'your-car':
           this.yourCarView.render();
@@ -66,32 +65,25 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
 
         switch(destination){
           case 'one':
-            window.console && console.info('first step')
             break;
           case 'two':
             this.dealerView.render();
             break;
           case 'three':
-            window.console && console.info('third step');
             break;
           case 'four':
-            window.console && console.info('fourth step');
             this.selectTime.render();
             break;
           case 'five':
-            window.console && console.info('fifth step');
             this.customerDetails.render();
             break;
           case 'six':
-            window.console && console.info('Sixth step');
             // this.confirmSummary.render();
             break;
           case 'seven':
-            window.console && console.info('Final step, Thanks!')
             this.thanksView.render();
             break;
           default:
-            window.console && console.info('first');
             break;
         }
         // var scrollType = 

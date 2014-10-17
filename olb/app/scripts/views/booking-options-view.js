@@ -20,7 +20,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       // this.$el.find('li[data-service="car-servicing"]').addClass('selected')
       this.checkHSD();
 
-      // this.getFixedPrices();
+      this.preSelectDefaults();
     },
     serviceLookUp: function() {
       if(!$('#mileage').val()) {
@@ -65,8 +65,8 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       this.$el.find('.service-plan').toggleClass('active');
 
       if (this.$el.find('.service-plan').hasClass('active')) {
-        register.vehicle.set('servicePlan', true);
-      } else register.vehicle.set('servicePlan', false);
+        register.vehicle.set('servicePlan', 'Y');
+      } else register.vehicle.set('servicePlan', 'N');
     },
     getFixedPrices: function() {
       var _this = this;
@@ -134,6 +134,9 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
 
       $parent.removeClass('selected-option');
       $(e.currentTarget).addClass('option-child').removeClass('selected-child')
+    },
+    preSelectDefaults: function(){
+      this.$('li[data-service="visual safety report"] a, li[data-service="general diagnosis"] a').click();
     }
   });
   return bookingOptions;

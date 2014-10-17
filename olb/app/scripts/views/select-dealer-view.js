@@ -1,5 +1,4 @@
-define(['backbone', 'register'], function(Backbone, register) {
-  var bookingSummary = Backbone.View.extend({
+define(['backbone', 'register'], function(Backbone, register) {var bookingSummary = Backbone.View.extend({
     el: $('#map-wrapper'),
     template: _.template(
       $('#dealer-tpl').html()
@@ -98,7 +97,7 @@ define(['backbone', 'register'], function(Backbone, register) {
         GeneralDiagnosisCost: this.queryOptionsCollection('', 'general diagnosis'),
         VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
         VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
-        MOT: this.queryOptionsCollection('title', 'mot'),
+        mot: this.queryOptionsCollection('title', 'mot'),
         selectedRepairs: this.getSelectedRepairs(),
         dealerId: this.marker.centerID,
         dealerName: this.marker.title
@@ -112,15 +111,20 @@ define(['backbone', 'register'], function(Backbone, register) {
 
       formData.get('VisualSafetyReport') || formData.set('VisualSafetyReport', 'N');
 
-      formData.get('MOT') || formData.set('MOT', 'N');
+      formData.get('mot') || formData.set('mot', 'N');
 
       formData.get('serviceplan') || formData.set('MOT', 'N');
 
 
       register.vehicle.get('customer').set('dealerId', this.marker.centerID);
 
-      //TCW destination
-      $('#olb-form').attr('action', this.marker.centerUrl + '/owners/service-booking/view/#/your-dealer');
+      if(window.location.hostname === 'localhost'){
+        //local dev
+        $('#olb-form').attr('action', 'http://pinkstones.toyota.co.uk/owners/service-booking/view/#/your-dealer');
+      }else{
+        //TCW destination
+        $('#olb-form').attr('action', this.marker.centerUrl + '/owners/service-booking/view/#/your-dealer');
+      }
 
       return register.formData;
     }

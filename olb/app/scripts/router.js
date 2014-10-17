@@ -19,54 +19,41 @@ define(['jquery', 'backbone', 'olb-app'], function($, Backbone, Olb) {
 
     //create window.osbInitValues for testing purposes
     //real one gets created via php function in /tcw/module/service_booking.inc    
-    if(window.location.hostname === 'localhost'){
-      window.osbInitValues = {
-        ident: 'MM06ZPC',
-        model: 'Yaris NG T2',
-        engine: '1.0 VVT-i',
-        mileage: '123',
-        years: '2006',
-        age: '8',
-        colour: 'Crystal Silver',
-        serviceplan: '1',
-        katashiki: 'KSP90',
-        ageM: '99',
-        HybridHealthCheck: 'N',
-        HybridHealthCheckCost: '',
-        GeneralDiagnosis: 'Y',
-        GeneralDiagnosisCost: 'free',
-        VisualSafetyReport: 'Y',
-        VisualSafetyReportCost: 'free',
-        MOT: 'N',
-        "serviceObj": {
-          "age": "10",
-          "katashiki": "KSP90",
-          "mileage": "100000",
-          "serviceprice": "195",
-          "servicetype": "Full",
-          "options": [
-            {
-              "description": "Brake Fluid - (change every 2 years)",
-              "price": "39"
-            },
-            {
-              "description": "Coolant",
-              "price": "65"
-            }
-          ]
-        },
-        repairs: [{
-          "Repair": "Front Brake Pads",
-          "RepairCost": "95"
-        }, {
-          "Repair": "Battery for Petrol Models",
-          "RepairCost": "75"
-        }, {
-          "Repair": "Rear Brake Pads and Disks",
-          "RepairCost": "210"
-        }]
-      };
-    }
+    if (window.location.hostname === 'localhost') window.osbInitValues = {
+      "years": "2011",
+      "age": "3",
+      "ageM": "37",
+      "katashiki": "ZWE150",
+      "ident": "FY61XWW",
+      "model": "Auris HSD T Spirit",
+      "engine": "1,8 VVT-i Hybrid",
+      "colour": "Pure/Chamonix White",
+      "mileage": "123",
+      "serviceObj": {
+        "age": "3",
+        "katashiki": "ZWE150",
+        "mileage": "30000",
+        "serviceprice": "149",
+        "servicetype": "Intermediate",
+        "serviceId": "43211333",
+        "options": []
+      },
+      "serviceplan": "Y",
+      "HybridHealthCheck": "Y",
+      "HybridHealthCheckCost": "free",
+      "GeneralDiagnosis": "Y",
+      "GeneralDiagnosisCost": "free",
+      "VisualSafetyReport": "N",
+      "mot": "Y",
+      "repairs": [{
+        "Repair": "Front Brake Pads and Disks",
+        "RepairCost": "240"
+      }, {
+        "Repair": "Rear Brake Pads and Disks",
+        "RepairCost": "220"
+      }],
+      "dealerId": "6872"
+    };
 
     BaseView.render('your-dealer');
   });

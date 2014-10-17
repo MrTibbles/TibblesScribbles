@@ -4,14 +4,18 @@
 * global variables and base styles
 *
 */
-@import url(fonts.css);
-@import url(reset.css);
 @import url(icons.css);
 .pod {
   float: left; }
 
 .clear {
   clear: both; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
 
 .wide-wrap {
   min-width: 940px;
@@ -20,40 +24,42 @@
   margin: 0 auto;
   background-color: #e6e6e6; }
 
-.content-area {
+.olb-content-area {
   width: 880px;
   margin: 0 auto;
-  padding: 35px 30px 0;
+  padding: 35px 30px;
   background-color: #ffffff; }
-  .content-area h2, .content-area h3, .content-area h4, .content-area p, .content-area a, .content-area li, .content-area span {
+  .olb-content-area h2, .olb-content-area h3, .olb-content-area h4, .olb-content-area p, .olb-content-area a, .olb-content-area li, .olb-content-area span {
     color: #414248;
     line-height: 22px; }
-  .content-area h2, .content-area h3, .content-area h4 {
+  .olb-content-area h2, .olb-content-area h3, .olb-content-area h4 {
     font-family: 'toyotadisplay_bd';
     text-transform: uppercase; }
-  .content-area p, .content-area a, .content-area li, .content-area span {
+  .olb-content-area p, .olb-content-area a, .olb-content-area li, .olb-content-area span {
     font-family: 'toyotatext_rg';
     font-size: 12px; }
-  .content-area h2 {
+  .olb-content-area h2 {
     font-size: 22px;
     margin: 0 0 28px; }
-  .content-area h3 {
+  .olb-content-area h3 {
     font-size: 18px;
     margin: 0 0 8px;
     text-transform: capitalize; }
-  .content-area h4 {
+    .olb-content-area h3.sub-title {
+      font-size: 16px; }
+  .olb-content-area h4 {
     margin: 12px 0;
     font-size: 14px; }
-    .content-area h4.sub-title {
+    .olb-content-area h4.sub-title {
       text-transform: capitalize; }
-  .content-area p {
+  .olb-content-area p {
     font-size: 12px; }
-    .content-area p.lite {
+    .olb-content-area p.lite {
       color: #999999; }
-    .content-area p.sub-title {
+    .olb-content-area p.sub-title {
       margin: 0 0 6px;
       font-size: 14px; }
-      .content-area p.sub-title.heavy {
+      .olb-content-area p.sub-title.heavy {
         font-family: 'toyotatext_bd'; }
 
 #olb-content {
@@ -65,7 +71,6 @@
     margin: 0 20px 0 0; }
 
 button {
-  width: 100%;
   height: 40px;
   float: left;
   padding: 10px 15px;
@@ -81,11 +86,12 @@ button {
   text-align: center;
   font-family: 'toyotadisplay_bd';
   font-size: 14px; }
-  button.disabled {
-    background-color: #ebebeb;
-    cursor: auto; }
+  button.wide {
+    width: 134px; }
   button.proceed {
-    text-align: left; }
+    text-align: left;
+    background-color: #71beba;
+    padding: 10px 25px; }
     button.proceed:after {
       display: block;
       width: 8px;
@@ -93,16 +99,60 @@ button {
       content: '>';
       position: absolute;
       right: 10px;
-      top: 10px; }
+      top: 12px; }
+  button.disabled {
+    background-color: #e3e3e4;
+    cursor: auto; }
+  button.go-back {
+    width: 105px;
+    padding: 10px 10px;
+    color: #78b1cc;
+    border: 1px solid #78b1cc;
+    text-transform: none;
+    background: none; }
+    button.go-back:before {
+      float: left;
+      content: '<'; }
+
+.wide-input {
+  width: 458px;
+  height: 18px;
+  float: left;
+  margin: 6px 0;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  font-size: 10px;
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: #ebebeb; }
+
+#olb-wrap #olb-content .olb-steps div.invalid {
+  border-width: 1px; }
+#olb-wrap #olb-content .olb-steps .invalid {
+  border-width: 1px 0 1px 1px;
+  border-color: #e01e30;
+  border-style: solid; }
+#olb-wrap #olb-content .olb-steps .error {
+  color: #e01e30;
+  font-family: 'toyotatext_bd';
+  font-size: 12px; }
+  #olb-wrap #olb-content .olb-steps .error span {
+    font-size: 11px;
+    color: #999999; }
 
 #olb-content {
   background-color: #fcfcfc;
-  min-height: 200px;
-  padding-top: 0; }
-  #olb-content #olb-steps {
+  min-height: 930px;
+  padding-top: 0;
+  position: relative; }
+  #olb-content #step-slider .olb-steps {
     width: 623px;
     float: left;
-    margin: 0 20px 0 0; }
+    margin: 0 20px 0 0;
+    display: none; }
+    #olb-content #step-slider .olb-steps.current-step {
+      display: block; }
 
 #progess {
   border-style: solid;
@@ -146,8 +196,12 @@ button {
         margin: 0 120px 0 0; }
       #progess .progess-bar li.second {
         margin: 0 90px 0 0; }
+        #progess .progess-bar li.second.active:after {
+          width: 205px; }
       #progess .progess-bar li.third {
         margin: 0 110px 0 0; }
+        #progess .progess-bar li.third.completed:after {
+          width: 195px; }
       #progess .progess-bar li.fourth {
         margin: 0 138px 0 0; }
       #progess .progess-bar li.fifth:after {
@@ -166,19 +220,27 @@ button {
       #progess .progess-bar li.completed {
         color: #71beba; }
         #progess .progess-bar li.completed:before {
-          border-color: #71beba; }
+          border-color: #71beba;
+          background-color: #71beba;
+          font-size: 16px;
+          font-family: 'icomoon';
+          content: "\e600";
+          color: #fff;
+          line-height: 12px;
+          text-indent: -3px; }
         #progess .progess-bar li.completed:after {
           background: #71beba; }
 
 #summary {
   width: 235px;
   min-height: 415px;
-  float: left;
   overflow: visible;
   margin: 25px 0 0;
+  padding: 0 0 40px;
   background-color: #ffffff;
   border: 1px solid #ebebeb;
-  position: relative; }
+  position: absolute;
+  right: 30px; }
   #summary:before {
     display: block;
     width: 96px;
@@ -190,7 +252,9 @@ button {
     background-image: url("../images/summary-bg.png");
     background-repeat: no-repeat;
     background-position: 0 0; }
-  #summary.empty .summary-pod .add-some, #summary.empty .add-some {
+  #summary .description {
+    display: none; }
+  #summary.empty .summary-pod .add-some, #summary.empty .add-some, #summary.empty .description {
     display: block; }
   #summary.empty .summary-pod #remove-car {
     display: none; }
@@ -204,20 +268,19 @@ button {
     text-transform: capitalize;
     padding: 0 10px; }
   #summary .summary-pod {
-    padding: 20px 10px;
-    position: relative;
-    border-width: 1px 0 0;
-    border-style: solid;
-    border-color: #ebebeb; }
+    padding: 20px 0 10px;
+    position: relative; }
+    #summary .summary-pod .pod-inner {
+      padding: 0 10px; }
     #summary .summary-pod .add-some {
       display: none; }
-    #summary .summary-pod #remove-car {
+    #summary .summary-pod .remove-item {
       display: block;
       width: auto;
       height: auto;
       position: absolute;
       right: 10px;
-      top: 79px;
+      top: 40px;
       color: #cc0033;
       text-transform: capitalize;
       background: none;
@@ -226,59 +289,68 @@ button {
       margin: 0;
       font-family: 'toyotatext_rg';
       font-size: 12px; }
+    #summary .summary-pod#your-quote {
+      border-width: 1px 0 0;
+      border-style: solid;
+      border-color: #ebebeb; }
+      #summary .summary-pod#your-quote .remove-item {
+        top: 89px; }
     #summary .summary-pod .sub-title {
       color: #414248;
       margin: 0;
       padding: 0; }
-    #summary .summary-pod > h4 {
+    #summary .summary-pod .pod-inner h4, #summary .summary-pod .pod-inner h4.sub-title {
       margin: 0 0 12px; }
-    #summary .summary-pod p.mileage {
-      display: none; }
-      #summary .summary-pod p.mileage.available {
-        display: block; }
+    #summary .summary-pod .item-title {
+      float: left;
+      margin: 0 0 6px; }
+    #summary .summary-pod .price {
+      float: right;
+      text-transform: uppercase; }
+    #summary .summary-pod p {
+      font-size: 12px; }
+      #summary .summary-pod p.mileage {
+        display: none; }
+        #summary .summary-pod p.mileage.available {
+          display: block; }
     #summary .summary-pod #continue {
-      margin: 20px 0 0; }
+      width: 215px;
+      margin: 20px 10px 0; }
+    #summary .summary-pod .service-item {
+      min-height: 70px;
+      padding: 10px;
+      position: relative;
+      display: none; }
+      #summary .summary-pod .service-item.selected {
+        display: block;
+        border-top: 1px solid #ebebeb; }
 
-#olb-steps {
+.olb-steps {
   padding-top: 35px; }
-  #olb-steps .wide-input {
-    width: 458px;
-    height: 18px;
-    float: left;
-    margin: 6px 0;
-    padding: 10px 15px;
-    background-color: #ffffff;
-    text-transform: uppercase;
-    font-size: 10px;
-    border-width: 1px 0 1px 1px;
-    border-style: solid;
-    border-color: #ebebeb; }
-  #olb-steps button {
-    margin: 6px 0;
-    width: 134px; }
-  #olb-steps #booking-choices {
+  .olb-steps button {
+    margin: 6px 0; }
+  .olb-steps .select-bookings {
     margin: 40px 0 0; }
-    #olb-steps #booking-choices .lite {
-      padding: 0 95px 0 0; }
-    #olb-steps #booking-choices ul {
+    .olb-steps .select-bookings ul {
       margin: 25px 0; }
-      #olb-steps #booking-choices ul .service-parent {
+      .olb-steps .select-bookings ul .service-parent {
         padding: 15px 20px;
         min-height: 22px;
         margin: 0 0 10px;
         border: 1px solid #ebebeb;
         position: relative;
-        line-height: auto; }
-        #olb-steps #booking-choices ul .service-parent:before, #olb-steps #booking-choices ul .service-parent:after {
+        line-height: auto;
+        cursor: pointer; }
+        .olb-steps .select-bookings ul .service-parent:before, .olb-steps .select-bookings ul .service-parent:after {
           position: absolute;
           color: #e3e3e4;
           font-size: 16px;
           font-family: 'icomoon'; }
-        #olb-steps #booking-choices ul .service-parent:before {
+        .olb-steps .select-bookings ul .service-parent:before {
           left: 21px;
           top: 16px;
           z-index: 20; }
-        #olb-steps #booking-choices ul .service-parent:after {
+        .olb-steps .select-bookings ul .service-parent:after {
           display: block;
           width: 25px;
           height: 25px;
@@ -289,51 +361,64 @@ button {
           left: 15px;
           top: 12px;
           z-index: 10; }
-        #olb-steps #booking-choices ul .service-parent .service-inner {
+        .olb-steps .select-bookings ul .service-parent.disabled a, .olb-steps .select-bookings ul .service-parent.inactive a {
+          display: none; }
+        .olb-steps .select-bookings ul .service-parent .menu-handle {
+          display: block;
+          width: 100%;
+          height: 54px;
+          position: absolute;
+          top: 0;
+          left: 0; }
+        .olb-steps .select-bookings ul .service-parent .service-inner {
           display: none;
           padding: 20px 0 0; }
-          #olb-steps #booking-choices ul .service-parent .service-inner .wide-input {
+          .olb-steps .select-bookings ul .service-parent .service-inner .wide-input {
             width: 415px; }
-        #olb-steps #booking-choices ul .service-parent h3 {
+        .olb-steps .select-bookings ul .service-parent h3 {
           font-size: 16px;
           margin: 0 0 0 35px;
           color: #414248;
           float: left; }
-          #olb-steps #booking-choices ul .service-parent h3.price {
+          .olb-steps .select-bookings ul .service-parent h3.price {
             color: #78b1cc;
             float: right;
             margin: 0; }
-        #olb-steps #booking-choices ul .service-parent.selected h3 {
+        .olb-steps .select-bookings ul .service-parent.selected h3, .olb-steps .select-bookings ul .service-parent.selected-option h3 {
           color: #78b1cc; }
-        #olb-steps #booking-choices ul .service-parent.selected:before {
+        .olb-steps .select-bookings ul .service-parent.selected:before, .olb-steps .select-bookings ul .service-parent.selected-option:before {
           color: #ffffff; }
-        #olb-steps #booking-choices ul .service-parent.selected:after {
+        .olb-steps .select-bookings ul .service-parent.selected:after, .olb-steps .select-bookings ul .service-parent.selected-option:after {
           border-color: #78b1cc;
           background-color: #78b1cc; }
-        #olb-steps #booking-choices ul .service-parent.selected .service-inner {
+        .olb-steps .select-bookings ul .service-parent.selected .service-inner, .olb-steps .select-bookings ul .service-parent.selected-option .service-inner {
           display: block; }
-        #olb-steps #booking-choices ul .service-parent .repair-choices {
+        .olb-steps .select-bookings ul .service-parent.disabled {
+          cursor: auto; }
+          .olb-steps .select-bookings ul .service-parent.disabled h3 {
+            color: #e3e3e4; }
+        .olb-steps .select-bookings ul .service-parent .repair-choices {
           margin: 5px 0 15px; }
-          #olb-steps #booking-choices ul .service-parent .repair-choices li {
+          .olb-steps .select-bookings ul .service-parent .repair-choices li {
             width: 280px;
             float: left;
             position: relative;
-            margin: 0 10px 5px 0; }
-            #olb-steps #booking-choices ul .service-parent .repair-choices li h4 {
+            margin: 0 10px 10px 0; }
+            .olb-steps .select-bookings ul .service-parent .repair-choices li h4 {
               margin: 4px 0 0;
               float: left; }
-              #olb-steps #booking-choices ul .service-parent .repair-choices li h4.price {
+              .olb-steps .select-bookings ul .service-parent .repair-choices li h4.price {
                 float: right;
                 margin-right: 35px; }
-            #olb-steps #booking-choices ul .service-parent .repair-choices li:before {
+            .olb-steps .select-bookings ul .service-parent .repair-choices li:before {
               display: block;
               content: '+';
               color: #e3e3e4;
               font-size: 24px;
               position: absolute;
-              right: 8px;
+              right: 7px;
               top: 2px; }
-            #olb-steps #booking-choices ul .service-parent .repair-choices li:after {
+            .olb-steps .select-bookings ul .service-parent .repair-choices li:after {
               display: block;
               width: 25px;
               height: 25px;
@@ -343,29 +428,36 @@ button {
               border-radius: 50%;
               position: absolute;
               right: 0; }
-        #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type {
+            .olb-steps .select-bookings ul .service-parent .repair-choices li.visual-safety-check {
+              display: none; }
+            .olb-steps .select-bookings ul .service-parent .repair-choices li.repair-selected:before {
+              color: #78b1cc; }
+            .olb-steps .select-bookings ul .service-parent .repair-choices li.repair-selected:after {
+              border-color: #78b1cc; }
+        .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type {
           display: none;
           margin: 20px 0 0; }
-          #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type.available {
+          .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type.available {
             display: block; }
-          #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type h3 {
+          .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3 {
             margin: 0 0 8px; }
-            #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan {
+            .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan {
               width: 100%;
               color: #414248;
               text-transform: none;
               padding: 5px 0 0 40px;
-              position: relative; }
-              #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:before, #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:after {
+              position: relative;
+              cursor: pointer; }
+              .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:before, .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:after {
                 position: absolute;
                 color: #e3e3e4;
                 font-size: 16px;
                 font-family: 'icomoon'; }
-              #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:before {
+              .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:before {
                 left: 6px;
                 top: 7px;
                 z-index: 20; }
-              #olb-steps #booking-choices ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:after {
+              .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan:after {
                 left: 0;
                 top: 3px;
                 display: block;
@@ -375,6 +467,527 @@ button {
                 border: 2px solid #e3e3e4;
                 -o-border-radius: 50%;
                 border-radius: 50%; }
+              .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan.active:before, .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type h3.service-plan.active:after {
+                color: #78b1cc;
+                border-color: #78b1cc; }
+          .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #available-service {
+            margin: 20px 0 0;
+            padding: 8px 0 0; }
+            .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #available-service h3 {
+              color: #ca0034; }
+              .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #available-service h3.service-badge {
+                float: left;
+                padding: 4px 0 5px 40px;
+                background: url("../images/service-badge-sprite.png") no-repeat 0 0; }
+                .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #available-service h3.service-badge span {
+                  color: #ca0034;
+                  font-family: 'toyotadisplay_rg';
+                  font-size: 13px; }
+              .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #available-service h3.service-price {
+                float: right;
+                padding: 5px 0 0; }
+          .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #maintenance-options {
+            padding: 15px 0;
+            border-top: 1px solid #a0a0a3; }
+            .olb-steps .select-bookings ul .service-parent[data-service="car-servicing"] #service-type #maintenance-options li {
+              border-bottom: 1px solid #a0a0a3;
+              padding: 15px 0; }
+
+#olb-form {
+  display: none; }
+
+.olb-steps.step-two .sub-title {
+  text-transform: capitalize; }
+.olb-steps.step-two button#find-postcode {
+  width: 82px; }
+.olb-steps.step-two button.proceed {
+  float: right; }
+.olb-steps.step-two #map-wrapper {
+  border: 1px solid #ebebeb;
+  margin: 0 0 30px;
+  padding: 25px 0;
+  position: relative; }
+  .olb-steps.step-two #map-wrapper .map-inner {
+    padding: 0 25px; }
+  .olb-steps.step-two #map-wrapper #gmap_canvas {
+    border: 1px solid #ebebeb;
+    width: 100%;
+    height: 414px;
+    margin: 25px 0; }
+    .olb-steps.step-two #map-wrapper #gmap_canvas .mapinfobox {
+      background-color: #fff;
+      padding: 5px;
+      overflow: visible; }
+  .olb-steps.step-two #map-wrapper #booking-form {
+    display: none !important; }
+  .olb-steps.step-two #map-wrapper form {
+    float: left; }
+    .olb-steps.step-two #map-wrapper form #validation-postcode-input {
+      position: absolute;
+      top: 100px;
+      left: 25px;
+      color: #cc0033;
+      margin: 5px 0 0;
+      font-family: 'toyotatext_bd';
+      font-size: 14px; }
+    .olb-steps.step-two #map-wrapper form .error {
+      border-color: #cc0033; }
+.olb-steps.step-two #local-dealers {
+  margin: 0; }
+  .olb-steps.step-two #local-dealers li {
+    position: relative;
+    padding: 20px 15px 20px 60px;
+    border-top: 1px solid #ebebeb;
+    cursor: pointer; }
+    .olb-steps.step-two #local-dealers li:before, .olb-steps.step-two #local-dealers li:after {
+      position: absolute;
+      color: #e3e3e4;
+      font-size: 16px;
+      font-family: 'icomoon'; }
+    .olb-steps.step-two #local-dealers li:before {
+      left: 21px;
+      top: 22px;
+      z-index: 20;
+      content: "\e600"; }
+    .olb-steps.step-two #local-dealers li:after {
+      display: block;
+      width: 25px;
+      height: 25px;
+      content: '';
+      border: 2px solid #e3e3e4;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+      left: 15px;
+      top: 18px;
+      z-index: 10; }
+    .olb-steps.step-two #local-dealers li.selected:before {
+      color: #ffffff; }
+    .olb-steps.step-two #local-dealers li.selected:after {
+      border-color: #78b1cc;
+      background-color: #78b1cc; }
+    .olb-steps.step-two #local-dealers li .dealer-left {
+      float: left; }
+    .olb-steps.step-two #local-dealers li .sub-title {
+      font-family: 'toyotadisplay_bd'; }
+    .olb-steps.step-two #local-dealers li p span {
+      font-family: 'toyotatext_bd'; }
+    .olb-steps.step-two #local-dealers li p.tele {
+      float: right; }
+      .olb-steps.step-two #local-dealers li p.tele span {
+        font-family: 'toyotadisplay_bd'; }
+
+.olb-steps.step-three #confirm-choices {
+  margin: 30px 0; }
+.olb-steps.step-three .choose-wait {
+  height: 160px;
+  border: 1px solid #ebebeb; }
+  .olb-steps.step-three .choose-wait li {
+    float: left;
+    width: 206px;
+    height: 138px;
+    text-align: center;
+    padding: 22px 0 0;
+    position: relative;
+    cursor: pointer; }
+    .olb-steps.step-three .choose-wait li:before, .olb-steps.step-three .choose-wait li:after {
+      position: absolute;
+      color: #e3e3e4;
+      font-size: 16px;
+      font-family: 'icomoon'; }
+    .olb-steps.step-three .choose-wait li:before {
+      left: 92px;
+      top: 119px;
+      z-index: 20;
+      color: #e3e3e4; }
+    .olb-steps.step-three .choose-wait li:after {
+      display: block;
+      width: 25px;
+      height: 25px;
+      content: '';
+      border: 2px solid #e3e3e4;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+      left: 85px;
+      top: 115px;
+      z-index: 10; }
+    .olb-steps.step-three .choose-wait li.middle {
+      border-width: 0 1px;
+      border-style: solid;
+      border-color: #ebebeb; }
+    .olb-steps.step-three .choose-wait li p {
+      line-height: 15px; }
+    .olb-steps.step-three .choose-wait li h2 {
+      text-transform: uppercase;
+      position: absolute;
+      left: 75px;
+      top: 80px; }
+    .olb-steps.step-three .choose-wait li.selected h2, .olb-steps.step-three .choose-wait li.selected p {
+      color: #78b1cc; }
+    .olb-steps.step-three .choose-wait li.selected:before, .olb-steps.step-three .choose-wait li.selected:after {
+      color: #78b1cc;
+      border-color: #78b1cc; }
+.olb-steps.step-three #add-info {
+  width: 100%;
+  height: 120px;
+  border: 1px solid #ebebeb;
+  margin: 0;
+  padding: 15px 0;
+  text-indent: 15px;
+  resize: none;
+  overflow-y: scroll; }
+.olb-steps.step-three #step-time {
+  float: right; }
+
+.olb-steps.step-four .date-wrapper {
+  margin: 25px 0;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  padding: 40px; }
+  .olb-steps.step-four .date-wrapper #service-date {
+    width: 275px;
+    float: left;
+    padding: 0 45px 0 0;
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: #78b1cc; }
+    .olb-steps.step-four .date-wrapper #service-date .ui-datepicker {
+      width: 100%; }
+    .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header {
+      position: relative;
+      height: 25px;
+      margin: 10px 0; }
+      .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header .ui-datepicker-title {
+        position: absolute;
+        left: 70px;
+        margin: 0; }
+        .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header .ui-datepicker-title span {
+          font-family: 'toyotadisplay_bd';
+          font-size: 18px;
+          color: #414248;
+          text-transform: uppercase; }
+      .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a {
+        float: left;
+        margin: 0 0 0 10px; }
+        .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-prev, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-next {
+          width: auto;
+          height: auto;
+          position: static; }
+          .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-prev:before, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-next:before {
+            color: #78b1cc;
+            font-family: 'toyotadisplay_bd';
+            font-weight: bold;
+            font-size: 14px; }
+          .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-prev.ui-state-disabled:before, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-next.ui-state-disabled:before {
+            color: #e3e3e4; }
+          .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-prev span, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-next span {
+            display: none; }
+        .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-prev:before {
+          content: '<'; }
+        .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-next {
+          float: right;
+          margin: 0 20px 0 0; }
+          .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-header a.ui-datepicker-next:before {
+            content: '>'; }
+    .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar thead {
+      padding: 0 0 6px; }
+    .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar th, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar td {
+      width: 30px;
+      text-align: center;
+      padding: 0 10px 15px 0; }
+      .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar th span, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar td span {
+        color: #414248;
+        font-family: 'toyotadisplay_bd';
+        font-size: 14px; }
+    .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar a {
+      color: #78b1cc;
+      text-decoration: none;
+      font-family: 'toyotadisplay_bd';
+      font-size: 14px; }
+      .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar a:hover, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar a:visited, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar a:link {
+        text-decoration: none; }
+      .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar a.ui-state-active {
+        background-color: #78b1cc;
+        color: #ffffff;
+        display: block;
+        padding: 0;
+        text-align: center; }
+    .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar .ui-datepicker-unselectable span, .olb-steps.step-four .date-wrapper #service-date .ui-datepicker-calendar .ui-datepicker-unselectable a {
+      color: #e3e3e4; }
+  .olb-steps.step-four .date-wrapper #service-time {
+    float: left;
+    padding: 40px 0 0 50px;
+    height: 280px; }
+    .olb-steps.step-four .date-wrapper #service-time .selected-date {
+      height: 55px; }
+      .olb-steps.step-four .date-wrapper #service-time .selected-date h2 {
+        font-size: 70px;
+        float: left;
+        line-height: 55px; }
+      .olb-steps.step-four .date-wrapper #service-time .selected-date .date-right {
+        width: 70px;
+        float: left;
+        margin: 0 0 0 10px; }
+        .olb-steps.step-four .date-wrapper #service-time .selected-date .date-right p {
+          margin: 0;
+          text-transform: uppercase;
+          line-height: 18px; }
+          .olb-steps.step-four .date-wrapper #service-time .selected-date .date-right p.sub-title {
+            font-family: 'toyotadisplay_rg';
+            font-weight: 300; }
+          .olb-steps.step-four .date-wrapper #service-time .selected-date .date-right p.selected-month, .olb-steps.step-four .date-wrapper #service-time .selected-date .date-right p.selected-year {
+            font-size: 22px;
+            font-family: 'toyotadisplay_bd'; }
+    .olb-steps.step-four .date-wrapper #service-time .time-choice {
+      width: 80px;
+      height: 70px;
+      padding: 0 10px;
+      margin: 0 5px 0 0;
+      position: relative;
+      float: left;
+      display: block;
+      background-color: #78b1cc;
+      border: none;
+      color: #ffffff;
+      background: url("../images/select-dropdown-blue.png") no-repeat center 60px #78b1cc;
+      font-family: 'toyotadisplay_bd';
+      font-size: 44px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      border-radius: 0; }
+      .olb-steps.step-four .date-wrapper #service-time .time-choice option {
+        text-align: center;
+        color: #ffffff;
+        font-size: 32px; }
+    .olb-steps.step-four .date-wrapper #service-time .time-titles {
+      float: left;
+      width: 80px;
+      margin: 10px 0;
+      text-align: center;
+      text-transform: uppercase; }
+.olb-steps.step-four #step-details {
+  float: right; }
+
+.olb-steps.step-five .wrapper_error {
+  font-family: 'toyotatext_rg';
+  margin: 10px 0;
+  color: #cc0033;
+  width: 100%;
+  font-size: 12px; }
+.olb-steps.step-five .customer-form label, .olb-steps.step-five .customer-form input, .olb-steps.step-five .customer-form select, .olb-steps.step-five .customer-form option {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  float: none;
+  font-size: 14px;
+  font-family: 'toyotatext_rg'; }
+.olb-steps.step-five .customer-form .form-row {
+  margin: 0 0 12px; }
+  .olb-steps.step-five .customer-form .form-row.empty {
+    display: none; }
+.olb-steps.step-five .customer-form #detailed-address {
+  width: 100%; }
+.olb-steps.step-five .customer-form select, .olb-steps.step-five .customer-form option {
+  width: 99%;
+  padding: 5px 0;
+  height: 42px;
+  border: 1px solid #ebebeb;
+  background-color: #ffffff;
+  text-indent: 10px; }
+  .olb-steps.step-five .customer-form select#phonetype, .olb-steps.step-five .customer-form option#phonetype {
+    width: 24%;
+    border-width: 1px 1px 1px 0; }
+.olb-steps.step-five .customer-form select {
+  background: url("../images/select-dropdown.png") no-repeat 95% 0; }
+  .olb-steps.step-five .customer-form select#title {
+    background-position: 98% 0; }
+.olb-steps.step-five .customer-form label {
+  margin: 0 0 5px;
+  width: 100%;
+  display: block; }
+.olb-steps.step-five .customer-form input {
+  width: 99%;
+  height: 30px;
+  padding: 5px 0;
+  border: 1px solid #ebebeb;
+  display: block;
+  text-indent: 10px; }
+  .olb-steps.step-five .customer-form input#edit-phone {
+    width: 75%;
+    float: left; }
+  .olb-steps.step-five .customer-form input#edit-postcode {
+    width: 280px;
+    float: left;
+    text-transform: uppercase; }
+.olb-steps.step-five .customer-form #find-address {
+  float: right;
+  margin: 0; }
+.olb-steps.step-five .customer-form #hear-about {
+  margin: 50px 0 32px;
+  border: 1px solid #ebebeb;
+  padding: 30px 15px; }
+  .olb-steps.step-five .customer-form #hear-about h3 {
+    text-transform: none; }
+  .olb-steps.step-five .customer-form #hear-about ul {
+    margin: 15px 0 0; }
+    .olb-steps.step-five .customer-form #hear-about ul li {
+      float: left;
+      position: relative;
+      width: 33.3333%;
+      margin: 0 0 15px;
+      padding: 4px 0 0;
+      text-indent: 35px;
+      font-family: 'toyotadisplay_rg';
+      cursor: pointer; }
+      .olb-steps.step-five .customer-form #hear-about ul li:before, .olb-steps.step-five .customer-form #hear-about ul li:after {
+        position: absolute;
+        color: #e3e3e4;
+        font-size: 16px;
+        font-family: 'icomoon'; }
+      .olb-steps.step-five .customer-form #hear-about ul li:before {
+        left: -29px;
+        top: 4px;
+        z-index: 20;
+        color: #e3e3e4; }
+      .olb-steps.step-five .customer-form #hear-about ul li:after {
+        display: block;
+        width: 25px;
+        height: 25px;
+        content: '';
+        border: 2px solid #e3e3e4;
+        -o-border-radius: 50%;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        z-index: 10; }
+      .olb-steps.step-five .customer-form #hear-about ul li.selected h2, .olb-steps.step-five .customer-form #hear-about ul li.selected p {
+        color: #78b1cc; }
+      .olb-steps.step-five .customer-form #hear-about ul li.selected:before, .olb-steps.step-five .customer-form #hear-about ul li.selected:after {
+        color: #78b1cc;
+        border-color: #78b1cc; }
+  .olb-steps.step-five .customer-form #hear-about #other-source {
+    float: right;
+    width: 33.3333%; }
+.olb-steps.step-five .customer-form #opt-outs {
+  margin: 0 0 40px; }
+  .olb-steps.step-five .customer-form #opt-outs p {
+    margin: 0 0 20px; }
+  .olb-steps.step-five .customer-form #opt-outs li {
+    position: relative;
+    width: 25%;
+    float: left;
+    text-indent: 35px;
+    padding: 4px 0 0;
+    cursor: pointer; }
+    .olb-steps.step-five .customer-form #opt-outs li:before, .olb-steps.step-five .customer-form #opt-outs li:after {
+      position: absolute;
+      color: #e3e3e4;
+      font-size: 16px;
+      font-family: 'icomoon'; }
+    .olb-steps.step-five .customer-form #opt-outs li:before {
+      left: -29px;
+      top: 4px;
+      z-index: 20;
+      color: #e3e3e4; }
+    .olb-steps.step-five .customer-form #opt-outs li:after {
+      display: block;
+      width: 25px;
+      height: 25px;
+      content: '';
+      border: 2px solid #e3e3e4;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+      z-index: 10; }
+    .olb-steps.step-five .customer-form #opt-outs li.selected h2, .olb-steps.step-five .customer-form #opt-outs li.selected p {
+      color: #78b1cc; }
+    .olb-steps.step-five .customer-form #opt-outs li.selected:before, .olb-steps.step-five .customer-form #opt-outs li.selected:after {
+      color: #78b1cc;
+      border-color: #78b1cc; }
+.olb-steps.step-five #step-confirm {
+  float: right; }
+
+.olb-steps.step-six h3 {
+  text-transform: uppercase; }
+  .olb-steps.step-six h3.left-title {
+    float: left; }
+  .olb-steps.step-six h3.right-title {
+    float: right; }
+.olb-steps.step-six .title {
+  float: left; }
+.olb-steps.step-six .price {
+  float: right;
+  font-family: 'toyotatext_bd'; }
+.olb-steps.step-six .summary-pod {
+  border: 1px solid #ebebeb;
+  padding: 20px 15px;
+  margin: 0 0 20px; }
+  .olb-steps.step-six .summary-pod h3 {
+    text-transform: capitalize;
+    font-size: 16px; }
+  .olb-steps.step-six .summary-pod.left-pod {
+    float: left;
+    width: 270px;
+    margin: 0 15px 0 0; }
+  .olb-steps.step-six .summary-pod.right-pod {
+    float: right;
+    width: 270px; }
+  .olb-steps.step-six .summary-pod p {
+    width: 100%;
+    font-size: 14px; }
+    .olb-steps.step-six .summary-pod p.date {
+      margin: 0 0 45px;
+      text-transform: capitalize; }
+    .olb-steps.step-six .summary-pod p.dealership {
+      margin: 20px 0; }
+    .olb-steps.step-six .summary-pod p span {
+      float: right;
+      font-family: 'toyotatext_bd';
+      font-size: 14px;
+      margin: 0 40px 0 0; }
+  .olb-steps.step-six .summary-pod .service-choice {
+    margin: 15px 0;
+    padding: 15px 0 25px 100px;
+    background-image: url("../images/service-badge-sprite-lrg.png");
+    background-repeat: no-repeat; }
+    .olb-steps.step-six .summary-pod .service-choice.full {
+      background-position: 0 0; }
+  .olb-steps.step-six .summary-pod ul {
+    margin: 20px 0; }
+    .olb-steps.step-six .summary-pod ul li {
+      width: 100%;
+      margin: 0 0 10px; }
+      .olb-steps.step-six .summary-pod ul li p {
+        width: auto; }
+.olb-steps.step-six #step-thanks {
+  float: right; }
+
+.olb-steps.step-seven #thanks {
+  border: 1px solid #ebebeb;
+  margin: 20px 0;
+  padding: 20px 15px; }
+  .olb-steps.step-seven #thanks p {
+    font-size: 14px; }
+  .olb-steps.step-seven #thanks .confirmed-date {
+    margin: 25px 0; }
+  .olb-steps.step-seven #thanks .final-links {
+    color: #78b1cc;
+    float: left;
+    margin: 40px 0 0;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'toyotatext_bd'; }
+    .olb-steps.step-seven #thanks .final-links:after {
+      content: '>';
+      margin: 0 0 0 10px; }
+    .olb-steps.step-seven #thanks .final-links.right {
+      float: right; }
 
 body.msie.v8 #progess .progess-bar li.active:before {
   background: url("../images/ie-sprite.png") no-repeat 0 0;

@@ -32,11 +32,10 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       var _this = this;
       this.$el.siblings('section').removeClass('current-step');
       this.$el.addClass('current-step');
-      this.updateProgressBar();     
+      this.updateProgressBar();
 
-      window.console && console.info(register.vehicle)     
-
-      this.$('#customer-details-form').validate({
+      $('#customer-details-form').validate({
+        debug: true,
         errorClass: 'error_text',
         wrapper: 'div',
         errorElement: 'div',
@@ -115,6 +114,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       //Set up data to be submitted
       register.vehicle.get('customer').set({
         vehicleReg: register.vehicle.get('requested'),
+        vin: register.vehicle.get('requested').length === 17 ? register.vehicle.get('requested') : 'XXXXXXXXXXXXXXXXX',
         vehicleModel: register.vehicle.get('model'),
         grade: register.vehicle.get('grade'),
         ident: register.vehicle.get('requested'),
@@ -122,7 +122,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         engine: register.vehicle.get('engine'),
         mileage: register.vehicle.get('bookingDetails').get('mileage'),
         age: register.vehicle.get('age'),
-        serviceType: register.vehicle.get('bookingDetails').get('servicetype'), //need to get numerical figure
+        serviceType: register.vehicle.get('bookingDetails').get('serviceId'),
         servicePrice: register.vehicle.get('bookingDetails').get('serviceprice'),
         servicePlan: register.vehicle.get('servicePlan'),
         HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
@@ -165,10 +165,11 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       return result;
     },
     findAddress: function(){
+      window.console && console.info(this.$('#edit-postcode').valid())
       var _this = this;
       this.addressFinder.query = {
-        postcode: this.$('#postcode').val(),
-        house: this.$('#house').val()
+        postcode: this.$('#edit-postcode').val(),
+        house: this.$('#edit-house').val()
       };
 
       this.addressFinder.fetch({
@@ -199,6 +200,9 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       });
     },
     confirmationPage: function(){
+      if(!this.$('#hear-about li').hasClass('selected')){
+        return register.validationView.showError('hear-about', '#hear-about');
+      }
       // if(this.$('#customer-details-form').valid()){
       //   this.buildData();
       // }

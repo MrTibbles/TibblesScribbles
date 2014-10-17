@@ -22,7 +22,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       register.loader.showLoader(this.$el[0]);
 
       var _this = this;
-      this.vehicle.query = this.$('#reg-vin').val().toUpperCase();
+      this.vehicle.query = this.$('#reg-vin').val().toUpperCase().replace(/ /g,'');
 
       this.vehicle.fetch({
         success: function() {

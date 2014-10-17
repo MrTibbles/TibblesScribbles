@@ -354,6 +354,25 @@ module.exports = function(grunt) {
           'bower_components/requirejs/require.js': '/sites/all/modules/custom/service_booking/js/bower/requirejs/require.js',
           'scripts/main.js': '/sites/all/modules/custom/service_booking/js/amd-olb'
         }
+      }],
+      retail: [{
+        file: 'scripts/amd-olb.js',
+        replace: {
+          '../images/': '/sites/all/modules/custom/tgb_osb/images/',
+        }
+      },
+      {
+        file: 'styles/main.css',
+        replace: {
+          '../images/': '/sites/all/modules/custom/tgb_osb/images/'
+        }
+      },
+      {
+        file: 'index.html',
+        replace: {
+          'bower_components/requirejs/require.js': '/sites/all/modules/custom/tgb_osb/js/bower/requirejs/require.js',
+          'scripts/main.js': '/sites/all/modules/custom/tgb_osb/js/amd-olb'
+        }
       }]
     },
 
@@ -520,7 +539,7 @@ module.exports = function(grunt) {
     'autoprefixer',
     // 'concat',
     'cssmin',
-    'uglify',    
+    // 'uglify',    
     'copy:requirejs',
     'modernizr',
   ]);

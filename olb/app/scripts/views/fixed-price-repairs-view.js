@@ -45,6 +45,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       register.bookingSummaryView.renderRepairs();
     },
     addRepair: function(e){
+      $('#continue').removeClass('disabled');
 			var $this = $(e.currentTarget),
     		selectedRepairs, 
     		_this = this;

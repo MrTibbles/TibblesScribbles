@@ -1,12 +1,13 @@
-.olb-steps{
+#olb-wrap #olb-content .olb-steps{
+	div.invalid{
+		border-width: 1px;
+	}
 	.invalid{
 		border: {
 			width: 1px 0 1px 1px;
 			color: $error-red;
 			style: solid;
 		}
-
-
 		// &::-webkit-input-placeholder {
 		// 	color: $error-red;
 		// }

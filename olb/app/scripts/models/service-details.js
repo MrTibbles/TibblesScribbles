@@ -11,6 +11,7 @@ define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
         mileage: data.mileage,
         serviceprice: data.serviceprice,
         servicetype: data.servicetype,
+        serviceId: data.menunumber,
         options: this.bookingOptions(data.options)
       });
       return register.vehicle;

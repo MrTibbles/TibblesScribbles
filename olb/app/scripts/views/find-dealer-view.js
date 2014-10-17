@@ -18,27 +18,10 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
 
       this.dealerCollection = new dealerCollection;
 
-      this.$('#tgb-find-dealer-form').validate({
-        errorClass: 'error',
-        focusCleanup: true,
-        onkeyup: false,
-        rules: {
-          dealer: {
-            required: true
-          }
-        }
-      });
       $('#continue').hide();
-
-      window.console && console.info(register.vehicle.toJSON())
     },
     updateProgressBar: function(){
       $('#progess-bar .first').addClass('completed');
-    },
-    validePostCode: function(val){
-      // generic validation function for find - dealer typr forms
-      var postcodeRegEx = /[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1} ?[0-9][A-Z]{2}/i;
-      return postcodeRegEx.test(val);
     },
     googleMapsIni: function(){
       var mapOpts = {
@@ -84,50 +67,45 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
     },
     dealerLookUp: function(e){
       register.loader.showLoader(this.$el[0]);
-      var _this = this;
-
-      if($('#tgb-find-dealer-form').valid()) {
-        var postCode = this.$('#postcode-input').val().toUpperCase();
-
-        //Not sure why this gets undefined, is in current OSB scripts, finddealer.js - line 162 
-        center_type = '';
-
-        if(this.validePostCode(postCode)){
-          this.dealerCollection.query = {
-            geoPost: postCode,
-            center_type: center_type,
-            geoValue: 25
-          };
-
-          this.dealerCollection.fetch({
-            success: function(){
-              register.map.bounds = new google.maps.LatLngBounds();
-
-              register.loader.hideLoader();          
-
-              _.each(register.dealerList, function(ele){
-                var dealerItem = new dealerView({
-                  model: ele
-                });
-                dealerItem.render();
-              });
-            }
-          });
-
-          register.map.fitBounds(register.map.bounds);
-          // var listener = google.maps.event.addListener(register.map, "idle", function() {
-          //   window.console && console.info('idle');
-          //   if(register.map.getZoom() > 16){
-          //     register.map.setZoom(10);
-          //   }
-          //   google.maps.event.removeListener(listener);
-          // });
-
-        }else{
-          register.loader.hideLoader();
-          window.console && console.error('postcode incorrect')          
-        }
+      if(!this.$('#postcode-input').val()){
+        return register.validationView.showError('empty-postcode', '#postcode-input');
       }
+      var _this = this;
+      var postCode = this.$('#postcode-input').val().toUpperCase();
+      //Not sure why this gets undefined, is in current OSB scripts, finddealer.js - line 162 
+      center_type = '';
+
+      // if(this.validePostCode(postCode)){
+        this.dealerCollection.query = {
+          geoPost: postCode,
+          center_type: center_type,
+          geoValue: 25
+        };
+
+        this.dealerCollection.fetch({
+          success: function(){
+            register.map.bounds = new google.maps.LatLngBounds();
+
+            register.loader.hideLoader();          
+
+            _.each(register.dealerList, function(ele){
+              var dealerItem = new dealerView({
+                model: ele
+              });
+              dealerItem.render();
+            });
+          }
+        });
+
+        register.map.fitBounds(register.map.bounds);
+        // var listener = google.maps.event.addListener(register.map, "idle", function() {
+        //   window.console && console.info('idle');
+        //   if(register.map.getZoom() > 16){
+        //     register.map.setZoom(10);
+        //   }
+        //   google.maps.event.removeListener(listener);
+        // });
+      // }
     },
     selectDealer: function(e){
       window.console && console.info($(e.currentTarget))

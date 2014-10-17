@@ -99,13 +99,13 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       });        
       // })).pluck("name");
 
-      window.osbInitValues.GeneralDiagnosis === 'Y' && this.$('li[data-service="general diagnosis"]').click();
+      window.osbInitValues.GeneralDiagnosis === 'Y' && this.$('li[data-service="general diagnosis"] .menu-handle').click();
 
-      window.osbInitValues.HybridHealthCheck === 'Y' && this.$('li[data-service="Hybrid Health Check"]').click();
+      window.osbInitValues.HybridHealthCheck === 'Y' && this.$('li[data-service="Hybrid Health Check"] .menu-handle').click();
 
-      window.osbInitValues.MOT === 'Y' && this.$('li[data-service="MOT"]').click();
+      window.osbInitValues.mot === 'Y' && this.$('li[data-service="MOT"] .menu-handle').click();
 
-      window.osbInitValues.VisualSafetyReport === 'Y' && this.$('li[data-service="visual safety report"]').click();
+      window.osbInitValues.VisualSafetyReport === 'Y' && this.$('li[data-service="visual safety report"] .menu-handle').click();
 
       // register.bookingSummaryView.render();
     },

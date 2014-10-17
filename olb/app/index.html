@@ -102,7 +102,7 @@
                     </div>
                   </li>
                   <!-- General diagnostic -->
-                  <li class="service-parent icon-checkmark option-item inactive" data-price="free" data-service="general diagnosis">
+                  <li class="service-parent icon-checkmark option-item" data-price="free" data-service="general diagnosis">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <h3>General Diagnosis</h3>
                     <h3 class="price">FREE</h3>
@@ -121,7 +121,7 @@
                     </div>
                   </li>
                   <!-- Visual Safety Report -->
-                  <li class="service-parent icon-checkmark option-item inactive" data-price="free" data-service="visual safety report">
+                  <li class="service-parent icon-checkmark option-item" data-price="free" data-service="visual safety report">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <h3>Visual Safety Report</h3>
                     <h3 class="price">FREE</h3>
@@ -306,16 +306,17 @@
                     </select>
                   </div>
                   <div class="form-row">
-                    <label for="firstname">First Name*</label>
-                    <input value="" type="text" name="firstname" value="" id="firstname">
+                    <label for="edit-firstname">First Name*</label>
+                    <input value="" type="text" name="firstname" value="" id="edit-firstname" class="required form-text" required>
+                    <!-- <input autocorrect="off" autocapitalize="off" type="text" id="edit-firstname" name="firstname" value="" size="60" maxlength="128" class="form-text required form-text"> -->
                   </div>
                   <div class="form-row">
-                    <label for="surname">Surname*</label>
-                    <input value="" type="text" name="surname" value="" id="surname">
+                    <label for="edit-surname">Surname*</label>
+                    <input value="" type="text" name="surname" value="" id="edit-surname" class="required form-text" required>
                   </div>
                   <div class="form-row">
-                    <label for="phone">Phone*</label>
-                    <input value="" type="text" name="phone" id="phone">
+                    <label for="edit-phone">Phone*</label>
+                    <input value="" type="text" name="phone" id="edit-phone" class="required form-text" required>
                     <select name="phonetype" id="phonetype">
                       <option value="home">Home</option>
                       <option value="office">Office</option>
@@ -323,20 +324,20 @@
                     </select>
                   </div>
                   <div class="form-row">
-                    <label for="email">Email*</label>
-                    <input value="" type="text" name="email" value="" id="email">
+                    <label for="edit-email">Email*</label>
+                    <input value="" type="text" name="email" value="" id="edit-email" class="required form-text" required>
                   </div>
                   <h3>address</h3>
                   <div class="form-row">
-                    <label for="house">House name/no.*</label>
-                    <input value="" type="text" name="house" value="" id="house">
+                    <label for="edit-house">House name/no.*</label>
+                    <input value="" type="text" name="house" value="" id="edit-house" class="required form-text" required>
                   </div>
                   <!-- Gets populated via template -->
                   <div id="detailed-address"></div>
 
                   <div class="form-row">
-                    <label for="postcode">Postcode*</label>
-                    <input value="" type="text" name="postcode" value="" id="postcode">
+                    <label for="edit-postcode">Postcode*</label>
+                    <input value="" type="text" name="postcode" value="" id="edit-postcode" class="required form-text" required>
                     <button type="button" id="find-address">find address</button>
                     <br class="clear" />
                   </div>
@@ -515,16 +516,16 @@
 
     <script id="address-details" type="text/template">
       <div class="form-row">
-        <label for="address2">Address 2</label>
-        <input value="<%= address2 %>" type="text" name="address2" id="address2">
+        <label for="edit-address2">Address 2</label>
+        <input value="<%= address2 %>" type="text" name="address2" id="edit-address2" class="required form-text" required>
       </div>
       <div class="form-row">
-        <label for="town">Town*</label>
-        <input value="<%= town %>" type="text" name="town" id="town">
+        <label for="edit-town">Town*</label>
+        <input value="<%= town %>" type="text" name="town" id="edit-town" class="required form-text" required>
       </div>
       <div class="form-row">
-        <label for="county">County</label>
-        <input value="<%= county %>" type="text" name="county" id="county">
+        <label for="edit-county">County</label>
+        <input value="<%= county %>" type="text" name="county" id="edit-county" class="required form-text" required>
       </div>
     </script>
 
@@ -597,6 +598,16 @@
         <a href="//www.toyota.co.uk/owners-landing" target="_blank" class="final-links right">Toyota UK Owners page</a>
         <br class="clear" />
       </div>
+    </script>
+
+    <script>
+      //dummy function to emulate TCW
+      var calculateAvailableDays = function(){
+        return;
+      }
+      var filterMinutes = function(){
+        return;
+      }
     </script>
 
     <!-- End templates &sensor=false-->
