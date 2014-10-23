@@ -29,22 +29,22 @@ define(['jquery', 'backbone', 'olb-app'], function($, Backbone, Olb) {
       "engine": "1,8 VVT-i Hybrid",
       "colour": "Pure/Chamonix White",
       "mileage": "123",
-      "serviceObj": {
-        "age": "3",
-        "katashiki": "ZWE150",
-        "mileage": "30000",
-        "serviceprice": "149",
-        "servicetype": "Intermediate",
-        "serviceId": "43211333",
-        "options": []
-      },
+      // "serviceObj": {
+      //   "age": "3",
+      //   "katashiki": "ZWE150",
+      //   "mileage": "30000",
+      //   "serviceprice": "149",
+      //   "servicetype": "Intermediate",
+      //   "serviceId": "43211333",
+      //   "options": []
+      // },
       "serviceplan": "Y",
       "HybridHealthCheck": "Y",
       "HybridHealthCheckCost": "free",
       "GeneralDiagnosis": "Y",
       "GeneralDiagnosisCost": "free",
       "VisualSafetyReport": "N",
-      "mot": "Y",
+      "mot": "N",
       "repairs": [{
         "Repair": "Front Brake Pads and Disks",
         "RepairCost": "240"

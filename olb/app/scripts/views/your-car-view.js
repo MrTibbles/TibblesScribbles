@@ -19,7 +19,11 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       if(!$('#reg-vin').val()) {
         return register.validationView.showError('empty-reg', '#reg-vin');
       }
+      if($(e.currentTarget).hasClass('searching')){
+        return false;
+      }
       register.loader.showLoader(this.$el[0]);
+      $(e.currentTarget).addClass('searching');
 
       var _this = this;
       this.vehicle.query = this.$('#reg-vin').val().toUpperCase().replace(/ /g,'');
@@ -36,6 +40,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
 
           register.validationView.clearError('#reg-vin');
           _this.bookingOptions.render();
+          $(e.currentTarget).removeClass('searching');
 
           //query fixed price service based upon the katashiki code
           _this.bookingOptions.getFixedPrices();

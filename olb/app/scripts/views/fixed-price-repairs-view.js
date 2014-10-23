@@ -45,7 +45,6 @@ define(['backbone', 'register'], function(Backbone, register) {
       register.bookingSummaryView.renderRepairs();
     },
     addRepair: function(e){
-      $('#continue').removeClass('disabled');
 			var $this = $(e.currentTarget),
     		selectedRepairs, 
     		_this = this;
@@ -57,6 +56,7 @@ define(['backbone', 'register'], function(Backbone, register) {
   		});
 
       $(e.currentTarget).removeClass('repair-item').addClass('repair-selected');
+      !this.$('li[data-service="repairs"]').hasClass('selected-option') && this.$('li[data-service="repairs"]').addClass('selected-option');
     },
     removeRepair: function(e){
     	var $this = $(e.currentTarget);
@@ -64,6 +64,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       this.removeItem($this.data('repair'));
     	
     	$(e.currentTarget).removeClass('repair-selected').addClass('repair-item');
+      !$(e.currentTarget).siblings('li').hasClass('repair-selected') && this.$('li[data-service="repairs"]').removeClass('selected-option');
     } 
   });
   return fixedRepair;

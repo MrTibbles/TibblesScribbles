@@ -2,8 +2,9 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
   var olbApp = Backbone.View.extend({
     el: $('#olb-wrap'),
     events: {
-      'click .menu-handle': 'showServiceDetails',
-      'click .move-step': 'moveToStep'
+      'click .move-step': 'moveToStep',
+      'click .draw-handle': 'toggleInner',
+      'click .submit-booking': 'submitToDealer'
     },
     initialize: function() {
       //set up global instances
@@ -38,6 +39,8 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       switch(step){
         case 'your-car':
           this.yourCarView.render();
+          this.preSelectDefaults('servicing');
+          this.$('#summary').addClass('change-choices');          
           break;
         case 'your-dealer':
           this.dealerQuote.render();
@@ -45,12 +48,6 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
         default:
           this.yourCarView.render();
           break;
-      }
-    },
-    showServiceDetails: function(e){
-      var $parent = $(e.currentTarget).parent('.service-parent');
-      if(!$parent.hasClass('disabled') && !$parent.hasClass('inactive')){
-        $parent.toggleClass('selected');
       }
     },
     moveToStep: function(e){
@@ -65,9 +62,13 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
 
         switch(destination){
           case 'one':
+            this.yourCarView.render();
+            window.console && console.info(this.$('#summary'))
+            this.$('#summary').addClass('change-choices');
             break;
           case 'two':
             this.dealerView.render();
+            this.$('#summary').removeClass('change-choices');
             break;
           case 'three':
             break;
@@ -93,12 +94,39 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
         }, 500);
       }
     },
+    toggleInner: function(e){
+      $(e.currentTarget).parent('.service-parent').toggleClass('show-inner');
+    },
     keyBoard: function(e){
       // $('#edit-dealer').on('keydown', function(e) {
       if(e.keyCode == 13) {
         e.preventDefault();
         $('#postcode_search').click();
       }
+    },
+    preSelectDefaults: function(route){
+      $('li[data-service="visual safety report"]').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');
+      register.vehicle.get('selected').add({
+        price: "free",
+        title: "visual safety report"
+      });
+      register.vehicle.get('selectedOptions').add({
+        price: "free",
+        title: "visual safety report"
+      });
+
+      register.bookingSummaryView.renderOptions();
+    },
+    submitToDealer: function(){
+      this.formStrung = register.formData.toJSON();
+      this.formStrung = JSON.stringify(this.formStrung);
+      window.console && console.info('form: ',this.formStrung);
+
+      // $('#olb-form input').val(this.formStrung);
+      window.console && console.info($('#olb-form input')[0].value)      
+      $('#olb-form input').attr('value', this.formStrung);
+      
+      $('#olb-form').submit()
     }
   })
   return olbApp;

@@ -3,8 +3,8 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
     el: $('#find-dealer-step'),
     events: {
       'click #find-postcode': 'dealerLookUp',
-      'click .dealer-item': 'selectDealer',
-      'click #step-dealer': 'submitBooking'
+      'click .dealer-item': 'selectDealer'
+      // 'click .submit': 'submitToDealer'
     },
     initialize: function() {},
     render: function(){
@@ -18,7 +18,11 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
 
       this.dealerCollection = new dealerCollection;
 
-      $('#continue').hide();
+      //<button id="step-dealer" class="proceed disabled" data-step="three">choose dealer</button>
+      $('#continue').attr({
+        'data-step': 'three',
+        'class': 'proceed disabled submit-booking'
+      }).html('choose dealer');
     },
     updateProgressBar: function(){
       $('#progess-bar .first').addClass('completed');
@@ -108,18 +112,16 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
       // }
     },
     selectDealer: function(e){
-      window.console && console.info($(e.currentTarget))
-    },
-    submitBooking: function(){
-      this.formStrung = register.formData.toJSON();
-      this.formStrung = JSON.stringify(this.formStrung);
-      window.console && console.info('form: ',this.formStrung);
+      this.$('.dealer-item').removeClass('selected');
+      $(e.currentTarget).addClass('selected');
 
-      // $('#olb-form input').val(this.formStrung);
-      window.console && console.info($('#olb-form input')[0].value)      
-      $('#olb-form input').attr('value', this.formStrung);
-      
-      $('#olb-form').submit()
+      if(window.location.hostname === 'localhost'){
+        //local dev
+        $('#olb-form').attr('action', 'http://pinkstones.toyota.co.uk/owners/service-booking/view/#/your-dealer');
+      }else{
+        //TCW destination
+        $('#olb-form').attr('action', $(e.currentTarget).data('center') + '/owners/service-booking/view/#/your-dealer');
+      }
     }
   });
   return yourCar;

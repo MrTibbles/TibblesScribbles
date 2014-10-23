@@ -7,10 +7,17 @@ define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, 
     initialize: function() {},
     render: function(){
     	register.loader.hideLoader();
-    	$('.service-parent').removeClass('inactive');
-
+    	// $('.service-parent').removeClass('inactive');        
       this.$el.empty().addClass('available').append(this.template(this.model.toJSON()));
-      this.$el.prepend('<h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3><p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>');
+
+      $('li[data-service="car-servicing"]').removeClass('service-not-present');
+      !$('li[data-service="car-servicing"]').hasClass('selected-option') && $('li[data-service="car-servicing"]').addClass('selected-option');
+      !$('li[data-service="car-servicing"] .menu-handle').hasClass('servicing-child') && $('li[data-service="car-servicing"] .menu-handle').addClass('servicing-child');
+    },
+    clearService: function(){
+      this.$el.empty().removeClass('available');
+      $('li[data-service="car-servicing"]').addClass('service-not-present').removeClass('selected-option');
+      $('#mileage').val('');
     }
   });
   return suggestedService;

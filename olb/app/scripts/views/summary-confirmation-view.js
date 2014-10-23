@@ -26,15 +26,15 @@ define(['backbone', 'register'], function(Backbone, register) {
     submitData: function(){
       register.vehicle.get('customer').query = register.vehicle.get('customer').toJSON();
 
-      register.vehicle.get('customer').confirmBooking({
-        success: function(){
-          window.console && console.info('Booking confirmed')
-
-        },
-        error: function(){
-          window.console && console.error('Failed to submit booking')
-        }
-      });
+      // register.vehicle.get('customer').confirmBooking({
+      //   success: function(){
+      //     window.console && console.info('Booking confirmed');
+      //   },
+      //   error: function(){
+      //     window.console && console.error('Failed to submit booking');
+      //   }
+      // });
+      register.vehicle.get('customer').confirmBooking();
     }
   });
   return confirmation;

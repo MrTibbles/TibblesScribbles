@@ -13,9 +13,10 @@
     <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/general.css">
     <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/header.css">
     <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/themes/toyota/css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_find_dealer/css/finddealer.css">
     <link rel="stylesheet" type="text/css" href="http://www.toyota.co.uk/sites/all/modules/custom/tgb_car_chapters/tgb_car_chapters.css"> 
-    <link rel="stylesheet" type="text/css" href="styles/reset.css"> 
-    <link rel="stylesheet" type="text/css" href="styles/fonts.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="reset.css">  -->
+    <link rel="stylesheet" type="text/css" href="fonts.css"> 
     <!-- end TGB assets -->
     <!-- bower:css -->
     <!-- endbower -->
@@ -27,6 +28,11 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
+
+    <!-- dummy variables for internal grunt dev -->
+    <script>
+      var phone = '01234567891';
+    </script>  
 
   </head>
   <body>
@@ -48,7 +54,7 @@
             <section class="olb-steps step-one current-step">
               <div id="your-car" class="pod">
                 <h3>your car</h3>
-                <p class="lite sub-title">Registration or VIN</p>
+                <p class="lite sub-title">Please enter your registration or VIN</p>
                 <input id="reg-vin" class="wide-input" type="text" name="reg-vin" value="" />
                 <button id="find-car" class="wide">find my car</button>
               </div>
@@ -59,31 +65,34 @@
                 <!-- Service types -->
                 <ul>
                   <!-- Car Servicing -->
-                  <li class="car-servicing service-parent icon-checkmark inactive parent-object" data-price="" data-service="car-servicing">
+                  <li class="service-not-present car-servicing service-parent icon-checkmark inactive parent-object" data-price="" data-service="car-servicing">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Car servicing</h3>  
+                    <div class="draw-handle">
+                      <h3>Car servicing</h3> 
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner expand">
                       <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
                       <p class="lite sub-title">Mileage*</p>
                       <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
-                      <button id="find-service" class="wide">find service</button>
+                      <button id="find-service" class="wide disabled">find service</button>
                       <div class="clear"></div>
-                      <div id="service-type">
-                        <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
-                        <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
-                        <!-- Suggested service for customer -->
-                        
-                        <!-- Potential additonal service options -->
-                        
+                      <span class="tool-tip">The system cannot check the contents of your Service Plan. Therefore, no charges have been displayed for your Service / MOT options. Your Dealer will contact you before your service to discuss your booking in full.</span>
+                      <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
+                      <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
+                      <div id="service-type">                        
+                        <!-- Suggested service for customer -->                        
+                        <!-- Potential additonal service options -->                        
                       </div>
                     </div>
                   </li>
                   <!-- HSD check -->
                   <li class="service-parent icon-checkmark option-item disabled" data-price="free" data-service="Hybrid Health Check">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Hybrid Health Check</h3>
-                    <h3 class="price">From FREE</h3>
+                    <div class="draw-handle">
+                      <h3>Hybrid Health Check</h3>
+                      <h3 class="price">From FREE</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">Protect the heart of your hybrid with an annual Health Check. Safeguard your investment by catching any issues early, extend the warranty on your hybrid battery, and ensure optimal performance, all for just &pound;39, or FREE when booked as part of a service.</p>
@@ -92,20 +101,45 @@
                   <!-- Fixed Price Repair -->
                   <li class="service-parent icon-checkmark inactive parent-object" data-price="" data-service="repairs">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Repairs</h3>
+                    <div class="draw-handle">
+                      <h3>Repairs</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
-                      <ul class="repair-choices">
-                        <br class="clear"/>
-                      </ul>                    
+                      <ul class="repair-choices">      
+                        <li class="repair-item front-brake-pads" data-repair="Front Brake Pads">
+                          <h4 class="sub-title">Front Brake Pads</h4>
+                        </li>                      
+                        <li class="repair-item rear-brake-pads" data-repair="Rear Brake Pads">
+                          <h4 class="sub-title">Rear Brake Pads</h4>
+                        </li>                      
+                        <li class="repair-item front-brake-pads-and-disks" data-repair="Front Brake Pads and Disks">
+                          <h4 class="sub-title">Front Brake Pads and Disks</h4>
+                        </li>                      
+                        <li class="repair-item rear-brake-pads-and-disks" data-repair="Rear Brake Pads and Disks">
+                          <h4 class="sub-title">Rear Brake Pads and Disks</h4>
+                        </li>                      
+                        <li class="repair-item battery-for-petrol-models" data-repair="Battery for Petrol Models">
+                          <h4 class="sub-title">Battery for Petrol Models</h4>
+                        </li>                      
+                        <li class="repair-item front-wiper" data-repair="Front Wiper">
+                          <h4 class="sub-title">Front Wiper</h4>
+                        </li>                      
+                        <li class="repair-item rear-exhaust" data-repair="Rear Exhaust">
+                          <h4 class="sub-title">Rear Exhaust</h4>
+                        </li>                      
+                        <br class="clear">
+                      </ul>
                       <p class="sub-title">All prices are inclusive so there are no hidden extras or nasty surprises on your bill. And we only ever use Toyota genuine parts that come with a minimum 1-year guarantee.</p> 
                     </div>
                   </li>
                   <!-- General diagnostic -->
-                  <li class="service-parent icon-checkmark option-item" data-price="free" data-service="general diagnosis">
+                  <li class="service-parent icon-checkmark option-item inactive" data-price="free" data-service="general diagnosis">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>General Diagnosis</h3>
-                    <h3 class="price">FREE</h3>
+                    <div class="draw-handle">
+                      <h3>General Diagnosis</h3>
+                      <h3 class="price">FREE</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">If your car is giving you signals it might have something wrong with it but you don’t know what, then  book in for a general diagnosis appointment.</p>
@@ -114,7 +148,9 @@
                   <!-- MOT -->
                   <li class="service-parent icon-checkmark option-item inactive" data-price="" data-service="MOT">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>MOT</h3>
+                    <div class="draw-handle">
+                      <h3>MOT</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">MOTs are compulsory and have to be done each year, so make it as quick and efficient as possible. Your local Toyota dealer can arrange your MOT with a Toyota approved expert who authorised to carry out any necessary repair work.</p>
@@ -123,8 +159,10 @@
                   <!-- Visual Safety Report -->
                   <li class="service-parent icon-checkmark option-item" data-price="free" data-service="visual safety report">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Visual Safety Report</h3>
-                    <h3 class="price">FREE</h3>
+                    <div class="draw-handle">
+                      <h3>Visual Safety Report</h3>
+                      <h3 class="price">FREE</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">The only thing worse than failing your MOT, is failing on something that could have been spotted by a Toyota approved expert. Our free 37 point visual health check identifies issues that need fixing urgently.</p>
@@ -151,7 +189,7 @@
                 <ul id="local-dealers"></ul>
               </div>
               <button class="go-back move-step" data-step="one">Go back</button>
-              <button id="step-dealer" class="proceed disabled" data-step="three">choose dealer</button>
+              <button id="step-dealer" class="proceed disabled submit-booking" data-step="three">choose dealer</button>
               <br class="clear" />
             </section>
 
@@ -163,9 +201,11 @@
               <div id="confirm-choices" class="select-bookings">
                 <ul>
                   <!-- Car Servicing -->
-                  <li class="car-servicing service-parent icon-checkmark inactive parent-object" data-price="" data-service="car-servicing">
+                  <li class="service-not-present car-servicing service-parent icon-checkmark inactive parent-object" data-price="" data-service="car-servicing">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Car servicing</h3>  
+                    <div class="draw-handle">
+                      <h3>Car servicing</h3>  
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner expand">
                       <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
@@ -173,21 +213,22 @@
                       <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
                       <button id="find-service" class="wide">find service</button>
                       <div class="clear"></div>
-                      <div id="service-type">
-                        <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
-                        <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
-                        <!-- Suggested service for customer -->
-                        
-                        <!-- Potential additonal service options -->
-                        
+                      <span class="tool-tip">The system cannot check the contents of your Service Plan. Therefore, no charges have been displayed for your Service / MOT options. Your Dealer will contact you before your service to discuss your booking in full.</span>
+                      <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
+                      <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
+                      <div id="service-type">                        
+                        <!-- Suggested service for customer -->                        
+                        <!-- Potential additonal service options -->                        
                       </div>
                     </div>
                   </li>
                   <!-- HSD check -->
                   <li class="service-parent icon-checkmark option-item disabled" data-price="free" data-service="Hybrid Health Check">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Hybrid Health Check</h3>
-                    <h3 class="price">From FREE</h3>
+                    <div class="draw-handle">
+                      <h3>Hybrid Health Check</h3>
+                      <h3 class="price">From FREE</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">Protect the heart of your hybrid with an annual Health Check. Safeguard your investment by catching any issues early, extend the warranty on your hybrid battery, and ensure optimal performance, all for just &pound;39, or FREE when booked as part of a service.</p>
@@ -196,7 +237,9 @@
                   <!-- Fixed Price Repair -->
                   <li class="service-parent icon-checkmark inactive parent-object" data-price="" data-service="repairs">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Repairs</h3>
+                    <div class="draw-handle">
+                      <h3>Repairs</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <ul class="repair-choices">
@@ -208,8 +251,10 @@
                   <!-- General diagnostic -->
                   <li class="service-parent icon-checkmark option-item" data-price="free" data-service="general diagnosis">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>General Diagnosis</h3>
-                    <h3 class="price">FREE</h3>
+                    <div class="draw-handle">
+                      <h3>General Diagnosis</h3>
+                      <h3 class="price">FREE</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">If your car is giving you signals it might have something wrong with it but you don’t know what, then  book in for a general diagnosis appointment.</p>
@@ -218,7 +263,9 @@
                   <!-- MOT -->
                   <li class="service-parent icon-checkmark option-item" data-price="" data-service="MOT">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>MOT</h3>
+                    <div class="draw-handle">
+                      <h3>MOT</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">MOTs are compulsory and have to be done each year, so make it as quick and efficient as possible. Your local Toyota dealer can arrange your MOT with a Toyota approved expert who authorised to carry out any necessary repair work.</p>
@@ -227,11 +274,24 @@
                   <!-- Visual Safety Report -->
                   <li class="service-parent icon-checkmark option-item" data-price="free" data-service="visual safety report">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
-                    <h3>Visual Safety Report</h3>
-                    <h3 class="price">FREE</h3>
+                    <div class="draw-handle">
+                      <h3>Visual Safety Report</h3>
+                      <h3 class="price">FREE</h3>
+                    </div>
                     <div class="clear"></div>
                     <div class="service-inner">
                       <p class="sub-title">The only thing worse than failing your MOT, is failing on something that could have been spotted by a Toyota approved expert. Our free 37 point visual health check identifies issues that need fixing urgently.</p>
+                    </div>
+                  </li>
+                  <li class="service-parent icon-checkmark option-item" data-price="free" data-service="MyToyotaView">
+                    <a href="javascript:void(0)" class="menu-handle option-child"></a>
+                    <div class="draw-handle">
+                      <h3>MyToyotaView</h3>
+                      <h3 class="price">FREE</h3>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="service-inner">
+                      <p class="sub-title">MyToyotaView is a web-based video system that allows us to present video clips of your vehicle to you online. It will show you what your technician has found and allow you see any issues before work is carried out.</p>
                     </div>
                   </li>
                 </ul>
@@ -395,6 +455,7 @@
           <section id="summary" class="empty">
             <h2>Toyota for a Reason</h2>
             <h4 class="sub-title">Find out more</h4>
+            <div id="need-help"></div>
             <div id="your-quote" class="summary-pod">
               <div class="pod-inner">
                 <h4>your quote</h4>
@@ -410,19 +471,34 @@
                 <p class="add-some">Please add at least one booking option.</p>
               </div>
               <div id="selected-service" class="service-item"></div>
+
               <div id="selected-repairs" class="service-item"></div>              
+
               <ul id="selected-options"></ul>              
+
               <button id="continue" class="disabled proceed move-step" data-step="two">continue booking</button>
-            </div>            
+            </div>   
+            <div class="including">
+              <h2>what's included?</h2>
+              <a href="#what-is-included" rel="shadowbox;width=740;height=400;">Find out more</a>
+            </div>
           </section>
           <div class="clear"></div>
         </div>
       </div>
     </div>
 
+
+
+    <!-- hidden form tht gets submitted to dealersuip of users choosing -->
     <form id="olb-form" name="olbform" action="" method="post">
       <input type="text" name="service_booking" value="" type="hidden">
-    </form>
+    </form>   
+    
+    <!-- pop up content for Whats included -->
+    <div id="what-is-included">
+      <!-- <h1>GGGGGGG</h1> -->
+    </div>
 
     <!-- Start script templates for OLB -->
     <script id="your-car-tpl" type="text/template">
@@ -433,12 +509,13 @@
 
     <script id="selected-servicing-tpl" type="text/template">
       <h4 class="sub-title item-title">car servicing</h4>
-      <h4 class="sub-title price">£<%= bookingDetails.get('serviceprice') %></h4>
+      <h4 class="sub-title price data-price">£<%= bookingDetails.get('serviceprice') %></h4>
+      <h4 class="sub-title price plan-price">£ --.--</h4>
       <div class="clear"></div>
       <p><%= bookingDetails.get('servicetype') %> service</p>
       <p>(<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</p>
 
-      <button class="remove-item">remove</button>
+      <button type="button" data-type="service" data-title="<%= bookingDetails.get('servicetype') %>" class="remove-item">remove</button>
     </script>
 
     <script id="selected-repairs-tpl" type="text/template">
@@ -455,19 +532,20 @@
     </script>
 
     <script id="selected-options-tpl" type="text/template">
-      <li class="service-item selected">
+      <li class="service-item selected" data-title="<%= title %>">
         <h4 class="sub-title item-title"><%= title %></h4>
         <h4 class="sub-title price"><%= price %></h4>
         <div class="clear"></div>
 
-        <button class="remove-item">remove</button>
+        <button type="button" data-type="option"  data-title="<%= title %>" class="remove-item">remove</button>
       </li>
     </script>
 
     <script id="suggested-service" type="text/template">
       <div id="available-service">
         <h3 class="service-badge <%= bookingDetails.get('servicetype') %> left"><%= bookingDetails.get('servicetype') %> <span>(<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</span></h3>
-        <h3 class="service-price">£<%= bookingDetails.get('serviceprice') %></h3>
+        <h3 class="service-price data-price">£<%= bookingDetails.get('serviceprice') %></h3>
+        <h3 class="service-price plan-price">£ --.--</h3>
         <div class="clear"></div>
       </div>
       <div id="maintenance-options">
@@ -476,7 +554,8 @@
           <% _.each(bookingDetails.get('options'), function(ele, idx){ %>
             <li class="mdata">
               <p class="sub-title left"><%= ele.description %></p>
-              <p class="sub-title right">£<%= ele.price %></p>
+              <p class="sub-title right data-price">£<%= ele.price %></p>
+              <p class="sub-title right plan-price">£ --.--</p>
               <div class="clear"></div>
             </li>
           <% }); %>
@@ -495,7 +574,7 @@
     </script>
 
     <script id="dealer-tpl" type="text/template">
-      <li id="<%= centerId %>" class="dealer-item">
+      <li id="<%= centerId %>" class="dealer-item" data-center="<%= centerUrl %>">
         <div class="dealer-left">
           <p class="sub-title"><%= title %></p>
           <p><%= proximity %> miles</p>
@@ -503,6 +582,13 @@
         <p class="tele">Tel: <span><%= centerTel %></span></p>
         <br class="clear" />
       </li>
+    </script>
+
+     <!-- dealer help line -->
+    <script id="help-me" type="text/template">
+      <h2>need some help?</h2>
+      <p>call our booking team on</p>
+      <p class="dealer-number"><%= dealerPhone %></p>
     </script>
 
     <script id="date-time" type="text/template">
@@ -517,15 +603,15 @@
     <script id="address-details" type="text/template">
       <div class="form-row">
         <label for="edit-address2">Address 2</label>
-        <input value="<%= address2 %>" type="text" name="address2" id="edit-address2" class="required form-text" required>
+        <input value="<%= address2 %>" type="text" name="address2" id="edit-address2" class="form-text">
       </div>
       <div class="form-row">
         <label for="edit-town">Town*</label>
-        <input value="<%= town %>" type="text" name="town" id="edit-town" class="required form-text" required>
+        <input value="<%= town %>" type="text" name="town" id="edit-town" class="form-text">
       </div>
       <div class="form-row">
         <label for="edit-county">County</label>
-        <input value="<%= county %>" type="text" name="county" id="edit-county" class="required form-text" required>
+        <input value="<%= county %>" type="text" name="county" id="edit-county" class="form-text">
       </div>
     </script>
 
@@ -550,7 +636,7 @@
         <br class="clear" />
       </div>
       <br class="clear" />
-      <% if (!bookingDetails.get('servicetype')) { %>
+      <% if (bookingDetails.get('servicetype')) { %>
         <div class="summary-pod">
           <h3>your service</h3>
           <div class="service-choice <%= bookingDetails.get('servicetype') %>">
@@ -592,7 +678,7 @@
         <h3>Dear <%= title %> <%= surname %></h3>
         <p>Your booking has been recieved and we look forward to seeing you and your <%= vehicleModel %> on</p>
         <h3 class="confirmed-date"><%= weekDay %> <%= dateDay %> <%= month %> <%= bookingYear %> at <%= serviceTime %></h3>
-        <p>We have sent you a confirmation email containing these details and any other instructions that you might have given us. If you need to change or cancel your service booking, please just call us on 999.</p>
+        <p>We have sent you a confirmation email containing these details and any other instructions that you might have given us. If you need to change or cancel your service booking, please just call us on <%= dealerPhone %>.</p>
         <p>We will contact you in 2-3 days prior to your service to re-confirm all the details.</p>
         <a href="/owners" class="final-links left">Our owners page</a>
         <a href="//www.toyota.co.uk/owners-landing" target="_blank" class="final-links right">Toyota UK Owners page</a>
@@ -608,9 +694,14 @@
       var filterMinutes = function(){
         return;
       }
+      window.osbDealerID = '23456789';
+      window.osbPhone = '01234657891';
     </script>
 
     <!-- End templates &sensor=false-->
+    <!-- TGB assets tht arent required once deployed -->
+    <link rel="stylesheet" href="http://www.toyota.co.uk/sites/all/libraries/shadowbox/shadowbox.css" type="text/css" />
+    <script src="http://www.toyota.co.uk/sites/all/libraries/shadowbox/shadowbox.js?v=3.0.3"></script>    
 
     <!-- build:js(.) scripts/vendor.js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4awt1R4M1MQx9Q9vfBpN8DOXHVrLkOGo"></script>

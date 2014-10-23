@@ -34,6 +34,8 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       this.$el.addClass('current-step');
       this.updateProgressBar();
 
+      register.vehicle.getTotalPrice();
+
       $('#customer-details-form').validate({
         debug: true,
         errorClass: 'error_text',
@@ -131,21 +133,22 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         GeneralDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
         VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
         VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
+        optionCollectDeliver: 'N',
         mot: this.queryOptionsCollection('title', 'mot'),
         motCost: window.motPrice || 0,
         title: this.$('#title').val(),
-        firstname: this.$('#firstname').val(),
-        surname: this.$('#surname').val(),
-        email: this.$('#email').val(),
-        housenameornumber: this.$('#house').val(),
+        firstname: this.$('#edit-firstname').val(),
+        surname: this.$('#edit-surname').val(),
+        email: this.$('#edit-email').val(),
+        housenameornumber: this.$('#edit-house').val(),
         address1: this.$('#address2').val(),
         address2: '',
-        town: this.$('#town').val(),
-        county: this.$('#county').val(),
-        postcode: this.$('#postcode').val(),
+        town: this.$('#edit-town').val(),
+        county: this.$('#edit-county').val(),
+        postcode: this.$('#edit-postcode').val(),
         additionalNotes: $('#add-info').val()
       });
-      this.getPhoneType(this.$('#phonetype').val());
+      this.getPhoneType(this.$('#phonetype').val());      
     },
     queryOptionsCollection: function(key, parameter){
       var result;
@@ -153,7 +156,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         register.vehicle.get('selectedOptions').find(function(model){
           if(model.get(key).toLowerCase() === parameter){
             result = 'Y';
-          }
+          }else result = 'N';
         });
       }else{
         register.vehicle.get('selectedOptions').find(function(model){
@@ -194,23 +197,21 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
     getPhoneType: function(phoneType){
       window.console && console.info(phoneType)
       return register.vehicle.get('customer').set({ 
-        homeTel: phoneType === 'home' ? this.$('#phone').val() : '',
-        workTel: phoneType === 'office' ? this.$('#phone').val() : '',
-        mobileTel: phoneType === 'mobile' ? this.$('#phone').val() : ''
+        homeTel: phoneType === 'home' ? this.$('#edit-phone').val() : '',
+        workTel: phoneType === 'office' ? this.$('#edit-phone').val() : '',
+        mobileTel: phoneType === 'mobile' ? this.$('#edit-phone').val() : ''
       });
     },
     confirmationPage: function(){
       if(!this.$('#hear-about li').hasClass('selected')){
         return register.validationView.showError('hear-about', '#hear-about');
       }
-      // if(this.$('#customer-details-form').valid()){
-      //   this.buildData();
-      // }
-      this.buildData();
+      if(this.$('#customer-details-form').valid()){
+        this.buildData();
+      }
+      // this.buildData();
 
       this.confirmSummary.render();
-
-      // $('.step-six').addClass('current-step');
 
       window.console && console.info(register.vehicle.get('customer').toJSON());
     },

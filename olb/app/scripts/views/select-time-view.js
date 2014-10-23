@@ -22,7 +22,6 @@ define(['backbone', 'register'], function(Backbone, register) {
       window.console && console.info(register)
       //js function within service_booking.inc that has php within
       // calculateAvailableDays($("#checkbox_MOT").attr("checked"), $("#checkbox_WYW").attr("checked"), $("#checkbox_CD").attr("checked"), $("#checkbox_CC").attr("checked"));
-      window.console && console.info(this.queryOptionsCollection('title', 'mot'))
       calculateAvailableDays(
         this.queryOptionsCollection('title', 'mot'),
         register.vehicle.get('customer').get('optionWhileYouWait') === 'Y' ? true : false,
@@ -53,17 +52,17 @@ define(['backbone', 'register'], function(Backbone, register) {
       var iniDate = this.$('#service-date').datepicker("getDate");
 
       register.vehicle.get('customer').set({
-        serviceDate: iniDate,
         dateDay: iniDate.getDate(),
         weekDay: _this.days[iniDate.getDay()],
         month: _this.months[iniDate.getMonth()],
         bookingYear: iniDate.getFullYear(),
+        serviceDate: iniDate.getDate() + '/' + this.months.indexOf(_this.months[iniDate.getMonth()]) + '/' + iniDate.getFullYear(),
         serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val()
       });
 
       this.$el.find('.selected-date').html(this.template(register.vehicle.get('customer').toJSON()));
 
-      this.$('#fsda_hour').change(filterMinutes);
+      this.$('#fsda_hour')  
     },
     queryOptionsCollection: function(key, parameter) {
       var result;
@@ -81,7 +80,7 @@ define(['backbone', 'register'], function(Backbone, register) {
         _this = this;
 
       register.vehicle.get('customer').set({
-        serviceDate: fullDate,
+        serviceDate: fullDate.getDate() + '/' + this.months.indexOf(_this.months[fullDate.getMonth()]) + '/' + fullDate.getFullYear(),
         serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val(),
         dateDay: fullDate.getDate(),
         weekDay: _this.days[fullDate.getDay()],

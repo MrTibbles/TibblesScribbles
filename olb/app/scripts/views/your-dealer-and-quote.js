@@ -6,8 +6,11 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       'click .service-plan': 'servicePlanActive',
       'click .option-child': 'addOption',
       'click .selected-child': 'removeOption',
-      'click .user-wait': 'setWaiting'      
+      'click .user-wait': 'setWaiting'    
     },
+    template: _.template(
+      $('#help-me').html()
+    ),
     initialize: function() {
       this.serviceBooking = register.serviceBooking = new serviceBooking();        
     },
@@ -21,6 +24,15 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       this.$el.siblings('section').removeClass('current-step');
       this.$el.addClass('current-step');
       $('#continue').hide();
+
+      register.vehicle.get('customer').set('dealerPhone',phone);
+      register.vehicle.get('customer').set({
+        dealerPhone: window.osbPhone,
+        dealerId: window.osbDealerID
+      });
+
+      $('#need-help').empty().addClass('helping').append(this.template(register.vehicle.get('customer').toJSON()));
+      $('.including').addClass('now-include')
 
       this.updateProgressBar();
 
@@ -145,8 +157,8 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       this.$el.find('.service-plan').toggleClass('active');
 
       if (this.$el.find('.service-plan').hasClass('active')) {
-        register.vehicle.set('servicePlan', true);
-      } else register.vehicle.set('servicePlan', false);
+        register.vehicle.set('servicePlan', 'Y');
+      } else register.vehicle.set('servicePlan', 'N');
     },
     addItem: function(item) {
       register.vehicle.get('selected').add(item);
@@ -207,6 +219,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       return register.vehicle.get('customer').set({ 
         optionCourtesyCar: $this.data('wait') === 'courtesy' ? 'Y' : 'N',
         optionPickDrop: $this.data('wait') === 'collect' ? 'Y' : 'N',
+        optionCollectDeliver: $this.data('wait') === 'collect' ? 'Y' : 'N',
         optionWhileYouWait: $this.data('wait') === 'wait' ? 'Y' : 'N'
       });
     }

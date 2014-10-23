@@ -9,6 +9,16 @@
 	position: absolute;
 	right: 30px;
 
+	#remove-car{
+		display: none;
+	}
+
+	&.change-choices{
+		.summary-pod .remove-item{
+			display: block;
+		}
+	}
+
 	&:before{
 		display: block;
 		width: 96px;
@@ -49,9 +59,34 @@
 	.sub-title{
 		color: $active-state;
 		text-transform: capitalize;
-		padding: 0 10px;		
+		padding: 0 10px;
 	}
 
+	#need-help{
+		display: none;
+		background-color: #414248;
+		padding: 15px 0;
+		text-align: center;
+
+		&.helping{
+			display: block;
+		}
+
+		h2, p{
+			display: block;
+			width: 100%;
+			color: #ffffff;
+			margin: 0;
+			text-transform: capitalize;
+			padding: 0;			
+		}
+		.dealer-number{
+			font: {
+				family: 'toyotadisplay_bd';
+				size: 22px;
+			}
+		}
+	}
 	.summary-pod{
 		padding: 20px 0 10px;
 		position: relative;
@@ -62,7 +97,7 @@
 			display: none;
 		}
 		.remove-item{
-			display: block;
+			display: none;
 			width: auto;
 			height: auto;
 			position: absolute;
@@ -94,6 +129,9 @@
 			margin: 0;
 			padding: 0;			
 		}
+		.plan-price{
+			display: none;
+		}
 		.pod-inner h4, .pod-inner h4.sub-title{
 			margin: 0 0 12px;			
 		}
@@ -107,6 +145,7 @@
 		}
 		p{
 			font-size: 12px;
+			padding: 0;
 			&.mileage{
 				display: none;
 				&.available{
@@ -127,6 +166,36 @@
 			&.selected{
 				display: block;
 				border-top: 1px solid $border-colour;
+			}
+		}
+	}
+	.including{
+		display: none;
+		padding: 25px 0 0;
+		text-align: center;
+		background: url('../images/including-bg.jpg') no-repeat center 60px;
+		border-top: 1px solid $border-colour;
+
+		&.now-include{
+			display: block;
+		}
+
+		h2, a{
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		h2{
+			text-transform: capitalize;
+		}
+		a{
+			margin: 160px 0 0;
+			color: $active-state;
+			text-decoration: none;
+			font: {
+				family: 'toyotadisplay_bd';
+				size: 14px;
 			}
 		}
 	}

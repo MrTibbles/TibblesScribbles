@@ -223,7 +223,7 @@ module.exports = function(grunt) {
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/styles/fonts/{,*/}*.*',
+            '<%= config.dist %>/fonts/{,*/}*.*',
             '<%= config.dist %>/*.{ico,png}'
           ]
         }
@@ -435,7 +435,7 @@ module.exports = function(grunt) {
             '.htaccess',
             'images/{,*/}*.png',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*',
+            'fonts/{,*/}*.*',
             'styles/ico/{,*/}*.*',
             'bower_components/' + (this.includeCompass ? 'sass-' : '') + 'bootstrap/' + (this.includeCompass ? 'fonts/' : 'dist/fonts/') + '*.*'
           ]

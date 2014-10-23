@@ -90,7 +90,7 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
         colour: register.vehicle.get('colour'),
         mileage: register.vehicle.get('approxMiles'),
         serviceObj: register.vehicle.get('bookingDetails').attributes,
-        serviceplan: register.vehicle.get('servicePlan'),
+        servicePlan: register.vehicle.get('servicePlan'),
         HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
         HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
         GeneralDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
@@ -113,8 +113,7 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
 
       formData.get('mot') || formData.set('mot', 'N');
 
-      formData.get('serviceplan') || formData.set('MOT', 'N');
-
+      // formData.get('serviceplan') || formData.set('MOT', 'N');
 
       register.vehicle.get('customer').set('dealerId', this.marker.centerID);
 

@@ -6,7 +6,12 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       'click .service-plan': 'servicePlanActive',
       // 'click .car-servicing': addService
       'click .option-child': 'addOption',
-      'click .selected-child': 'removeOption'
+      'click .selected-child': 'removeOption',
+      'mouseenter .service-plan-active': 'showToolTip',
+      'onmouseover .service-plan-active': 'showToolTip',
+      'mouseleave .service-plan-active': 'hideToolTip',
+      'mouseleave .service-plan': 'hideToolTip',
+      'click .servicing-child': 'removeServicing'
     },
     initialize: function() {
       this.serviceBooking = register.serviceBooking = new serviceBooking();
@@ -17,12 +22,12 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
     },
     render: function() {
       register.loader.hideLoader();
-      // this.$el.find('li[data-service="car-servicing"]').addClass('selected')
       this.checkHSD();
-
-      this.preSelectDefaults();
     },
-    serviceLookUp: function() {
+    serviceLookUp: function(e) {
+      if($(e.currentTarget).hasClass('disabled')){
+        return false;
+      }
       if(!$('#mileage').val()) {
         return register.validationView.showError('no-mileage', '#mileage');
       }else if($('#mileage').val().length >= 6){
@@ -43,7 +48,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
 
       this.serviceBooking.fetch({
         success: function() {
-          register.vehicle.set('selected', _this.selected);
+          // register.vehicle.set('selected', _this.selected);
           register.vehicle.set('approxMiles', this.$('#mileage').val());
 
           _this.suggestedService = new suggestedService({
@@ -51,6 +56,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
           });          
           register.validationView.clearError('#mileage');
           _this.suggestedService.render();
+          register.bookingSummaryView.renderService();
           // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
         }
       });
@@ -59,16 +65,22 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       var hsd = new RegExp('hybrid'),
         modelIsHybrid = hsd.test(register.vehicle.get('engine').toLowerCase());
 
-      return modelIsHybrid && this.$el.find('[data-service="Hybrid Health Check"]').removeClass('disabled');
-    },
-    servicePlanActive: function() {
-      this.$el.find('.service-plan').toggleClass('active');
+      if(modelIsHybrid){
+          this.$el.find('[data-service="Hybrid Health Check"]').removeClass('disabled').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');;
+        register.vehicle.get('selected').add({
+          price: "free",
+          title: "Hybrid Health Check"
+        });
+        register.vehicle.get('selectedOptions').add({
+          price: "free",
+          title: "Hybrid Health Check"
+        });
 
-      if (this.$el.find('.service-plan').hasClass('active')) {
-        register.vehicle.set('servicePlan', 'Y');
-      } else register.vehicle.set('servicePlan', 'N');
+        return register.bookingSummaryView.renderOptions();
+      }
     },
     getFixedPrices: function() {
+      register.loader.showLoader(this.$('li[data-service="repairs"] .repair-choices')[0]);
       var _this = this;
 
       register.vehicle.get('fixedPrices').query = {
@@ -82,10 +94,12 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
           });
 
           _this.fixedPriceView.render('#booking-choices');
+          register.loader.hideLoader();
         }
       });
     },
     addItem: function(item) {
+      window.console && console.info(register.vehicle.get('selected'))
       register.vehicle.get('selected').add(item);
       register.vehicle.get('selectedOptions').add(item);
 
@@ -112,7 +126,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
     },
     addOption: function(e) {
       var $parent = $(e.currentTarget).parent('.service-parent');
-      if (!$parent.hasClass('disabled') && !$parent.hasClass('inactive') && !$parent.hasClass('parent-object')) {
+      if (!$parent.hasClass('disabled') && !$parent.hasClass('inactive') && !$parent.hasClass('parent-object') && !$parent.hasClass('selected-option')) {
         var chosenOption = {
           title: $parent.data('service'),
           price: $parent.data('price')
@@ -133,10 +147,54 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       this.removeItem(chosenOption);
 
       $parent.removeClass('selected-option');
-      $(e.currentTarget).addClass('option-child').removeClass('selected-child')
+      $(e.currentTarget).addClass('option-child').removeClass('selected-child');
     },
-    preSelectDefaults: function(){
-      this.$('li[data-service="visual safety report"] a, li[data-service="general diagnosis"] a').click();
+    removeServicing: function(e){      
+      register.vehicle.get('bookingDetails').clear();
+
+      this.suggestedService.clearService();
+      register.bookingSummaryView.clearService();
+    },
+    servicePlanActive: function(e) {
+      this.$('.service-plan').toggleClass('service-plan-active');
+
+      if (this.$('.service-plan').hasClass('service-plan-active')) {
+        return this.setServicePlan(true);
+      } else {
+        return this.setServicePlan(false);
+      }
+    },
+    setServicePlan: function(active){
+      if(active){
+        register.vehicle.set('servicePlan', 'Y');    
+        this.suggestedService.render();
+
+        $('.data-price').hide();
+        $('.plan-price').show();
+        // this.showToolTip();
+        // register.vehicle.get('bookingDetails').set('serviceprice','-');
+        // _.each(register.vehicle.get('bookingDetails').get('options'), function(ele){
+        //   ele.price = '-';
+        // });
+      }else{
+        register.vehicle.set('servicePlan', 'N');
+        this.suggestedService.render();
+
+        $('.data-price').show();
+        $('.plan-price').hide();
+      }
+      // return 
+    },
+    showToolTip:function(e){
+      var boxOffset = $(e.currentTarget).position();// || $('.service-plan').offset();
+
+      this.$('.tool-tip').addClass('tipping').css({
+        'top': (boxOffset.top - 135),
+        'left': (boxOffset.left + 75)
+      });
+    },
+    hideToolTip: function(e){
+      this.$('.tool-tip').removeClass('tipping');
     }
   });
   return bookingOptions;

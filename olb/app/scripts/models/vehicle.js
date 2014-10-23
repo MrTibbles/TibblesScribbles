@@ -7,7 +7,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       selected: new Backbone.Collection(),
       selectedOptions: new Backbone.Collection(),
       selectedRepairs: new Backbone.Collection(),
-      customer: new customerModel(),
+      customer: new customerModel()
     },
     parse: function(response) {
       if(response.found > 0){
@@ -22,7 +22,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
           prodDate: response.date,
           age: response.age,
           ageMonth: response.ageM,
-          servicePlan: false
+          servicePlan: 'N'
         };
         return vehicleModel;
       }else vehicleModel;
@@ -46,6 +46,15 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
 
         return $.ajax(params);
       }
+    },
+    getTotalPrice: function(){
+      window.console && console.info(register.vehicle);
+      var totalBookingPrice = Number(0);
+      register.vehicle.get('selected').each(function(ele){
+        var selectedPrice = ele.get('price').toUpperCase() === 'FREE' ? Number(0) : Number(ele.get('price'));
+        totalBookingPrice += selectedPrice;
+      });
+      return window.console && console.info(totalBookingPrice)
     }
   });
   return vehicle;
