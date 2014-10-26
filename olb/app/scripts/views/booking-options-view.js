@@ -66,7 +66,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
         modelIsHybrid = hsd.test(register.vehicle.get('engine').toLowerCase());
 
       if(modelIsHybrid){
-          this.$el.find('[data-service="Hybrid Health Check"]').removeClass('disabled').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');;
+        this.$el.find('[data-service="Hybrid Health Check"]').removeClass('disabled inactive').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');;
         register.vehicle.get('selected').add({
           price: "free",
           title: "Hybrid Health Check"
@@ -136,6 +136,13 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
 
         $parent.addClass('selected-option');
         $(e.currentTarget).removeClass('option-child').addClass('selected-child');
+      }else if($parent.hasClass('inactive')){
+        
+        var scrollTarget = $('#your-car').offset();
+        $("html,body").animate({
+          scrollTop: scrollTarget.top
+        }, 500);
+        $('#your-car .lite').addClass('prompt');
       }
     },
     removeOption: function(e) {
@@ -172,6 +179,8 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
         $('.data-price').hide();
         $('.plan-price').show();
         // this.showToolTip();
+        this.$('.tool-tip').addClass('tipping');
+
         // register.vehicle.get('bookingDetails').set('serviceprice','-');
         // _.each(register.vehicle.get('bookingDetails').get('options'), function(ele){
         //   ele.price = '-';

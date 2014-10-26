@@ -11,8 +11,10 @@ define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, 
       this.$el.empty().addClass('available').append(this.template(this.model.toJSON()));
 
       $('li[data-service="car-servicing"]').removeClass('service-not-present');
+      $('#continue').removeClass('inactive disabled');
+      
       !$('li[data-service="car-servicing"]').hasClass('selected-option') && $('li[data-service="car-servicing"]').addClass('selected-option');
-      !$('li[data-service="car-servicing"] .menu-handle').hasClass('servicing-child') && $('li[data-service="car-servicing"] .menu-handle').addClass('servicing-child');
+      !$('li[data-service="car-servicing"] .menu-handle').hasClass('servicing-child') && $('li[data-service="car-servicing"] .menu-handle').addClass('servicing-child');      
     },
     clearService: function(){
       this.$el.empty().removeClass('available');

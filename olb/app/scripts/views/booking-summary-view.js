@@ -48,6 +48,7 @@ define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, 
     },
     clearService: function(){
       this.$('#selected-service').removeClass('selected').empty();
+      this.checkBooking()
     },
     renderOptions: function(){          
       var _this = this;
@@ -98,17 +99,21 @@ define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, 
               return register.vehicle.get('selectedOptions').remove(ele);
             }
           });
-          this.$('#selected-options li[data-title="'+$this.data('title')+'"]').remove();
+          // this.$('#selected-options li[data-title="'+$this.data('title')+'"]').remove();
           window.console && console.info($this.data('title'), $('li[data-service="'+$this.data('title')+'"]'))
-          $('li[data-service="'+$this.data('title')+'"]').removeClass('selected-option selected');
+          $('li[data-service="'+$this.data('title')+'"]').removeClass('selected-option selected').find('.menu-handle').removeClass('selected-child').addClass('option-child');
+          this.renderOptions();
           break;
       }
-      window.console && console.info(register.vehicle);
     },
     checkBooking: function(){
       if(this.model.get('model') && register.vehicle.get('selected').length){
+        this.$el.removeClass('empty-selection')
         this.$('#continue').removeClass('disabled');
-      }else !this.$('#continue').hasClass('disabled') && this.$('#continue').addClass('disabled');
+      }else{
+        !this.$('#continue').hasClass('disabled') && this.$('#continue').addClass('disabled');
+        this.$el.addClass('empty-selection')
+      }
     },
     checkHeight: function(){
       // window.console && console.info('Summary height: ',this.$el.height())

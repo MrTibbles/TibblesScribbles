@@ -43,6 +43,11 @@
 			display: block;
 		}
 	}
+	&.empty-selection{
+		.description, .add-some-options{
+			display: block
+		}
+	}
 
 	&.empty{
 		.summary-pod #remove-car{
@@ -140,8 +145,9 @@
 			margin: 0 0 6px;
 		}
 		.price{
-			float: right;
+			position: absolute;
 			text-transform: uppercase;
+			right: 10px;
 		}
 		p{
 			font-size: 12px;

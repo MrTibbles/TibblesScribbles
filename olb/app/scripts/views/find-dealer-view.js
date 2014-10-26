@@ -21,7 +21,7 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
       //<button id="step-dealer" class="proceed disabled" data-step="three">choose dealer</button>
       $('#continue').attr({
         'data-step': 'three',
-        'class': 'proceed disabled submit-booking'
+        'class': 'proceed disabled'
       }).html('choose dealer');
     },
     updateProgressBar: function(){
@@ -93,10 +93,10 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
             register.loader.hideLoader();          
 
             _.each(register.dealerList, function(ele){
-              var dealerItem = new dealerView({
+              _this.dealerItem = new dealerView({
                 model: ele
               });
-              dealerItem.render();
+              _this.dealerItem.render();
             });
           }
         });
@@ -115,13 +115,17 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
       this.$('.dealer-item').removeClass('selected');
       $(e.currentTarget).addClass('selected');
 
-      if(window.location.hostname === 'localhost'){
-        //local dev
-        $('#olb-form').attr('action', 'http://pinkstones.toyota.co.uk/owners/service-booking/view/#/your-dealer');
-      }else{
-        //TCW destination
-        $('#olb-form').attr('action', $(e.currentTarget).data('center') + '/owners/service-booking/view/#/your-dealer');
-      }
+      this.dealerItem.setDealerDestination($(e.currentTarget).data('center'));
+
+      $('.proceed, #step-dealer').removeClass('disabled').addClass('submit-booking');
+
+      // if(window.location.hostname === 'localhost'){
+      //   //local dev
+      //   $('#olb-form').attr('action', 'http://pinkstones.toyota.co.uk/owners/service-booking/view/#/your-dealer');
+      // }else{
+      //   //TCW destination
+      //   $('#olb-form').attr('action', $(e.currentTarget).data('center') + '/owners/service-booking/view/#/your-dealer');
+      // }
     }
   });
   return yourCar;

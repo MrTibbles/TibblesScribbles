@@ -24,6 +24,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       }
       register.loader.showLoader(this.$el[0]);
       $(e.currentTarget).addClass('searching');
+      $('#your-car .lite').removeClass('prompt');
 
       var _this = this;
       this.vehicle.query = this.$('#reg-vin').val().toUpperCase().replace(/ /g,'');
@@ -36,7 +37,10 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
 
           if(_this.vehicle.get('requested')){
             _this.bookingSummaryView.render();
-          }else return register.validationView.showError('invalid-reg', '#reg-vin');
+          }else{
+            $(e.currentTarget).removeClass('searching')
+            return register.validationView.showError('invalid-reg', '#reg-vin');
+          }
 
           register.validationView.clearError('#reg-vin');
           _this.bookingOptions.render();
@@ -48,7 +52,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/booking-summary-view', 
       });
     },
     startAgain: function(e){
-      this.model.clear();
+      // this.model.clear();
     }
   });
   return yourCar;

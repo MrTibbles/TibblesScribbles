@@ -148,6 +148,15 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         postcode: this.$('#edit-postcode').val(),
         additionalNotes: $('#add-info').val()
       });
+      
+      //default serviceType, servicePrice and mileage to 0 for submission
+      if(!register.vehicle.get('customer').get('serviceType') && !register.vehicle.get('customer').get('servicePrice')){
+        register.vehicle.get('customer').set({
+          serviceType: '00000000',
+          servicePrice: 0,
+          mileage: 0
+        });
+      }
       this.getPhoneType(this.$('#phonetype').val());      
     },
     queryOptionsCollection: function(key, parameter){

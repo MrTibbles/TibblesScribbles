@@ -96,6 +96,7 @@
 						text-indent: 35px;
 						font-family: 'toyotadisplay_rg';
 						cursor: pointer;
+						text-transform: capitalize;
 
 						&:before, &:after{
 							position: absolute;

@@ -11,6 +11,9 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
     template: _.template(
       $('#help-me').html()
     ),
+    waitTemplate: _.template(
+      $('#selected-options-tpl').html()
+    ),
     initialize: function() {
       this.serviceBooking = register.serviceBooking = new serviceBooking();        
     },
@@ -24,11 +27,13 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       this.$el.siblings('section').removeClass('current-step');
       this.$el.addClass('current-step');
       $('#continue').hide();
+      $('#summary').removeClass('change-choices');
 
       register.vehicle.get('customer').set('dealerPhone',phone);
       register.vehicle.get('customer').set({
         dealerPhone: window.osbPhone,
-        dealerId: window.osbDealerID
+        dealerId: window.osbDealerID,
+        dealerName: window.dealerName
       });
 
       $('#need-help').empty().addClass('helping').append(this.template(register.vehicle.get('customer').toJSON()));
@@ -83,7 +88,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       var _this = this;
       this.serviceBooking.query = this.data;
  
-      window.osbInitValues.serviceObj && this.serviceBooking.fetch({
+      window.osbInitValues.serviceObj.serviceprice && this.serviceBooking.fetch({
         success: function(){
           _this.$('li[data-service="car-servicing"]').addClass('selected');
           _this.suggestedService = new suggestedService({
@@ -93,7 +98,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
 
           register.bookingSummaryView.render();
         }
-      })
+      });
 
       window.osbInitValues.repairs.length && _.each(window.osbInitValues.repairs, function(repairObj, idx){
         this.$('li[data-service="repairs"]').addClass('selected');
@@ -120,6 +125,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       window.osbInitValues.VisualSafetyReport === 'Y' && this.$('li[data-service="visual safety report"] .menu-handle').click();
 
       // register.bookingSummaryView.render();
+      this.$('.proceed').removeClass('disabled');
     },
     serviceLookUp: function() {
       register.loader.showLoader(this.$el[0]);
@@ -212,16 +218,97 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
     },
     setWaiting: function(e){
       var $this = $(e.currentTarget);
-      this.$('.choose-wait li').removeClass('selected');
-      $this.addClass('selected');
-      this.$('.proceed').removeClass('disabled');
+
+      var chosenWait = {
+        title: $this.data('title'),
+        price: $this.data('price')
+      };
+      register.vehicle.get('customer').set('chosenWait', chosenWait);
+
+      if($this.hasClass('selected')){
+        $this.removeClass('selected');
+        register.vehicle.get('customer').set({ 
+          optionPickDrop: 'Y', //default option for booking
+          optionCourtesyCar: 'N',        
+          optionCollectDeliver: 'N',
+          optionWhileYouWait: 'N',
+          optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+        });
+        var mockChosenWait = {
+          title: this.$('.choose-wait .selected').data('title'),
+          price: this.$('.choose-wait .selected').data('price')
+        }
+      $('#option-wait').empty().append(this.waitTemplate(mockChosenWait));
+      }else if($this.data('wait') === 'courtesy' && this.$('li[data-wait="collect"]').hasClass('selected') || $this.data('wait') === 'collect' && this.$('li[data-wait="courtesy"]').hasClass('selected')){
+        this.$('li[data-wait="wait"]').removeClass('selected');
+        $this.addClass('selected');
+        register.vehicle.get('customer').set({ 
+          optionPickDrop: 'N', //default option for booking
+          optionCourtesyCar: 'Y',        
+          optionCollectDeliver: 'Y',
+          optionWhileYouWait: 'N',
+          optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+        }); 
+
+        var mockCourtesy = {
+          title: 'I would like to use a<br/>courtesy car',
+          price: this.$('li[data-wait="courtesy"]').data('price')
+        };
+        var mockCollect = {
+          title: 'Please collect my car, delivering it back to me when ready',
+          price: this.$('li[data-wait="collect"]').data('price')
+        };
+
+        $('#option-wait').empty().append(this.waitTemplate(mockCourtesy));
+        $('#option-wait').append(this.waitTemplate(mockCollect));
+      }else if($this.data('wait') === 'courtesy' && !$this.hasClass('selected')){
+        this.$('.choose-wait li').removeClass('selected');
+        $this.addClass('selected');
+        register.vehicle.get('customer').set({ 
+          optionPickDrop: 'Y', //default option for booking
+          optionCourtesyCar: 'Y',        
+          optionCollectDeliver: 'N',
+          optionWhileYouWait: 'N',
+          optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+        }); 
+        
+        $('#option-wait').empty().append(this.waitTemplate(chosenWait)); 
+      }else if($this.data('wait') === 'collect' && !$this.hasClass('selected')){
+        this.$('.choose-wait li').removeClass('selected');
+        $this.addClass('selected');
+        register.vehicle.get('customer').set({ 
+          optionPickDrop: 'N', //default option for booking
+          optionCourtesyCar: 'N',        
+          optionCollectDeliver: 'Y',
+          optionWhileYouWait: 'N',
+          optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+        }); 
+        
+        $('#option-wait').empty().append(this.waitTemplate(chosenWait)); 
+      }else if($this.data('wait') === 'wait' && !$this.hasClass('selected')){
+        this.$('.choose-wait li').removeClass('selected');
+        $this.addClass('selected');
+        register.vehicle.get('customer').set({ 
+          optionPickDrop: 'N', //default option for booking
+          optionCourtesyCar: 'N',        
+          optionCollectDeliver: 'N',
+          optionWhileYouWait: 'Y',
+          optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+        }); 
+        
+        $('#option-wait').empty().append(this.waitTemplate(chosenWait)); 
+      }
       
-      return register.vehicle.get('customer').set({ 
-        optionCourtesyCar: $this.data('wait') === 'courtesy' ? 'Y' : 'N',
-        optionPickDrop: $this.data('wait') === 'collect' ? 'Y' : 'N',
-        optionCollectDeliver: $this.data('wait') === 'collect' ? 'Y' : 'N',
-        optionWhileYouWait: $this.data('wait') === 'wait' ? 'Y' : 'N'
-      });
+      // register.vehicle.get('customer').set({ 
+      //   optionPickDrop: 'N', //default option for booking
+      //   optionCourtesyCar: $this.data('wait') === 'courtesy' ? 'Y' : 'N',        
+      //   optionCollectDeliver: $this.data('wait') === 'collect' ? 'Y' : 'N',
+      //   optionWhileYouWait: $this.data('wait') === 'wait' ? 'Y' : 'N',
+      //   optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+      // });      
+    
+      // this.addItem(chosenWait);      
+      // register.bookingSummaryView.renderOptions(chosenWait);
     }
   });
   return bookingOptions;

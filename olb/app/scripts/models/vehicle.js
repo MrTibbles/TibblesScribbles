@@ -48,13 +48,24 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       }
     },
     getTotalPrice: function(){
-      window.console && console.info(register.vehicle);
-      var totalBookingPrice = Number(0);
+      window.console && console.info(register.vehicle);      
+      var total = Number(0);
+
       register.vehicle.get('selected').each(function(ele){
-        var selectedPrice = ele.get('price').toUpperCase() === 'FREE' ? Number(0) : Number(ele.get('price'));
-        totalBookingPrice += selectedPrice;
+        var selectedPrice = ele.get('price').toUpperCase() === 'FREE' ? Number(0) : Number(ele.get('price').replace('£',''));
+        register.vehicle.set('totalBookingPrice', total += selectedPrice);
       });
-      return window.console && console.info(totalBookingPrice)
+      var optionCost = register.vehicle.get('customer').get('optionCost') === 'FREE' ? Number(0) : Number(register.vehicle.get('customer').get('optionCost'));
+      optionCost = typeof optionCost == 'number' ? optionCost : optionCost.replace('£','');
+      
+      total += optionCost
+
+      if(register.vehicle.get('bookingDetails').get('serviceprice')){
+        total += Number(register.vehicle.get('bookingDetails').get('serviceprice'));
+      }
+
+      register.vehicle.set('totalBookingPrice', total);
+      return window.console && console.info(register.vehicle.get('totalBookingPrice'))
     }
   });
   return vehicle;

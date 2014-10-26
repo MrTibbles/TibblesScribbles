@@ -87,7 +87,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
           default:
             break;
         }
-        // var scrollType = 
+        
         var scrollTarget = this.$el.offset();
         $("html,body").animate({
           scrollTop: scrollTarget.top
@@ -105,17 +105,24 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       }
     },
     preSelectDefaults: function(route){
-      $('li[data-service="visual safety report"]').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');
-      register.vehicle.get('selected').add({
-        price: "free",
-        title: "visual safety report"
-      });
-      register.vehicle.get('selectedOptions').add({
-        price: "free",
-        title: "visual safety report"
-      });
-
-      register.bookingSummaryView.renderOptions();
+      switch(window.location.pathname){
+        case '/service-and-maintenance/car-servicing':
+          this.preSelectServicing();
+          break;
+        case '/service-and-maintenance/hybrid-health-check':
+          this.preSelectHybrid();
+          break;
+        case '/service-and-maintenance/repairs-and-parts':
+          this.preSelectRepairs();
+          break;
+        case '/service-and-maintenance/mot-and-car-checks':
+          this.preSelectMot();
+          break;
+        default:
+          // this.preSelectServicing();          
+          break;
+      };
+      return register.bookingSummaryView.renderOptions();
     },
     submitToDealer: function(){
       this.formStrung = register.formData.toJSON();
@@ -127,6 +134,52 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       $('#olb-form input').attr('value', this.formStrung);
       
       $('#olb-form').submit()
+    },
+    preSelectServicing: function(){
+      window.console && console.info('Servicing');
+      $('li[data-service="visual safety report"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
+      register.vehicle.get('selected').add({
+        price: "free",
+        title: "visual safety report"
+      });
+      register.vehicle.get('selectedOptions').add({
+        price: "free",
+        title: "visual safety report"
+      });
+    },
+    preSelectHybrid: function(){
+      window.console && console.info('HSD');
+      $('li[data-service="Hybrid Health Check"]').addClass('show-inner');//.find('a').removeClass('option-child').addClass('selected-child');
+      register.vehicle.get('selected').add({
+        price: "free",
+        title: "Hybrid Health Check"
+      });
+      register.vehicle.get('selectedOptions').add({
+        price: "free",
+        title: "Hybrid Health Check"
+      });
+    },
+    preSelectRepairs: function(){
+      window.console && console.info('repairs');
+      $('li[data-service="repairs"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
+      // register.vehicle.get('selected').add({
+      //   price: "free",
+      //   title: "Hybrid Health Check"
+      // });
+      // register.vehicle.get('selectedOptions').add({
+      //   price: "free",
+      //   title: "Hybrid Health Check"
+      // });
+    },
+    preSelectMot: function(){
+      window.console && console.info('mot');
+      $('li[data-service="MOT"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
+      register.vehicle.get('selected').add({
+        title: "MOT"
+      });
+      register.vehicle.get('selectedOptions').add({
+        title: "MOT"
+      });
     }
   })
   return olbApp;

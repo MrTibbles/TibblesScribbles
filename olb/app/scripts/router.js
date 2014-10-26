@@ -20,41 +20,56 @@ define(['jquery', 'backbone', 'olb-app'], function($, Backbone, Olb) {
     //create window.osbInitValues for testing purposes
     //real one gets created via php function in /tcw/module/service_booking.inc    
     if (window.location.hostname === 'localhost') window.osbInitValues = {
-      "years": "2011",
-      "age": "3",
-      "ageM": "37",
-      "katashiki": "ZWE150",
-      "ident": "FY61XWW",
-      "model": "Auris HSD T Spirit",
-      "engine": "1,8 VVT-i Hybrid",
-      "colour": "Pure/Chamonix White",
-      "mileage": "123",
-      // "serviceObj": {
-      //   "age": "3",
-      //   "katashiki": "ZWE150",
-      //   "mileage": "30000",
-      //   "serviceprice": "149",
-      //   "servicetype": "Intermediate",
-      //   "serviceId": "43211333",
-      //   "options": []
-      // },
-      "serviceplan": "Y",
-      "HybridHealthCheck": "Y",
-      "HybridHealthCheckCost": "free",
-      "GeneralDiagnosis": "Y",
-      "GeneralDiagnosisCost": "free",
-      "VisualSafetyReport": "N",
-      "mot": "N",
-      "repairs": [{
+      ident: 'MM06ZPC',
+      model: 'Yaris NG T2',
+      engine: '1.0 VVT-i',
+      mileage: '123',
+      years: '2006',
+      age: '8',
+      colour: 'Crystal Silver',
+      serviceplan: '',
+      katashiki: 'KSP90',
+      ageM: '100',
+      // serviceObj: {},
+      serviceObj: {
+        "age": "8",
+        "katashiki": "KSP90",
+        "mileage": "80000",
+        "serviceprice": "255",
+        "servicetype": "Full+",
+        "serviceId": "77991388",
+        "options": [{
+          "description": "Brake Fluid - (change every 2 years)",
+          "price": "39"
+        }]
+      },
+      HybridHealthCheck: 'N',
+      HybridHealthCheckCost: '',
+      GeneralDiagnosis: 'N',
+      GeneralDiagnosisCost: '',
+      VisualSafetyReport: 'Y',
+      VisualSafetyReportCost: 'free',
+      mot: 'Y',
+      // repairs: [],
+      repairs: [{
         "Repair": "Front Brake Pads and Disks",
-        "RepairCost": "240"
+        "RepairCost": "210"
       }, {
         "Repair": "Rear Brake Pads and Disks",
-        "RepairCost": "220"
-      }],
-      "dealerId": "6872"
+        "RepairCost": "210"
+      }, {
+        "Repair": "Battery for Petrol Models",
+        "RepairCost": "75"
+      }, {
+        "Repair": "Front Wiper",
+        "RepairCost": "21"
+      }]
     };
 
+    BaseView.render('your-dealer');
+  });
+
+  olbRouter.on('route:hsd_route', function(){
     BaseView.render('your-dealer');
   });
 

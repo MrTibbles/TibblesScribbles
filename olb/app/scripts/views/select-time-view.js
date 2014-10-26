@@ -19,7 +19,6 @@ define(['backbone', 'register'], function(Backbone, register) {
     days: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     render: function(){
-      window.console && console.info(register)
       //js function within service_booking.inc that has php within
       // calculateAvailableDays($("#checkbox_MOT").attr("checked"), $("#checkbox_WYW").attr("checked"), $("#checkbox_CD").attr("checked"), $("#checkbox_CC").attr("checked"));
       calculateAvailableDays(

@@ -75,7 +75,7 @@
                       <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
                       <p class="lite sub-title">Mileage*</p>
                       <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
-                      <button id="find-service" class="wide disabled">find service</button>
+                      <button id="find-service" class="wide disabled inactive">find service</button>
                       <div class="clear"></div>
                       <span class="tool-tip">The system cannot check the contents of your Service Plan. Therefore, no charges have been displayed for your Service / MOT options. Your Dealer will contact you before your service to discuss your booking in full.</span>
                       <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
@@ -87,7 +87,7 @@
                     </div>
                   </li>
                   <!-- HSD check -->
-                  <li class="service-parent icon-checkmark option-item disabled" data-price="free" data-service="Hybrid Health Check">
+                  <li class="service-parent icon-checkmark option-item disabled inactive" data-price="free" data-service="Hybrid Health Check">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <div class="draw-handle">
                       <h3>Hybrid Health Check</h3>
@@ -296,15 +296,15 @@
                   </li>
                 </ul>
                 <ul class="choose-wait">
-                  <li class="user-wait icon-checkmark" data-wait="wait">
+                  <li class="user-wait icon-checkmark" data-title="I will wait while my car is serviced" data-price="free" data-wait="wait">
                     <p>I will wait while my car is<br/>serviced</p>
                     <h2>free</h2>
                   </li>
-                  <li class="user-wait icon-checkmark middle" data-wait="collect">
+                  <li class="user-wait icon-checkmark middle" data-title="Please collect my car, delivering it back to me when ready" data-price="£20" data-wait="collect">
                     <p>Please collect my car,<br/>delivering it back to<br/>me when ready</p>
                     <h2>&pound;20</h2>
                   </li>
-                  <li class="user-wait icon-checkmark" data-wait="courtesy">
+                  <li class="user-wait icon-checkmark" data-title="I would like to use a<br/>courtesy car" data-price="£15" data-wait="courtesy">
                     <p>I would like to use<br/>a courtesy car</p>
                     <h2>&pound;15</h2>
                   </li>
@@ -468,15 +468,17 @@
             <div id="service-selections" class="summary-pod">
               <div class="pod-inner description">
                 <h4 class="sub-title">your booking selections</h4>
-                <p class="add-some">Please add at least one booking option.</p>
+                <p class="add-some-options">Please add at least one booking option.</p>
               </div>
               <div id="selected-service" class="service-item"></div>
 
               <div id="selected-repairs" class="service-item"></div>              
 
-              <ul id="selected-options"></ul>              
+              <ul id="selected-options"></ul>
 
-              <button id="continue" class="disabled proceed move-step" data-step="two">continue booking</button>
+              <div id="option-wait"></div>
+
+              <button id="continue" class="disabled inactive proceed move-step" data-step="two">continue booking</button>
             </div>   
             <div class="including">
               <h2>what's included?</h2>
@@ -602,6 +604,10 @@
 
     <script id="address-details" type="text/template">
       <div class="form-row">
+        <label for="edit-address1">Address 1</label>
+        <input value="<%= address1 %>" type="text" name="address1" id="edit-address1" class="form-text">
+      </div>
+      <div class="form-row">
         <label for="edit-address2">Address 2</label>
         <input value="<%= address2 %>" type="text" name="address2" id="edit-address2" class="form-text">
       </div>
@@ -617,14 +623,14 @@
 
     <script id="booking-summarisation" type="text/template">
       <h3 class="left-title">your summary</h3>
-      <h3 class="right-title">total £XXX.XX</h3>
+      <h3 class="right-title">total £<%= totalBookingPrice %></h3>
       <br class="clear" />
       <div class="left-pod summary-pod">
         <h3>your car</h3>
         <p>Registration: <span><%= requested %></span></p>
         <p>Model: <span><%= model %></span></p>
         <p>Engine: <span><%= engine %></span></p>
-        <% if (!bookingDetails.get('servicetype')) { %>
+        <% if (bookingDetails.get('servicetype')) { %>
           <p>Mileage: <span><%= bookingDetails.get('mileage') %></span></p>
         <% } %>
         <br class="clear" />
@@ -647,25 +653,49 @@
           </div>
         </div>
       <% } %>
+      <% if (selectedRepairs.length) { %>
+        <div class="summary-pod">
+          <h3>repairs</h3>
+          <ul class="repair-list">
+            <% selectedRepairs.each(function(ele){ %>          
+              <li class="">
+                <p class="title"><%= ele.get('title') %></p>
+                <p class="price">£<%= ele.get('price') %></p>
+                <div class="clear"></div>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      <% } %>
+      <% if (selectedOptions.length) { %>      
+        <% selectedOptions.each(function(ele){ %>          
+          <div class="summary-pod">
+            <h3 class="title"><%= ele.get('title') %></h3>
+            <% if(ele.get('price') == 'FREE' || ele.get('price') == '') { %>
+              <p class="price">FREE</p>
+            <% } else { %>
+              <p class="price"><%= ele.get('price') %></p>
+            <% } %>
+            <div class="clear"></div>
+          </div>
+        <% }); %>          
+        </div>
+      <% } %>
       <div class="summary-pod">
-        <h3>repairs</h3>
-        <ul class="repair-list">
-          <% selectedRepairs.each(function(ele){ %>          
-            <li class="">
-              <p class="title"><%= ele.get('title') %></p>
-              <p class="price">£<%= ele.get('price') %></p>
-              <div class="clear"></div>
-            </li>
-          <% }); %>
-        </ul>
+        <h3 class="title"><%= customer.get('chosenWait').title %></h3>
+        <h3 class="price"><%= customer.get('chosenWait').price %></h3>
+        <div class="clear"></div>
       </div>
+      <% if (customer.get('additionalNotes')) { %>
       <div class="summary-pod">
         <h3>Additional notes</h3>
         <p><%= customer.get('additionalNotes') %></p>
       </div>
+      <% } %>
       <div class="summary-pod">
         <h3>centre</h3>
-        <p class="dealership">Inchape</p>
+        <p class="dealership"><%= customer.get('dealerName') %></p>
+        <p class="dealership"><%= customer.get('dealerPhone') %></p>
       </div>
       <button type="button" class="go-back move-step" data-step="five">Go back</button>
       <button type="button" id="step-thanks" class="proceed" data-step="seven">book</button>

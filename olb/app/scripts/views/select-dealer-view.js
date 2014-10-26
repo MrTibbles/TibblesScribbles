@@ -78,7 +78,7 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
       });
       return repairs;
     },
-    setDealerDestination: function() {
+    setDealerDestination: function(dealerUrl) {
       var formData = register.formData = new Backbone.Model({
         years: register.vehicle.get('prodDate'),
         age: register.vehicle.get('age'),
@@ -117,12 +117,14 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
 
       register.vehicle.get('customer').set('dealerId', this.marker.centerID);
 
+      var destination = dealerUrl ? dealerUrl : this.marker.centerUrl;
+
       if(window.location.hostname === 'localhost'){
         //local dev
         $('#olb-form').attr('action', 'http://pinkstones.toyota.co.uk/owners/service-booking/view/#/your-dealer');
       }else{
         //TCW destination
-        $('#olb-form').attr('action', this.marker.centerUrl + '/owners/service-booking/view/#/your-dealer');
+        $('#olb-form').attr('action', destination + '/owners/service-booking/view/#/your-dealer');
       }
 
       return register.formData;
