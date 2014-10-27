@@ -55,7 +55,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
             model: register.vehicle
           });          
           register.validationView.clearError('#mileage');
-          _this.suggestedService.render();
+          _this.suggestedService.render('#booking-choices');
           register.bookingSummaryView.renderService();
           // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
         }

@@ -2,7 +2,8 @@ define(['jquery', 'backbone', 'register', 'views/thanks-confirmation-view'], fun
   var customer = Backbone.Model.extend({
     url: '/sites/all/themes/toyota/_shared/php/forms-proxy.php?requestType=book-service',
     defaults: {
-      optionPickDrop: 'Y'
+      optionPickDrop: 'Y',
+      optionCost: 0
     },
     confirmBooking: function(method, model, options) {
       var _this = this;

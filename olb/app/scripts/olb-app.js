@@ -63,12 +63,15 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
         switch(destination){
           case 'one':
             this.yourCarView.render();
-            window.console && console.info(this.$('#summary'))
             this.$('#summary').addClass('change-choices');
             break;
           case 'two':
-            this.dealerView.render();
-            this.$('#summary').removeClass('change-choices');
+            if(!window.tcw){
+              this.dealerView.render();
+              this.$('#summary').removeClass('change-choices');
+            }else{
+              this.dealerQuote.render();
+            }
             break;
           case 'three':
             break;
@@ -91,7 +94,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
         var scrollTarget = this.$el.offset();
         $("html,body").animate({
           scrollTop: scrollTarget.top
-        }, 500);
+        }, 750);
       }
     },
     toggleInner: function(e){
@@ -119,7 +122,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
           this.preSelectMot();
           break;
         default:
-          // this.preSelectServicing();          
+          this.preSelectServicing();
           break;
       };
       return register.bookingSummaryView.renderOptions();
@@ -150,6 +153,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
     preSelectHybrid: function(){
       window.console && console.info('HSD');
       $('li[data-service="Hybrid Health Check"]').addClass('show-inner');//.find('a').removeClass('option-child').addClass('selected-child');
+      $('li[data-service="visual safety report"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
       register.vehicle.get('selected').add({
         price: "free",
         title: "Hybrid Health Check"
@@ -162,6 +166,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
     preSelectRepairs: function(){
       window.console && console.info('repairs');
       $('li[data-service="repairs"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
+      $('li[data-service="visual safety report"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
       // register.vehicle.get('selected').add({
       //   price: "free",
       //   title: "Hybrid Health Check"
@@ -174,6 +179,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
     preSelectMot: function(){
       window.console && console.info('mot');
       $('li[data-service="MOT"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
+      $('li[data-service="visual safety report"]').addClass('selected-option show-inner').find('a').removeClass('option-child').addClass('selected-child');
       register.vehicle.get('selected').add({
         title: "MOT"
       });

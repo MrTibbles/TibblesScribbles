@@ -80,7 +80,7 @@
                       <span class="tool-tip">The system cannot check the contents of your Service Plan. Therefore, no charges have been displayed for your Service / MOT options. Your Dealer will contact you before your service to discuss your booking in full.</span>
                       <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
                       <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
-                      <div id="service-type">                        
+                      <div class="service-type">                        
                         <!-- Suggested service for customer -->                        
                         <!-- Potential additonal service options -->                        
                       </div>
@@ -216,7 +216,7 @@
                       <span class="tool-tip">The system cannot check the contents of your Service Plan. Therefore, no charges have been displayed for your Service / MOT options. Your Dealer will contact you before your service to discuss your booking in full.</span>
                       <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
                       <p class="lite info">Please note that service plans are specific to individual Toyota Dealer and may include some maintenance items.</p>
-                      <div id="service-type">                        
+                      <div class="service-type">                        
                         <!-- Suggested service for customer -->                        
                         <!-- Potential additonal service options -->                        
                       </div>
@@ -242,8 +242,29 @@
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
-                      <ul class="repair-choices">
-                        <div class="clear"></div>
+                      <ul class="repair-choices">      
+                        <li class="repair-item front-brake-pads" data-repair="Front Brake Pads">
+                          <h4 class="sub-title">Front Brake Pads</h4>
+                        </li>                      
+                        <li class="repair-item rear-brake-pads" data-repair="Rear Brake Pads">
+                          <h4 class="sub-title">Rear Brake Pads</h4>
+                        </li>                      
+                        <li class="repair-item front-brake-pads-and-disks" data-repair="Front Brake Pads and Disks">
+                          <h4 class="sub-title">Front Brake Pads and Disks</h4>
+                        </li>                      
+                        <li class="repair-item rear-brake-pads-and-disks" data-repair="Rear Brake Pads and Disks">
+                          <h4 class="sub-title">Rear Brake Pads and Disks</h4>
+                        </li>                      
+                        <li class="repair-item battery-for-petrol-models" data-repair="Battery for Petrol Models">
+                          <h4 class="sub-title">Battery for Petrol Models</h4>
+                        </li>                      
+                        <li class="repair-item front-wiper" data-repair="Front Wiper">
+                          <h4 class="sub-title">Front Wiper</h4>
+                        </li>                      
+                        <li class="repair-item rear-exhaust" data-repair="Rear Exhaust">
+                          <h4 class="sub-title">Rear Exhaust</h4>
+                        </li>                      
+                        <br class="clear">
                       </ul>                    
                       <p class="sub-title">All prices are inclusive so there are no hidden extras or nasty surprises on your bill. And we only ever use Toyota genuine parts that come with a minimum 1-year guarantee.</p> 
                     </div>
@@ -304,7 +325,7 @@
                     <p>Please collect my car,<br/>delivering it back to<br/>me when ready</p>
                     <h2>&pound;20</h2>
                   </li>
-                  <li class="user-wait icon-checkmark" data-title="I would like to use a<br/>courtesy car" data-price="£15" data-wait="courtesy">
+                  <li class="user-wait icon-checkmark" data-title="I would like to use a courtesy car" data-price="£15" data-wait="courtesy">
                     <p>I would like to use<br/>a courtesy car</p>
                     <h2>&pound;15</h2>
                   </li>
@@ -315,12 +336,12 @@
                   <textarea  name="fsda_contact_msg" id="add-info" placeholder="Is there anything else we need to know?"></textarea>
                 </div>
               </div>
-              <button class="go-back move-step" data-step="two">Go back</button>
+              <!-- <button class="go-back move-step" data-step="two">Go back</button> -->
               <button id="step-time" class="move-step proceed disabled" data-step="four">select date &amp; time</button>
               <br class="clear" />
             </section>
 
-            <!-- Your Dealer & quote -->
+            <!-- Select Time & Date -->
             <section class="olb-steps step-four" id="select-time">
               <h3>Choose your Date &amp; time</h3>
               <h3 class="sub-title">When would you like your service to be carried out?</h3>
@@ -458,7 +479,9 @@
             <div id="need-help"></div>
             <div id="your-quote" class="summary-pod">
               <div class="pod-inner">
-                <h4>your quote</h4>
+                <h4 class="quote-title">your quote</h4>                
+                <p class="download-quote">Download Quote</p>
+                <br class="clear"/>
                 <h4 class="sub-title">Your Car</h4>
                 <p class="add-some">Please add a car by conducting a registration or VIN search.</p>
                 <div id="your-car"></div>
@@ -517,7 +540,7 @@
       <p><%= bookingDetails.get('servicetype') %> service</p>
       <p>(<%= bookingDetails.get('age') %> years or <%= bookingDetails.get('mileage') %> miles)</p>
 
-      <button type="button" data-type="service" data-title="<%= bookingDetails.get('servicetype') %>" class="remove-item">remove</button>
+      <button type="button" data-type="service" data-title="<%= bookingDetails.get('servicetype') %>" class="remove-service">remove</button>
     </script>
 
     <script id="selected-repairs-tpl" type="text/template">
@@ -726,6 +749,57 @@
       }
       window.osbDealerID = '23456789';
       window.osbPhone = '01234657891';
+
+      window.osbInitValues = {
+        ident: 'MM06ZPC',
+        model: 'Yaris NG T2',
+        engine: '1.0 VVT-i',
+        mileage: '123',
+        years: '2006',
+        age: '8',
+        colour: 'Crystal Silver',
+        serviceplan: '',
+        katashiki: 'KSP90',
+        ageM: '100',
+        // serviceObj: {},
+        serviceObj: {
+          "age": "8",
+          "katashiki": "KSP90",
+          "mileage": "80000",
+          "serviceprice": "255",
+          "servicetype": "Full+",
+          "serviceId": "77991388",
+          "options": [{
+            "description": "Brake Fluid - (change every 2 years)",
+            "price": "39"
+          }]
+        },
+        HybridHealthCheck: 'N',
+        HybridHealthCheckCost: '',
+        GeneralDiagnosis: 'N',
+        GeneralDiagnosisCost: '',
+        VisualSafetyReport: 'Y',
+        VisualSafetyReportCost: 'free',
+        mot: 'Y',
+        // repairs: [],
+        repairs: [{
+          "Repair": "Front Brake Pads and Disks",
+          "RepairCost": "210"
+        }, {
+          "Repair": "Rear Brake Pads and Disks",
+          "RepairCost": "210"
+        }, {
+          "Repair": "Battery for Petrol Models",
+          "RepairCost": "75"
+        }, {
+          "Repair": "Front Wiper",
+          "RepairCost": "21"
+        }]
+      };
+      //testing dealership skip find dealer step
+      window.tcw = true;
+      //testing national pdf submission
+      // window.retail = true;
     </script>
 
     <!-- End templates &sensor=false-->

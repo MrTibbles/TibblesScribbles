@@ -14,7 +14,7 @@
 	}
 
 	&.change-choices{
-		.summary-pod .remove-item{
+		.summary-pod .remove-item, .summary-pod .remove-service{
 			display: block;
 		}
 	}
@@ -101,7 +101,24 @@
 		.add-some{
 			display: none;
 		}
-		.remove-item{
+		.quote-title{
+			float: left;
+		}
+		.download-quote{
+			display: none;
+			float: right;
+			color: $active-state;
+			cursor: pointer;
+			font: {
+				family: 'toyotadisplay_bd';
+				// size: 14px
+			}
+
+			&.downloadable{
+				display: block;
+			}
+		}
+		.remove-item, .remove-service{
 			display: none;
 			width: auto;
 			height: auto;
@@ -125,7 +142,7 @@
 				style: solid;
 				color: $border-colour;
 			}
-			.remove-item{
+			.remove-item, .remove-service{
 				top: 89px;
 			}
 		}
@@ -143,6 +160,7 @@
 		.item-title{
 			float: left;			
 			margin: 0 0 6px;
+			width: 150px;
 		}
 		.price{
 			position: absolute;
@@ -164,7 +182,7 @@
 			margin: 20px 10px 0;			
 		}
 		.service-item{			
-			min-height: 70px;
+			min-height: 42px;
 			padding: 10px;
 			position: relative;
 			display: none;

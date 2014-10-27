@@ -52,7 +52,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       var total = Number(0);
 
       register.vehicle.get('selected').each(function(ele){
-        var selectedPrice = ele.get('price').toUpperCase() === 'FREE' ? Number(0) : Number(ele.get('price').replace('£',''));
+        var selectedPrice = !ele.get('price') || ele.get('price').toUpperCase() === 'FREE' ? Number(0) : Number(ele.get('price').replace('£',''));
         register.vehicle.set('totalBookingPrice', total += selectedPrice);
       });
       var optionCost = register.vehicle.get('customer').get('optionCost') === 'FREE' ? Number(0) : Number(register.vehicle.get('customer').get('optionCost'));
@@ -65,7 +65,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       }
 
       register.vehicle.set('totalBookingPrice', total);
-      return window.console && console.info(register.vehicle.get('totalBookingPrice'))
+      return total;
     }
   });
   return vehicle;

@@ -27,7 +27,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       this.$el.siblings('section').removeClass('current-step');
       this.$el.addClass('current-step');
       $('#continue').hide();
-      $('#summary').removeClass('change-choices');
+      $('#summary').addClass('change-choices');
 
       register.vehicle.get('customer').set('dealerPhone',phone);
       register.vehicle.get('customer').set({
@@ -57,32 +57,50 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
             register.bookingSummaryView = new summaryView({
               model: register.vehicle
             });            
-            _this.getFixedPrices();
+            _this.getFixedPrices(true);
           }
         });
         // this.checkHSD();
       }else{
-        window.console && console.error('NOT FOUND osbInitValues OBJECT');
+        this.selectUserItems();
       }
+      window.console && console.info(register)
     },
-    getFixedPrices: function() {
+    selectUserItems: function(){
+      register.vehicle.get('selected').each(function(ele){
+        this.$('li[data-service="'+ele.get('title')+'"]:visible').addClass('selected-option').find('.menu-handle').addClass('selected-child');
+      });
+      this.getFixedPrices();
+
+      return this.$('.proceed').removeClass('disabled');
+    },
+    getFixedPrices: function(getSelected) {
       var _this = this;
 
       register.vehicle.get('fixedPrices').query = {
-        kata: window.osbInitValues.katashiki
-      };
+        kata: window.osbInitValues ? window.osbInitValues.katashiki : register.vehicle.get('katashiki')
+      };        
 
-      register.vehicle.get('fixedPrices').fetch({
-        success: function() {
-          _this.fixedPriceView = new fixedPriceView({
-            collection: register.vehicle.get('fixedPrices')
-          });
+      if(register.vehicle.get('fixedPrices').length){
+        this.fixedPriceView = new fixedPriceView({
+          collection: register.vehicle.get('fixedPrices')
+        });
+        this.fixedPriceView.render('#confirm-choices');        
+      }else{
+        register.vehicle.get('fixedPrices').fetch({
+          success: function() {
+            _this.fixedPriceView = new fixedPriceView({
+              collection: register.vehicle.get('fixedPrices')
+            });
 
-          _this.fixedPriceView.render('#confirm-choices');
+            _this.fixedPriceView.render('#confirm-choices');
 
-          _this.getSelectedBookings();
-        }
-      });
+            getSelected && _this.getSelectedBookings();
+          }
+        });
+      }     
+
+      
     },
     getSelectedBookings: function(){ 
       var _this = this;
@@ -127,7 +145,15 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       // register.bookingSummaryView.render();
       this.$('.proceed').removeClass('disabled');
     },
-    serviceLookUp: function() {
+    serviceLookUp: function(e) {
+      if($(e.currentTarget).hasClass('disabled')){
+        return false;
+      }
+      if(!this.$('#mileage').val()) {
+        return register.validationView.showError('no-mileage', '#mileage');
+      }else if(this.$('#mileage').val().length >= 6){
+        return register.validationView.showError('high-mileage', '#mileage');
+      }
       register.loader.showLoader(this.$el[0]);
 
       var _this = this;
@@ -148,7 +174,8 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
           _this.suggestedService = new suggestedService({
             model: register.vehicle
           });          
-          _this.suggestedService.render();
+          _this.suggestedService.render('#confirm-choices');
+          register.bookingSummaryView.renderService();
           // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
         }
       });
