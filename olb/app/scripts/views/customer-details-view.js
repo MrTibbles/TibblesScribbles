@@ -133,7 +133,6 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         GeneralDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
         VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
         VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
-        optionCollectDeliver: 'N',
         mot: this.queryOptionsCollection('title', 'mot'),
         motCost: window.motPrice || 0,
         title: this.$('#title').val(),
@@ -162,11 +161,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
     queryOptionsCollection: function(key, parameter){
       var result;
       if(key){
-        register.vehicle.get('selectedOptions').find(function(model){
-          if(model.get(key).toLowerCase() === parameter){
-            result = 'Y';
-          }else result = 'N';
-        });
+        result = register.vehicle.get('selectedOptions').findWhere({title: parameter}) ? 'Y' : 'N';
       }else{
         register.vehicle.get('selectedOptions').find(function(model){
           if(model.get('title').toLowerCase() === parameter){
