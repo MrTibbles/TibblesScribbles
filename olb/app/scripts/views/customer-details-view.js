@@ -135,12 +135,13 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
         mot: this.queryOptionsCollection('title', 'mot'),
         motCost: window.motPrice || 0,
+        Repairs: this.getSelectedRepairs(),
         title: this.$('#title').val(),
         firstname: this.$('#edit-firstname').val(),
         surname: this.$('#edit-surname').val(),
         email: this.$('#edit-email').val(),
         housenameornumber: this.$('#edit-house').val(),
-        address1: this.$('#address2').val(),
+        address1: this.$('#address1').val(),
         address2: '',
         town: this.$('#edit-town').val(),
         county: this.$('#edit-county').val(),
@@ -170,6 +171,17 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         });
       }
       return result;
+    },
+    getSelectedRepairs: function(){
+      var userRepairs = [];
+      register.vehicle.get('selectedRepairs').each(function(ele){
+        var repairItem = {
+          Repair: ele.get('title'),
+          RepairCost: ele.get('price')
+        };
+        return userRepairs.push(repairItem);
+      });
+      return userRepairs;
     },
     findAddress: function(){
       window.console && console.info(this.$('#edit-postcode').valid())
