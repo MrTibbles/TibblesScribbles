@@ -52,11 +52,12 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       var total = Number(0);
 
       register.vehicle.get('selected').each(function(ele){
-        var selectedPrice = !ele.get('price') || ele.get('price').toUpperCase() === 'FREE' ? Number(0) : Number(ele.get('price').replace('£',''));
+        var selectedPrice = !ele.get('price') || ele.get('price').toUpperCase() === 'FREE' ? 0 : ele.get('price').replace('£','');
+        selectedPrice = Number(selectedPrice);
         register.vehicle.set('totalBookingPrice', total += selectedPrice);
       });
-      var optionCost = register.vehicle.get('customer').get('optionCost') === 'FREE' ? Number(0) : Number(register.vehicle.get('customer').get('optionCost'));
-      optionCost = typeof optionCost == 'number' ? optionCost : optionCost.replace('£','');
+      var optionCost = register.vehicle.get('customer').get('optionCost') === 'FREE' ? 0 : register.vehicle.get('customer').get('optionCost');
+      optionCost = Number(optionCost);
       
       total += optionCost
 

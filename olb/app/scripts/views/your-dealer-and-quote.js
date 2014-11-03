@@ -6,7 +6,8 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       'click .service-plan': 'servicePlanActive',
       'click .option-child': 'addOption',
       'click .selected-child': 'removeOption',
-      'click .user-wait': 'setWaiting'    
+      'click .user-wait': 'setWaiting'    ,
+      'click .servicing-child': 'removeServicing'
     },
     template: _.template(
       $('#help-me').html()
@@ -68,7 +69,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
     },
     selectUserItems: function(){
       register.vehicle.get('selected').each(function(ele){
-        this.$('li[data-service="'+ele.get('title')+'"]:visible').addClass('selected-option').find('.menu-handle').addClass('selected-child');
+        this.$('li[data-service="'+ele.get('title')+'"]:visible').removeClass('disabled inactive').addClass('selected-option show-inner').find('.menu-handle').addClass('selected-child');
       });
       this.getFixedPrices();
 
@@ -108,7 +109,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
  
       window.osbInitValues.serviceObj.serviceprice && this.serviceBooking.fetch({
         success: function(){
-          _this.$('li[data-service="car-servicing"]').addClass('selected');
+          _this.$('li[data-service="car-servicing"]').addClass('selected-option show-inner');
           _this.suggestedService = new suggestedService({
             model: register.vehicle
           });          
@@ -119,7 +120,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       });
 
       window.osbInitValues.repairs.length && _.each(window.osbInitValues.repairs, function(repairObj, idx){
-        this.$('li[data-service="repairs"]').addClass('selected');
+        this.$('li[data-service="repairs"]').addClass('selected-option show-inner');
 
         var preSelectedRepairs = _(register.vehicle.get('fixedPrices').filter(function(repairModel) {          
           if(repairObj.Repair === repairModel.get("title")){
@@ -134,13 +135,13 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       });        
       // })).pluck("name");
 
-      window.osbInitValues.GeneralDiagnosis === 'Y' && this.$('li[data-service="general diagnosis"] .menu-handle').click();
+      window.osbInitValues.generalDiagnosis === 'Y' && this.$('li[data-service="general diagnosis"] .menu-handle').click();
 
-      window.osbInitValues.HybridHealthCheck === 'Y' && this.$('li[data-service="Hybrid Health Check"] .menu-handle').click();
+      window.osbInitValues.hybridHealthCheck === 'Y' && this.$('li[data-service="Hybrid Health Check"]').removeClass('disabled inactive').find('a').click();
 
       window.osbInitValues.mot === 'Y' && this.$('li[data-service="MOT"] .menu-handle').click();
 
-      window.osbInitValues.VisualSafetyReport === 'Y' && this.$('li[data-service="visual safety report"] .menu-handle').click();
+      window.osbInitValues.visualSafetyReport === 'Y' && this.$('li[data-service="visual safety report"] .menu-handle').click();
 
       // register.bookingSummaryView.render();
       this.$('.proceed').removeClass('disabled');
@@ -177,6 +178,15 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
           _this.suggestedService.render('#confirm-choices');
           register.bookingSummaryView.renderService();
           // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
+          this.$('li[data-service="Hybrid Health Check"]').data('price','FREE').find('.price').html('FREE');
+          var hybridObj = {
+            price: "FREE",
+            title: "Hybrid Health Check"
+          };
+          //remove hybrid price form collection
+          _this.removeItem(hybridObj);
+          //add it back in again with updated price
+          _this.addItem(hybridObj);
         }
       });
     },
@@ -243,6 +253,21 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       $parent.removeClass('selected-option');
       $(e.currentTarget).addClass('option-child').removeClass('selected-child')
     },
+    removeServicing: function(e){      
+      register.vehicle.get('bookingDetails').clear();
+      this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');      
+      var hybridObj = {
+        price: "£39",
+        title: "Hybrid Health Check"
+      };
+      //remove hybrid price form collection
+      this.removeItem(hybridObj);
+      //add it back in again with updated price
+      this.addItem(hybridObj);
+
+      this.suggestedService.clearService();
+      register.bookingSummaryView.clearService();
+    },
     setWaiting: function(e){
       var $this = $(e.currentTarget);
 
@@ -259,13 +284,13 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
           optionCourtesyCar: 'N',        
           optionCollectDeliver: 'N',
           optionWhileYouWait: 'N',
-          optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
+          optionCost: Number(0)
         });
         var mockChosenWait = {
           title: this.$('.choose-wait .selected').data('title'),
           price: this.$('.choose-wait .selected').data('price')
         }
-      $('#option-wait').empty().append(this.waitTemplate(mockChosenWait));
+        $('#option-wait').empty().append(this.waitTemplate(mockChosenWait));
       }else if($this.data('wait') === 'courtesy' && this.$('li[data-wait="collect"]').hasClass('selected') || $this.data('wait') === 'collect' && this.$('li[data-wait="courtesy"]').hasClass('selected')){
         this.$('li[data-wait="wait"]').removeClass('selected');
         $this.addClass('selected');
@@ -332,8 +357,20 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       //   optionCollectDeliver: $this.data('wait') === 'collect' ? 'Y' : 'N',
       //   optionWhileYouWait: $this.data('wait') === 'wait' ? 'Y' : 'N',
       //   optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
-      // });      
-    
+      // });
+      if(!$this.hasClass('selected')){
+        if(!$this.siblings('.user-wait').hasClass('selected')){
+          $('#option-wait').empty();
+          register.vehicle.get('customer').set({ 
+            optionPickDrop: 'Y', //default option for booking
+            optionCourtesyCar: 'N',        
+            optionCollectDeliver: 'N',
+            optionWhileYouWait: 'N',
+            optionCost: Number(0)
+          });
+          register.vehicle.get('customer').set('chosenWait', undefined);
+        }
+      }
       // this.addItem(chosenWait);      
       // register.bookingSummaryView.renderOptions(chosenWait);
     }

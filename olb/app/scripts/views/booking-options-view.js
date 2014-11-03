@@ -57,7 +57,16 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
           register.validationView.clearError('#mileage');
           _this.suggestedService.render('#booking-choices');
           register.bookingSummaryView.renderService();
-          // register.vehicle.get('selected').add(register.vehicle.get('bookingDetails'));
+          
+          this.$('li[data-service="Hybrid Health Check"]').data('price','FREE').find('.price').html('FREE');
+          var hybridObj = {
+            price: "FREE",
+            title: "Hybrid Health Check"
+          };
+          //remove hybrid price form collection
+          _this.removeItem(hybridObj);
+          //add it back in again with updated price
+          _this.addItem(hybridObj);
         }
       });
     },
@@ -66,15 +75,16 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
         modelIsHybrid = hsd.test(register.vehicle.get('engine').toLowerCase());
 
       if(modelIsHybrid){
-        this.$el.find('[data-service="Hybrid Health Check"]').removeClass('disabled inactive').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');;
+        this.$el.find('[data-service="Hybrid Health Check"]').removeClass('disabled inactive').addClass('selected-option').find('a').removeClass('option-child').addClass('selected-child');
         register.vehicle.get('selected').add({
-          price: "free",
+          price: "£39",
           title: "Hybrid Health Check"
         });
         register.vehicle.get('selectedOptions').add({
-          price: "free",
+          price: "£39",
           title: "Hybrid Health Check"
         });
+        this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');
 
         return register.bookingSummaryView.renderOptions();
       }
@@ -110,7 +120,6 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
 
       register.vehicle.get('selected').each(function(element) {
         if (element.get('title') === item.title) {
-          // register.vehicle.get('selectedOptions').remove(element);          
           return register.vehicle.get('selected').remove(element);
         }
       });
@@ -119,7 +128,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
         return option.get('title') !== item.title;
       });
       this.selectedOptions = new Backbone.Collection(this.filteredOptions);
-      //reset selectOption collection with users new filtered collection
+      //reset selectedOption collection with users new filtered collection
       register.vehicle.set('selectedOptions', this.selectedOptions);
 
       register.bookingSummaryView.renderOptions();
@@ -158,6 +167,15 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
     },
     removeServicing: function(e){      
       register.vehicle.get('bookingDetails').clear();
+      this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');      
+      var hybridObj = {
+        price: "£39",
+        title: "Hybrid Health Check"
+      };
+      //remove hybrid price form collection
+      this.removeItem(hybridObj);
+      //add it back in again with updated price
+      this.addItem(hybridObj);
 
       this.suggestedService.clearService();
       register.bookingSummaryView.clearService();

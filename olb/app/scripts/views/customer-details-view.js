@@ -34,6 +34,8 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       this.$el.addClass('current-step');
       this.updateProgressBar();
 
+      $('#your-quote, #service-selections').show();
+
       register.vehicle.getTotalPrice();
 
       $('#customer-details-form').validate({
@@ -127,21 +129,23 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         serviceType: register.vehicle.get('bookingDetails').get('serviceId'),
         servicePrice: register.vehicle.get('bookingDetails').get('serviceprice'),
         servicePlan: register.vehicle.get('servicePlan'),
-        HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
-        HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
-        GeneralDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
-        GeneralDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
-        VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
-        VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
-        mot: this.queryOptionsCollection('title', 'mot'),
+        hybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
+        hybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
+        generalDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
+        generalDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
+        visualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
+        visualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
+        myToyota: this.queryOptionsCollection('title', 'MyToyotaView'),
+        myToyotaCost: this.queryOptionsCollection('', 'MyToyotaView'),
+        mot: this.queryOptionsCollection('title', 'MOT'),
         motCost: window.motPrice || 0,
-        Repairs: this.getSelectedRepairs(),
+        repairs: this.getSelectedRepairs(),
         title: this.$('#title').val(),
         firstname: this.$('#edit-firstname').val(),
         surname: this.$('#edit-surname').val(),
         email: this.$('#edit-email').val(),
         housenameornumber: this.$('#edit-house').val(),
-        address1: this.$('#address1').val(),
+        address1: this.$('#edit-address1').val(),
         address2: '',
         town: this.$('#edit-town').val(),
         county: this.$('#edit-county').val(),
@@ -176,8 +180,8 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       var userRepairs = [];
       register.vehicle.get('selectedRepairs').each(function(ele){
         var repairItem = {
-          Repair: ele.get('title'),
-          RepairCost: ele.get('price')
+          repair: ele.get('title'),
+          repairCost: ele.get('price')
         };
         return userRepairs.push(repairItem);
       });

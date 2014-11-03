@@ -91,7 +91,7 @@
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <div class="draw-handle">
                       <h3>Hybrid Health Check</h3>
-                      <h3 class="price">From FREE</h3>
+                      <h3 class="price">FREE</h3>
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
@@ -196,7 +196,6 @@
             <!-- Your Dealer & quote -->
             <section class="olb-steps step-three" id="dealer-quote">
               <h3>Confirm Your Booking selections</h3>
-              <p class="lite">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
               <!-- Service types -->
               <div id="confirm-choices" class="select-bookings">
                 <ul>
@@ -227,7 +226,7 @@
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <div class="draw-handle">
                       <h3>Hybrid Health Check</h3>
-                      <h3 class="price">From FREE</h3>
+                      <h3 class="price">FREE</h3>
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
@@ -429,15 +428,15 @@
                   <ul>
                     <li class="icon-checkmark hear-about" data-hear-about="Toyota.co.uk">Toyota.co.uk</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Email">Email</li>
-                    <li class="icon-checkmark hear-about" data-hear-about="Leaflet/direct mail">Leaflet/direct mail</li>
+                    <li class="icon-checkmark hear-about" data-hear-about="Leaflet/direct mail">Leaflet/Direct mail</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Toyota Dealership">Toyota Dealership</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Google">Google</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Newspaper">Newspaper</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Toyota Magazine">Toyota Magazine</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Ebay">Ebay</li>
-                    <li class="icon-checkmark hear-about" data-hear-about="word of mouth">word of mouth</li>
-                    <li class="icon-checkmark hear-about" data-hear-about="Toyota owners club">Toyota owners club</li>
-                    <li class="icon-checkmark hear-about" data-hear-about="Other online advertisment">Other online advertisment</li>
+                    <li class="icon-checkmark hear-about" data-hear-about="word of mouth">Word of Mouth</li>
+                    <li class="icon-checkmark hear-about" data-hear-about="Toyota owners club">Toyota Owners Club</li>
+                    <li class="icon-checkmark hear-about" data-hear-about="Other online advertisment">Other Online Advertisment</li>
                     <li class="icon-checkmark hear-about" data-hear-about="Other">Other</li>
                     <br class="clear" />
                   </ul>
@@ -704,9 +703,16 @@
         <% }); %>          
         </div>
       <% } %>
+      <% if(customer.get('chosenWait')) { %>
+        <div class="summary-pod">
+          <h3 class="title"><%= customer.get('chosenWait').title %></h3>
+          <h3 class="price"><%= customer.get('chosenWait').price %></h3>
+          <div class="clear"></div>
+        </div>
+      <% } %>
       <div class="summary-pod">
-        <h3 class="title"><%= customer.get('chosenWait').title %></h3>
-        <h3 class="price"><%= customer.get('chosenWait').price %></h3>
+        <h3 class="title">Total Price</h3>
+        <h3 class="price">£<%= totalBookingPrice %></h3>
         <div class="clear"></div>
       </div>
       <% if (customer.get('additionalNotes')) { %>
@@ -715,6 +721,7 @@
         <p><%= customer.get('additionalNotes') %></p>
       </div>
       <% } %>
+
       <div class="summary-pod">
         <h3>centre</h3>
         <p class="dealership"><%= customer.get('dealerName') %></p>
@@ -774,32 +781,32 @@
             "price": "39"
           }]
         },
-        HybridHealthCheck: 'N',
-        HybridHealthCheckCost: '',
-        GeneralDiagnosis: 'N',
-        GeneralDiagnosisCost: '',
-        VisualSafetyReport: 'Y',
-        VisualSafetyReportCost: 'free',
+        hybridHealthCheck: 'Y',
+        hybridHealthCheckCost: '',
+        generalDiagnosis: 'N',
+        generalDiagnosisCost: '',
+        visualSafetyReport: 'Y',
+        visualSafetyReportCost: 'free',
         mot: 'Y',
         // repairs: [],
         repairs: [{
-          "Repair": "Front Brake Pads and Disks",
-          "RepairCost": "210"
+          "repair": "Front Brake Pads and Disks",
+          "repairCost": "210"
         }, {
-          "Repair": "Rear Brake Pads and Disks",
-          "RepairCost": "210"
+          "repair": "Rear Brake Pads and Disks",
+          "repairCost": "210"
         }, {
-          "Repair": "Battery for Petrol Models",
-          "RepairCost": "75"
+          "repair": "Battery for Petrol Models",
+          "repairCost": "75"
         }, {
-          "Repair": "Front Wiper",
-          "RepairCost": "21"
+          "repair": "Front Wiper",
+          "repairCost": "21"
         }]
       };
-      //testing dealership skip find dealer step
-      // window.tcw = true;
+      // testing dealership skip find dealer step
+      window.tcw = true;
       //testing national pdf submission
-      // window.retail = true;
+      window.retail = true;
     </script>
 
     <!-- End templates &sensor=false-->

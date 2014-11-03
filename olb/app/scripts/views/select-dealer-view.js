@@ -91,25 +91,25 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
         mileage: register.vehicle.get('approxMiles'),
         serviceObj: register.vehicle.get('bookingDetails').attributes,
         servicePlan: register.vehicle.get('servicePlan'),
-        HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
-        HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
-        GeneralDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
-        GeneralDiagnosisCost: this.queryOptionsCollection('', 'general diagnosis'),
-        VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
-        VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
+        hybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
+        hybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
+        generalDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
+        generalDiagnosisCost: this.queryOptionsCollection('', 'general diagnosis'),
+        visualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
+        visualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
         mot: this.queryOptionsCollection('title', 'mot'),
         selectedRepairs: this.getSelectedRepairs(),
         dealerId: this.marker.centerID,
         dealerName: this.marker.title
       });
 
-      formData.get('HybridHealthCheck') || formData.set('HybridHealthCheck', 'N');
+      formData.get('hybridHealthCheck') || formData.set('hybridHealthCheck', 'N');
 
-      formData.get('GeneralDiagnosis') || formData.set('GeneralDiagnosis', 'N');
+      formData.get('generalDiagnosis') || formData.set('generalDiagnosis', 'N');
 
-      formData.get('VisualSafetyReport') || formData.set('VisualSafetyReport', 'N');
+      formData.get('visualSafetyReport') || formData.set('visualSafetyReport', 'N');
 
-      formData.get('VisualSafetyReport') || formData.set('VisualSafetyReport', 'N');
+      formData.get('visualSafetyReport') || formData.set('visualSafetyReport', 'N');
 
       formData.get('mot') || formData.set('mot', 'N');
 
@@ -118,6 +118,8 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
       register.vehicle.get('customer').set('dealerId', this.marker.centerID);
 
       var destination = dealerUrl ? dealerUrl : this.marker.centerUrl;
+
+      $('.proceed, #step-dealer').removeClass('disabled').addClass('submit-booking');
 
       if(window.location.hostname === 'localhost'){
         //local dev
