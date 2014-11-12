@@ -35,11 +35,12 @@
     </script>  
 
   </head>
-  <body>
+  <!-- <body class="msie v8">  -->
+  <body class=""> 
     <div class="wide-wrap">
       <div id="olb-wrap">
         <section id="progess" class="olb-content-area">
-          <h2>your booking</h2>
+          <h2>your quote</h2>
           <ul class="progess-bar">
             <li class="first step active">your car</li>
             <li class="second step">your dealer &amp; quote</li>
@@ -55,8 +56,10 @@
               <div id="your-car" class="pod">
                 <h3>your car</h3>
                 <p class="lite sub-title">Please enter your registration or VIN</p>
-                <input id="reg-vin" class="wide-input" type="text" name="reg-vin" value="" />
-                <button id="find-car" class="wide">find my car</button>
+                <form id="olb-find-car">
+                  <input id="reg-vin" class="wide-input" type="text" name="reg-vin" value="" />
+                </form>
+                <button type="submit" id="find-car" class="wide">find my car</button>
               </div>
 
               <div id="booking-choices" class="pod select-bookings">
@@ -73,9 +76,11 @@
                     <div class="clear"></div>
                     <div class="service-inner expand">
                       <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
-                      <p class="lite sub-title">Mileage*</p>
-                      <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
-                      <button id="find-service" class="wide disabled inactive">find service</button>
+                      <p class="lite sub-title">Mileage*</p>                     
+                      <form id="olb-mileage-lookup">
+                        <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
+                      </form>
+                      <button type="submit" id="find-service" class="wide disabled inactive">find service</button>
                       <div class="clear"></div>
                       <span class="tool-tip">The system cannot check the contents of your Service Plan. Therefore, no charges have been displayed for your Service / MOT options. Your Dealer will contact you before your service to discuss your booking in full.</span>
                       <h3 class="service-plan icon-checkmark">I have a Toyota service plan</h3>
@@ -87,11 +92,11 @@
                     </div>
                   </li>
                   <!-- HSD check -->
-                  <li class="service-parent icon-checkmark option-item disabled inactive" data-price="free" data-service="Hybrid Health Check">
+                  <li class="service-parent icon-checkmark option-item disabled inactive" data-price="£39" data-service="Hybrid Health Check">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <div class="draw-handle">
                       <h3>Hybrid Health Check</h3>
-                      <h3 class="price">FREE</h3>
+                      <h3 class="price">&pound;39</h3>
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
@@ -165,7 +170,7 @@
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
-                      <p class="sub-title">The only thing worse than failing your MOT, is failing on something that could have been spotted by a Toyota approved expert. Our free 37 point visual health check identifies issues that need fixing urgently.</p>
+                      <p class="sub-title">Our free 37 point Visual Safety Report is a comprehensive visual inspection of your vehicle, conducted by qualified Toyota technicians. The report will highlight anything that needs doing urgently to meet safety and legal requirements, as well as any work that may need doing in the future.</p>
                     </div>
                   </li>
                 </ul>
@@ -178,11 +183,11 @@
               <div id="map-wrapper" class="pod">
                 <div class="map-inner">
                   <p class="sub-title">postcode</p>
-                  <form accept-charset="UTF-8" id="tgb-find-dealer-form" method="post" novalidate="novalidate">
+                  <form id="olb-dealer-lookup">
                     <!-- <input type="text" id="postcode-input" class="wide-input" /> -->
                     <input type="text" size="60" value="" name="dealer" id="postcode-input" class="wide-input form-text postcode">                  
                   </form>
-                  <button id="find-postcode">search</button>
+                  <button type="submit" id="find-postcode">search</button>
                   <br class="clear" />
                   <div id="gmap_canvas"></div>
                 </div>
@@ -207,7 +212,7 @@
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner expand">
-                      <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p>
+                      <!-- <p class="sub-title heavy">You must search for Your Car above before we can find the right service for you.</p> -->
                       <p class="lite sub-title">Mileage*</p>
                       <input id="mileage" class="wide-input" type="text" name="mileage" value="" placeholder="Approximate mileage - this helps us to find you the right service options" />
                       <button id="find-service" class="wide">find service</button>
@@ -222,11 +227,11 @@
                     </div>
                   </li>
                   <!-- HSD check -->
-                  <li class="service-parent icon-checkmark option-item disabled" data-price="free" data-service="Hybrid Health Check">
+                  <li class="service-parent icon-checkmark option-item disabled" data-price="£39" data-service="Hybrid Health Check">
                     <a href="javascript:void(0)" class="menu-handle option-child"></a>
                     <div class="draw-handle">
                       <h3>Hybrid Health Check</h3>
-                      <h3 class="price">FREE</h3>
+                      <h3 class="price">&pound;39</h3>
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
@@ -300,7 +305,7 @@
                     </div>
                     <div class="clear"></div>
                     <div class="service-inner">
-                      <p class="sub-title">The only thing worse than failing your MOT, is failing on something that could have been spotted by a Toyota approved expert. Our free 37 point visual health check identifies issues that need fixing urgently.</p>
+                      <p class="sub-title">Our free 37 point Visual Safety Report is a comprehensive visual inspection of your vehicle, conducted by qualified Toyota technicians. The report will highlight anything that needs doing urgently to meet safety and legal requirements, as well as any work that may need doing in the future.</p>
                     </div>
                   </li>
                   <li class="service-parent icon-checkmark option-item" data-price="free" data-service="MyToyotaView">
@@ -316,7 +321,7 @@
                   </li>
                 </ul>
                 <ul class="choose-wait">
-                  <li class="user-wait icon-checkmark" data-title="I will wait while my car is serviced" data-price="free" data-wait="wait">
+                  <li class="user-wait icon-checkmark" data-title="I will wait while my car is serviced" data-price="FREE" data-wait="wait">
                     <p>I will wait while my car is<br/>serviced</p>
                     <h2>free</h2>
                   </li>
@@ -353,9 +358,14 @@
                   <div class="clear" />
                   <select id="fsda_hour" class="time-choice">
                     <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                   </select>
                   <select id="fsda_minute" class="time-choice">
                     <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
                   </select>
                   <br class="clear"/>
                   <p class="time-titles sub-title">hour</p>  
@@ -474,7 +484,7 @@
           <!-- Summary of users Online Booking -->
           <section id="summary" class="empty">
             <h2>Toyota for a Reason</h2>
-            <h4 class="sub-title">Find out more</h4>
+            <h4 class="sub-title find-more">Find out more</h4>
             <div id="need-help"></div>
             <div id="your-quote" class="summary-pod">
               <div class="pod-inner">
@@ -500,11 +510,13 @@
 
               <div id="option-wait"></div>
 
+              <div id="summary-total"></div>
+
               <button id="continue" class="disabled inactive proceed move-step" data-step="two">continue booking</button>
             </div>   
             <div class="including">
               <h2>what's included?</h2>
-              <a href="#what-is-included" rel="shadowbox;width=740;height=400;">Find out more</a>
+              <h4 class="sub-title find-more">Find out more</h4>
             </div>
           </section>
           <div class="clear"></div>
@@ -517,18 +529,13 @@
     <!-- hidden form tht gets submitted to dealersuip of users choosing -->
     <form id="olb-form" name="olbform" action="" method="post">
       <input type="text" name="service_booking" value="" type="hidden">
-    </form>   
-    
-    <!-- pop up content for Whats included -->
-    <div id="what-is-included">
-      <!-- <h1>GGGGGGG</h1> -->
-    </div>
+    </form>    
 
     <!-- Start script templates for OLB -->
     <script id="your-car-tpl" type="text/template">
       <p><%= requested %></p>
       <p><%= model %> <%= engine %></p>
-      <p class="mileage"><%= bookingDetails.get('mileage') %> Miles</p>
+      <p class="mileage"></p>
     </script>
 
     <script id="selected-servicing-tpl" type="text/template">
@@ -550,6 +557,7 @@
             <p class="sub-title item-title"><%= ele.get('title') %></p>
             <p class="sub-title price">£<%= ele.get('price') %></p>
             <div class="clear"></div>
+            <button type="button" data-type="repair"  data-title="<%= ele.get('title') %>" class="remove-item">remove</button>
           </li>
         <% }); %>
       </ul>
@@ -560,7 +568,6 @@
         <h4 class="sub-title item-title"><%= title %></h4>
         <h4 class="sub-title price"><%= price %></h4>
         <div class="clear"></div>
-
         <button type="button" data-type="option"  data-title="<%= title %>" class="remove-item">remove</button>
       </li>
     </script>
@@ -653,7 +660,7 @@
         <p>Model: <span><%= model %></span></p>
         <p>Engine: <span><%= engine %></span></p>
         <% if (bookingDetails.get('servicetype')) { %>
-          <p>Mileage: <span><%= bookingDetails.get('mileage') %></span></p>
+          <p>Mileage: <span><%= approxMiles %></span></p>
         <% } %>
         <br class="clear" />
       </div>
@@ -705,8 +712,15 @@
       <% } %>
       <% if(customer.get('chosenWait')) { %>
         <div class="summary-pod">
-          <h3 class="title"><%= customer.get('chosenWait').title %></h3>
+          <h3 class="title choose-wait"><%= customer.get('chosenWait').title %></h3>
           <h3 class="price"><%= customer.get('chosenWait').price %></h3>
+          <div class="clear"></div>
+        </div>
+      <% } %>
+      <% if(customer.get('chosenAdditionalWait')) { %>
+        <div class="summary-pod">
+          <h3 class="title choose-wait"><%= customer.get('chosenAdditionalWait').title %></h3>
+          <h3 class="price"><%= customer.get('chosenAdditionalWait').price %></h3>
           <div class="clear"></div>
         </div>
       <% } %>
@@ -746,13 +760,219 @@
       </div>
     </script>
 
+    <script id="find-more" type="text/template">
+      <div class="overlay-bg"></div>      
+      <div class="pop-wrap">
+        <div class="pop-inner">
+          <button type="button" class="close-overlay"></button>
+          <ul class="tab-selectors">
+            <li class="service-tab inter" data-content="inter">INTERMEDIATE SERVICE</li>
+            <li class="service-tab full" data-content="full">full service</li>
+            <li class="service-tab plus" data-content="plus">FULL+ SERVICE</li>
+            <div class="clear"></div>
+          </ul>
+          <ul class="finding-out">
+            <li class="inter active" data-content="inter">
+              <h3 class="inter-title">INTERMEDIATE SERVICE</h3>
+              <h3>Designed to maintain all the things that need frequent inspection.</h3>
+              <ul class="detail-colum">
+                <li>Free Visual Safety Report</li>
+                <li>Free Hybrid Health Check (model dependant)</li>
+                <li>Free Wash and Vac</li>
+                <li>Check all pedal(s) and component(s)</li>
+                <li>Check steering wheel</li>
+                <li>Check horn</li>
+                <li>Check washers</li>
+                <li>Check wipers</li>
+                <li>Check interior lights</li>
+                <li>Check exterior lights</li>
+                <li>Check warning lights</li>
+                <li>Inspect air conditioning filter - replace as necessary*</li>
+                <li>Check seat belts</li>
+                <li>Drain engine oil</li>
+                <li>Replace oil filter</li>
+                <li>Inspect air filters</li>
+               </ul>
+               <ul class="detail-colum">
+                <li>Refill engine oil</li>
+                <li>Check levels and refill as required</li>
+                <li>Inspect suspension</li>
+                <li>Inspect steering</li>
+                <li>Inspect tyres</li>
+                <li>Inspect wheels</li>
+                <li>Check and adjust tyre pressures</li>
+                <li>Inspect brake pads and discs</li>
+                <li>Torque tighten wheel nuts</li>
+                <li>Check radiator and condenser</li>
+                <li>Check belts</li>
+                <li>Check battery</li>
+                <li>Recheck for fluid leaks- underside and engine bay</li>
+                <li>Recheck all levels</li>
+                <li>Reset service lights or monitor as required</li>
+                <li>*Additional charges apply if work is required</li>
+              </ul>
+              <br class="clear" />
+            </li>
+            <li class="full" data-content="full">
+              <h3 class="inter-title">Full SERVICE</h3>
+              <h3>A comprehensive service designed to maximise the performance and longevity of your vehicle.</h3>
+              <ul class="detail-colum">  
+                <li>Free Visual Safety Report</li>
+                <li>Free Hybrid Health Check (model dependant)</li>
+                <li>Free Wash and Vac</li>
+                <li>Check all pedal(s) and component(s)</li>
+                <li>Check steering wheel</li>
+                <li>Check horn</li>
+                <li>Check washers</li>
+                <li>Check wipers</li>
+                <li>Check interior lights</li>
+                <li>Check exterior lights</li>
+                <li>Check warning lights</li>
+                <li>Inspect air conditioning filter- replace as necessary*</li>
+                <li>Check seat belts</li>
+                <li>Drain engine oil</li>
+                <li>Replace oil filter</li>
+                <li>Inspect air filters</li>
+                <li>Refill engine oil</li>
+                <li>Check levels and refill as required</li>
+                <li>Inspect suspension</li>
+                <li>Inspect steering</li>
+                <li>Inspect tyres</li>
+                <li>Inspect wheels</li>
+                <li>Check and adjust tyre pressures</li>
+                <li>Inspect brake pads and discs</li>
+                <li>Torque tighten wheel nuts</li>
+                <li>Check radiator and condense</li>
+                <li>Check belts</li>
+                <li>Check battery</li>
+                <li>Recheck for fluid leaks - underside and engine bay</li>
+                <li>Recheck all levels</li>
+                <li>Reset service lights or monitor as required</li>
+                <li>Check alarms</li>
+               </ul>
+               <ul class="detail-colum">
+                <li>Check and adjust gear cables</li>
+                <li>Inspect glass and light lenses</li>
+                <li>Replace battery in locking remote</li>
+                <li>Check and inspect suspension ball free play</li>
+                <li>Replace front and rear differential oils (model dependant)*</li>
+                <li>Inspect drive shaft boots</li>
+                <li>Inspect suspension ball joints and dust covers</li>
+                <li>Inspect fuel and brake pipes</li>
+                <li>Inspect exhaust pipes</li>
+                <li>Inspect wheel bearing</li>
+                <li>Inspect brake lining and drums</li>
+                <li>Inspect hand brake</li>
+                <li>Check clutch fluid as required*</li>
+                <li>Inspect spark plugs</li>
+                <li>Inspect air filter</li>
+                <li>Inspect charcoal canister (model dependant)*</li>
+                <li>Check fuel cap &amp; lines</li>
+                <li>Full 4-wheel alignment check- extra charge for adjustment</li>
+                <li>Change brake fluid (every two years)*</li>
+                <li>Replace air filter (model dependant)</li>
+                <li>Check transmission oil*</li>
+                <li>Inspect transfer box oil (model dependant)*</li>
+                <li>Lubricate prop shaft joints (model dependant)</li>
+                <li>Tighten prop shaft bolts (model dependant)</li>
+                <li>*Additional charges apply if work is required</li>
+              </ul>
+              <br class="clear" />
+            </li>
+            <li class="plus" data-content="plus">
+              <h3 class="inter-title">Full+ SERVICE</h3>
+              <h3>Our most comprehensive service, with additional replacement of longer service interval items.</h3>
+              <ul class="detail-colum">
+                <li>Free Visual Safety Report</li>
+                <li>Free Hybrid Health Check (model dependant)</li>
+                <li>Free Wash and Vac</li>
+                <li>Check all pedal(s) and component(s)</li>
+                <li>Check steering wheel</li>
+                <li>Check horn</li>
+                <li>Check washers</li>
+                <li>Check wipers</li>
+                <li>Check interior lights</li>
+                <li>Check exterior lights</li>
+                <li>Check warning lights</li>
+                <li>Inspect air conditioning filter - replace as necessary*</li>
+                <li>Check seat belts</li>
+                <li>Drain engine oil</li>
+                <li>Replace oil filter</li>
+                <li>Refill engine oil</li>
+                <li>Check levels and refill as required</li>
+                <li>Inspect suspension</li>
+                <li>Inspect steering</li>
+                <li>Inspect tyres</li>
+                <li>Inspect wheels</li>
+                <li>Check and adjust tyre pressures</li>
+                <li>Inspect brake pads and discs</li>
+                <li>Torque tighten wheel nuts</li>
+                <li>Check radiator and condenser</li>
+                <li>Check belts</li>
+                <li>Check battery</li>
+                <li>Recheck for fluid leaks - underside and engine bay</li>
+                <li>Recheck all levels</li>
+                <li>Reset service lights or monitor as required</li>
+                <li>Check alarms</li>
+              </ul>
+              <ul class="detail-colum">
+                <li>Check and adjust gear cables</li>
+                <li>Inspect glass and light lenses</li>
+                <li>Replace battery in locking remote</li>
+                <li>Check and inspect suspension ball free play</li>
+                <li>Replace front and rear differential oils (model dependant)*</li>
+                <li>Inspect drive shaft boots</li>
+                <li>Inspect suspension ball joints and dust covers</li>
+                <li>Inspect fuel and brake pipes</li>
+                <li>Inspect exhaust pipes</li>
+                <li>Inspect wheel bearing</li>
+                <li>Inspect brake lining and drums</li>
+                <li>Inspect hand brake</li>
+                <li>Check clutch fluid as required*</li>
+                <li>Inspect spark plugs</li>
+                <li>Inspect air filter</li>
+                <li>Inspect charcoal canister (model dependant)</li>
+                <li>Check fuel cap &amp; lines</li>
+                <li>Full 4-wheel alignment check- extra charge for adjustment</li>
+                <li>Check transmission oil*</li>
+                <li>Inspect transfer box oil (model dependant)*</li>
+                <li>Lubricate prop shaft joints (model dependant)</li>
+                <li>Tighten prop shaft bolts (model dependant)</li>
+                <li>Replace diesel fuel filter (model dependant)</li>
+                <li>Replace spark plugs</li>
+                <li>Replace air filter (model dependant)</li>
+                <li>Check valves</li>
+                <li>Clean airflow meter</li>
+                <li>Diesel smoke test</li>
+                <li>Change brake fluid (every two years)*</li>
+                <li>*Additional charges apply if work is required</li>
+              </ul>
+              <br class="clear" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </script>
+
     <script>
       //dummy function to emulate TCW
-      var calculateAvailableDays = function(){
+      var calculateAvailableDays = function() {
         return;
       }
-      var filterMinutes = function(){
+      var filterHours = function() {
         return;
+      };
+      var filterMinutes = function() {
+        return;
+      }
+      var getEarliestDay = function() {
+        return;
+      }
+      var filterDayOffs = function(date) {
+        var day = date.getDay();
+        var availableDays = [0,1,2,4,5,6];
+
+        return [availableDays.indexOf(day) >= 0, ''];
       }
       window.osbDealerID = '23456789';
       window.osbPhone = '01234657891';
@@ -761,7 +981,7 @@
         ident: 'MM06ZPC',
         model: 'Yaris NG T2',
         engine: '1.0 VVT-i',
-        mileage: '123',
+        mileage: '12345',
         years: '2006',
         age: '8',
         colour: 'Crystal Silver',
@@ -782,7 +1002,7 @@
           }]
         },
         hybridHealthCheck: 'Y',
-        hybridHealthCheckCost: '',
+        hybridHealthCheckCost: '£39',
         generalDiagnosis: 'N',
         generalDiagnosisCost: '',
         visualSafetyReport: 'Y',
@@ -804,9 +1024,9 @@
         }]
       };
       // testing dealership skip find dealer step
-      window.tcw = true;
+      // window.tcw = true;
       //testing national pdf submission
-      window.retail = true;
+      // window.retail = true;
     </script>
 
     <!-- End templates &sensor=false-->

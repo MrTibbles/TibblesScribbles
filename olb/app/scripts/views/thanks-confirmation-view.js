@@ -16,6 +16,10 @@ define(['backbone', 'register'], function(Backbone, register) {
       this.$el.addClass('current-step');
       this.updateProgressBar();    
 
+      var scrollTarget = this.$el.offset();
+      $("html,body").animate({scrollTop: scrollTarget.top
+      }, 750);
+
       window.console && console.info(register.vehicle.get('customer'))
       this.$el.html(this.template(register.vehicle.get('customer').toJSON()));
     }

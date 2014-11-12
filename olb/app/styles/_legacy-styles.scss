@@ -1,9 +1,117 @@
-body.msie{
-	&.v8{
-		#progess .progess-bar{
-			li.active:before{
-				background: url('../images/ie-sprite.png') no-repeat 0 0;
-				border: none;
+body{
+	&.win{
+		&.chrome{
+			.step-four{
+				.date-wrapper #service-time{
+					.time-choice{
+						padding: 0 5px;
+					}
+				}
+			}
+		}
+	}
+	&.msie{
+		&.v8, &.ie8{		
+			#olb-wrap{
+				#progess .progess-bar{
+					li{
+						&:before{
+							width: 25px;
+							height: 22px;
+							background: url('../images/ie8-icons.png') no-repeat 0 -45px;
+							border: none;
+							top: -1px;
+						}
+						&.active{
+							&:before{						
+								background: url('../images/ie8-icons.png') no-repeat 0 0;						
+							}
+						}
+						&.completed{
+							&:before{						
+								background: url('../images/ie8-icons.png') no-repeat 0 -22px;
+								content: '';
+								height: 25px;
+								z-index: 500;
+							}
+						}
+					}
+				}	
+				.icon-checkmark{						
+					&:before, &:after{
+						width: 24px !important;
+						height: 24px !important;  //!important used to save having crazy long selectors
+						background: url('../images/ie8-icons.png') no-repeat 0 -68px;
+						content: '';
+						border: none;
+						left: 15px;
+						top: 12px;
+					}
+					&.selected-option, &.selected{
+						&:before, &:after{
+							background-position: 0 -92px;
+						}
+					}
+				}	
+				.service-plan:after{
+					display: none !important;
+				}
+				.service-badge{
+					height: 26px !important;
+					background: url('../images/service-badge-sprite.png') no-repeat	0 0 !important;
+				}
+				.repair-choices li{
+					&:before, &:after{
+						background: url('../images/ie8-icons.png') no-repeat 0 -116px;
+						content: '';
+						border: none;
+						top: 3px;
+						height: 24px;
+					}
+					&.repair-selected{
+						&:before, &:after{
+							background-position: 0 -140px;
+						}
+					}
+				}
+				.step-four{
+					.date-wrapper #service-time{
+						.time-choice{
+							background-image: none;
+							text-indent: -5px;
+							z-index: 1;
+							padding: 0;
+
+							option{
+								font-family: 'Verdana';							
+								z-index: 0;
+							}
+						}
+					}
+				}
+				.step-five{
+					.customer-form{
+						select{
+							background-image: none;
+						}
+					}
+					#hear-about{
+						li{
+							&:after{
+								border: none;
+							}
+							&:before{
+								display: none;
+							}
+						}
+					}
+					#opt-outs{
+						li{
+							text-indent: 50px;
+							padding: 12px 0 0;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -3,6 +3,7 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
     el: $('#find-dealer-step'),
     events: {
       'click #find-postcode': 'dealerLookUp',
+      'submit #olb-dealer-lookup': 'dealerLookUp',
       'click .dealer-item': 'selectDealer'
       // 'click .submit': 'submitToDealer'
     },
@@ -12,6 +13,7 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
       this.$el.addClass('current-step');
 
       this.updateProgressBar();
+      register.bookingSummaryView.checkHeight();
 
       //render the google map for dealer lookup
       this.googleMapsIni();
@@ -27,7 +29,7 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
     updateProgressBar: function(){
       $('#progess-bar .first').addClass('completed');
     },
-    googleMapsIni: function(){
+    googleMapsIni: function() {
       var mapOpts = {
         zoom: 5,
         center: new google.maps.LatLng(54.5, -3), //uk centre
@@ -38,7 +40,7 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
         panControl: false
       };
 
-      register.map = new google.maps.Map(document.getElementById('gmap_canvas'), mapOpts);      
+      register.map = new google.maps.Map(document.getElementById('gmap_canvas'), mapOpts);
 
       register.map.markerimage = new google.maps.MarkerImage('../images/map-marker.png',
         new google.maps.Size(46, 49),
@@ -64,52 +66,52 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
         enableEventPropagation: true
       });
 
+      google.maps.event.trigger(register.map, 'resize');
       var updateLatlng = new google.maps.LatLng(54.5, -3);
       register.map.setCenter(updateLatlng);
-
-      // register.map.bounds = new google.maps.LatLngBounds();
     },
-    dealerLookUp: function(e){
+    dealerLookUp: function(e) {
+      e.preventDefault();
       register.loader.showLoader(this.$el[0]);
-      if(!this.$('#postcode-input').val()){
+      if (!this.$('#postcode-input').val()){
         return register.validationView.showError('empty-postcode', '#postcode-input');
       }
-      var _this = this;
-      var postCode = this.$('#postcode-input').val().toUpperCase();
+      var _this = this,
+        postCode = this.$('#postcode-input').val().toUpperCase();
       //Not sure why this gets undefined, is in current OSB scripts, finddealer.js - line 162 
       center_type = '';
 
-      // if(this.validePostCode(postCode)){
-        this.dealerCollection.query = {
-          geoPost: postCode,
-          center_type: center_type,
-          geoValue: 25
-        };
+      this.dealerCollection.query = {
+        geoPost: postCode,
+        center_type: center_type,
+        geoValue: 25
+      };
 
-        this.dealerCollection.fetch({
-          success: function(){
-            register.map.bounds = new google.maps.LatLngBounds();
+      this.dealerCollection.fetch({
+        success: function(){
+          register.map.bounds = new google.maps.LatLngBounds();
 
-            register.loader.hideLoader();          
+          register.loader.hideLoader();
 
-            _.each(register.dealerList, function(ele){
-              _this.dealerItem = new dealerView({
-                model: ele
-              });
-              _this.dealerItem.render();
+          this.$('#local-dealers').empty();
+
+          _.each(register.dealerList, function(ele){
+            _this.dealerItem = new dealerView({
+              model: ele
             });
-          }
-        });
+            _this.dealerItem.render();
+          });
 
-        register.map.fitBounds(register.map.bounds);
-        // var listener = google.maps.event.addListener(register.map, "idle", function() {
-        //   window.console && console.info('idle');
-        //   if(register.map.getZoom() > 16){
-        //     register.map.setZoom(10);
-        //   }
-        //   google.maps.event.removeListener(listener);
-        // });
-      // }
+          register.map.fitBounds(register.map.bounds);
+        }
+      });      
+      // var listener = google.maps.event.addListener(register.map, "idle", function() {
+      //   window.console && console.info('idle');
+      //   if(register.map.getZoom() > 16){
+      //     register.map.setZoom(10);
+      //   }
+      //   google.maps.event.removeListener(listener);
+      // });
     },
     selectDealer: function(e){
       this.$('.dealer-item').removeClass('selected');

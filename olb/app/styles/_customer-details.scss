@@ -7,6 +7,9 @@
 			width: 100%;
 			font-size: 12px;
 		}
+		#customer-details-form{
+			 float: none;
+		}
 		.customer-form{
 			label, input, select, option{
 				@include add_prefix(appearance, none);

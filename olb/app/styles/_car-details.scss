@@ -253,15 +253,31 @@
 							padding: 8px 0 0;
 
 							h3{
-								color: $full;
+								color: $plus-service;
 
 								&.service-badge{
 									float: left;
+									height: 36px;
 									padding: 4px 0 5px 40px;
-									background: url('../images/service-badge-sprite.png') no-repeat 0 0;									
+									background: {					
+										image: url('../images/plus-service-badge.png');					
+										repeat: no-repeat;
+										position: 0 0;
+										size: 30px 36px;
+									}
+
+									// &.Intermediate{
+									// 	background-image: url('../images/plus-service-badge.png');
+									// }
+									// &.Full{
+									// 	background-image: url('../images/plus-service-badge.png');
+									// }
+									// &.Full{
+									// 	background-image: url('../images/plus-service-badge.png');
+									// }
 
 									span{
-										color: $full;
+										color: $plus-service;
 										font: {
 											family: 'toyotadisplay_rg';
 											size: 13px;

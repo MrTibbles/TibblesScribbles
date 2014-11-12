@@ -32,6 +32,15 @@
 				}
 			}
 
+			.choose-wait{
+				text-transform: none;
+			}
+
+			.service-choice{
+				background-size: auto;
+				background-size: contain;
+			}
+
 			&.left-pod{
 				float: left;
 				width: 270px;
@@ -74,9 +83,15 @@
 			.service-choice{
 				margin: 15px 0;
 				padding: 15px 0 25px 100px;
+				// background: {
+				// 	image: url('../images/service-badge-sprite-lrg.png');
+				// 	repeat: no-repeat;					
+				// }
 				background: {
-					image: url('../images/service-badge-sprite-lrg.png');
-					repeat: no-repeat;					
+					image: url('../images/plus-service-badge.png');
+					repeat: no-repeat;
+					position: 0 0;
+					size: 30px 36px;
 				}
 
 				&.full{

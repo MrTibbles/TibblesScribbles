@@ -7,7 +7,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       'click .opt-out': 'setOptOuts',
       'click #step-confirm': 'confirmationPage'
     },
-    initialize: function() {      
+    initialize: function() {
       this.vehicle = register.vehicle;
 
       this.addressFinder = new addressFinder();
@@ -15,20 +15,20 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       this.confirmSummary = new confirmSummary();
 
       register.vehicle.get('customer').set({
-        futureContactEmail: 1,
-        futureContactSms: 1,
-        futureContactMail: 1,
-        futureContactPhone: 1
+        futureContactEmail: 0,
+        futureContactSms: 0,
+        futureContactMail: 0,
+        futureContactPhone: 0
       });
     },
     template: _.template(
       $('#address-details').html()
     ),
-    updateProgressBar: function(){
+    updateProgressBar: function() {
       $('#olb-wrap').find('.progess-bar .third').addClass('completed');
       $('.progess-bar .fourth').addClass('active');
-    },    
-    render: function(){
+    },
+    render: function() {
       var _this = this;
       this.$el.siblings('section').removeClass('current-step');
       this.$el.addClass('current-step');
@@ -52,7 +52,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
           obj.insertAfter(element);
         },
         // onfocusout: function(element) {
-        //   $(element).valid(); 
+        //   $(element).valid();
         // },
         rules: {
           title: {
@@ -114,7 +114,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         }
       });
     },
-    buildData: function(){
+    buildData: function() {
       //Set up data to be submitted
       register.vehicle.get('customer').set({
         vehicleReg: register.vehicle.get('requested'),
@@ -124,7 +124,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         ident: register.vehicle.get('requested'),
         colour: register.vehicle.get('colour'),
         engine: register.vehicle.get('engine'),
-        mileage: register.vehicle.get('bookingDetails').get('mileage'),
+        mileage: register.vehicle.get('approxMiles'),
         age: register.vehicle.get('age'),
         serviceType: register.vehicle.get('bookingDetails').get('serviceId'),
         servicePrice: register.vehicle.get('bookingDetails').get('serviceprice'),
@@ -146,39 +146,39 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         email: this.$('#edit-email').val(),
         housenameornumber: this.$('#edit-house').val(),
         address1: this.$('#edit-address1').val(),
-        address2: '',
+        address2: this.$('#edit-address2').val(),
         town: this.$('#edit-town').val(),
         county: this.$('#edit-county').val(),
         postcode: this.$('#edit-postcode').val(),
         additionalNotes: $('#add-info').val()
       });
-      
+
       //default serviceType, servicePrice and mileage to 0 for submission
-      if(!register.vehicle.get('customer').get('serviceType') && !register.vehicle.get('customer').get('servicePrice')){
+      if (!register.vehicle.get('customer').get('serviceType') && !register.vehicle.get('customer').get('servicePrice')) {
         register.vehicle.get('customer').set({
           serviceType: '00000000',
           servicePrice: 0,
           mileage: 0
         });
       }
-      this.getPhoneType(this.$('#phonetype').val());      
+      this.getPhoneType(this.$('#phonetype').val());
     },
-    queryOptionsCollection: function(key, parameter){
+    queryOptionsCollection: function(key, parameter) {
       var result;
-      if(key){
+      if (key) {
         result = register.vehicle.get('selectedOptions').findWhere({title: parameter}) ? 'Y' : 'N';
-      }else{
-        register.vehicle.get('selectedOptions').find(function(model){
-          if(model.get('title').toLowerCase() === parameter){
+      }else {
+        register.vehicle.get('selectedOptions').find(function(model) {
+          if (model.get('title').toLowerCase() === parameter) {
             result = model.get('price');
           }
         });
       }
       return result;
     },
-    getSelectedRepairs: function(){
+    getSelectedRepairs: function() {
       var userRepairs = [];
-      register.vehicle.get('selectedRepairs').each(function(ele){
+      register.vehicle.get('selectedRepairs').each(function(ele) {
         var repairItem = {
           repair: ele.get('title'),
           repairCost: ele.get('price')
@@ -187,7 +187,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       });
       return userRepairs;
     },
-    findAddress: function(){
+    findAddress: function() {
       window.console && console.info(this.$('#edit-postcode').valid())
       var _this = this;
       this.addressFinder.query = {
@@ -196,53 +196,53 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       };
 
       this.addressFinder.fetch({
-        success: function(response){
+        success: function(response) {
           _this.$('#detailed-address').html(_this.template(_this.addressFinder.toJSON()));
         }
       })
     },
-    hearAbout: function(e){
+    hearAbout: function(e) {
       var $this = $(e.currentTarget);
 
       $this.siblings('li').removeClass('selected');
       $this.addClass('selected');
 
-      if($this.data('hear-about') === 'Other'){
-        this.vehicle.get('customer').set('marketingGroup', 'Other: '+this.$('#other-source').val());
-      }else{
+      if ($this.data('hear-about') === 'Other') {
+        this.vehicle.get('customer').set('marketingGroup', 'Other: ' + this.$('#other-source').val());
+      }else {
         this.vehicle.get('customer').set('marketingGroup', $this.data('hear-about'));
       }
 
     },
-    getPhoneType: function(phoneType){
+    getPhoneType: function(phoneType) {
       window.console && console.info(phoneType)
-      return register.vehicle.get('customer').set({ 
+      return register.vehicle.get('customer').set({
         homeTel: phoneType === 'home' ? this.$('#edit-phone').val() : '',
         workTel: phoneType === 'office' ? this.$('#edit-phone').val() : '',
         mobileTel: phoneType === 'mobile' ? this.$('#edit-phone').val() : ''
       });
     },
-    confirmationPage: function(){
-      if(!this.$('#hear-about li').hasClass('selected')){
+    confirmationPage: function() {
+      if (!this.$('#hear-about li').hasClass('selected')) {
         return register.validationView.showError('hear-about', '#hear-about');
       }
-      if(this.$('#customer-details-form').valid()){
+      if (this.$('#customer-details-form').valid()) {
         this.buildData();
       }
-      // this.buildData();
 
       this.confirmSummary.render();
-
-      window.console && console.info(register.vehicle.get('customer').toJSON());
+      $('html,body').animate({
+        scrollTop: this.confirmSummary.$el.offset().top
+      }, 750);
     },
-    setOptOuts: function(e){
+    setOptOuts: function(e) {
       var $this = $(e.currentTarget);
-      if(!$this.hasClass('selected')){
+      if (!$this.hasClass('selected')) {
         $this.addClass('selected');
-        return this.vehicle.get('customer').set($this.data('opt-out'), 0);
-      }else{
-        $this.removeClass('selected');
         return this.vehicle.get('customer').set($this.data('opt-out'), 1);
+      }else {
+        $this.removeClass('selected');
+        return this.vehicle.get('customer').set($this.data('opt-out'), 0);
       }
     }
   });

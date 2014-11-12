@@ -141,6 +141,7 @@
 							margin: 0;
 							text-transform: uppercase;
 							line-height: 18px;
+							padding: 0;
 
 							&.sub-title{
 								font-family: 'toyotadisplay_rg';
@@ -172,10 +173,16 @@
 					@include add_prefix(appearance, none);
 					@include border_radius(0);
 
-					option{
-						text-align: center;
-						color: #ffffff;			
-						font-size: 32px;			
+					select{
+						font-size: 32px;
+						option{
+							text-align: center;
+							color: #ffffff;								
+							font: {
+								family: 'verdana';
+								size: 16px;
+							}	
+						}
 					}
 				}
 				.time-titles{

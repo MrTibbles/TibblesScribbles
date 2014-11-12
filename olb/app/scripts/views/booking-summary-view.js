@@ -6,175 +6,191 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
       'click .downloadable': 'downloadQuote',
       'click .remove-service': 'removeServicing'
     },
-    yourCarTpl: _.template(
-    	$('#your-car-tpl').html()
-  	),
-    yourServicingTpl: _.template(
-      $('#selected-servicing-tpl').html()
-    ),
-    yourRepairsTpl: _.template(
-      $('#selected-repairs-tpl').html()
-    ),
+    yourCarTpl: _.template($('#your-car-tpl').html()),
+    yourServicingTpl: _.template($('#selected-servicing-tpl').html()),
+    yourRepairsTpl: _.template($('#selected-repairs-tpl').html()),
     yourOptionsTpl: _.template(
-      $('#selected-options-tpl').html()
-    ),
+      $('#selected-options-tpl').html()),
     initialize: function() {
-      // this.model.on('change', this.render, this);
-    	// this.model.on('change:selected', this.renderOptions, this);
       this.model.on('change', this.render, this);
+      this.model.on('change:selectedOptions', this.displayTotal, this);
+      // this.model.on('change:selectedRepairs', this.displayTotal, this);
     },
-    render: function(){
+    render: function() {
       register.loader.hideLoader();
-      window.console && console.info('Summary update: ', this.model);      
+      // window.console && console.info('Summary update: ', this.model);
 
       this.checkBooking();
 
-      if(this.model.get('model')){
+      if (this.model.get('model')) {
         $('.service-parent').removeClass('inactive');
-        $('#find-service').removeClass('disabled');        
+        $('#find-service').removeClass('disabled');
 
-        this.$el.removeClass('empty');    
+        this.$el.removeClass('empty');
 
         this.$el.find('#your-car').html(this.yourCarTpl(this.model.toJSON()));
 
         this.model.get('bookingDetails').get('mileage') && this.renderService();
       }
-
+      // this.displayTotal();
       this.checkHeight();
       this.suggestedService = new suggestedService();
     },
-    renderService: function(){
+    renderService: function() {
       // this.$('#continue').removeClass('disabled');
-
-      this.$('.mileage').addClass('available');
+      this.$('.mileage').addClass('available').html(register.vehicle.get('approxMiles') + ' Miles');
       this.$('#selected-service').addClass('selected').html(this.yourServicingTpl(this.model.toJSON()));
     },
-    clearService: function(){
+    clearService: function() {
       this.$('#selected-service').removeClass('selected').empty();
-      this.checkBooking()
+      this.checkBooking();
+      return _.once(this.displayTotal());
     },
-    renderOptions: function(){          
+    renderOptions: function() {
       var _this = this;
-      window.console && console.info('Selected: ', register.vehicle.get('selected'));
-      window.console && console.info('Selected Options: ', register.vehicle.get('selectedOptions'));
 
       // this.$('#continue').removeClass('disabled');
       this.$('#selected-options').empty();
-      
-      register.vehicle.get('selectedOptions').each(function(ele){
-        _this.$('#selected-options').append(_this.yourOptionsTpl(ele.toJSON()));  
+      register.vehicle.get('selectedOptions').each(function(ele) {
+        _this.$('#selected-options').append(_this.yourOptionsTpl(ele.toJSON()));
       });
 
       this.checkBooking();
     },
-    renderRepairs: function(){
+    renderRepairs: function() {
       var _this = this;
-      window.console && console.info('Selected: ', register.vehicle.get('selected'));
-      window.console && console.info('Selected Repairs: ', register.vehicle.get('selectedRepairs'))
 
-      if(register.vehicle.get('selectedRepairs').length){
+      this.displayTotal();
+      if (register.vehicle.get('selectedRepairs').length) {
         this.$('#selected-repairs').addClass('selected').html(this.yourRepairsTpl(register.vehicle.toJSON()));
-      }else{
+      }else {
         this.$('#selected-repairs').removeClass('selected').empty();
       }
-      // this.model.get('selectedRepairs').each(function(ele){
-      //   window.console && console.info(ele);
-      //   _this.$el.find('#selected-repairs').append(_this.yourRepairsTpl(ele.toJSON()));  
-      // });
+
       this.checkBooking();
     },
-    removeItem: function(e){
+    removeItem: function(e) {
       var $this = $(e.currentTarget);
-      switch($this.data('type')){
+      switch ($this.data('type')){
         case 'service':
           register.vehicle.get('bookingDetails').clear();
           this.$('#selected-service').removeClass('selected').empty();
           $('li[data-service="car-servicing"]').removeClass('selected');
           break;
         case 'option':
-          register.vehicle.get('selected').each(function(ele){
-            if(ele.get('title') === $this.data('title')){              
+          register.vehicle.get('selected').each(function(ele) {
+            if (ele.get('title') === $this.data('title')) {
               return register.vehicle.get('selected').remove(ele);
             }
           });
-          register.vehicle.get('selectedOptions').each(function(ele){
-            if(ele.get('title') === $this.data('title')){
+          register.vehicle.get('selectedOptions').each(function(ele) {
+            if (ele.get('title') === $this.data('title')) {
               return register.vehicle.get('selectedOptions').remove(ele);
             }
           });
-          // this.$('#selected-options li[data-title="'+$this.data('title')+'"]').remove();
-          window.console && console.info($this.data('title'), $('li[data-service="'+$this.data('title')+'"]'))
-          $('li[data-service="'+$this.data('title')+'"]').removeClass('selected-option selected').find('.menu-handle').removeClass('selected-child').addClass('option-child');
+          $('li[data-service="' + $this.data('title') + '"]').removeClass('selected-option selected').find('.menu-handle').removeClass('selected-child').addClass('option-child');
           this.renderOptions();
           break;
+        case 'repair':
+          var item = register.vehicle.get('selected').findWhere({title: $this.data('title')}),
+            repairItem = register.vehicle.get('selectedRepairs').findWhere({title: $this.data('title')});
+
+          register.vehicle.get('selected').remove(item);
+          register.vehicle.get('selectedRepairs').remove(repairItem);
+          $('.repair-choices li[data-repair="' + $this.data('title') + '"]').removeClass('repair-selected').addClass('repair-item');
+          !$('.repair-choices li').siblings('li').hasClass('repair-selected') && $('li[data-service="repairs"]').removeClass('selected-option');
+
+          this.renderRepairs();
       }
     },
-    removeServicing: function(e){      
+    removeServicing: function(e) {
       register.vehicle.get('bookingDetails').clear();
 
       this.suggestedService.clearService();
       register.bookingSummaryView.clearService();
+      register.vehicle.getTotalPrice();
     },
-    checkBooking: function(){
-      if(this.model.get('model') && register.vehicle.get('selected').length){
+    checkBooking: function() {
+      if (register.vehicle.get('model') && register.vehicle.get('selected').length) {
         this.$el.removeClass('empty-selection')
         this.$('#continue').removeClass('disabled');
         this.$('.download-quote').addClass('downloadable');
-      }else{
+      }else {
         !this.$('#continue').hasClass('disabled') && this.$('#continue').addClass('disabled');
         this.$el.addClass('empty-selection')
         this.$('.download-quote').removeClass('downloadable');
       }
     },
-    checkHeight: function(){
-      // window.console && console.info('Summary height: ',this.$el.height())
+    checkHeight: function() {
+      if ($('#olb-content').outerHeight(true) <= this.$el.outerHeight(true)) {
+        $('#olb-content').css('min-height', this.$el.outerHeight(true) + 50 + 'px');
+      }
     },
-    queryOptionsCollection: function(key, parameter){
+    queryOptionsCollection: function(key, parameter) {
       var result;
-      if(key){
+      if (key) {
         result = register.vehicle.get('selectedOptions').findWhere({title: parameter}) ? 'Y' : 'N';
-      }else{
-        register.vehicle.get('selectedOptions').find(function(model){
-          if(model.get('title').toLowerCase() === parameter){
-            result = model.get('price');
+      }else {
+        register.vehicle.get('selectedOptions').find(function(model) {
+          if (model.get('title').toLowerCase() === parameter) {
+            result = model.get('price').replace('£','');
           }
         });
       }
       return result;
     },
-    downloadQuote: function(e){
-      var $this = $(e.currentTarget);
-      
-      var downloadForm = $('<form/>').attr({
-        'id':'tmpSavePDFForm',
-        'method': 'POST',
-        // 'action': window.location.hostname === 'localhost' ? 'http://pinkstones.toyota.co.uk/owners/service-booking/pdf' : '/owners/service-booking/pdf',
-        'action': window.retail ? 'http://global.toyota.co.uk/owners/service-booking/pdf' : '/owners/service-booking/pdf',
-        'target': '_blank'
+    getSelectedRepairs: function() {
+      var userRepairs = [];
+      register.vehicle.get('selectedRepairs').each(function(ele) {
+        var repairItem = {
+          Repair: ele.get('title'),
+          RepairCost: ele.get('price')
+        };
+        return userRepairs.push(repairItem);
       });
-
-      //vehicleReg=MM06ZPC&vin=xxxxxxxxxxxxxxxxx&vehicleModel=Yaris+NG+T2&vehicleColour=&engine=1.0+VVT-i&additionalNotes1=&dealerId=&mileage=12&age=8&serviceDate=&serviceTime=&serviceTimeExact=&serviceType=77991388&servicePrice=255.00&servicePlan=N&optionWhileYouWait=N&optionCollectDeliver=N&optionPickDrop=Y&optionCourtesyCar=N&optionCost=0&courtesyCarCost=0&mot=N&motCost=0.00&serviceAdds=Brake+Fluid+-+%28Change+Every+2+Years%29%2C39%2C39&title=&firstname=&surname=&address1=&address2=&town=&county=&postcode=&homeTel=&workTel=&mobileTel=&email=&ageM=100&colour=Crystal+Silver&vehicleYears=2006&katashiki=KSP90&mileageEntered=12&vehicleYear=&serviceDesc=Full%2B+Service+%288+years+or+80000+miles%29&serviceCostEffective=255.00&motCostDisplay=0.00&totalPrice=255.00&dealerName=Currie+Motors+%28Twickenham%29      
-
-      var pdf_submit_data = {
-        dealerName: register.vehicle.get('customer').get('dealerName'),
-        vehicleReg: register.vehicle.get('requested'),
-        vehicleModel: register.vehicle.get('model'),
+      return userRepairs;
+    },
+    displayTotal: function() {
+      var total = {
+        title: 'TOTAL',
+        price: register.vehicle.getTotalPrice()
+      };
+      // total.price && this.$('#summary-total').addClass('priced').html(this.yourOptionsTpl(total));
+      // !total.price && this.$('#summary-total').removeClass('priced');
+      if (total.price) {
+        total.price = '£' + total.price;
+        this.$('#summary-total').addClass('priced').html(this.yourOptionsTpl(total));
+      }else this.$('#summary-total').removeClass('priced');
+    },
+    downloadQuote: function(e) {
+      var $this = $(e.currentTarget),
+      downloadForm = $('<form/>').attr({
+        id:'tmpSavePDFForm',
+        method: 'POST',
+        action: window.retail ? 'http://global.toyota.co.uk/owners/service-booking/pdf' : '/owners/service-booking/pdf',
+        target: '_blank'
+      }),
+      pdfSubmitData = {
         mileageEntered: register.vehicle.get('approxMiles'),
         serviceDesc: escape(register.vehicle.get('bookingDetails').get('servicetype')),
         mot: this.queryOptionsCollection('title', 'MOT'),
         motCost: window.motPrice || 0,
-        HybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
+        HybridHealthCheck: this.queryOptionsCollection('title', 'Hybrid Health Check'),
+        dealerName: register.vehicle.get('customer').get('dealerName'),
+        vehicleReg: register.vehicle.get('requested'),
+        vehicleModel: register.vehicle.get('model'),
         HybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
         GeneralDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
-        GeneralDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
+        GeneralDiagnosisCost: this.queryOptionsCollection('', 'general diagnosis'),
         VisualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
         VisualSafetyReportCost: this.queryOptionsCollection('', 'visual safety report'),
         MyToyotaView: this.queryOptionsCollection('title', 'MyToyotaView'),
+        Repairs: this.getSelectedRepairs(),
         totalPrice: register.vehicle.getTotalPrice()
       };
 
-      window.console && console.info(JSON.stringify(pdf_submit_data))
-      $('<input/>').attr({'type': 'hidden','name': 'pdf_submit_data'}).val(JSON.stringify(pdf_submit_data)).appendTo(downloadForm);
+      window.console && console.info(JSON.stringify(pdfSubmitData))
+      $('<input/>').attr({type: 'hidden', name: 'pdf_submit_data'}).val(JSON.stringify(pdfSubmitData)).appendTo(downloadForm);
 
       downloadForm.appendTo('body').submit();
     }

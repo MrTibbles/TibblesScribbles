@@ -48,7 +48,6 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       }
     },
     getTotalPrice: function(){
-      window.console && console.info(register.vehicle);      
       var total = Number(0);
 
       register.vehicle.get('selected').each(function(ele){

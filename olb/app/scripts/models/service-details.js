@@ -4,7 +4,11 @@ define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
     relations: [],
     parse: function(response) {
       var data = response[0];
-      
+      // service_lookup([{"error":"no data found to match the input data supplied"}]);
+      if (data.hasOwnProperty('error')) {
+        return 'commercial';
+      }
+
       register.vehicle.get('bookingDetails').set({
         age: data.age,
         katashiki: data.katashiki,
@@ -15,28 +19,28 @@ define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
         options: this.bookingOptions(data.options)
       });
       return register.vehicle;
-    },    
+    },
     sync: function(method, model, options) {
-      var _this = this;
-      if(method === 'read'){
-        var params = _.extend({
+      var _this = this, params;
+      if (method === 'read') {
+        params = _.extend({
           type: 'GET',
           cache: false,
-          dataType: "jsonp",      
+          dataType: 'jsonp',
           url: _this.url,
           jsonpCallback: 'service_lookup',
           data: _this.query,
-          error: function(a,b,c){
-            window.console && console.error(a,b,c);
+          error: function(a, b, c) {
+            window.console && console.error(a, b, c);
           }
         }, options);
 
         return $.ajax(params);
       }
     },
-    bookingOptions: function(options){
+    bookingOptions: function(options) {
       var availableOptions = [];
-      _.each(options, function(ele, idx){
+      _.each(options, function(ele, idx) {
         var bookingOption = {
           description: ele.description,
           price: ele.price

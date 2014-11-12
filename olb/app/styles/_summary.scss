@@ -54,6 +54,9 @@
 			display: none;
 		}
 	}
+	.find-more{
+		cursor: pointer;
+	}
 
 	h2{
 		text-transform: none;
@@ -119,7 +122,7 @@
 			}
 		}
 		.remove-item, .remove-service{
-			display: none;
+			// display: none;
 			width: auto;
 			height: auto;
 			position: absolute;
@@ -144,6 +147,26 @@
 			}
 			.remove-item, .remove-service{
 				top: 89px;
+			}
+		}
+		#selected-repairs{
+			li{
+				padding: 0 0 12px;
+				position: relative;
+
+				.remove-item{
+					top: 20px;
+				}
+			}
+		}
+		#summary-total{
+			display: none;
+
+			&.priced{
+				display: block;
+			}
+			.remove-item{
+				display: none;
 			}
 		}
 		.sub-title{
@@ -212,6 +235,7 @@
 		}
 		h2{
 			text-transform: capitalize;
+			margin: 0 0 150px
 		}
 		a{
 			margin: 160px 0 0;

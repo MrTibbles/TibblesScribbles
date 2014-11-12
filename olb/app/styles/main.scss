@@ -20,11 +20,13 @@ $disabled-state: #e3e3e4;
 $error-colour: #cc0033;
 
 //Service types colours
-$full: #ca0034;
+$plus-service: #ca0034;
+$full-service: #ec590d;
+$inter-service: #41b6e5;
 
 //validation colours
 $error-red: #e01e30;
 
 @import 'mixins.scss', 'icons.css';
 
-@import 'base.scss', 'validation.scss', 'main-content.scss', 'progress.scss', 'summary.scss', 'car-details.scss', 'find-dealer.scss', 'dealer-quote.scss', 'select-date-time.scss', 'customer-details.scss', 'booking-summary.scss', 'thanks.scss', 'legacy-styles.scss';
+@import 'base.scss', 'validation.scss', 'main-content.scss', 'progress.scss', 'summary.scss', 'car-details.scss', 'find-dealer.scss', 'dealer-quote.scss', 'select-date-time.scss', 'customer-details.scss', 'booking-summary.scss', 'thanks.scss', 'pop-up.scss', 'legacy-styles.scss';
