@@ -205,7 +205,7 @@ module.exports = function(grunt) {
 
     requirejs: {
       dist: {
-        // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
+        // Options: http://github.com/jrburke/r.js/blob/master/build/example.build.js
         options: {
           // dir: "app/",
           baseUrl: '<%= yeoman.app %>/scripts',

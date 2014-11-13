@@ -3,11 +3,7 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "new-gallery"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "parallax"
+			"path": "."
 		}
 	]
 }
