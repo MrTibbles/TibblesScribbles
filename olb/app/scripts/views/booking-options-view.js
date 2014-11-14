@@ -23,7 +23,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
     },
     render: function() {
       register.loader.hideLoader();
-      this.checkHSD();
+      register.vehicle.get('model') && this.checkHSD();
     },
     serviceLookUp: function(e) {
       e.preventDefault();
@@ -116,7 +116,6 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
       });
     },
     addItem: function(item) {
-      window.console && console.info(register.vehicle.get('selected'))
       register.vehicle.get('selected').add(item);
       register.vehicle.get('selectedOptions').add(item);
 

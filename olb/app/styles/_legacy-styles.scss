@@ -1,11 +1,9 @@
 body{
-	&.win{
-		&.chrome{
-			.step-four{
-				.date-wrapper #service-time{
-					.time-choice{
-						padding: 0 5px;
-					}
+	&.win, &.windows{
+		.step-four{
+			.date-wrapper #service-time{
+				.time-choice{
+					font-size: 38px;
 				}
 			}
 		}
@@ -72,6 +70,18 @@ body{
 						&:before, &:after{
 							background-position: 0 -140px;
 						}
+					}
+				}
+				.step-three{
+					.choose-wait li{
+						&:before{
+							left: 92px;
+							top: 119px;
+						}
+						&:after{
+							left: 85px;
+							top: 115px;
+						}						
 					}
 				}
 				.step-four{

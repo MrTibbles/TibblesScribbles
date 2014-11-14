@@ -17,6 +17,8 @@ define(['backbone', 'register'], function(Backbone, register) {
       this.$(parent).find('.repair-choices').prepend(this.template(register.vehicle.toJSON()));
 
       this.$(parent).find('.repair-choices').append('<br class="clear"/>')
+
+      !register.vehicle.get('selectedRepairs').length && this.$('li[data-service="repairs"]').removeClass('selected-option show-inner');
     },
     addItem: function(item){
       register.vehicle.get('selected').add(item);

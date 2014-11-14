@@ -1,15 +1,15 @@
 define(['jquery', 'backbone', 'register', 'models/fixed-price-model'], function($, Backbone, register, fixedPrice) {
-  var fixedPrices = Backbone.Model.extend({
+  var fixedPrices = Backbone.Collection.extend({
     url: '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp',
     model: fixedPrice,
     parse: function(response) {
       var repairs = [];
 
-      _.each(response, function(ele, idx){
+      _.each(response, function(ele, idx) {
         var fixedRepair = {
           title: ele.Repair,
           cleanRepair: ele.Repair.replace(/ /g, '-').toLowerCase(),
-          price: ele.RepairCost          
+          price: ele.RepairCost
         };
         return repairs.push(new fixedPrice(fixedRepair));
       });

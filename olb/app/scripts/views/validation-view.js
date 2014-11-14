@@ -5,11 +5,11 @@ define(['backbone', 'register'], function(Backbone, register) {
       regEmptyErrorMsg: '<br class="clear error"/><p class="error">Please enter your vehicle registration or VIN</p>',
       regErrorMsg: '<br class="clear error"/><p class="error">Sorry, we couldn\'t find your car details in our database.<br/><span>Try your registration number again, or enter a VIN for a more accurate search.</span></p>',
       noMileage: '<br class="clear" /><p class="error">Please enter no more than 6 characters.</p>',
-      highMileageMsg: '<br class="clear" /><p class="error">Unfortunately, we are unable to provide a quote for your vehicle. Please contact your local Dealer who will be able to discuss your requirements.</p>',
-      emptyPost: '<br class="clear" /><p class="error">This field is required, please enter your postcode.</p>',
-      postErrorMsg: '<br class="clear" /><p class="error">Please enter a valid postcode.</p>',
-      hearAbout: '<br class="clear" /><p class="error">Please tell us how you heard about this service.</p>',
-      commercialVehicle: '<br class="clear" /><p class="error">Unfortunately, we are unable to provide a quote for your vehicle. Please contact your local Dealer who will be able to discuss your requirements.</p>'
+      highMileageMsg: '<br class="clear error" /><p class="error">Unfortunately, we are unable to provide a quote for your vehicle. Please contact your local Dealer who will be able to discuss your requirements.</p>',
+      emptyPost: '<br class="clear error" /><p class="error">This field is required, please enter your postcode.</p>',
+      postErrorMsg: '<br class="clear error" /><p class="error">Please enter a valid postcode.</p>',
+      hearAbout: '<br class="clear error" /><p class="error">Please tell us how you heard about this service.</p>',
+      commercialVehicle: '<br class="clear error" /><p class="error">Unfortunately, we are unable to provide a quote for your vehicle. Please contact your local Dealer who will be able to discuss your requirements.</p>'
     },
     showError: function(type, target) {
       register.loader.hideLoader();
@@ -26,7 +26,7 @@ define(['backbone', 'register'], function(Backbone, register) {
           return $(target).addClass('invalid').parent().append(this.options.noMileage);
           break;
         case 'high-mileage':
-          return $(target).addClass('invalid').parents('.service-inner').append(this.options.highMileageMsg);
+          return $(this.options.highMileageMsg).insertAfter($(target).addClass('invalid').parents('.service-inner').find('#find-service'));
           break;
         case 'empty-postcode':
           return $(target).addClass('invalid').parent().append(this.options.emptyPost);

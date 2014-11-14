@@ -13,19 +13,19 @@ define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
         town: data.town
       };
       return address;
-    },    
+    },
     sync: function(method, model, options) {
-      var _this = this;
-      if(method === 'read'){
-        var params = _.extend({
+      var _this = this, params;
+      if (method === 'read') {
+        params = _.extend({
           type: 'GET',
           cache: false,
-          dataType: "jsonp",      
+          dataType: 'jsonp',
           url: _this.url,
           jsonpCallback: 'address_lookup',
           data: _this.query,
-          error: function(a,b,c){
-            window.console && console.error(a,b,c);
+          error: function(a, b, c) {
+            window.console && console.error(a, b, c);
           }
         }, options);
 

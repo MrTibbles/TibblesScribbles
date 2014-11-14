@@ -129,8 +129,8 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         serviceType: register.vehicle.get('bookingDetails').get('serviceId'),
         servicePrice: register.vehicle.get('bookingDetails').get('serviceprice'),
         servicePlan: register.vehicle.get('servicePlan'),
-        hybridHealthCheck: this.queryOptionsCollection('title', 'hybrid health check'),
-        hybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
+        hybridHealthCheck: this.queryOptionsCollection('title', 'Hybrid Health Check'),
+        hybridHealthCheckCost: this.queryOptionsCollection('', 'Hybrid Health Check'),
         generalDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
         generalDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
         visualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
@@ -152,6 +152,11 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         postcode: this.$('#edit-postcode').val(),
         additionalNotes: $('#add-info').val()
       });
+
+      window.console && console.info(register.vehicle.get('customer'))
+      // if (typeof register.vehicle.get('customer').get('chosenAdditionalWait') === 'object'){
+
+      // }
 
       //default serviceType, servicePrice and mileage to 0 for submission
       if (!register.vehicle.get('customer').get('serviceType') && !register.vehicle.get('customer').get('servicePrice')) {
@@ -188,7 +193,6 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       return userRepairs;
     },
     findAddress: function() {
-      window.console && console.info(this.$('#edit-postcode').valid())
       var _this = this;
       this.addressFinder.query = {
         postcode: this.$('#edit-postcode').val(),
@@ -215,7 +219,6 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
 
     },
     getPhoneType: function(phoneType) {
-      window.console && console.info(phoneType)
       return register.vehicle.get('customer').set({
         homeTel: phoneType === 'home' ? this.$('#edit-phone').val() : '',
         workTel: phoneType === 'office' ? this.$('#edit-phone').val() : '',
@@ -225,15 +228,15 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
     confirmationPage: function() {
       if (!this.$('#hear-about li').hasClass('selected')) {
         return register.validationView.showError('hear-about', '#hear-about');
-      }
+      }else register.validationView.clearError('#hear-about');
+
       if (this.$('#customer-details-form').valid()) {
         this.buildData();
+        this.confirmSummary.render();
+        $('html,body').animate({
+          scrollTop: this.confirmSummary.$el.offset().top
+        }, 750);
       }
-
-      this.confirmSummary.render();
-      $('html,body').animate({
-        scrollTop: this.confirmSummary.$el.offset().top
-      }, 750);
     },
     setOptOuts: function(e) {
       var $this = $(e.currentTarget);

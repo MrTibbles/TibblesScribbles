@@ -311,35 +311,14 @@ module.exports = function(grunt) {
           dest: '<%= config.dist %>'
         }]
       }
-    },    
-
-    // replace: {
-    //   retail: [{
-    //     file: 'scripts/amd-olb.js',
-    //     replace: {
-    //       '../images/': '/sites/all/modules/custom/tgb_osb/images/',
-    //     }
-    //   },
-    //   {
-    //     file: 'styles/main.css',
-    //     replace: {
-    //       '../images/': '/sites/all/modules/custom/tgb_osb/images/'
-    //     }
-    //   },
-    //   {
-    //     file: 'index.html',
-    //     replace: {
-    //       'bower_components/requirejs/require.js': '/sites/all/modules/custom/tgb_osb/js/bower/requirejs/require.js',
-    //       'scripts/main.js': '/sites/all/modules/custom/tgb_osb/js/amd-olb'
-    //     }
-    //   }]
-    // },
+    },
 
     replace: {
       tcw: [{
         file: 'scripts/amd-olb.js',
         replace: {
-          '../images/': '/sites/all/modules/custom/service_booking/images/'
+          '../images/': '/sites/all/modules/custom/service_booking/images/',
+          '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp': '//www.toyota.co.uk/tgb_osb/fixedpricerepairs.jsonp'
         }
       },
       {
@@ -359,6 +338,7 @@ module.exports = function(grunt) {
         file: 'scripts/amd-olb.js',
         replace: {
           '../images/': '/sites/all/modules/custom/tgb_osb/images/',
+          '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp': '/tgb_osb/fixedpricerepairs.jsonp'
         }
       },
       {

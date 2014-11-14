@@ -3,11 +3,12 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
     url: '//rsc.toyota.co.uk/recall_lookup_fps.php',
     defaults:{
       bookingDetails: new bookingModel(),
-      fixedPrices: new fixedPrices(), 
+      fixedPrices: new fixedPrices(),
       selected: new Backbone.Collection(),
       selectedOptions: new Backbone.Collection(),
       selectedRepairs: new Backbone.Collection(),
-      customer: new customerModel()
+      customer: new customerModel(),
+      totalBookingPrice: 0
     },
     parse: function(response) {
       if(response.found > 0){
@@ -47,20 +48,23 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
         return $.ajax(params);
       }
     },
-    getTotalPrice: function(){
+    getTotalPrice: function() {
       var total = Number(0);
 
-      register.vehicle.get('selected').each(function(ele){
+      register.vehicle.get('selected') && register.vehicle.get('selected').each(function(ele) {
         var selectedPrice = !ele.get('price') || ele.get('price').toUpperCase() === 'FREE' ? 0 : ele.get('price').replace('£','');
         selectedPrice = Number(selectedPrice);
         register.vehicle.set('totalBookingPrice', total += selectedPrice);
       });
-      var optionCost = register.vehicle.get('customer').get('optionCost') === 'FREE' ? 0 : register.vehicle.get('customer').get('optionCost');
-      optionCost = Number(optionCost);
-      
-      total += optionCost
 
-      if(register.vehicle.get('bookingDetails').get('serviceprice')){
+      if (register.vehicle.get('customer')) {
+        var optionCost = register.vehicle.get('customer').get('optionCost') === 'FREE' ? 0 : register.vehicle.get('customer').get('optionCost');
+        optionCost = Number(optionCost);
+
+        total += optionCost
+      }
+
+      if (register.vehicle.get('bookingDetails') && register.vehicle.get('bookingDetails').get('serviceprice')) {
         total += Number(register.vehicle.get('bookingDetails').get('serviceprice'));
       }
 

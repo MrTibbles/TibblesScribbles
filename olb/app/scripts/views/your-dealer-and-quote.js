@@ -153,16 +153,22 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         this.$('li[data-service="Hybrid Health Check"]').removeClass('disabled inactive').find('a').click();
 
         if (window.osbInitValues.serviceObj.serviceprice) {
+          var hybridObj;
           this.$('li[data-service="Hybrid Health Check"]').data('price','FREE').find('.price').html('FREE');
-          var hybridObj = {
-            price: "FREE",
-            title: "Hybrid Health Check"
+          hybridObj = {
+            price: 'FREE',
+            title: 'Hybrid Health Check'
           };
-          //remove hybrid price form collection
-          _this.removeItem(hybridObj);
-          //add it back in again with updated price
-          _this.addItem(hybridObj);
+        }else {
+          hybridObj = {
+            price: '£39',
+            title: 'Hybrid Health Check'
+          };
         }
+        //remove hybrid price form collection
+        _this.removeItem(hybridObj);
+        //add it back in again with updated price
+        _this.addItem(hybridObj);
       }
 
       window.osbInitValues.mot === 'Y' && this.$('li[data-service="MOT"] .menu-handle').click();
@@ -296,8 +302,8 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');
       if (this.$('li[data-service="Hybrid Health Check"]').hasClass('selected-option')) {
         var hybridObj = {
-          price: "£39",
-          title: "Hybrid Health Check"
+          price: '£39',
+          title: 'Hybrid Health Check'
         };
         //remove hybrid price form collection
         this.removeItem(hybridObj);
@@ -335,6 +341,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
           price: this.$('.choose-wait .selected').data('price')
         }
         $('#option-wait').empty().append(this.waitTemplate(mockChosenWait));
+        register.vehicle.get('customer').set('chosenAdditionalWait','');
       }else if ($this.data('wait') === 'courtesy' && this.$('li[data-wait="collect"]').hasClass('selected') || $this.data('wait') === 'collect' && this.$('li[data-wait="courtesy"]').hasClass('selected')) {
         this.$('li[data-wait="wait"]').removeClass('selected');
         $this.addClass('selected');
@@ -360,6 +367,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         mockCourtesy.title = 'I would like to use a courtesy car'; // to remove line break - DIRTY
         register.vehicle.get('customer').set('chosenWait', mockCourtesy);
         register.vehicle.get('customer').set('chosenAdditionalWait', mockCollect);
+
       }else if ($this.data('wait') === 'courtesy' && !$this.hasClass('selected')) {
         this.$('.choose-wait li').removeClass('selected');
         $this.addClass('selected');
@@ -372,6 +380,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         });
 
         $('#option-wait').empty().append(this.waitTemplate(chosenWait));
+        register.vehicle.get('customer').set('chosenAdditionalWait','');
       }else if ($this.data('wait') === 'collect' && !$this.hasClass('selected')) {
         this.$('.choose-wait li').removeClass('selected');
         $this.addClass('selected');
@@ -382,8 +391,8 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
           optionWhileYouWait: 'N',
           optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£','')
         });
-
         $('#option-wait').empty().append(this.waitTemplate(chosenWait));
+        register.vehicle.get('customer').set('chosenAdditionalWait','');
       }else if ($this.data('wait') === 'wait' && !$this.hasClass('selected')) {
         this.$('.choose-wait li').removeClass('selected');
         $this.addClass('selected');
@@ -396,6 +405,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         });
 
         $('#option-wait').empty().append(this.waitTemplate(chosenWait));
+        register.vehicle.get('customer').set('chosenAdditionalWait','');
       }
 
       // register.vehicle.get('customer').set({
@@ -416,9 +426,9 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
             optionCost: Number(0)
           });
           register.vehicle.get('customer').set('chosenWait', undefined);
+          register.vehicle.get('customer').set('chosenAdditionalWait','');
         }
       }
-      window.console && console.info(register.vehicle.get('customer').get('chosenWait'), register.vehicle.get('customer').get('chosenAdditionalWait'));
 
       register.bookingSummaryView.displayTotal();
       register.bookingSummaryView.checkHeight();

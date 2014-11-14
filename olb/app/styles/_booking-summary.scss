@@ -34,12 +34,7 @@
 
 			.choose-wait{
 				text-transform: none;
-			}
-
-			.service-choice{
-				background-size: auto;
-				background-size: contain;
-			}
+			}			
 
 			&.left-pod{
 				float: left;
@@ -91,7 +86,8 @@
 					image: url('../images/plus-service-badge.png');
 					repeat: no-repeat;
 					position: 0 0;
-					size: 30px 36px;
+					background-size: auto;
+					background-size: contain;
 				}
 
 				&.full{

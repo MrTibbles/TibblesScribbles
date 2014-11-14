@@ -21,8 +21,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       this.updateProgressBar();
 
       $('#your-quote, #service-selections').hide();
-
-      window.console && console.info(register.vehicle)
+      
       this.$el.html(this.template(register.vehicle.toJSON()));
     },
     submitData: function() {

@@ -1,5 +1,5 @@
 define(['jquery', 'backbone', 'register', 'models/dealer-model'], function($, Backbone, register, dealerModel) {
-  var dealerList = Backbone.Model.extend({
+  var dealerList = Backbone.Collection.extend({
     url: '//www.toyota.co.uk/services/dealer-lookup-service.jsonp',
     model: dealerModel,
     parse: function(response) {
