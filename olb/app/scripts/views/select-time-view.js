@@ -126,7 +126,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       //     // $('#ui-datepicker-div').removeClass();
       //     // $('#ui-datepicker-div').addClass('niceform-datepicker');
       //   },
-      //   onSelect: function(date){          
+      //   onSelect: function(date){
       //     _this.updateDateDisplay(date);
       //   }
       // });
@@ -139,7 +139,7 @@ define(['backbone', 'register'], function(Backbone, register) {
         weekDay: _this.days[iniDate.getDay()],
         month: _this.months[iniDate.getMonth()],
         bookingYear: iniDate.getFullYear(),
-        serviceDate: iniDate.getDate() + '/' + this.months.indexOf(_this.months[iniDate.getMonth() + 1]) + '/' + iniDate.getFullYear(),
+        serviceDate: iniDate.getDate() + '/' + (this.months.indexOf(_this.months[iniDate.getMonth()]) + 1) + '/' + iniDate.getFullYear(),
         serviceTime: _this.$('#fsda_hour').val() + ':' + _this.$('#fsda_minute').val()
       });
 
@@ -175,7 +175,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       filterMinutes();
 
       register.vehicle.get('customer').set({
-        serviceDate: fullDate.getDate() + '/' + this.months.indexOf(_this.months[fullDate.getMonth()+1]) + '/' + fullDate.getFullYear(),
+        serviceDate: fullDate.getDate() + '/' + (this.months.indexOf(_this.months[fullDate.getMonth()]) + 1) + '/' + fullDate.getFullYear(),
         serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val(),
         dateDay: fullDate.getDate(),
         weekDay: _this.days[fullDate.getDay()],

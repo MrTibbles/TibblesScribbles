@@ -202,6 +202,8 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       this.addressFinder.fetch({
         success: function(response) {
           _this.$('#detailed-address').html(_this.template(_this.addressFinder.toJSON()));
+          register.validationView.clearError('#edit-postcode');
+          this.$('#find-address').removeClass('error-address');
         }
       })
     },
@@ -229,6 +231,11 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       if (!this.$('#hear-about li').hasClass('selected')) {
         return register.validationView.showError('hear-about', '#hear-about');
       }else register.validationView.clearError('#hear-about');
+
+      if (!this.$('#detailed-address .form-row').length) {
+        this.$('#find-address').addClass('error-address');
+        return register.validationView.showError('empty-address', '#edit-postcode');
+      }
 
       if (this.$('#customer-details-form').valid()) {
         this.buildData();

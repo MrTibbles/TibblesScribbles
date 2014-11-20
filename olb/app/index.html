@@ -642,11 +642,11 @@
       </div>
       <div class="form-row">
         <label for="edit-town">Town*</label>
-        <input value="<%= town %>" type="text" name="town" id="edit-town" class="form-text">
+        <input value="<%= town %>" type="text" name="town" id="edit-town" class="required form-text" required>
       </div>
       <div class="form-row">
         <label for="edit-county">County</label>
-        <input value="<%= county %>" type="text" name="county" id="edit-county" class="form-text">
+        <input value="<%= county %>" type="text" name="county" id="edit-county" class="required form-text" required>
       </div>
     </script>
 
@@ -757,6 +757,12 @@
         <a href="/owners" class="final-links left">Our owners page</a>
         <a href="//www.toyota.co.uk/owners-landing" target="_blank" class="final-links right">Toyota UK Owners page</a>
         <br class="clear" />
+      </div>
+    </script>
+
+    <script id="submit-error" type="text/template">
+      <div id="sorry-submit">
+        <h3>Sorry, an error has occurred and your booking could not be processed. Please try again later or contact your dealer directly.</h3>        
       </div>
     </script>
 

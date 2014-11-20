@@ -9,7 +9,8 @@ define(['backbone', 'register'], function(Backbone, register) {
       emptyPost: '<br class="clear error" /><p class="error">This field is required, please enter your postcode.</p>',
       postErrorMsg: '<br class="clear error" /><p class="error">Please enter a valid postcode.</p>',
       hearAbout: '<br class="clear error" /><p class="error">Please tell us how you heard about this service.</p>',
-      commercialVehicle: '<br class="clear error" /><p class="error">Unfortunately, we are unable to provide a quote for your vehicle. Please contact your local Dealer who will be able to discuss your requirements.</p>'
+      commercialVehicle: '<br class="clear error" /><p class="error">Unfortunately, we are unable to provide a quote for your vehicle. Please contact your local Dealer who will be able to discuss your requirements.</p>',
+      emptyAddress: '<br class="clear error" /><p class="error">Please search for your address in order to proceed.</p>'
     },
     showError: function(type, target) {
       register.loader.hideLoader();
@@ -39,6 +40,9 @@ define(['backbone', 'register'], function(Backbone, register) {
           break;
         case 'commercial':
           return $(target).addClass('invalid').parents('#your-car').append(this.options.commercialVehicle);
+          break;
+        case 'empty-address':
+          return $(this.options.emptyAddress).insertAfter($(target).addClass('invalid').parent('.form-row'));
           break;
       };
     },

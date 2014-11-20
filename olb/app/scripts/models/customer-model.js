@@ -29,13 +29,15 @@ define(['jquery', 'backbone', 'register', 'views/thanks-confirmation-view'], fun
     },
     parse: function(response) {
       window.console && console.info(response);
-      if (response.length) {
-        this.thanksConfirm = new thanksConfirm();
+      this.thanksConfirm = new thanksConfirm();
+
+      if (response[0] === 'submitted record') {
         this.thanksConfirm.render();
 
-        $('html,body').animate({
-          scrollTop: this.thanksConfirm.$el.offset().top
-        }, 750);
+        $('#step-thanks').removeClass('submitting');
+      }else {
+        this.thanksConfirm.renderError();
+
         $('#step-thanks').removeClass('submitting');
       }
     }

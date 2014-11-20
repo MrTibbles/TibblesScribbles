@@ -30,19 +30,19 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
     },
     sync: function(method, model, options) {
       var _this = this;
-      if(method === 'read'){
+      if (method === 'read') {
         var params = _.extend({
           type: 'GET',
           cache: false,
-          dataType: "jsonp",      
+          dataType: "jsonp",
           url: _this.url,
           jsonpCallback: 'vehicle_lookup',
           data: {
             'ident': _this.query
           },
-          error: function(a,b,c){
-            window.console && console.error(a,b,c)
-          }        
+          error: function(a, b, c) {
+            window.console && console.error(a, b, c)
+          }
         }, options);
 
         return $.ajax(params);

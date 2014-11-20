@@ -23,6 +23,7 @@
 			}
 			.form-row{
 				margin: 0 0 12px;
+				position: relative;
 
 				&.empty{
 					display: none;
@@ -74,11 +75,21 @@
 					width: 280px;
 					float: left;
 					text-transform: uppercase;
+
+					&.error_text, &.invalid{
+						border-width: 1px !important;
+					}
 				}
 			}
 			#find-address{
-				float: right;
+				position: absolute;
+				right: 0;
+				top: 20px;
 				margin: 0;
+
+				&.error-address{
+					top: 40px;
+				}
 			}
 			#hear-about{
 				margin: 50px 0 32px;
