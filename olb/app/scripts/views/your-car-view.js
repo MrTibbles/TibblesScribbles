@@ -16,7 +16,13 @@ define(['backbone', 'register', 'olb-app', 'models/vehicle', 'models/service-det
     },
     render: function() {
       this.$el.parent('.step-one').addClass('current-step');
-      $('#continue').show().addClass('proceed move-step');
+      // $('#continue').show().addClass('proceed move-step');
+      $('#continue').show().attr({
+        'data-step': 'two',
+        'class': 'proceed move-step'
+      }).html('continue booking');
+
+      register.bookingSummaryView.checkBooking();
     },
     vehicleLookUp: function(e) {
       e.preventDefault();

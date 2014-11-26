@@ -119,15 +119,7 @@ define(['backbone', 'register', 'infoBox', 'collections/find-dealer-collection',
 
       this.dealerItem.setDealerDestination($(e.currentTarget).data('center'));
 
-      $('.proceed, #step-dealer').removeClass('disabled').addClass('submit-booking');
-
-      // if(window.location.hostname === 'localhost'){
-      //   //local dev
-      //   $('#olb-form').attr('action', 'http://pinkstones.toyota.co.uk/owners/service-booking/view/#/your-dealer');
-      // }else{
-      //   //TCW destination
-      //   $('#olb-form').attr('action', $(e.currentTarget).data('center') + '/owners/service-booking/view/#/your-dealer');
-      // }
+      register.bookingSummaryView.checkBooking();
     }
   });
   return yourCar;

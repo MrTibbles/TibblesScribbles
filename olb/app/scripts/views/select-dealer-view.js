@@ -43,8 +43,8 @@ define(['backbone', 'register'], function(Backbone, register) {var bookingSummar
         _this.$('li#' + _this.marker.centerID).addClass('selected');
 
         _this.setDealerDestination();
-        $('.proceed').removeClass('disabled');
-
+        // $('.proceed').removeClass('disabled');
+        register.bookingSummaryView.checkBooking();
         // if(Drupal.analyticsCookies() && typeof _gaq == 'function') {
         //   _gaq.push(['_trackEvent', 'Find a dealer', 'More details and directions', dealer_name]);
         // }

@@ -82,49 +82,50 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
     moveToStep: function(e) {
       if ($(e.currentTarget).hasClass('disabled')) {
         return false;
-      }else {
-        var destination = $(e.currentTarget).data('step'),
-          scrollTarget = this.$el.offset();
-
-        this.$('.olb-steps').removeClass('current-step');
-
-        this.$('.step-' + destination).addClass('current-step');
-
-        switch (destination){
-          case 'one':
-            this.yourCarView.render();
-
-            this.$('#summary').addClass('change-choices');
-            break;
-          case 'two':
-            if (!window.tcw) {
-              this.dealerView.render();
-              this.$('#summary').removeClass('change-choices');
-            }else {
-              this.dealerQuote.render();
-            }
-            break;
-          case 'three':
-            break;
-          case 'four':
-            this.selectTime.render();
-            break;
-          case 'five':
-            this.customerDetails.render();
-            break;
-          case 'six':
-            // this.confirmSummary.render();
-            break;
-          case 'seven':
-            this.thanksView.render();
-            break;
-          default:
-            break;
-        }
-        $('html,body').animate({
-          scrollTop: scrollTarget.top
-        }, 750);
       }
+      var destination = $(e.currentTarget).data('step'),
+        scrollTarget = this.$el.offset();
+
+      this.$('.olb-steps').removeClass('current-step');
+
+      this.$('.step-' + destination).addClass('current-step');
+
+      switch (destination){
+        case 'one':
+          this.yourCarView.render();
+
+          this.$('#summary').addClass('change-choices');
+          break;
+        case 'two':
+          if (!window.tcw) {
+            this.dealerView.render();
+            this.$('#summary').removeClass('change-choices');
+          }else {
+            this.dealerQuote.render();
+          }
+          break;
+        case 'three':
+          break;
+        case 'four':
+          this.selectTime.render();
+          break;
+        case 'five':
+          this.customerDetails.render();
+          break;
+        case 'six':
+          // this.confirmSummary.render();
+          break;
+        case 'seven':
+          this.thanksView.render();
+          break;
+        default:
+          break;
+      }
+
+      $('html,body').animate({
+        scrollTop: scrollTarget.top
+      }, 750);
+
     },
     toggleInner: function(e) {
       $(e.currentTarget).parent('.service-parent').toggleClass('show-inner');

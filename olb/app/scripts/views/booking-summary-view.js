@@ -34,12 +34,14 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
       }
       // this.displayTotal();
       this.checkHeight();
+      this.checkBooking();
       this.suggestedService = new suggestedService();
     },
     renderService: function() {
       // this.$('#continue').removeClass('disabled');
       this.$('.mileage').addClass('available').html(register.vehicle.get('approxMiles') + ' Miles');
       this.$('#selected-service').addClass('selected').html(this.yourServicingTpl(this.model.toJSON()));
+      this.checkBooking();
     },
     clearService: function() {
       this.$('#selected-service').removeClass('selected').empty();
@@ -107,16 +109,18 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
       register.vehicle.get('bookingDetails').clear();
 
       this.suggestedService.clearService();
-      register.bookingSummaryView.clearService();
+      this.clearService();
       register.vehicle.getTotalPrice();
     },
     checkBooking: function() {
-      if (register.vehicle.get('model') && register.vehicle.get('selected').length) {
+      if (register.vehicle.get('model') && register.vehicle.get('selected').length || register.vehicle.get('model') && register.vehicle.get('bookingDetails').get('servicetype')) {
         this.$el.removeClass('empty-selection')
-        this.$('#continue').removeClass('disabled');
+        $('.proceed').removeClass('disabled'); // doubled up for multiple secltions
+        this.$('.proceed').removeClass('disabled inactive');
         this.$('.download-quote').addClass('downloadable');
       }else {
-        !this.$('#continue').hasClass('disabled') && this.$('#continue').addClass('disabled');
+        $('.proceed').addClass('disabled');  // doubled up for multiple secltions - rather thn each loop
+        !this.$('.proceed').hasClass('disabled') && this.$('.proceed').addClass('disabled');
         this.$el.addClass('empty-selection')
         this.$('.download-quote').removeClass('downloadable');
       }

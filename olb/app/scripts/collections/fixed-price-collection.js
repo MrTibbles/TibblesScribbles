@@ -1,6 +1,6 @@
 define(['jquery', 'backbone', 'register', 'models/fixed-price-model'], function($, Backbone, register, fixedPrice) {
   var fixedPrices = Backbone.Collection.extend({
-    url: '//www.toyota.co.uk/tgb_osb/fixedpricerepairs.jsonp',
+    url: '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp',
     model: fixedPrice,
     parse: function(response) {
       var repairs = [];
