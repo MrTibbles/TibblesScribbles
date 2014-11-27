@@ -69,7 +69,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       }
 
       register.vehicle.set('totalBookingPrice', total.toFixed(2));
-      return total;
+      return total.toFixed(2);
     }
   });
   return vehicle;
