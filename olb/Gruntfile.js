@@ -318,7 +318,10 @@ module.exports = function(grunt) {
         file: 'scripts/amd-olb.js',
         replace: {
           '../images/': '/sites/all/modules/custom/service_booking/images/',
-          '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp': '//www.toyota.co.uk/tgb_osb/fixedpricerepairs.jsonp'
+          '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp': '//www.toyota.co.uk/tgb_osb/fixedpricerepairs.jsonp',
+          '//# sourceMappingURL=jquery.min.map;': '',
+          '//@ sourceMappingURL=underscore-min.map;': '',
+          '//@ sourceMappingURL=backbone-min.map;': ''
         }
       },
       {
@@ -338,7 +341,10 @@ module.exports = function(grunt) {
         file: 'scripts/amd-olb.js',
         replace: {
           '../images/': '/sites/all/modules/custom/tgb_osb/images/',
-          '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp': '/tgb_osb/fixedpricerepairs.jsonp'
+          '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp': '/tgb_osb/fixedpricerepairs.jsonp',
+          '//# sourceMappingURL=jquery.min.map;': '',
+          '//@ sourceMappingURL=underscore-min.map;': '',
+          '//@ sourceMappingURL=backbone-min.map;': ''
         }
       },
       {
