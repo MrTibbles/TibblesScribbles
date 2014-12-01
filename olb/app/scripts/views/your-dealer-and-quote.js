@@ -38,7 +38,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       });
 
       $('#need-help').empty().addClass('helping').append(this.template(register.vehicle.get('customer').toJSON()));
-      $('.including').addClass('now-include')
+      $('.including').addClass('now-include');
 
       this.updateProgressBar();
 

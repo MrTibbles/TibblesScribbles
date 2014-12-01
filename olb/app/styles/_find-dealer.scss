@@ -43,6 +43,10 @@
 						width: 30px;
 						height: 30px;
 						background: url('../images/map-infobox-close.png') no-repeat center 0;
+
+						img{
+							display: none;
+						}
 					}
 					p{
 						color: #ffffff;

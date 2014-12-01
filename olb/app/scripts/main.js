@@ -1,14 +1,14 @@
 require.config({
 	baseUrl: 'scripts/',
 	paths: {
-		'jquery': '../bower_components/jquery/dist/jquery.min',
+		jquery: '../bower_components/jquery/dist/jquery.min',
 		'jquery-ui': '../bower_components/jquery-ui/jquery-ui',
-		'jQueryValidate': '../bower_components/jquery-validate/jquery.validate.min',
-		'jQueryValidateAdditional': '../bower_components/jquery-validate/jquery.validate.additional-methods',
-		'underscore': '../bower_components/underscore-amd/underscore-min',
-		'backbone': '../bower_components/backbone-amd/backbone-min',
-		'loader' : '../scripts/libs/spin.min',
-		'infoBox': '../scripts/libs/infobox'
+		jQueryValidate: '../bower_components/jquery-validate/jquery.validate.min',
+		jQueryValidateAdditional: '../bower_components/jquery-validate/jquery.validate.additional-methods',
+		underscore: '../bower_components/underscore-amd/underscore-min',
+		backbone: '../bower_components/backbone-amd/backbone-min',
+		loader: '../scripts/libs/spin.min',
+		infoBox: '../scripts/libs/infobox'
 	}
 });
 require(['jquery', 'underscore', 'backbone', 'router', 'infoBox', 'jQueryValidate', 'jQueryValidateAdditional', 'jquery-ui'], function($, _, Backbone) {
@@ -20,6 +20,10 @@ require(['jquery', 'underscore', 'backbone', 'router', 'infoBox', 'jQueryValidat
 	*/
 	var ua = window.navigator.userAgent,
 		msie = ua.indexOf('MSIE ');
+
+	if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)) {
+		$('body').addClass('firefox');
+	}
 
 	if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
 		var ieV = ua.substring(msie + 5, ua.indexOf('.', msie));
