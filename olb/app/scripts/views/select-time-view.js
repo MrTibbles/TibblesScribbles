@@ -64,7 +64,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       calculateAvailableDays(
         this.queryOptionsCollection('title', 'mot'),
         register.vehicle.get('customer').get('optionWhileYouWait') === 'Y' ? true : false,
-        register.vehicle.get('customer').get('optionPickDrop') === 'Y' ? true : false,
+        register.vehicle.get('customer').get('optionCollectDeliver') === 'Y' ? true : false,
         register.vehicle.get('customer').get('optionCourtesyCar') === 'Y' ? true : false
       );
 
