@@ -19,10 +19,12 @@ body{
 							background: url('../images/ie8-icons.png') no-repeat 0 -45px;
 							border: none;
 							top: -1px;
-						}
+							z-index: 100000;
+						}						
 						&.active{
 							&:before{						
 								background: url('../images/ie8-icons.png') no-repeat 0 0;						
+								z-index: 100000;
 							}
 						}
 						&.completed{
@@ -32,6 +34,12 @@ body{
 								height: 25px;
 								z-index: 500;
 							}
+							&:after{
+								left: 60%;
+							}
+						}
+						&:after{
+							z-index: 1 !important;
 						}
 					}
 				}	
@@ -81,6 +89,7 @@ body{
 						&:after{
 							left: 85px;
 							top: 115px;
+							display: none;
 						}						
 					}
 				}

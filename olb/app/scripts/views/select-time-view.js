@@ -13,7 +13,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       $('#date-time').html()
     ),
     updateProgressBar: function(){
-      $('#olb-wrap').find('.progess-bar .second').addClass('completed');
+      $('#olb-wrap').find('.progess-bar .second').removeClass('active').addClass('completed');
       $('.progess-bar .third').addClass('active');
     },
     days: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],

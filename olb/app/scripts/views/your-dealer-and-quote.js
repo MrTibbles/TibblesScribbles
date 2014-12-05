@@ -19,7 +19,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       this.serviceBooking = register.serviceBooking = new serviceBooking();
     },
     updateProgressBar: function() {
-      $('#olb-wrap').find('.progess-bar .first').addClass('completed');
+      $('#olb-wrap').find('.progess-bar .first').removeClass('active').addClass('completed');
       $('.progess-bar .second').addClass('active');
     },
     render: function() {

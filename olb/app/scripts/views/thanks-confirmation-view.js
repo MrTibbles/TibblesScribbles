@@ -11,7 +11,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       $('#submit-error').html()
     ),
     updateProgressBar: function() {
-      $('#olb-wrap').find('.progess-bar .fifth').addClass('completed');
+      $('#olb-wrap').find('.progess-bar .fifth').removeClass('active').addClass('completed');
     },
     render: function() {
       var _this = this, scrollTarget;

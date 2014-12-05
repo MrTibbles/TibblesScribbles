@@ -25,7 +25,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       $('#address-details').html()
     ),
     updateProgressBar: function() {
-      $('#olb-wrap').find('.progess-bar .third').addClass('completed');
+      $('#olb-wrap').find('.progess-bar .third').removeClass('active').addClass('completed');
       $('.progess-bar .fourth').addClass('active');
     },
     render: function() {
