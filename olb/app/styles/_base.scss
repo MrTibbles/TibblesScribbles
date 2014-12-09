@@ -176,21 +176,6 @@ form{
   float: left;
 }
 
-.firefox, .msie.v11 {
-	select{
-		-moz-appearance: window;
-		background-image: none !important;
-	}
-	.olb-steps.step-four .date-wrapper #service-time{
-		padding-left: 30px;
-
-		.time-choice{
-			padding: 0 5px;
-			width: 90px;
-		} 
-	}
-}
-
 .wide-input{
   width: 458px;
   height: 18px;

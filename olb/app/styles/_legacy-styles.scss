@@ -8,7 +8,8 @@ body{
 			}
 		}
 	}
-	&.msie{
+
+	&.msie{	
 		&.v8, &.ie8{		
 			#olb-wrap{
 				#progess .progess-bar{
@@ -132,6 +133,35 @@ body{
 					}
 				}
 			}
+		}
+	}
+	&.firefox, &.msie, &.v11 {
+		select::-ms-expand {
+	    display: none !important;
+		}
+		select{
+			-moz-appearance: window;
+			background-image: none !important;
+		}
+		.olb-steps.step-four .date-wrapper #service-time{
+			padding-left: 30px;
+
+			.time-choice{
+				padding: 0px 0 0 10px;
+				width: 90px;
+			} 
+		}
+	}
+	&.firefox{
+		.olb-steps{
+			&.step-four .date-wrapper #service-time{
+				padding-left: 0;
+			}
+		}
+		select{
+			-moz-appearance: none;
+	    text-indent: 0.01px;
+	    text-overflow: '';
 		}
 	}
 }

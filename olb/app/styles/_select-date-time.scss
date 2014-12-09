@@ -121,19 +121,22 @@
 				}
 			}
 			#service-time{
-				float: left;
+				float: right;
 				padding: 40px 0 0 50px;
 				height: 280px;
 
 				.selected-date{
+					// width: 132px;
 					height: 55px;
+					margin: 0 auto;
+
 					h2{
 						font-size: 70px;
 						float: left;
 						line-height: 55px;
 					}
 					.date-right{
-						width: 70px;
+						// width: 70px;
 						float: left;
 						margin: 0 0 0 10px;
 					
@@ -154,7 +157,7 @@
 						}
 					}
 				}				
-				.time-choice{
+				select{
 					width: 80px;
 					height: 70px;
 					padding: 0 10px;
@@ -168,13 +171,13 @@
 					background: url('../images/select-dropdown-blue.png') no-repeat center 60px $active-state;
 					font: {
 						family: 'toyotadisplay_bd';
-						size: 44px;
+						size: 42px;
 					}
 					@include add_prefix(appearance, none);
 					@include border_radius(0);
 
-					select{
-						font-size: 32px;
+					&.time-choice{
+						// font-size: 32px;
 						option{
 							text-align: center;
 							color: #ffffff;								
