@@ -135,17 +135,12 @@ body{
 			}
 		}
 	}
-	&.firefox, &.msie, &.v11 {
-		select::-ms-expand {
-	    display: none !important;
-		}
+	&.firefox{		
 		select{
 			-moz-appearance: window;
 			background-image: none !important;
 		}
 		.olb-steps.step-four .date-wrapper #service-time{
-			padding-left: 30px;
-
 			.time-choice{
 				padding: 0px 0 0 10px;
 				width: 90px;
@@ -153,15 +148,20 @@ body{
 		}
 	}
 	&.firefox{
-		.olb-steps{
-			&.step-four .date-wrapper #service-time{
-				padding-left: 0;
-			}
-		}
 		select{
 			-moz-appearance: none;
 	    text-indent: 0.01px;
 	    text-overflow: '';
+		}
+	}
+	&.v11a, &.v11{
+		select::-ms-expand {
+	    display: none !important;
+		}
+		.olb-steps.step-four .date-wrapper #service-time{
+			.time-choice{
+				background: url('/sites/all/modules/custom/service_booking/images/select-dropdown-blue.png') center 60px no-repeat #78b1cc;
+			}
 		}
 	}
 }
