@@ -20,6 +20,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       this.$el.addClass('current-step');
       this.updateProgressBar();
 
+      $('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step6');
       scrollTarget = this.$el.offset();
       $('html,body').animate({scrollTop: scrollTarget.top
       }, 750);

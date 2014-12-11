@@ -240,6 +240,8 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       if (this.$('#customer-details-form').valid()) {
         this.buildData();
         this.confirmSummary.render();
+
+        $('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step5');
         $('html,body').animate({
           scrollTop: this.confirmSummary.$el.offset().top
         }, 750);

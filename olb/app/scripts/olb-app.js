@@ -95,6 +95,8 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
           this.yourCarView.render();
 
           this.$('#summary').addClass('change-choices');
+          //ie8 fallback
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step1');
           break;
         case 'two':
           if (!window.tcw) {
@@ -103,20 +105,31 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
           }else {
             this.dealerQuote.render();
           }
+
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step2');
           break;
         case 'three':
+
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step3');
           break;
         case 'four':
           this.selectTime.render();
+
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step3');
           break;
         case 'five':
           this.customerDetails.render();
+
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step4');
           break;
         case 'six':
           // this.confirmSummary.render();
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step6');
           break;
         case 'seven':
           this.thanksView.render();
+
+          this.$('.progess-bar').removeClass('step1 step2 step3 step4 step5 step6 step7').addClass('step7');
           break;
         default:
           break;

@@ -164,7 +164,7 @@ define(['backbone', 'register'], function(Backbone, register) {
       var _this = this;
 
       register.vehicle.get('customer').set({
-        serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val(),
+        serviceTime: _this.$('#fsda_hour').val() + ':' +_this.$('#fsda_minute').val()
       });
     },
     updateDateDisplay: function(date){
