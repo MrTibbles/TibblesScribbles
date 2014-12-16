@@ -63,7 +63,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
           register.bookingSummaryView.renderService();
           register.bookingSummaryView.displayTotal();
 
-          this.$('li[data-service="Hybrid Health Check"]').data('price','FREE').find('.price').html('FREE');
+          this.$('li[data-service="Hybrid Health Check"]').data('price', 'FREE').find('.price').html('FREE');
           if (register.vehicle.get('selected').where({title: 'Hybrid Health Check'}).length) {
             var hybridObj = {
               price: 'FREE',
@@ -91,7 +91,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
           price: '£39',
           title: 'Hybrid Health Check'
         });
-        this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');
+        this.$('li[data-service="Hybrid Health Check"]').data('price', '£39').find('.price').html('£39');
 
         return register.bookingSummaryView.renderOptions();
       }
@@ -175,7 +175,7 @@ define(['backbone', 'register', 'models/service-details', 'collections/fixed-pri
     },
     removeServicing: function(e) {
       register.vehicle.get('bookingDetails').clear();
-      this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');
+      this.$('li[data-service="Hybrid Health Check"]').data('price', '£39').find('.price').html('£39');
 
       register.bookingSummaryView.displayTotal();
 

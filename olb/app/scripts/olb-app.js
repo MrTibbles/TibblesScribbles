@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/suggested-services-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view', 'views/validation-view', 'views/pop-up-view'], function($, Backbone, register, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, suggestedService, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView, validationView, popUpDialog) {
+define(['jquery', 'backbone', 'register', 'views/loading-animation', 'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/suggested-services-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view', 'views/validation-view', 'views/pop-up-view'], function($, Backbone, register, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, suggestedService, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView, validationView, popUpDialog) {
   var olbApp = Backbone.View.extend({
     el: $('#olb-wrap'),
     events: {
@@ -21,7 +21,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       register.olb = this;
 
       //set up initial car search view
-      this.yourCarView = new yourCarView();
+      this.yourCarView = register.yourCarView = new yourCarView();
       //set up suggested service
       this.suggestedService = register.suggestedService = new suggestedService();
       //set up find dealer view
@@ -44,7 +44,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
       this.popup_dialog = register.popup_dialog = new popUpDialog();
     },
     render: function(step) {
-      switch (step){
+      switch (step) {
         case 'your-car':
           this.yourCarView.render();
           this.preSelectVSR();
@@ -90,7 +90,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
 
       this.$('.step-' + destination).addClass('current-step');
 
-      switch (destination){
+      switch (destination) {
         case 'one':
           this.yourCarView.render();
 
@@ -102,7 +102,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
           if (!window.tcw) {
             this.dealerView.render();
             this.$('#summary').removeClass('change-choices');
-          }else {
+          } else {
             this.dealerQuote.render();
           }
 
@@ -142,6 +142,10 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
     },
     toggleInner: function(e) {
       $(e.currentTarget).parent('.service-parent').toggleClass('show-inner');
+
+      if ($(e.currentTarget).parent('.service-parent').data('service') === 'car-servicing') {
+        return this.yourCarView.populateInput('#mileage');
+      }
     },
     keyBoard: function(e) {
       // $('#edit-dealer').on('keydown', function(e) {
@@ -196,10 +200,10 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation',  'models/se
     preSelectHybrid: function(displayPrice) {
       if (displayPrice) {
         var hybridCost = displayPrice ? '£39' : 'FREE';
-        this.$('li[data-service="Hybrid Health Check"]').data('price','£39').find('.price').html('£39');
+        this.$('li[data-service="Hybrid Health Check"]').data('price', '£39').find('.price').html('£39');
       }
 
-      this.$('li[data-service="Hybrid Health Check"]').addClass('show-inner');//.find('a').removeClass('option-child').addClass('selected-child');
+      this.$('li[data-service="Hybrid Health Check"]').addClass('show-inner'); //.find('a').removeClass('option-child').addClass('selected-child');
       // register.vehicle.get('selected').add({
       //   price: hybridCost,
       //   title: "Hybrid Health Check"

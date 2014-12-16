@@ -24,5 +24,18 @@ require(['jquery', 'underscore', 'backbone', 'router', 'infoBox', 'jQueryValidat
   if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
     ieV = ua.substring(msie + 5, ua.indexOf('.', msie));
     $('body').addClass('msie v' + ieV + '');
+
+    if (ieV === '8') {
+      $('#mileage')
+        .val('Approximate mileage - this helps us to find you the right service options')
+        .on('focus', function(e) {
+          $(this).val('');
+        })
+        .on('blur', function(e) {
+          if ($(this).val() === '') {
+            $(this).val('Approximate mileage - this helps us to find you the right service options');
+          }
+        })
+    }
   }
 });

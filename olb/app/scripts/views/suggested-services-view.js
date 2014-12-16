@@ -5,7 +5,7 @@ define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, 
     	$('#suggested-service').html()
   	),
     initialize: function() {},
-    render: function(parent){
+    render: function(parent) {
     	register.loader.hideLoader();
     	// $('.service-parent').removeClass('inactive');        
       // this.$el.empty().addClass('available').append(this.template(this.model.toJSON()));
@@ -17,7 +17,7 @@ define(['backbone', 'register', 'models/vehicle'], function(Backbone, register, 
       !$('li[data-service="car-servicing"]').hasClass('selected-option') && $('li[data-service="car-servicing"]').addClass('selected-option');
       !$('li[data-service="car-servicing"] .menu-handle').hasClass('servicing-child') && $('li[data-service="car-servicing"] .menu-handle').addClass('servicing-child');      
     },
-    clearService: function(){
+    clearService: function() {
       $('.service-type').empty().removeClass('available');
       $('li[data-service="car-servicing"]').addClass('service-not-present').removeClass('selected-option');
       $('#mileage').val('');

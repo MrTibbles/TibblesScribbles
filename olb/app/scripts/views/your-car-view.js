@@ -23,6 +23,8 @@ define(['backbone', 'register', 'olb-app', 'models/vehicle', 'models/service-det
       }).html('continue booking');
 
       register.bookingSummaryView.checkBooking();
+
+      return this.populateInput('#mileage');
     },
     vehicleLookUp: function(e) {
       e.preventDefault();
@@ -41,7 +43,7 @@ define(['backbone', 'register', 'olb-app', 'models/vehicle', 'models/service-det
       $('#your-car .lite').removeClass('prompt');
 
       var _this = this;
-      this.vehicle.query = this.$('#reg-vin').val().toUpperCase().replace(/ /g,'');
+      this.vehicle.query = this.$('#reg-vin').val().toUpperCase().replace(/ /g, '');
 
       this.vehicle.fetch({
         success: function() {
@@ -82,6 +84,24 @@ define(['backbone', 'register', 'olb-app', 'models/vehicle', 'models/service-det
           // _this.bookingOptions.getFixedPrices();
         }
       });
+    },
+    populateInput: function(input, msg) {
+      if (!$('body').hasClass('msie') && !$('body').hasClass('v8')) return false;
+
+      var $target = $(input),
+        placeHolder = $target.prop('placeholder');
+
+      $target
+        .val(placeHolder)
+        .on('focus', function(e) {
+          $(this).val('');
+        })
+        .on('blur', function(e) {
+          if ($(this).val() === '') {
+            $(this).val(placeHolder);
+          }
+        })
+
     },
     resetBooking: function() {
       register.vehicle.clear().set(register.vehicle.defaults);
