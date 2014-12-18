@@ -121,7 +121,7 @@
 				display: block;
 			}
 		}
-		.remove-item, .remove-service{
+		.remove-item, .remove-service, .remove-wait{
 			// display: none;
 			width: auto;
 			height: auto;
@@ -162,9 +162,6 @@
 		#option-wait{
 			.sub-title{
 				text-transform: none;
-			}
-			.remove-item{
-				display: none;
 			}
 		}
 		#summary-total{

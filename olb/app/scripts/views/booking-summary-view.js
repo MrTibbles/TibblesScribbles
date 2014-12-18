@@ -72,12 +72,13 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
       this.checkBooking();
     },
     removeItem: function(e) {
-      var $this = $(e.currentTarget);
+      var $this = $(e.currentTarget), item, title;
       switch ($this.data('type')){
         case 'service':
           register.vehicle.get('bookingDetails').clear();
           this.$('#selected-service').removeClass('selected').empty();
           $('li[data-service="car-servicing"]').removeClass('selected');
+
           break;
         case 'option':
           register.vehicle.get('selected').each(function(ele) {
@@ -92,9 +93,10 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
           });
           $('li[data-service="' + $this.data('title') + '"]').removeClass('selected-option selected').find('.menu-handle').removeClass('selected-child').addClass('option-child');
           this.renderOptions();
+
           break;
         case 'repair':
-          var item = register.vehicle.get('selected').findWhere({title: $this.data('title')}),
+          item = register.vehicle.get('selected').findWhere({title: $this.data('title')}),
             repairItem = register.vehicle.get('selectedRepairs').findWhere({title: $this.data('title')});
 
           register.vehicle.get('selected').remove(item);
@@ -103,6 +105,21 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
           !$('.repair-choices li').siblings('li').hasClass('repair-selected') && $('li[data-service="repairs"]').removeClass('selected-option');
 
           this.renderRepairs();
+
+          break;
+        case 'waiting':
+          title = $this.data('title');
+
+          this.$('#option-wait').find('li[data-title="' + title + '"]').remove();
+          $('.choose-wait li[data-title="' + title + '"]').removeClass('selected');
+          register.vehicle.get('customer').set({
+            optionPickDrop: 'N', //default option for booking
+            optionCourtesyCar: title.indexOf('courtesy') > -1 ? 'Y' : 'N',
+            optionCollectDeliver: title.indexOf('collect') > -1 ? 'Y' : 'N',
+            optionWhileYouWait: title.indexOf('wait') > -1 ? 'Y' : 'N',
+            optionCost: $this.data('price') === 'FREE' ? Number(0) : $this.data('price').replace('£', '')
+          });
+          break;
       }
     },
     removeServicing: function(e) {
@@ -137,7 +154,7 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
       }else {
         register.vehicle.get('selectedOptions').find(function(model) {
           if (model.get('title').toLowerCase() === parameter) {
-            result = model.get('price').replace('£','');
+            result = model.get('price').replace('£', '');
           }
         });
       }
