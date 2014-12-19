@@ -66,6 +66,10 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
         this.selectUserItems();
         register.bookingSummaryView.checkHeight();
       }
+      return this.setWaitingAvailability();
+    },
+    setWaitingAvailability: function() {
+      window.console && console.info(register.vehicle.get('selected'))
     },
     selectUserItems: function() {
       register.vehicle.get('selected').each(function(ele) {
@@ -78,6 +82,7 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       register.vehicle.get('bookingDetails').get('serviceprice') && this.$('#mileage').val(register.vehicle.get('approxMiles'));
       !register.vehicle.get('bookingDetails').get('serviceprice') && this.$('#mileage').attr('placeholder', 'Approximate mileage - this helps us to find you the right service options');
 
+      window.console && console.info(register.vehicle.get('selected'))
       return this.$('.proceed').removeClass('disabled');
     },
     getFixedPrices: function(getSelected) {
@@ -179,6 +184,8 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
 
       register.bookingSummaryView.displayTotal();
       this.$('.proceed').removeClass('disabled');
+
+      return this.setWaitingAvailability();
     },
     serviceLookUp: function(e) {
       if ($(e.currentTarget).hasClass('disabled')) {
