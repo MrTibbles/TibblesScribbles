@@ -55,9 +55,9 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
 
         register.vehicle.fetch({
           success: function() {
-            register.bookingSummaryView = new summaryView({
-              model: register.vehicle
-            });
+            // register.bookingSummaryView = new summaryView({
+            //   model: register.vehicle
+            // });
             _this.getFixedPrices(true);
           }
         });
@@ -69,7 +69,18 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       return this.setWaitingAvailability();
     },
     setWaitingAvailability: function() {
-      window.console && console.info(register.vehicle.get('selected'))
+      var selected = register.vehicle.get('selected');
+      if (!selected.length) {
+        return;
+      }
+
+      if (selected.length === 1 && (selected.pluck('title').indexOf('visual safety report') > -1 || selected.pluck('title').indexOf('Hybrid Health Check') > -1)) {
+        $('.choose-wait li[data-wait="collect"], .choose-wait li[data-wait="courtesy"]').hide();
+      }else if (selected.length === 2 && (selected.pluck('title').indexOf('Hybrid Health Check') > -1 && selected.pluck('title').indexOf('visual safety report') > -1)) {
+        $('.choose-wait li[data-wait="collect"], .choose-wait li[data-wait="courtesy"]').hide();
+      }else {
+        $('.choose-wait li[data-wait="collect"], .choose-wait li[data-wait="courtesy"]').show();
+      }
     },
     selectUserItems: function() {
       register.vehicle.get('selected').each(function(ele) {
@@ -82,7 +93,6 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       register.vehicle.get('bookingDetails').get('serviceprice') && this.$('#mileage').val(register.vehicle.get('approxMiles'));
       !register.vehicle.get('bookingDetails').get('serviceprice') && this.$('#mileage').attr('placeholder', 'Approximate mileage - this helps us to find you the right service options');
 
-      window.console && console.info(register.vehicle.get('selected'))
       return this.$('.proceed').removeClass('disabled');
     },
     getFixedPrices: function(getSelected) {

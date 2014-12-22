@@ -27,7 +27,7 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation', 'models/ser
       //set up find dealer view
       this.dealerView = new dealerView();
       //set up dealer & quote view
-      this.dealerQuote = new dealerQuote();
+      this.dealerQuote = register.dealerQuote = new dealerQuote();
       //set up select date & time view
       this.selectTime = new selectTime();
       //set up customer detials view

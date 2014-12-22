@@ -141,6 +141,8 @@ define(['backbone', 'register', 'models/vehicle', 'views/suggested-services-view
         this.$el.addClass('empty-selection')
         this.$('.download-quote').removeClass('downloadable');
       }
+
+      return register.dealerQuote.setWaitingAvailability();
     },
     checkHeight: function() {
       if ($('#olb-content').outerHeight(true) <= this.$el.outerHeight(true)) {
