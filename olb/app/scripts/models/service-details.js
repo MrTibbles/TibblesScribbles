@@ -1,6 +1,6 @@
 define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
   var serviceDetails = Backbone.Model.extend({
-    url: '//www.toyota.co.uk/tgb_osb/service_details.jsonp',
+    url: '/tgb_osb/service_details.jsonp',
     relations: [],
     parse: function(response) {
       var data = response[0];
@@ -21,13 +21,15 @@ define(['jquery', 'backbone', 'register'], function($, Backbone, register) {
       return register.vehicle;
     },
     sync: function(method, model, options) {
-      var _this = this, params;
+      var _this = this, params, tgbEnv;
       if (method === 'read') {
+        // tgbEnv = window.location.hostname !== 'uat.toyotabeta.co.uk' && window.location.hostname !== 'localhost' ? '//www.toyota.co.uk' : '//uat.toyotabeta.co.uk';
+
         params = _.extend({
           type: 'GET',
           cache: false,
           dataType: 'jsonp',
-          url: _this.url,
+          url: register.tgbEnvironment + _this.url,
           jsonpCallback: 'service_lookup',
           data: _this.query,
           error: function(a, b, c) {

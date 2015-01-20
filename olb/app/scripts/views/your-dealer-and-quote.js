@@ -74,9 +74,9 @@ define(['backbone', 'register', 'models/vehicle', 'models/service-details', 'col
       //   return;
       // }
       // window.console && console.info(register.vehicle.get('bookingDetails').get('serviceprice'))
-      if (selected.length === 1 && !register.vehicle.get('bookingDetails').get('serviceprice') && (selected.pluck('title').indexOf('visual safety report') > -1 || selected.pluck('title').indexOf('Hybrid Health Check') > -1)) {
+      if (selected && selected.length === 1 && !register.vehicle.get('bookingDetails').get('serviceprice') && (selected.pluck('title').indexOf('visual safety report') > -1 || selected.pluck('title').indexOf('Hybrid Health Check') > -1)) {
         $('.choose-wait li[data-wait="collect"], .choose-wait li[data-wait="courtesy"]').hide();
-      }else if (selected.length === 2 && !register.vehicle.get('bookingDetails').get('serviceprice') && (selected.pluck('title').indexOf('Hybrid Health Check') > -1 && selected.pluck('title').indexOf('visual safety report') > -1)) {
+      }else if (selected && selected.length === 2 && !register.vehicle.get('bookingDetails').get('serviceprice') && (selected.pluck('title').indexOf('Hybrid Health Check') > -1 && selected.pluck('title').indexOf('visual safety report') > -1)) {
         $('.choose-wait li[data-wait="collect"], .choose-wait li[data-wait="courtesy"]').hide();
       }else {
         $('.choose-wait li[data-wait="collect"], .choose-wait li[data-wait="courtesy"]').show();

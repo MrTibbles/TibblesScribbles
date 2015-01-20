@@ -1,6 +1,6 @@
 define(['jquery', 'backbone', 'register', 'models/fixed-price-model'], function($, Backbone, register, fixedPrice) {
   var fixedPrices = Backbone.Collection.extend({
-    url: '//uat.toyotabeta.co.uk/tgb_osb/fixedpricerepairs.jsonp',
+    url: '/tgb_osb/fixedpricerepairs.jsonp',
     model: fixedPrice,
     parse: function(response) {
       var repairs = [];
@@ -14,20 +14,20 @@ define(['jquery', 'backbone', 'register', 'models/fixed-price-model'], function(
         return repairs.push(new fixedPrice(fixedRepair));
       });
       // return repairs;
-      return register.vehicle.set('fixedPrices',repairs)
-    },    
+      return register.vehicle.set('fixedPrices', repairs)
+    },
     sync: function(method, model, options) {
       var _this = this;
-      if(method === 'read'){
+      if (method === 'read') {
         var params = _.extend({
           type: 'GET',
           cache: false,
-          dataType: "jsonp",      
-          url: _this.url,
+          dataType: "jsonp",
+          url: register.tgbEnvironment + _this.url,
           jsonpCallback: 'fixed_prices',
           data: _this.query,
-          error: function(a,b,c){
-            window.console && console.error(a,b,c);
+          error: function(a, b, c) {
+            window.console && console.error(a, b, c);
           }
         }, options);
 
