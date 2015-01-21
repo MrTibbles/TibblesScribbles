@@ -130,7 +130,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
         servicePrice: register.vehicle.get('bookingDetails').get('serviceprice'),
         servicePlan: register.vehicle.get('servicePlan'),
         hybridHealthCheck: this.queryOptionsCollection('title', 'Hybrid Health Check'),
-        hybridHealthCheckCost: this.queryOptionsCollection('', 'Hybrid Health Check'),
+        hybridHealthCheckCost: this.queryOptionsCollection('', 'hybrid health check'),
         generalDiagnosis: this.queryOptionsCollection('title', 'general diagnosis'),
         generalDiagnosisCost: this.queryOptionsCollection( '', 'general diagnosis'),
         visualSafetyReport: this.queryOptionsCollection('title', 'visual safety report'),
@@ -175,7 +175,7 @@ define(['backbone', 'register', 'models/address-finder-model', 'views/summary-co
       }else {
         register.vehicle.get('selectedOptions').find(function(model) {
           if (model.get('title').toLowerCase() === parameter) {
-            result = model.get('price');
+            result = model.get('price') == 'free' ? 0 : model.get('price');
           }
         });
       }
