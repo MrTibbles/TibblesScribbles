@@ -52,7 +52,7 @@ define(['jquery', 'backbone', 'register', 'models/booking-model', 'collections/f
       var total = Number(0);
 
       register.vehicle.get('selected') && register.vehicle.get('selected').each(function(ele) {
-        var selectedPrice = !ele.get('price') || ele.get('price').toUpperCase() === 'FREE' ? 0 : ele.get('price').replace('£','');
+        var selectedPrice = !ele.get('price') || ele.get('price').toUpperCase() === 'FREE' ? 0 : ele.get('price').replace('£', '');
         selectedPrice = Number(selectedPrice);
         register.vehicle.set('totalBookingPrice', total += selectedPrice);
       });

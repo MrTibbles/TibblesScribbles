@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'register', 'views/loading-animation', 'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/suggested-services-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view', 'views/validation-view', 'views/pop-up-view'], function($, Backbone, register, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, suggestedService, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView, validationView, popUpDialog) {
+define(['jquery', 'backbone', 'register', 'views/tgb-environment-checker', 'views/loading-animation', 'models/service-details', 'models/vehicle', 'views/booking-summary-view', 'views/your-car-view', 'views/booking-options-view', 'views/suggested-services-view', 'views/find-dealer-view', 'views/your-dealer-and-quote', 'views/select-time-view', 'views/customer-details-view', 'views/summary-confirmation-view', 'views/thanks-confirmation-view', 'views/validation-view', 'views/pop-up-view'], function($, Backbone, register, tgbEnvironment, loader, serviceDetails, vehicle, summaryView, yourCarView, bookingOptionsView, suggestedService, dealerView, dealerQuote, selectTime, customerDetails, confirmSummary, thanksView, validationView, popUpDialog) {
   var olbApp = Backbone.View.extend({
     el: $('#olb-wrap'),
     events: {
@@ -8,7 +8,11 @@ define(['jquery', 'backbone', 'register', 'views/loading-animation', 'models/ser
     },
     initialize: function() {
       //set up global instances
-      //create loading spinner 
+      //TGB environment checker
+      register.tgb = new tgbEnvironment();
+      register.tgbEnvironment = register.tgb.environment();
+
+      //create loading spinner
       this.loader = register.loader = new loader();
       //create a vehicle instance
       this.vehicle = register.vehicle = new vehicle();

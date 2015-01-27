@@ -1,17 +1,17 @@
 require.config({
   baseUrl: 'scripts/',
   paths: {
-    jquery: '../bower_components/jquery/dist/jquery.min',
-    'jquery-ui': '../bower_components/jquery-ui/jquery-ui',
-    jQueryValidate: '../bower_components/jquery-validate/jquery.validate.min',
-    jQueryValidateAdditional: '../bower_components/jquery-validate/jquery.validate.additional-methods',
-    underscore: '../bower_components/underscore-amd/underscore-min',
-    backbone: '../bower_components/backbone-amd/backbone-min',
+    jQuery: '../../bower_components/jquery/dist/jquery.min',
+    'jquery-ui': '../../bower_components/jquery-ui/jquery-ui',
+    underscore: '../../bower_components/underscore-amd/underscore-min',
+    backbone: '../../bower_components/backbone-amd/backbone-min',
     loader: '../scripts/libs/spin.min',
-    infoBox: '../scripts/libs/infobox'
+    infoBox: '../scripts/libs/infobox',
+    jQueryValidate: '../../bower_components/jquery-validate/jquery.validate.min',
+    jqueryValidateAdditional: '../../bower_components/jquery-validate/jquery.validate.additional-methods'
   }
 });
-require(['jquery', 'underscore', 'backbone', 'router', 'infoBox', 'jQueryValidate', 'jQueryValidateAdditional', 'jquery-ui'], function($, _, Backbone) {
+require(['jQuery', 'underscore', 'backbone', 'router', 'infoBox', 'jQueryValidate', 'jqueryValidateAdditional', 'jquery-ui'], function($, _, Backbone) {
   /*
    *
    * Toyota Online Booking Application

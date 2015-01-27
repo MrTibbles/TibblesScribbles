@@ -290,7 +290,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-    
     htmlmin: {
       dist: {
         options: {
@@ -435,7 +434,7 @@ module.exports = function(grunt) {
         src: '{,*/}*.css'
       },
       requirejs: {
-        src: '<%= config.app %>/bower_components/requirejs/require.js',
+        src: 'bower_components/requirejs/require.js',
         dest: '<%= config.dist %>/scripts/bower/requirejs/require.js'
       }
     },
@@ -469,7 +468,7 @@ module.exports = function(grunt) {
       dist: [
         'sass',
         'copy:styles',
-        'imagemin',
+        // 'imagemin',
         'svgmin'
       ]
     }
