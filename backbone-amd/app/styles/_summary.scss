@@ -1,0 +1,256 @@
+#summary{
+	width: 235px;
+	min-height: 415px;
+	overflow: visible;
+	margin: 25px 0 0;
+	padding: 0 0 40px;
+	background-color: $content-area;
+	border: 1px solid $border-colour;
+	position: absolute;
+	right: 30px;
+
+	#remove-car{
+		display: none;
+	}
+
+	&.change-choices{
+		.summary-pod .remove-item, .summary-pod .remove-service{
+			display: block;
+		}
+	}
+
+	&:before{
+		display: block;
+		width: 96px;
+		height: 110px;
+		content: '';
+		position: absolute;
+		right: 2px;
+		top: -15px;
+		background: {
+			image: url('../images/summary-bg.png');
+			repeat: no-repeat;
+			position: 0 0;
+		}
+	}
+
+	.description{
+		display: none;
+	}
+
+	&.empty{
+		.summary-pod .add-some, .add-some, .description{
+			display: block;
+		}
+	}
+	&.empty-selection{
+		.description, .add-some-options{
+			display: block
+		}
+	}
+
+	&.empty{
+		.summary-pod #remove-car{
+			display: none;
+		}
+	}
+	.find-more{
+		cursor: pointer;
+	}
+
+	h2{
+		text-transform: none;
+		width: 115px;
+		margin: 12px 0 0;
+		padding: 0 10px;
+	}
+	.sub-title{
+		color: $active-state;
+		text-transform: capitalize;
+		padding: 0 10px;
+	}
+
+	#need-help{
+		display: none;
+		background-color: #414248;
+		padding: 15px 0;
+		text-align: center;
+
+		&.helping{
+			display: block;
+		}
+
+		h2, p{
+			display: block;
+			width: 100%;
+			color: #ffffff;
+			margin: 0;
+			text-transform: capitalize;
+			padding: 0;			
+		}
+		.dealer-number{
+			font: {
+				family: 'toyotadisplay_bd';
+				size: 22px;
+			}
+		}
+	}
+	.summary-pod{
+		padding: 20px 0 10px;
+		position: relative;
+		.pod-inner{
+			padding: 0 10px;
+		}
+		.add-some{
+			display: none;
+		}
+		.quote-title{
+			float: left;
+		}
+		.download-quote{
+			display: none;
+			float: right;
+			color: $active-state;
+			cursor: pointer;
+			font: {
+				family: 'toyotadisplay_bd';
+				// size: 14px
+			}
+
+			&.downloadable{
+				display: block;
+			}
+		}
+		.remove-item, .remove-service, .remove-wait{
+			// display: none;
+			width: auto;
+			height: auto;
+			position: absolute;
+			right: 10px;
+			top: 40px;
+			color: $error-colour;
+			text-transform: capitalize;
+			background: none;
+			padding: 0;
+			text-align: left;
+			margin: 0; 
+			font: { 
+				family: 'toyotatext_rg';
+				size: 12px;
+			}
+		}	
+		&#your-quote{
+			border: {
+				width: 1px 0 0;
+				style: solid;
+				color: $border-colour;
+			}
+			.remove-item, .remove-service{
+				top: 89px;
+			}
+		}
+		#selected-repairs{
+			li{
+				padding: 0 0 12px;
+				position: relative;
+
+				.remove-item{
+					top: 20px;
+				}
+			}
+		}
+		#option-wait{
+			.sub-title{
+				text-transform: none;
+			}
+		}
+		#summary-total{
+			display: none;
+
+			&.priced{
+				display: block;
+			}
+			.remove-item{
+				display: none;
+			}
+		}
+		.sub-title{
+			color: $txt-colour;
+			margin: 0;
+			padding: 0;			
+		}
+		.plan-price{
+			display: none;
+		}
+		.pod-inner h4, .pod-inner h4.sub-title{
+			margin: 0 0 12px;			
+		}
+		.item-title{
+			float: left;			
+			margin: 0 0 6px;
+			width: 150px;
+		}
+		.price{
+			position: absolute;
+			text-transform: uppercase;
+			right: 10px;
+		}
+		p{
+			font-size: 12px;
+			padding: 0;
+			&.mileage{
+				display: none;
+				&.available{
+					display: block;
+				}
+			}
+		}
+		#continue{
+			width: 215px;
+			margin: 20px 10px 0;			
+		}
+		.service-item{			
+			min-height: 42px;
+			padding: 10px;
+			position: relative;
+			display: none;
+
+			&.selected{
+				display: block;
+				border-top: 1px solid $border-colour;
+			}
+		}
+	}
+	.including{
+		display: none;
+		padding: 25px 0 0;
+		text-align: center;
+		background: url('../images/including-bg.jpg') no-repeat center 60px;
+		border-top: 1px solid $border-colour;
+
+		&.now-include{
+			display: block;
+		}
+
+		h2, a{
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		h2{
+			text-transform: capitalize;
+			margin: 0 0 150px
+		}
+		a{
+			margin: 160px 0 0;
+			color: $active-state;
+			text-decoration: none;
+			font: {
+				family: 'toyotadisplay_bd';
+				size: 14px;
+			}
+		}
+	}
+
+}

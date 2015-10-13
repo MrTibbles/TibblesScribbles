@@ -1,0 +1,131 @@
+#olb-form{
+	display: none;
+}
+
+.olb-steps{
+	&.step-two{
+		.sub-title{
+			text-transform: capitalize;
+		}
+		button{
+			
+			&#find-postcode{
+				width: 82px;
+			}
+			&.proceed{
+				float: right;
+			}
+		}
+		#map-wrapper{
+			border: 1px solid $border-colour;
+			margin: 0 0 30px;
+			padding: 25px 0;
+			position: relative;
+
+			.map-inner{
+				padding: 0 25px;
+			}
+
+			#gmap_canvas{
+				border: 1px solid $border-colour;
+				width: 100%;
+				height: 414px;	
+				margin: 25px 0;		
+
+				.mapinfobox{
+					background-color: #fff;
+					padding: 5px;
+				}	
+			}
+
+			#booking-form{
+			  display: none !important;
+			}
+
+			form{
+				float: left;
+
+				#validation-postcode-input{
+					position: absolute;
+					top: 100px;
+					left: 25px;
+					color: $error-colour;
+					margin: 5px 0 0;
+					font: {
+						family: 'toyotatext_bd';
+						size: 14px;						
+					}
+				}
+
+				.error{
+					border-color: $error-colour;
+				}
+			}
+		}
+
+		#local-dealers{
+			margin: 0;
+
+			li{
+				position: relative;
+				padding: 20px 15px 20px 60px;
+				border-top: 1px solid $border-colour;
+				cursor: pointer;
+
+				&:before, &:after{
+					position: absolute;
+					color: $disabled-state;
+					font: {
+						size: 16px;
+						family: 'icomoon';
+					}
+				}
+
+				&:before{				
+					left: 21px;
+					top: 22px;
+					z-index: 20;
+					content: "\e600";
+				}
+
+				&:after{
+					@include empty_circle(25px, 25px, 2px, $disabled-state);
+					left: 15px;
+					top: 18px;
+					z-index: 10;					
+				}
+
+				&.selected{
+					&:before{
+						color: $button-txt;
+					}
+					&:after{					
+						border-color: $active-state;
+						background-color: $active-state;
+					}
+				}
+
+				.dealer-left{
+					float: left;
+				}
+
+				.sub-title{
+					font-family: 'toyotadisplay_bd';
+				}
+
+				p{
+					span{
+						font-family: 'toyotatext_bd';
+					}
+					&.tele{
+						float: right;
+
+						span{
+							font-family: 'toyotadisplay_bd';
+						}
+					}
+				}
+			}
+		}
+	}
+}
