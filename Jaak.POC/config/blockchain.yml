@@ -1,0 +1,48 @@
+development:
+  rpc_host: localhost
+  rpc_port: 8101
+  rpc_whitelist: "*"
+  network_id: 3268
+  minerthreads: 1
+  genesis_block: config/genesis/dev_genesis.json
+  datadir: /tmp/embark
+  chains: config/chains/jaak_dev.json
+  mine_when_needed: false
+  max_peers: 1
+  gas_limit: 500000
+  gas_price: 10000000000000
+  console: false
+  account:
+    init: true
+    password: config/password
+    num: 1
+staging:
+  rpc_host: localhost
+  rpc_port: 8101
+  rpc_whitelist: "*"
+  network_id: 3268
+  datadir: default
+  network_id: 0
+  max_peers: 4
+  console: true
+  bootnodes: 
+    boot: false
+    enodes: [] #insert enode urls here. 
+  account:
+    init: false
+    address:
+production:
+  rpc_host: localhost
+  rpc_port: 8101
+  rpc_whitelist: "*"
+  network_id: 3268
+  datadir: default
+  network_id: 1
+  max_peers: 4
+  console: true
+  bootnodes: 
+    boot: false
+    enodes: []
+  account:
+    init: false
+    address:
