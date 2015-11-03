@@ -1,0 +1,27 @@
+@mixin breakpoint($property, $value) {
+
+  @media ($property: $value) {
+    @content;
+  }
+}
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}
+
+@mixin animation($parameters) {
+    -webkit-animation: $parameters;
+    animation: $parameters;
+}
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+$base: 14px;
+
+@function rem($pixels, $context: $base) {
+  @return #{$pixels/$context}rem;
+}

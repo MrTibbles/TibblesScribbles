@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+
+    <head>
+        <title>Tibbles Scribbles | CSS Slider</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles/normalize.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="styles/main.css" media="screen" type="text/css" />
+    </head>
+
+    <body>
+        <div class="slider">
+            <div class="slider-wrap">
+                <div class="slide a current-slide" style="background-color: black">
+                    <figure class="background slide-image"></figure>
+                    <div class="custom-content-slide">
+                        <div class="slider-content">
+                            <h4 class="tertiary-title">Hello</h4>
+                            <p class="body-copy">Im a slider</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide b" style="background-color: blue">
+                    <div class="slide-image"></div>
+                    <div class="slide-text">
+                        <div class="slider-content">
+                            <h4 class="tertiary-title">Lorem Ipsum</h4>
+                            <h2 class="main-title">Dollar issit</h2>
+                            <h5 class="home-sub-title">client</h5>
+                            <a class="cta-link" href="#">view project</a>
+                        </div>
+                    </div>
+                </div>                
+
+                <div class="slide c" style="background-color: red">
+                    <div class="slide-image"></div>
+                    <div class="slide-text">
+                        <div class="slider-content">
+                            <h4 class="tertiary-title">Lorem Ipsum</h4>
+                            <h2 class="main-title">Dollar issit</h2>
+                            <h5 class="home-sub-title">client</h5>
+                            <a class="cta-link" href="#">view project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-navigation">
+                <button type="button" data-direction="prev" class="slider-navigation icon-up-arrow slider-prev available"></button>
+                <button type="button" data-direction="next" class="slider-navigation icon-down-arrow slider-next available"></button>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="js/gallery-slider.min.js"></script>
+
+        <script type="text/javascript">
+          window.addEventListener('load', function() {
+              return new Slider({
+                  target: '.home-page-slider',
+                  inifinte: true,
+                  direction: 'y',
+                  duration: 1500,
+                  scroll: true,
+                  autoScroll: true,
+                  autoScrollDelay: 11000,
+                  draggable: true
+              });
+          });
+        </script>
+    </body>
+
+    </html>

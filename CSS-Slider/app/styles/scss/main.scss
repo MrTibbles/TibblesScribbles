@@ -1,0 +1,39 @@
+$sliderNavTopColour: #000;
+$sliderNavTopColourHover: #3f3f3f;
+$sliderNavBtmColour: #171717;
+$sliderNavBtmColourHover: #373737;
+$sliderNavHitColour: #303030;
+$galleryNavDisabled: #1a1a1a;
+$galleryNavEnabled: #262626;
+$galleryNavWidth: 45px;
+$galleryNavHeight: 45px;
+$navArrowSize: 12px;
+$hover-easing: 300ms;
+$hover-duration: 500ms;
+
+$mobileBreakpoint: 738px;
+$midBreakpoint: 1025px;
+$largeDesktop: 1710px;
+$largeWindow: 1920px;
+$desktop: 1025px;
+
+$homeTxtFadeIn: 1000ms;
+
+$ease-in-out: cubic-bezier(.25,.1,.25,1);
+$linear: cubic-bezier(1,1,0,0);
+
+
+* {
+  box-sizing: border-box;
+}
+
+body, figure {
+  margin: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+@import 'mixins.scss', 'slider.scss';
