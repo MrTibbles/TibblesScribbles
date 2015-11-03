@@ -1,6 +1,6 @@
 {
   "name": "CSS_Slider",
-  "description": "Tibbles Scribbles - CSS & native JS slider",
+  "description": "CSS & native JS slider with click, scroll, touch and drag interactions",
   "version": "0.1.0",
   "author": "Freddie Tibbles",
   "private": true,

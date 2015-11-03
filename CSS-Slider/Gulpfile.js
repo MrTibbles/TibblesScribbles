@@ -2,7 +2,7 @@ var
   gulp = require('gulp'),
   webserver = require('gulp-webserver'),
   sass = require('gulp-sass'),
-  autoprefixer = require('gulp-autoprefixer'),
+  prefix = require('gulp-autoprefixer'),
   jshint = require('gulp-jshint'),
   uglify = require('gulp-uglify'),
   imagemin = require('gulp-imagemin'),
@@ -29,7 +29,7 @@ gulp.task('webserver', function() {
 gulp.task('styles', function() {
   return gulp.src('app/styles/scss/main.scss')
   .pipe(sass({ style: 'expanded' }))
-  .pipe(autoprefixer('last 2 version'))
+  .pipe(prefix('last 2 versions'))
   .pipe(gulp.dest('app/styles'))
   .pipe(notify({ message: 'Styles task complete' }));
 });
