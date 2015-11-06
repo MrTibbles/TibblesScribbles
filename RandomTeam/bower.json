@@ -1,0 +1,29 @@
+{
+  "name": "Feef Team generator",
+  "description": "Simple Ui for choosing a team on feef",
+  "main": "feef-team-generator.js",
+  "authors": [
+    "Tibbles Scribbles"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "feef"
+  ],
+  "homepage": "https://github.com/MrTibbles/TibblesScribbles",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "restangular": "~1.5.1",
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7"
+  }
+}

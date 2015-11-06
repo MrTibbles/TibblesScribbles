@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FeefTeamGenerator">
+
+<head>
+  <title>Tibbles Scribbles | Feef Team Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/normalize.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="styles/bootstrap.min.css" />
+  <!-- build:css styles/base/main.css -->
+  <link rel="stylesheet" href="styles/main.css" media="screen" type="text/css" />
+  <!-- endbuild -->
+</head>
+
+<body>
+  <main role="main" class="container" ng-controller="feefTeamController">
+    <div class="row">
+      <section class="col-xs-12">
+        <h1 class="text-center text-uppercase">team picker</h1>        
+      </section>
+      <section class="col-xs-12">
+        <h3 class="text-center">Domestic teams only?</h3>
+        <input class="domestic teamA" type="checkbox" value="" />        
+      </section>
+      <section class="col-xs-12">
+        <button class="btn" type="button" ng-click="getTeam()">Get team</button>        
+      </section>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center" ng-bind="generatedTeam.name"></h1>
+            <h2 class="text-center" ng-bind="generatedTeam.rating"></h2>
+        </div>
+    </div>
+  </main>
+  <script src="js/library/angular.js"></script>
+  <script src="js/library/angular-route.min.js"></script>
+
+  <!-- build:js scripts/feef-team-generator.js -->
+  <script src="js/feef-team-generator.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

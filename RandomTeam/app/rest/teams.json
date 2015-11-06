@@ -1,0 +1,74 @@
+[
+  {
+    "index": 0,
+    "country": "England",
+    "teamName": "Manchester City",
+    "league": "Barclays Premier League",
+    "rating": 5,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 1,
+    "country": "England",
+    "teamName": "Chelsea",
+    "league": "Barclays Premier League",
+    "rating": 5,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 2,
+    "country": "England",
+    "teamName": "Manchester United",
+    "league": "Barclays Premier League",
+    "rating": 5,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 3,
+    "country": "Spain",
+    "teamName": "Barcelona",
+    "league": "La Liga",
+    "rating": 5,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 4,
+    "country": "Spain",
+    "teamName": "Real Madrdid",
+    "league": "La Liga",
+    "rating": 5,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 5,
+    "country": "France",
+    "teamName": "France",
+    "league": "",
+    "rating": 5,
+    "international": true,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 6,
+    "country": "France",
+    "teamName": "Paris St Germain",
+    "league": "Ligue 1",
+    "rating": 5,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "index": 7,
+    "country": "France",
+    "teamName": "Lyon",
+    "league": "Ligue 1",
+    "rating": 4,
+    "international": false,
+    "picture": "http://placehold.it/32x32"
+  }
+]
