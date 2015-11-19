@@ -1,54 +1,6 @@
-# Frederick Charles Tibbles | Curriculum Vitae
+TibblesScribbles
 ================
-#### About.
-I am a creative minded, forward thinking and test driven digital developer based in London. I specialise in designing and developing for web based projects, with my main point of interest being upon front end development and user experience design. Each and every of the projects I am involved in have the end user as the key focal point throughout the entire production process. I am passionate about learning new digital technologies, with my go to languages being HTML5, Javascript and SCSS.
 
-#### Experience.
-##### Brandwidth Marketing - Senior Front End Developer
-######  Aug 2011 - Present
-Lead developer for multiple web based and native solutions for Apple Inc. Key Part of two entire CMS platform migrations for Toyota.co.uk, migrating to Drupal and Tridion. Intergral role in large projects with high national marketing exposure for Toyota.co.uk. Solely developed an AMD solution for the online service booking tool for Toyota owners in the UK. Designing, developing and delivering award winning front end solutions & software for Apple Inc and Toyota UK, to name a few.
-
-
-##### Sei Mani Social Media Collaborators - Lead Developer
-###### July 2014 - October 2014
-Sei Mani contacted me in regards to building and bringing their online presence more up to date. The solution needed to have a CMS as its main focus in order to enable new content to be added freely and easily. I chose to build a custom WordPress theme with multiple templates for the content editor to chose from when adding new pages and posts. 
-
-##### Contino Consultancy - Lead Developer
-###### November 2014 - January 2015
-Contino reached out to me to build their online presence. It needed to have CMS functionality and a custom blog. I chose to build a custom WordPress theme with multiple templates for the content editor to chose from when adding new pages and posts. There was also the requirement for custom search/discover functionality. For which i built a Javascript and PHP APi solution to deliver a multi-teared side navigation, which gave the user the ability to find content easily.
-
-##### Damian Allsop Chocolates - Lead Developer
-###### June 2012 - October 2012
-I was approached to re-design and build the online presence of Damian Allsop Chocolates. The solution had to include e-commerce features and CMS functionality. The resullt was a fully functioning e-commerce platform in which the client can add/amend/remove products and respective deals in-line with these products and post various details on upcoming events and functions. 
-
-##### Talking Helps Psychotherapy - Lead Developer
-###### August 2012 - September 2012
-I was approached by a local psychotherapist to design and build an online portfolio of their work to date and other such relevant details. I chose to build the site as one page with each respective section being linked to via the top menu using local scroll to give some form of interaction and enhance the user experience.
-
-#### Skills.
-##### Languages
-* HTML/HTML5
-* Javascript
-* CSS3
-* SCSS/LESS/SASS
-* Coffee Script
-* PHP
-* MySQL
-* Git/SVN
-
-##### Frameworks
-* Backbone JS
-* Anuglar JS
-* Node JS
-* Express JS
-* MongoDB
-* Mongoose 
-* Node JS
-* Nightwatch JS
-* Selenium
-* Gulp
-* Grunt
-* Yeoman
-* Bootstrap 
+Local dev storage
 
 
