@@ -1,9 +1,3 @@
-TibblesScribbles
-================
-
-Local dev storage
-___
-
 # Frederick Charles Tibbles | Curriculum Vitae
 ___
 #### About.
