@@ -1,5 +1,5 @@
 # Frederick Charles Tibbles | Curriculum Vitae
-___
+================
 #### About.
 I am a creative minded, forward thinking and test driven digital developer based in London. I specialise in designing and developing for web based projects, with my main point of interest being upon front end development and user experience design. Each and every of the projects I am involved in have the end user as the key focal point throughout the entire production process. I am passionate about learning new digital technologies, with my go to languages being HTML5, Javascript and SCSS.
 
