@@ -1,0 +1,26 @@
+{
+  "name": "jaak_poc",
+  "version": "0.0.1",
+  "description": "Jaak - The new service to the music industry. MEAN stack setup",
+  "main": "Jaak/app/assets/scripts/jaak-app.js",
+  "scripts": {
+    "test": "jaakme"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vaughnmck/luman.git"
+  },
+  "keywords": [
+    "jaak",
+    "DApp"
+  ],
+  "author": "jaak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaughnmck/luman/issues"
+  },
+  "homepage": "",
+  "devDependencies": {
+    "webtorrent": "^0.62.2"
+  }
+}
