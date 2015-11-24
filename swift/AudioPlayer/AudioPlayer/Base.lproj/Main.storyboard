@@ -21,33 +21,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-pa-i9U">
-                                <rect key="frame" x="200" y="145" width="178" height="32"/>
+                                <rect key="frame" x="455" y="167" width="125" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.19161617460971181" blue="0.22967957519324944" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="178" id="OWg-7T-E20"/>
+                                    <constraint firstAttribute="width" constant="125" id="mLN-Jf-mux"/>
                                 </constraints>
                                 <state key="normal" title="Restart"/>
                                 <connections>
                                     <action selector="Restart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xcS-tK-eAO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
-                                <rect key="frame" x="15" y="30" width="348" height="20"/>
-                                <color key="backgroundColor" red="0.99765577566674246" green="0.55854464181656205" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
+                                <rect key="frame" x="249" y="28" width="103" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="5Xg-55-CPK"/>
-                                    <constraint firstAttribute="width" constant="348" id="ULu-cU-VUl"/>
+                                    <constraint firstAttribute="width" constant="103" id="oJA-pv-wJo"/>
                                 </constraints>
-                                <state key="normal" title="play"/>
+                                <state key="normal" title="play" image="jaak-play-icon">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="PlayAudio1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KDw-f5-8mL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-qw-ixK">
-                                <rect key="frame" x="15" y="145" width="150" height="32"/>
+                                <rect key="frame" x="20" y="167" width="125" height="32"/>
                                 <color key="backgroundColor" red="0.13383732444826746" green="1" blue="0.83887424947627365" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="wbh-aA-KlX"/>
+                                    <constraint firstAttribute="width" constant="125" id="NlJ-XA-dxY"/>
                                 </constraints>
                                 <state key="normal" title="Pause"/>
                                 <connections>
@@ -57,15 +57,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vLI-pa-i9U" firstAttribute="leading" secondItem="a22-qw-ixK" secondAttribute="trailing" constant="35" id="4BH-qC-2aH"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="baseline" secondItem="vLI-pa-i9U" secondAttribute="firstBaseline" id="PTP-fk-xa2"/>
-                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="VfU-3q-wbu"/>
-                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="YEV-7l-Xzn"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="top" secondItem="Bcb-4Y-vuZ" secondAttribute="bottom" constant="95" id="ejB-iA-4Za"/>
-                            <constraint firstItem="vLI-pa-i9U" firstAttribute="baseline" secondItem="a22-qw-ixK" secondAttribute="firstBaseline" id="hSc-mh-Yf1"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="top" secondItem="vLI-pa-i9U" secondAttribute="top" id="kFt-Vm-0Nd"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="leading" secondItem="Bcb-4Y-vuZ" secondAttribute="leading" id="m3M-bQ-v9p"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a22-qw-ixK" secondAttribute="bottom" constant="423" id="pBs-qM-XYR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a22-qw-ixK" secondAttribute="bottom" constant="401" id="0v2-Yg-Aug"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="40q-DH-rxz"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="baseline" secondItem="a22-qw-ixK" secondAttribute="firstBaseline" id="4MT-K7-kng"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Ky-S3-n0O"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="8Q0-w6-VH9"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="top" secondItem="a22-qw-ixK" secondAttribute="top" id="PWE-tl-ddY"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="147" id="Pwp-rP-Bvn"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kJq-o6-oip"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="baseline" secondItem="vLI-pa-i9U" secondAttribute="firstBaseline" id="ruK-dr-ZZV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -77,4 +77,7 @@
             <point key="canvasLocation" x="245" y="238"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="jaak-play-icon" width="100" height="100"/>
+    </resources>
 </document>
