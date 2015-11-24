@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -14,47 +16,60 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
-                                <rect key="frame" x="20" y="53" width="560" height="58"/>
-                                <state key="normal" title="play"/>
-                                <connections>
-                                    <action selector="PlayAudio1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KDw-f5-8mL"/>
-                                    <action selector="buttonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6nh-2L-oSk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-qw-ixK">
-                                <rect key="frame" x="67" y="145" width="120" height="38.5"/>
-                                <state key="normal" title="Pause"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnd-yp-CGM">
-                                <rect key="frame" x="264" y="145" width="78" height="36"/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="Stop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EhP-t4-tNR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-pa-i9U">
-                                <rect key="frame" x="422" y="145" width="65" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-pa-i9U">
+                                <rect key="frame" x="200" y="145" width="178" height="32"/>
+                                <color key="backgroundColor" red="1" green="0.19161617460971181" blue="0.22967957519324944" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="OWg-7T-E20"/>
+                                </constraints>
                                 <state key="normal" title="Restart"/>
                                 <connections>
                                     <action selector="Restart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xcS-tK-eAO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
+                                <rect key="frame" x="15" y="30" width="348" height="20"/>
+                                <color key="backgroundColor" red="0.99765577566674246" green="0.55854464181656205" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5Xg-55-CPK"/>
+                                    <constraint firstAttribute="width" constant="348" id="ULu-cU-VUl"/>
+                                </constraints>
+                                <state key="normal" title="play"/>
+                                <connections>
+                                    <action selector="PlayAudio1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KDw-f5-8mL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-qw-ixK">
+                                <rect key="frame" x="15" y="145" width="150" height="32"/>
+                                <color key="backgroundColor" red="0.13383732444826746" green="1" blue="0.83887424947627365" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="wbh-aA-KlX"/>
+                                </constraints>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="PausePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4pa-YN-fUc"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BeF-HZ-r9e"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Bcb-4Y-vuZ" secondAttribute="bottom" constant="270" id="XBJ-rb-E6D"/>
-                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="a96-5G-ZDW"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="leading" secondItem="a22-qw-ixK" secondAttribute="trailing" constant="35" id="4BH-qC-2aH"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="baseline" secondItem="vLI-pa-i9U" secondAttribute="firstBaseline" id="PTP-fk-xa2"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="VfU-3q-wbu"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="YEV-7l-Xzn"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="top" secondItem="Bcb-4Y-vuZ" secondAttribute="bottom" constant="95" id="ejB-iA-4Za"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="baseline" secondItem="a22-qw-ixK" secondAttribute="firstBaseline" id="hSc-mh-Yf1"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="top" secondItem="vLI-pa-i9U" secondAttribute="top" id="kFt-Vm-0Nd"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="leading" secondItem="Bcb-4Y-vuZ" secondAttribute="leading" id="m3M-bQ-v9p"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a22-qw-ixK" secondAttribute="bottom" constant="423" id="pBs-qM-XYR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="PausePlay" destination="a22-qw-ixK" id="Din-j8-k2y"/>
-                        <outlet property="audioButtonInside" destination="Bcb-4Y-vuZ" id="urf-6W-X3Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -13,12 +13,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var PausePlay: UIButton!
     
-    var audioUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("TheReach", ofType: "mp3")!)
-    var ButtonAudioPlayer = AVAudioPlayer()
+    var ButtonAudioPlayer: AVAudioPlayer = AVAudioPlayer()
+    var errorHandler : NSError? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ButtonAudioPlayer = AVAudioPlayer(contentsOfURL: audioUrl, fileTypeHint: "mp3", error: print("NO"))
+
+        try! ButtonAudioPlayer = AVAudioPlayer(contentsOfURL: NSURL(string: NSBundle.mainBundle().pathForResource("TheReach", ofType: "mp3")!)!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,12 +31,21 @@ class ViewController: UIViewController {
         ButtonAudioPlayer.play()
     }
 
-    @IBAction func Stop(sender: AnyObject) {
-        ButtonAudioPlayer.stop()
+    @IBAction func PausePlay(sender: AnyObject) {
+        
+        if (ButtonAudioPlayer.playing == true) {
+            PausePlay.setTitle("Play", forState: UIControlState.Normal)
+            ButtonAudioPlayer.pause()
+        }else {
+            PausePlay.setTitle("Pause", forState: UIControlState.Normal)
+            ButtonAudioPlayer.play()
+        }
     }
 
     @IBAction func Restart(sender: AnyObject) {
-//        ButtonAudioPlayer.
+        ButtonAudioPlayer.stop()
+        ButtonAudioPlayer.currentTime = 0
+        ButtonAudioPlayer.play()
     }
 }
 

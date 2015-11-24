@@ -13,7 +13,8 @@ var
   livereload = require('gulp-livereload'),
   connect = require('gulp-connect'),
   lr = require('tiny-lr'),
-  server = lr();
+  server = lr(),
+  browserSync = require('browser-sync').create();
 
 // Server - listed on localhost:8080
 gulp.task('webserver', function() {
@@ -24,6 +25,22 @@ gulp.task('webserver', function() {
       open: true
     }));
   // connect.server();
+});
+
+gulp.task('serve', ['sass'], function() {
+    browserSync.init({
+        server: "./app"
+    });
+    // gulp.watch("app/css/scss/*.scss", ['sass']);
+    // gulp.watch("app/*.html").on('change', browserSync.reload);
+});
+
+// Compile sass into CSS & auto-inject into browsers
+gulp.task('sass', function() {
+    return gulp.src("app/scss/*.scss")
+        .pipe(sass())
+        .pipe(gulp.dest("app/css"))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('styles', function() {
@@ -68,7 +85,8 @@ gulp.task('watch', function() {
 
   // Watch any files in dist/, reload on change
   gulp.watch(['styles/**','js/**','images/**','*.html']).on('change', function(file) {
-    server.changed(file.path);
+    // server.changed(file.path);
+    browserSync.reload
   });
 
 });
