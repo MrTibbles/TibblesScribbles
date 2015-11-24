@@ -3,9 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -20,22 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-pa-i9U">
-                                <rect key="frame" x="455" y="167" width="125" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-pa-i9U">
+                                <rect key="frame" x="227" y="502" width="125" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.19161617460971181" blue="0.22967957519324944" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="mLN-Jf-mux"/>
-                                </constraints>
                                 <state key="normal" title="Restart"/>
                                 <connections>
                                     <action selector="Restart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xcS-tK-eAO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
-                                <rect key="frame" x="249" y="28" width="103" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="103" id="oJA-pv-wJo"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
+                                <rect key="frame" x="249" y="250" width="103" height="100"/>
                                 <state key="normal" title="play" image="jaak-play-icon">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -43,12 +34,9 @@
                                     <action selector="PlayAudio1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KDw-f5-8mL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-qw-ixK">
-                                <rect key="frame" x="20" y="167" width="125" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-qw-ixK">
+                                <rect key="frame" x="227" y="432" width="125" height="32"/>
                                 <color key="backgroundColor" red="0.13383732444826746" green="1" blue="0.83887424947627365" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="NlJ-XA-dxY"/>
-                                </constraints>
                                 <state key="normal" title="Pause"/>
                                 <connections>
                                     <action selector="PausePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4pa-YN-fUc"/>
@@ -57,15 +45,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a22-qw-ixK" secondAttribute="bottom" constant="401" id="0v2-Yg-Aug"/>
-                            <constraint firstItem="vLI-pa-i9U" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="40q-DH-rxz"/>
-                            <constraint firstItem="vLI-pa-i9U" firstAttribute="baseline" secondItem="a22-qw-ixK" secondAttribute="firstBaseline" id="4MT-K7-kng"/>
-                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Ky-S3-n0O"/>
-                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="8Q0-w6-VH9"/>
-                            <constraint firstItem="vLI-pa-i9U" firstAttribute="top" secondItem="a22-qw-ixK" secondAttribute="top" id="PWE-tl-ddY"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="147" id="Pwp-rP-Bvn"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kJq-o6-oip"/>
-                            <constraint firstItem="a22-qw-ixK" firstAttribute="baseline" secondItem="vLI-pa-i9U" secondAttribute="firstBaseline" id="ruK-dr-ZZV"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="6Az-QX-egx"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Fih-Y2-UZs"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GtL-Pj-BAd"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XpQ-Ys-fpJ"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eFD-KU-6oc"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jaJ-HQ-YQz"/>
                         </constraints>
                     </view>
                     <connections>
