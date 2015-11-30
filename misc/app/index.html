@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+
+    <head>
+        <title>Tibbles Scribbles | CSS Slider</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />        
+        <link rel="stylesheet" href="styles/normalize.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="styles/main.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+    </head>
+
+    <body>
+        <!-- slider wrap -->
+        <div class="slider container">
+            <!-- all slider items -->
+            <div class="slider-wrap row">
+                <div class="slide slide--1 current-slide">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+                <div class="slide slide--2">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+                <div class="slide slide--3">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+                <div class="slide slide--4">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+                <div class="slide slide--5">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+                <div class="slide slide--6">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+                <div class="slide slide--7">
+                    <figure class="background slide-image"></figure>
+                    <div class="slide-content"></div>
+                </div>
+            </div>
+            <!-- end all slider items -->
+            <div class="gallery-navigation">
+                <button type="button" data-direction="prev" class="slider-navigation icon-up-arrow slider-prev available"></button>
+                <button type="button" data-direction="next" class="slider-navigation icon-down-arrow slider-next available">^</button>
+            </div>
+        </div>
+        <!-- end slider wrap -->
+
+        <script type="text/javascript" src="js/gallery-slider.js"></script>
+
+        <script type="text/javascript">
+          window.addEventListener('load', function() {
+              return new Slider({
+                  direction: 'y',
+                  duration: 1500,
+                  scroll: true,
+                  autoScroll: true,
+                  inifinte: true,
+                  autoScrollDelay: 11000,
+                  bullets: true
+              });
+          });
+        </script>
+    </body>
+
+    </html>
