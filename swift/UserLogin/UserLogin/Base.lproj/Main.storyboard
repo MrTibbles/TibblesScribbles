@@ -18,16 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3j-bg-mUn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3j-bg-mUn">
                                 <rect key="frame" x="260" y="126" width="80" height="21"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="VqP-Ve-Cjk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ja-Ie-qav">
+                                <rect key="frame" x="225" y="333" width="150" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.46065611386571892" blue="0.50217440565724525" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="8eO-aT-UAi"/>
+                                </constraints>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <segue destination="vel-Vj-k5M" kind="presentation" id="ydB-xB-QQc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L3j-bg-mUn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="Eos-J5-9IW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Ja-Ie-qav" secondAttribute="bottom" constant="237" id="SU3-qD-Q1R"/>
+                            <constraint firstItem="3Ja-Ie-qav" firstAttribute="centerX" secondItem="L3j-bg-mUn" secondAttribute="centerX" id="Us5-D9-f1b"/>
+                            <constraint firstItem="L3j-bg-mUn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aKB-bv-wdq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="L3j-bg-mUn" secondAttribute="bottom" constant="453" id="tgh-IG-3DB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Iar-Lo-1dj"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -39,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="873" y="337"/>
         </scene>
-        <!--View Controller-->
+        <!--Login Page View Controller-->
         <scene sceneID="Sob-V2-fwa">
             <objects>
-                <viewController id="vel-Vj-k5M" sceneMemberID="viewController">
+                <viewController id="vel-Vj-k5M" customClass="LoginPageViewController" customModule="UserLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cf0-wC-o3U"/>
                         <viewControllerLayoutGuide type="bottom" id="jhZ-r6-woa"/>
@@ -72,12 +94,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="D5O-EQ-zIx">
-                                <rect key="frame" x="20" y="78" width="560" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdx-jL-4HJ">
                                 <rect key="frame" x="20" y="116" width="166" height="21"/>
                                 <animations/>
@@ -104,6 +120,9 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="vel-Vj-k5M" eventType="touchUpInside" id="qxm-Ry-uwr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtk-1D-52r">
                                 <rect key="frame" x="250" y="335" width="100" height="30"/>
@@ -115,6 +134,12 @@
                                     <segue destination="GSN-Fd-Xfy" kind="presentation" identifier="registerView" id="riX-yd-a0h"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="D5O-EQ-zIx">
+                                <rect key="frame" x="20" y="78" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,6 +164,10 @@
                             <constraint firstItem="Rwg-Pd-A3m" firstAttribute="leading" secondItem="zdx-jL-4HJ" secondAttribute="leading" id="zRr-WJ-0sT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userEmailTextField" destination="D5O-EQ-zIx" id="EUy-st-aX7"/>
+                        <outlet property="userPasswordTextField" destination="Rwg-Pd-A3m" id="Mbg-IK-Wm9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsS-J9-6c2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,4 +325,7 @@
             <point key="canvasLocation" x="245" y="337"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ydB-xB-QQc"/>
+    </inferredMetricsTieBreakers>
 </document>
