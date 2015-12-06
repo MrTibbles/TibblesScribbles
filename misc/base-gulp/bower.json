@@ -1,0 +1,23 @@
+{
+  "name": "TGB_Offers_Landing",
+  "description": "Offers landing hero widget for quotes etc",
+  "main": "app/index.html",
+  "authors": [
+    "Freddie Tibbles"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "http://www.toyota.co.uk",
+  "private": true,  
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8"
+  }
+}

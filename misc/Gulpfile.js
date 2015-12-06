@@ -21,7 +21,7 @@ gulp.task('styles', function() {
             style: 'expanded'
         }))
         .pipe(prefix('last 2 versions'))
-        .pipe(gulp.dest('app/styles'))
+        .pipe(gulp.dest('dist/styles'))
         .pipe(notify({
             message: 'Styles task complete'
         }));
@@ -33,7 +33,7 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('app/js'))
         .pipe(rename('gallery-slider.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('app/js/'));
+        .pipe(gulp.dest('dist/js/'));
 });
 
 // Images
@@ -44,7 +44,7 @@ gulp.task('images', function() {
             progressive: true,
             interlaced: true
         })))
-        .pipe(gulp.dest('app/images'))
+        .pipe(gulp.dest('dist/images'))
         .pipe(notify({
             message: 'Images task complete'
         }));
@@ -81,3 +81,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['watch']);
+
+gulp.task('build', ['scripts', 'styles', 'images']);
