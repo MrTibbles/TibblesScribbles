@@ -14,6 +14,7 @@
 		B630C45A1C146927001E4F51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B630C4581C146927001E4F51 /* LaunchScreen.storyboard */; };
 		B643C3AA1C148AFE001EEEC1 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B643C3A91C148AFE001EEEC1 /* RegisterPageViewController.swift */; };
 		B643C3AC1C1492ED001EEEC1 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B643C3AB1C1492ED001EEEC1 /* LoginPageViewController.swift */; };
+		B6D530551C175D0C0055D15B /* CAGradientLayer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D530541C175D0C0055D15B /* CAGradientLayer+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B630C45B1C146927001E4F51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B643C3A91C148AFE001EEEC1 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		B643C3AB1C1492ED001EEEC1 /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
+		B6D530541C175D0C0055D15B /* CAGradientLayer+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				B630C45B1C146927001E4F51 /* Info.plist */,
 				B643C3A91C148AFE001EEEC1 /* RegisterPageViewController.swift */,
 				B643C3AB1C1492ED001EEEC1 /* LoginPageViewController.swift */,
+				B6D530541C175D0C0055D15B /* CAGradientLayer+Convenience.swift */,
 			);
 			path = UserLogin;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D530551C175D0C0055D15B /* CAGradientLayer+Convenience.swift in Sources */,
 				B630C4521C146927001E4F51 /* ViewController.swift in Sources */,
 				B643C3AC1C1492ED001EEEC1 /* LoginPageViewController.swift in Sources */,
 				B630C4501C146927001E4F51 /* AppDelegate.swift in Sources */,

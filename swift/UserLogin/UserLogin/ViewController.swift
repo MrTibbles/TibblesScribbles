@@ -9,14 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//         Do any additional setup after loading the view, typically from a nib.
+        
+        let background = CAGradientLayer().jaakGrdnt()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
         
         let loggedIn = NSUserDefaults.standardUserDefaults().boolForKey("loggedIn")
         
-        if (loggedIn) {
+        if (loggedIn == false) {
             self.performSegueWithIdentifier("loginView", sender: self);
         } else {
             

@@ -16,7 +16,9 @@ class LoginPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let background = CAGradientLayer().jaakGrdnt()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {

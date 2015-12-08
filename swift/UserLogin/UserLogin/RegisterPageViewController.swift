@@ -49,7 +49,7 @@ class RegisterPageViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(userPassword, forKey: "userPassword")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        //Display success msg
+//        Display success msg
         let theSuccesAlert = UIAlertController(title: "Successfull signup", message: "Registration complete", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okSuccessAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){action in
@@ -60,6 +60,15 @@ class RegisterPageViewController: UIViewController {
 
         self.presentViewController(theSuccesAlert, animated: true, completion: nil)
 
+        
+//        let myUrl = NSURL(string: "http://jaak.reg/userRegister.php")
+//        let request = NSMutableURLRequest(URL:myUrl!)
+//        request.HTTPMethod = "POST"
+//        
+//        let postString = "email=\(userEmail)&password=\(userPassword)"
+        
+        
+        
     }
     
     func displayAlertMsg(userMessage: String) {
