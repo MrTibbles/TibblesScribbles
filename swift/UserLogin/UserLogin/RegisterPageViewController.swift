@@ -11,13 +11,16 @@ import UIKit
 class RegisterPageViewController: UIViewController {
 
     @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var inputBg: UIView!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let background = CAGradientLayer().jaakGrdntBtm()
+        background.frame = self.view.bounds
+        inputBg.layer.insertSublayer(background, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {

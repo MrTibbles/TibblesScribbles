@@ -3,11 +3,11 @@
 require("Conn.php");
 require("MySQLDao.php");
 
-$email = htmlentities($_POST["email"]);
-$password = htmlentities($_POST["password"]);
-$group_name = htmlentities($_POST["group_name"]);
-$firstname = htmlentities($_POST["firstname"]);
-$lastname = htmlentities($_POST["lastname"]);
+$email = (string)$_POST["email"];
+$password = (string)$_POST["password"];
+$group_name = (string)$_POST["group_name"];
+$firstname = (string)$_POST["firstname"];
+$lastname = (string)$_POST["lastname"];
 
 $returnValue = array();
 

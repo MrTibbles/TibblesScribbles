@@ -25,4 +25,19 @@ extension CAGradientLayer {
         return gradientLayer
     }
     
+    func jaakGrdntBtm() -> CAGradientLayer {
+        
+        let topColour = UIColor(red: (249/255.0), green: (30/255.0), blue: (108/255.0), alpha: 1)
+        let btmColour = UIColor(red: (239/255.0), green: (39/255.0), blue: (54/255.0), alpha: 1)
+        
+        let gradientColours: [CGColor] = [topColour.CGColor, btmColour.CGColor]
+        let gradientLocations: [Float] = [0.5, 1.0]
+        
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColours
+        gradientLayer.locations = gradientLocations
+        
+        return gradientLayer
+    }
+    
 }

@@ -59,12 +59,14 @@ class MySQLDao {
 
   public function registerUser($email, $password, $group_name, $firstname, $lastname) {
     $sql = "insert into users set email=?, password=?, group_name=?, firstname=?, lastname=?";
+    // $sql = "insert into users set email=?, password=?";
     $statement = $this->conn->prepare($sql);
 
     if (!$statement)
     throw new Exception($statement->error);
 
-    $statement->bind_param("ss", $email, $password, $group_name, $firstname, $lastname);
+    $statement->bind_param("sssss", $email, $password, $group_name, $firstname, $lastname);
+    // $statement->bind_param("sssss", $email, $password);
     $returnValue = $statement->execute();
 
     return $returnValue;

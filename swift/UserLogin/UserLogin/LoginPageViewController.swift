@@ -11,7 +11,7 @@ import UIKit
 class LoginPageViewController: UIViewController {
 
     @IBOutlet weak var userEmailTextField: UITextField!
-    @IBOutlet weak var userPasswordTextField: UITextField!
+    var userRecognised = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,30 +30,17 @@ class LoginPageViewController: UIViewController {
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         let userEmail = userEmailTextField.text
-        let userPassword = userPasswordTextField.text
         
         //Check local storage
         let userEmailStored = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")
-        let userPasswordStored = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
         
-        if (userEmailStored != userEmail || userPasswordStored != userPassword) {
-            
-            let theAlert = UIAlertController(title: "Are you sure?", message: "It appears we dont have your details", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
-            
-            theAlert.addAction(okAction)
-            
-            self.presentViewController(theAlert, animated: true, completion: nil)
-            
-        }
         
-        if (userEmailStored == userEmail && userPasswordStored == userPassword) {
+        if (userEmailStored == userEmail) {
             
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userRecognised")
             NSUserDefaults.standardUserDefaults().synchronize()
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
+            userRecognised = true
+//            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     /*
