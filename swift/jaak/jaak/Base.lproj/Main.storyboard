@@ -187,6 +187,11 @@
                                 <rect key="frame" x="85" y="70" width="150" height="150"/>
                                 <animations/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="927-Fj-1yW">
+                                <rect key="frame" x="150" y="528" width="20" height="20"/>
+                                <animations/>
+                                <color key="color" red="0.01042940929" green="1" blue="0.88888112740000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,6 +221,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="927-Fj-1yW" id="VsJ-RP-OsH"/>
                         <outlet property="cameraButton" destination="RtP-1f-Bck" id="IPi-LD-jP5"/>
                         <outlet property="firstnameTextField" destination="Xi4-kM-8hC" id="a1N-ex-nbj"/>
                         <outlet property="imageView" destination="42g-Dq-AIU" id="nnc-n5-t8Z"/>
