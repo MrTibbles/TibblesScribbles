@@ -71,13 +71,28 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     
+    func randomStringWithLength(len : Int) -> NSString {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        let randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
+    }
+    
     @IBAction func registerUser(sender: UIButton) {
         
         let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
         let userFirstname = firstnameTextField.text!
         let userLastname = lastnameTextField.text!
         let userPassword = passwordTextField.text!
-        let groupName = "testing"
+        let groupName = randomStringWithLength(32)
         
         let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
         let request = NSMutableURLRequest(URL: regUrl!)
