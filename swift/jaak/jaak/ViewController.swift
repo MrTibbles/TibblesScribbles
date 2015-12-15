@@ -28,9 +28,6 @@ class ViewController: UIViewController {
     @IBAction func checkUserEmail(sender: UIButton) {
         
         let userEmail = userEmailTextField.text
-        //Check local storage
-        NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
-        NSUserDefaults.standardUserDefaults().synchronize()
         
         //Check for empty form
         if (userEmail!.isEmpty) {
@@ -38,12 +35,31 @@ class ViewController: UIViewController {
             return
         }
         
-//        if (userEmailStored == userEmail) {            
-//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userRecognised")
-//            NSUserDefaults.standardUserDefaults().synchronize()
-//
-//        }
-        self.performSegueWithIdentifier("checkUser", sender: self);
+        let regUrl = NSURL(string: "http://jaak.reg/checkUser.php")
+        let request = NSMutableURLRequest(URL: regUrl!)
+        request.HTTPMethod = "POST"
+        
+        let postString = "email=\(userEmail)"
+        
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userRecognised")
+                NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                //Forward them through to home screen page
+                return self.performSegueWithIdentifier("checkUser", sender: self);
+            } else {
+                NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                return self.performSegueWithIdentifier("checkUser", sender: self);
+            }
+        }
     }
     
     func displayAlertMsg(userMessage: String) {
