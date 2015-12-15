@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CheckUserViewController: UIViewController {
 
     @IBOutlet weak var userEmailTextField: UITextField!
     
