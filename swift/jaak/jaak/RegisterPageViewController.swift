@@ -68,29 +68,73 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
 
-//    func imageUploadRequest() {
-//
-//        let imageData = UIImageJPEGRepresentation(imageView.image!, 1)
-//        
-//        if imageData != nil {
-//            let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
-//            //        var session NSURLSession.sharedSession()
-//            
-//            request.HTTPMethod = "POST"
-//            
-//            let boundary = NSString(format: "_________________________12345567890112123123123123")
-//            let contentType = NSString(format: "multipart/form-data: boundary=%@", boundary)
+    func imageUploadRequest() {
+
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 1)
+        
+        if imageData != nil {
+            let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
+            //        var session NSURLSession.sharedSession()
+            
+            request.HTTPMethod = "POST"
+            
+            let boundary = NSString(format: "_________________________12345567890112123123123123")
+            let contentType = NSString(format: "multipart/form-data: boundary=%@", boundary)
 //            print("Content Type \(contentType)")
-//            request.addValue(contentType as String, forHTTPHeaderField: "Content-Type")
-//            
-//            let body = NSMutableData.init()
-//            
-////            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-//            body.appendData(NSString(form: "Content-Disposition: form-data; name=user-profile"
-//            
-//        }
-//
-//    }
+            request.addValue(contentType as String, forHTTPHeaderField: "Content-Type")
+            
+            let body = NSMutableData.init()
+            
+            //title
+            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"user-profile\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+            
+            body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"user-profile\"; filename=\"user-profile.jpg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(imageData!)
+            body.appendData(NSString(format: "\r\n--%@--\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            request.HTTPBody = body
+            
+            self.activityIndicator.startAnimating()
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    print("error=\(error)")
+                    return
+                }
+                
+                print(response)
+                print("_________________________")
+                
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("*** response data=\(responseString)")
+                
+                //            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
+                
+                do {
+                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                        print(jsonResponse)
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.activityIndicator.stopAnimating()
+                        })
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                
+            }
+            
+            task.resume()
+            
+        }
+
+    }
     
     @IBAction func registerUser(sender: UIButton) {
         
@@ -100,7 +144,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         let userPassword = passwordTextField.text!
         let groupName = "testing"
         
-        let regUrl = NSURL(string: "http://jaak.reg/imageUpload.php")
+        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
         let request = NSMutableURLRequest(URL: regUrl!)
         request.HTTPMethod = "POST"
         
