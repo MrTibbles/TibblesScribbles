@@ -14,6 +14,9 @@
 		B66442751C18401D008983B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66442731C18401D008983B4 /* LaunchScreen.storyboard */; };
 		B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B664427C1C184734008983B4 /* CAGradientLayer+Convenience.swift */; };
 		B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B664427E1C184B0D008983B4 /* RegisterPageViewController.swift */; };
+		C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */; };
+		C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1D1C219400005F5D03 /* TrackListing.swift */; };
+		C5173C201C219546005F5D03 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1F1C219546005F5D03 /* SampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		B66442761C18401D008983B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B664427C1C184734008983B4 /* CAGradientLayer+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CAGradientLayer+Convenience.swift"; path = "../../UserLogin/UserLogin/CAGradientLayer+Convenience.swift"; sourceTree = "<group>"; };
 		B664427E1C184B0D008983B4 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListingsTableViewController.swift; sourceTree = "<group>"; };
+		C5173C1D1C219400005F5D03 /* TrackListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListing.swift; sourceTree = "<group>"; };
+		C5173C1F1C219546005F5D03 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 				B664426A1C18401D008983B4 /* AppDelegate.swift */,
 				B664426C1C18401D008983B4 /* CheckUserViewController.swift */,
 				B664426E1C18401D008983B4 /* Main.storyboard */,
+				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
+				C5173C1F1C219546005F5D03 /* SampleData.swift */,
+				C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */,
 				B66442711C18401D008983B4 /* Assets.xcassets */,
 				B66442731C18401D008983B4 /* LaunchScreen.storyboard */,
 				B66442761C18401D008983B4 /* Info.plist */,
@@ -142,10 +151,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */,
+				C5173C201C219546005F5D03 /* SampleData.swift in Sources */,
 				B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */,
 				B664426D1C18401D008983B4 /* CheckUserViewController.swift in Sources */,
 				B664426B1C18401D008983B4 /* AppDelegate.swift in Sources */,
 				B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */,
+				C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
