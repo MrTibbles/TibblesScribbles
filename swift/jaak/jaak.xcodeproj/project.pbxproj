@@ -17,6 +17,7 @@
 		C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */; };
 		C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1D1C219400005F5D03 /* TrackListing.swift */; };
 		C5173C201C219546005F5D03 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1F1C219546005F5D03 /* SampleData.swift */; };
+		C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226161C21C06C00EA1F5B /* TrackCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListingsTableViewController.swift; sourceTree = "<group>"; };
 		C5173C1D1C219400005F5D03 /* TrackListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListing.swift; sourceTree = "<group>"; };
 		C5173C1F1C219546005F5D03 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		C56226161C21C06C00EA1F5B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
 				C5173C1F1C219546005F5D03 /* SampleData.swift */,
 				C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */,
+				C56226161C21C06C00EA1F5B /* TrackCell.swift */,
 				B66442711C18401D008983B4 /* Assets.xcassets */,
 				B66442731C18401D008983B4 /* LaunchScreen.storyboard */,
 				B66442761C18401D008983B4 /* Info.plist */,
@@ -158,6 +161,7 @@
 				B664426B1C18401D008983B4 /* AppDelegate.swift in Sources */,
 				B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */,
 				C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */,
+				C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

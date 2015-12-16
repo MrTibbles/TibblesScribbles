@@ -12,6 +12,7 @@ class TrackListingsTableViewController: UITableViewController {
 
     var TrackListings:[TrackListing] = tracksData
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,13 +38,12 @@ class TrackListingsTableViewController: UITableViewController {
         return TrackListings.count
     }
     
-
+    //heightForRowAtIndexPath - varying height cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TrackListingCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TrackListingCell", forIndexPath: indexPath) as! TrackCell
 
         let track = TrackListings[indexPath.row] as TrackListing
-        cell.textLabel?.text = track.trackName
-        cell.textLabel?.text = track.artistName
+        cell.track = track
         return cell
     }
 
