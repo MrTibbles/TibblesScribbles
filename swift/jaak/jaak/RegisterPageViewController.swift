@@ -67,6 +67,30 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         dismissViewControllerAnimated(true, completion: nil)
         
     }
+
+//    func imageUploadRequest() {
+//
+//        let imageData = UIImageJPEGRepresentation(imageView.image!, 1)
+//        
+//        if imageData != nil {
+//            let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
+//            //        var session NSURLSession.sharedSession()
+//            
+//            request.HTTPMethod = "POST"
+//            
+//            let boundary = NSString(format: "_________________________12345567890112123123123123")
+//            let contentType = NSString(format: "multipart/form-data: boundary=%@", boundary)
+//            print("Content Type \(contentType)")
+//            request.addValue(contentType as String, forHTTPHeaderField: "Content-Type")
+//            
+//            let body = NSMutableData.init()
+//            
+////            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+//            body.appendData(NSString(form: "Content-Disposition: form-data; name=user-profile"
+//            
+//        }
+//
+//    }
     
     @IBAction func registerUser(sender: UIButton) {
         
@@ -76,7 +100,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         let userPassword = passwordTextField.text!
         let groupName = "testing"
         
-        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
+        let regUrl = NSURL(string: "http://jaak.reg/imageUpload.php")
         let request = NSMutableURLRequest(URL: regUrl!)
         request.HTTPMethod = "POST"
         
@@ -92,10 +116,8 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         
         let params = [
             "email" : userEmail,
-            "password": userPassword,
             "firstname" : userFirstname,
-            "lastname" : userLastname,
-            "group_name": groupName
+            "userId": "9"
         ]
         
 //        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
@@ -113,7 +135,8 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
                 return
             }
             
-            print("*** response data = \(response)")
+            print(response)
+            print("_________________________")
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("*** response data=\(responseString)")
@@ -158,8 +181,6 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         body.appendString("Content-Type: \(mimetype)\r\n\r\n")
         body.appendData(imageDataKey)
         body.appendString("\r\n")
-        
-        
         
         body.appendString("--\(boundary)--\r\n")
         

@@ -1,7 +1,4 @@
-<?php 
-
-var_dump("G");
-die();
+<?php
 
 require("Conn.php");
 require("MySQLDao.php");
@@ -12,22 +9,22 @@ $group_name = (string)$_POST["group_name"];
 $firstname = (string)$_POST["firstname"];
 $lastname = (string)$_POST["lastname"];
 
-$targetDir = "uploads/avatars/";
+// $targetDir = "uploads/avatars/";
 
-if (!file_exists($targetDir)) {
-  mkdir($targetDir, 0777, true);
-}
+// if (!file_exists($targetDir)) {
+//   mkdir($targetDir, 0777, true);
+// }
 
-$targetDir = $targetDir . "/" . basename($_FILES["file"]["name"]);
+// $targetDir = $targetDir . "/" . basename($_FILES["file"]["name"]);
 
 $returnValue = array();
 
-if (!move_uploaded_file($_FILES["file"]["tmp_name"], $targetDir)) {
-  return echo json_encode([
-    "Message" => "There was an error whilst uploading your image",
-    "Status" => "Error"
-  ])
-}
+// if (!move_uploaded_file($_FILES["file"]["tmp_name"], $targetDir)) {
+//   return echo json_encode([
+//     "Message" => "There was an error whilst uploading your image",
+//     "Status" => "Error"
+//   ])
+// }
 
 if(empty($email) || empty($password)) {
   $returnValue["status"] = "error";
