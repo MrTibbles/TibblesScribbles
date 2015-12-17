@@ -59,7 +59,7 @@ class CheckUserViewController: UIViewController {
                     NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
-                    return self.performSegueWithIdentifier("registerUser", sender: self);
+                    return self.performSegueWithIdentifier("checkUserRegisterSegue", sender: self);
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)

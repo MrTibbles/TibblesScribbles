@@ -44,7 +44,6 @@
                                 </state>
                                 <connections>
                                     <action selector="checkUserEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bfM-qA-Ek2"/>
-                                    <segue destination="oFR-eA-S3D" kind="presentation" identifier="registerUser" id="cMR-ch-AG5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -56,11 +55,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="userEmailTextField" destination="boV-N0-EM1" id="oBU-E7-LHi"/>
+                        <segue destination="Gca-ND-gDM" kind="custom" identifier="checkUserRegisterSegue" customClass="checkUserRegisterCustomSegue" id="D7Z-1x-xz5"/>
+                        <segue destination="uMw-H7-rvQ" kind="custom" identifier="checkUserTrackListingsSegue" customClass="checkUserTrackListingsCustomSegue" customModule="jaak" customModuleProvider="target" id="LqY-UX-LcH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-311" y="-63"/>
+            <point key="canvasLocation" x="-1049" y="-929"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="M3i-51-P7y">
@@ -159,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hC1-va-RMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="-63"/>
+            <point key="canvasLocation" x="-1451" y="107"/>
         </scene>
         <!--Tracks-->
         <scene sceneID="R7c-Cx-rHq">
@@ -221,7 +222,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4u9-5a-QrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423" y="-63"/>
+            <point key="canvasLocation" x="-625" y="107"/>
         </scene>
         <!--Play Screen View Controller-->
         <scene sceneID="zpj-EM-WBw">
@@ -248,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S00-QD-bhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792" y="-63"/>
+            <point key="canvasLocation" x="-175" y="107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Fh-9z-pWK">
@@ -268,31 +269,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rg5-ms-1xG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-311" y="-743"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="XVX-bd-bHu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oFR-eA-S3D" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BHC-Sb-Mmc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Gca-ND-gDM" kind="relationship" relationship="rootViewController" id="ZKK-5Y-Gji"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I9A-Bh-D5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="59" y="-743"/>
+            <point key="canvasLocation" x="-1403" y="-929"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7LW-ww-hph">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V8R-1j-hjT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="V8R-1j-hjT" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0WY-C9-qZb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -305,7 +289,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbR-na-KZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423" y="-743"/>
+            <point key="canvasLocation" x="-1038" y="107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ylS-75-cJ2">
@@ -324,7 +308,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVt-AL-eu3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792" y="-743"/>
+            <point key="canvasLocation" x="-175" y="-573"/>
         </scene>
     </scenes>
     <resources>
@@ -332,4 +316,7 @@
         <image name="jaak-logo-50x23" width="50" height="23"/>
         <image name="jaak-logo-wht" width="157" height="66"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LqY-UX-LcH"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,14 +12,14 @@ struct TrackListing {
     
     var trackName: String?
     var artistName: String?
-//    var artworkURL: NSURL?
+    var artworkURL: String?
 //    var artworkImage: UIImageView?
     var streamURL: String?
     
-    init(trackName: String?, artistName: String?, streamURL: String?) {
+    init(trackName: String?, artistName: String?, artworkURL: String?, streamURL: String?) {
         self.trackName = trackName
         self.artistName = artistName
-//        self.artworkURL = downloadImage(artworkURL!)!
+        self.artworkURL = artworkURL!
         self.streamURL = streamURL
         
 //        downloadImage(artworkURL!)
