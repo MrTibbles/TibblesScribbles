@@ -56,7 +56,7 @@
                     <connections>
                         <outlet property="userEmailTextField" destination="boV-N0-EM1" id="oBU-E7-LHi"/>
                         <segue destination="Gca-ND-gDM" kind="custom" identifier="checkUserRegisterSegue" customClass="CheckUserRegisterCustomSegue" customModule="jaak" customModuleProvider="target" id="D7Z-1x-xz5"/>
-                        <segue destination="uMw-H7-rvQ" kind="custom" identifier="checkUserTrackListingsSegue" customClass="checkUserTrackListingsCustomSegue" customModule="jaak" customModuleProvider="target" id="LqY-UX-LcH"/>
+                        <segue destination="uMw-H7-rvQ" kind="custom" identifier="checkUserTrackListingsSegue" customClass="CheckUserRegisterCustomSegue" customModule="jaak" customModuleProvider="target" id="LqY-UX-LcH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -21,6 +21,7 @@
 		C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */; };
 		C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */; };
 		C5FF4E791C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E781C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift */; };
+		C5FF4E7B1C231807005E8E65 /* CheckUserTrackListingsCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E7A1C231807005E8E65 /* CheckUserTrackListingsCustomSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
 		C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckUserRegisterCustomSegue.swift; path = ../CheckUserRegisterCustomSegue.swift; sourceTree = "<group>"; };
 		C5FF4E781C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUserRegisterSegueUnwind.swift; sourceTree = "<group>"; };
+		C5FF4E7A1C231807005E8E65 /* CheckUserTrackListingsCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUserTrackListingsCustomSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				B664426A1C18401D008983B4 /* AppDelegate.swift */,
 				B664426C1C18401D008983B4 /* CheckUserViewController.swift */,
 				B664426E1C18401D008983B4 /* Main.storyboard */,
+				C5FF4E7A1C231807005E8E65 /* CheckUserTrackListingsCustomSegue.swift */,
 				C5FF4E781C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift */,
 				C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */,
 				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
@@ -172,6 +175,7 @@
 				C5FF4E791C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift in Sources */,
 				C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */,
 				C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */,
+				C5FF4E7B1C231807005E8E65 /* CheckUserTrackListingsCustomSegue.swift in Sources */,
 				C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */,
 				C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */,
 			);

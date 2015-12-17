@@ -47,28 +47,31 @@ class CheckUserViewController: UIViewController {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("*** response data=\(responseString)")
+//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("*** response data=\(responseString)")
             
             //            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
             
             do {
                 if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    print(jsonResponse)
+                    let respMsg = jsonResponse.valueForKey("message") as! String!
                     
-                    NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
-                    NSUserDefaults.standardUserDefaults().synchronize()
+                    if respMsg == "User does not exist" {
+                        NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        
+                        return self.performSegueWithIdentifier("checkUserRegisterSegue", sender: self);
+                    } else {
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userRecognised")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        
+                        //Forward them through to home screen page
+                        return self.performSegueWithIdentifier("checkUserTrackListingsSegue", sender: self);
+                    }
                     
-                    return self.performSegueWithIdentifier("checkUserRegisterSegue", sender: self);
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userRecognised")
-                NSUserDefaults.standardUserDefaults().setObject(userEmail, forKey: "userEmail")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                //Forward them through to home screen page
-                return self.performSegueWithIdentifier("registerUser", sender: self);
             }
 
         }
