@@ -96,7 +96,6 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         
         if imageData != nil {
             let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
-            //        var session NSURLSession.sharedSession()
             
             request.HTTPMethod = "POST"
             
@@ -109,11 +108,11 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             
             //title
             body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"user-profile\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             
             body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"user-profile\"; filename=\"user-profile.jpg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"file\"; type=\"file\"; filename=\"title.jpg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(imageData!)
             body.appendData(NSString(format: "\r\n--%@--\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -133,8 +132,8 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
                 print(response)
                 print("_________________________")
                 
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("*** response data=\(responseString)")
+//                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("*** response data=\(responseString)")
                 
                 //            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
                 
