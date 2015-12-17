@@ -166,6 +166,10 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         let userPassword = passwordTextField.text!
         let groupName = randomStringWithLength(32)
         
+        dispatch_async(dispatch_get_main_queue(), {
+            self.imageUploadRequest()
+        })
+        
         let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
         let request = NSMutableURLRequest(URL: regUrl!)
         request.HTTPMethod = "POST"
