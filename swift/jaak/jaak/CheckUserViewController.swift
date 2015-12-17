@@ -75,6 +75,22 @@ class CheckUserViewController: UIViewController {
         task.resume()
     }
     
+    @IBAction func returnFromSegueActions(sender: UIStoryboardSegue){
+        
+    }
+    
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        if let id = identifier {
+            if id == "CheckUserRegisterSegueUnwind" {
+                let unwindSegue = CheckUserRegisterSegueUnwind(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    
+                })
+                return unwindSegue
+            }
+        }
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
+    }
+    
     func displayAlertMsg(userMessage: String) {
         let theAlert = UIAlertController(title: "Form Validation", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
         

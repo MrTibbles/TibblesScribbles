@@ -31,10 +31,14 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         
         imageView.layer.cornerRadius = imageView.frame.size.width/2
         imageView.clipsToBounds = true
-        
-        if (NSUserDefaults.standardUserDefaults().stringForKey("userRecognised") != nil) {
-            //Display extra input field here?
-        }
+
+        let swipeGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "showInitialEmailEntry")
+        swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
+        self.view.addGestureRecognizer(swipeGestureRecognizer)
+    }
+    
+    func showInitialEmailEntry() {
+        self.performSegueWithIdentifier("CheckUserRegisterSegueUnwind", sender: self)
     }
 
     override func didReceiveMemoryWarning() {

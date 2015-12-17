@@ -156,9 +156,11 @@
                         <outlet property="lastnameTextField" destination="g12-R2-zyg" id="NYx-ol-ffM"/>
                         <outlet property="libraryButton" destination="J9I-5N-xkE" id="BaY-wV-9o1"/>
                         <outlet property="passwordTextField" destination="NVc-9Q-L2H" id="HLO-hT-EKK"/>
+                        <segue destination="Zgx-1m-O82" kind="unwind" identifier="CheckUserRegisterSegueUnwind" unwindAction="returnFromSegueActions:" id="JN8-dA-hhC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hC1-va-RMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Zgx-1m-O82" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1451" y="107"/>
         </scene>

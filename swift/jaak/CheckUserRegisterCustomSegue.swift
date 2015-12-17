@@ -24,7 +24,7 @@ class CheckUserRegisterCustomSegue: UIStoryboardSegue {
             window?.insertSubview(registerVCView, aboveSubview: initialVCView)
         
         
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
                 initialVCView.frame = CGRectOffset(initialVCView.frame, 0.0, -screenHeight)
                 registerVCView.frame = CGRectOffset(registerVCView.frame, 0.0, -screenHeight)
             
