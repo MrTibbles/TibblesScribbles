@@ -19,8 +19,7 @@
 		C5173C201C219546005F5D03 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1F1C219546005F5D03 /* SampleData.swift */; };
 		C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226161C21C06C00EA1F5B /* TrackCell.swift */; };
 		C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */; };
-		C5FF4E731C22E8ED005E8E65 /* checkUserRegisterCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E721C22E8ED005E8E65 /* checkUserRegisterCustomSegue.swift */; };
-		C5FF4E751C22E92F005E8E65 /* checkUserTrackListingsCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E741C22E92F005E8E65 /* checkUserTrackListingsCustomSegue.swift */; };
+		C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +37,7 @@
 		C5173C1F1C219546005F5D03 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		C56226161C21C06C00EA1F5B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
-		C5FF4E721C22E8ED005E8E65 /* checkUserRegisterCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkUserRegisterCustomSegue.swift; sourceTree = "<group>"; };
-		C5FF4E741C22E92F005E8E65 /* checkUserTrackListingsCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkUserTrackListingsCustomSegue.swift; sourceTree = "<group>"; };
+		C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckUserRegisterCustomSegue.swift; path = ../CheckUserRegisterCustomSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +74,6 @@
 				B664426A1C18401D008983B4 /* AppDelegate.swift */,
 				B664426C1C18401D008983B4 /* CheckUserViewController.swift */,
 				B664426E1C18401D008983B4 /* Main.storyboard */,
-				C5FF4E741C22E92F005E8E65 /* checkUserTrackListingsCustomSegue.swift */,
-				C5FF4E721C22E8ED005E8E65 /* checkUserRegisterCustomSegue.swift */,
 				C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */,
 				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
 				C5173C1F1C219546005F5D03 /* SampleData.swift */,
@@ -87,6 +83,7 @@
 				B66442731C18401D008983B4 /* LaunchScreen.storyboard */,
 				B66442761C18401D008983B4 /* Info.plist */,
 				B664427E1C184B0D008983B4 /* RegisterPageViewController.swift */,
+				C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */,
 			);
 			path = jaak;
 			sourceTree = "<group>";
@@ -170,8 +167,7 @@
 				B664426B1C18401D008983B4 /* AppDelegate.swift in Sources */,
 				B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */,
 				C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */,
-				C5FF4E751C22E92F005E8E65 /* checkUserTrackListingsCustomSegue.swift in Sources */,
-				C5FF4E731C22E8ED005E8E65 /* checkUserRegisterCustomSegue.swift in Sources */,
+				C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */,
 				C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */,
 				C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */,
 			);
