@@ -7,9 +7,6 @@ if (!file_exists($targetDir)) {
   mkdir($targetDir, 0777, true);
 }
 
-var_dump($_REQUEST);
-die();
-
 $targetDir = $targetDir . "/" . basename($_FILES["file"]["name"]);
 
 if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir)) {
@@ -22,7 +19,8 @@ if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir)) {
 
   echo json_encode([
     "Message" => "Sorry, there was an error uploading your file: ",
-    "Status" => "Error"
+    "Status" => "Error",
+    "misc" => $_FILES["file"]
   ]);
 
 }
