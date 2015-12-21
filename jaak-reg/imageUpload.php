@@ -1,11 +1,15 @@
 <?php
 
-// $targetDir = "/Users/fred/sites/TibblesScribbles/jaak-reg/uploads/avatars/";
+$firstName = $_REQUEST["firstName"];
+// $targetDir = "uploads/avatars/";
 $targetDir = "/Users/freddie.tibbles/sites/TibblesScribbles/jaak-reg/uploads/avatars/";
 
 if (!file_exists($targetDir)) {
   mkdir($targetDir, 0777, true);
 }
+
+var_dump($targetDir);
+die();
 
 $targetDir = $targetDir . "/" . basename($_FILES["file"]["name"]);
 
