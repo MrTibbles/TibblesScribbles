@@ -92,7 +92,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
     
     func imageUploadRequest() {
         
-        let imageData = UIImageJPEGRepresentation(imageView.image!, 1)
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
         
         if imageData != nil {
             let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
