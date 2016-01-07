@@ -20,6 +20,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var passwordTextField: UITextField!
 //    let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,6 +96,9 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
         
         if imageData != nil {
+            
+         
+            
             let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
             
             request.HTTPMethod = "POST"
@@ -107,17 +111,21 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             let body = NSMutableData.init()
             
             //title
-            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+//            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+//            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+//            body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             
             body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format: "Content-Disposition: form-data; name=\"file\"; type=\"file\"; filename=\"title.jpg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Type: image/jpeg\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(imageData!)
             body.appendData(NSString(format: "\r\n--%@--\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             
+            //var params = ["image":[ "content_type": "image/jpeg", "filename":"test.jpg", "file_data": base64String]]
+            
             request.HTTPBody = body
+            
+            print(request.HTTPBody)
             
 //            self.activityIndicator.startAnimating()
             
