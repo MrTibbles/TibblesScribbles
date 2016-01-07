@@ -116,7 +116,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             
             body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"file\"; type=\"file\"; filename=\"title.jpg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"file\"; type=\"file\"; filename=\"title.jpeg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format: "Content-Type: image/jpeg\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(imageData!)
             body.appendData(NSString(format: "\r\n--%@--\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -165,61 +165,144 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     
-    @IBAction func registerUser(sender: UIButton) {
+    func myImageUploadRequest() {
         
-        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
-        let userFirstname = firstnameTextField.text!
-        let userLastname = lastnameTextField.text!
-        let userPassword = passwordTextField.text!
-        let groupName = randomStringWithLength(32)
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            self.imageUploadRequest()
-        })
-        
-        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
-        let request = NSMutableURLRequest(URL: regUrl!)
+        let myUrl = NSURL(string: "http://jaak.reg/imageUpload.php")
+        let request = NSMutableURLRequest(URL: myUrl!)
         request.HTTPMethod = "POST"
         
-        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
+        let param = [
+            "firstName": "Bob",
+            "lastName": "jere",
+            "userId": "9"
+        ]
         
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let boundary = generateBoundaryString()
+        
+        request.setValue("multiplart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
+        
+        if imageData == nil {
+            return print("No image")
+        }
+        
+        request.HTTPBody = createBodyWithParameters(param, filePathKey: "newfile", imageDataKey: imageData!, boundary: boundary)
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
             if error != nil {
                 print("error=\(error)")
-                return
             }
             
-            print("*** response data = \(response)")
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("*** response data=\(responseString)")
-            
-//            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
-            
             do {
-                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    print(jsonResponse)
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                    print(jsonResult)
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
             
-//            if let parseJSON = jsonResponse {
-//                var emailValue = parseJSON["email"] as? String
-//                var groupNameValue = parseJSON["group_name"]
-//                var firstNameValue = parseJSON["firstname"] as? String
-//                var lastNameValue = parseJSON["lastname"] as? String
-//                
-//                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
-//            }
+            
         }
         
         task.resume()
+    }
+    
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+
+        let body = NSMutableData()
+        
+        if parameters != nil {
+            for (key, value) in parameters! {
+                body.appendString("--\(boundary)\r\n")
+                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                body.appendString("\(value)\r\n")
+            }
+        }
+        
+        let filename = "user-profile.jpg"
+        let mimetype = "image/jpg"
+        
+        body.appendString("--\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimetype)\r\n\r\n")
+        body.appendData(imageDataKey)
+        body.appendString("\r\n")
+        
+        body.appendString("--\(boundary)--\r\n")
+        
+        return body
+    }
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
+    }
+    
+    
+    @IBAction func registerUser(sender: UIButton) {
+        
+//        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
+//        let userFirstname = firstnameTextField.text!
+//        let userLastname = lastnameTextField.text!
+//        let userPassword = passwordTextField.text!
+//        let groupName = randomStringWithLength(32)
+        
+//        dispatch_async(dispatch_get_main_queue(), {
+          myImageUploadRequest()
+//        })
+        
+//        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
+//        let request = NSMutableURLRequest(URL: regUrl!)
+//        request.HTTPMethod = "POST"
+//        
+//        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
+//        
+//        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+//        
+//        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+//            data, response, error in
+//            
+//            if error != nil {
+//                print("error=\(error)")
+//                return
+//            }
+//            
+//            print("*** response data = \(response)")
+//            
+//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("*** response data=\(responseString)")
+//            
+////            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
+//            
+//            do {
+//                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+//                    print(jsonResponse)
+//                }
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+//            
+////            if let parseJSON = jsonResponse {
+////                var emailValue = parseJSON["email"] as? String
+////                var groupNameValue = parseJSON["group_name"]
+////                var firstNameValue = parseJSON["firstname"] as? String
+////                var lastNameValue = parseJSON["lastname"] as? String
+////                
+////                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
+////            }
+//        }
+//        
+//        task.resume()
         
     }
     
+}
+
+extension NSMutableData {
+    func appendString(string: String) {
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        appendData(data!)
+    }
 }
