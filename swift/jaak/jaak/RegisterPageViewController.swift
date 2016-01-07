@@ -111,9 +111,9 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             let body = NSMutableData.init()
             
             //title
-//            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-//            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-//            body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             
             body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format: "Content-Disposition: form-data; name=\"file\"; type=\"file\"; filename=\"title.jpg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -124,8 +124,6 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             //var params = ["image":[ "content_type": "image/jpeg", "filename":"test.jpg", "file_data": base64String]]
             
             request.HTTPBody = body
-            
-            print(request.HTTPBody)
             
 //            self.activityIndicator.startAnimating()
             
@@ -161,6 +159,8 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             
             task.resume()
             
+        } else {
+            //no image
         }
         
     }
