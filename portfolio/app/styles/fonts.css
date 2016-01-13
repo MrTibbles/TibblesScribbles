@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'toyotadisplay_bd';
+  src: url(../assets/fonts/toyotadisplay_bd.eot);
+  src: url(../assets/fonts/toyotadisplay_bd.eot?#iefix) format("eot"), url(../assets/fonts/toyotadisplay_bd.woff) format("woff"), url(../assets/fonts/toyotadisplay_bd.ttf) format("truetype"), url(../assets/fonts/toyotadisplay_bd.svg) format("svg"); }
+@font-face {
+  font-family: 'toyotadisplay_rg';
+  src: url(../assets/fonts/toyotadisplay_rg.eot);
+  src: url(../assets/fonts/toyotadisplay_rg.eot?#iefix) format("eot"), url(../assets/fonts/toyotadisplay_rg.woff) format("woff"), url(../assets/fonts/toyotadisplay_rg.ttf) format("truetype"), url(../assets/fonts/toyotadisplay_rg.svg) format("svg"); }
+@font-face {
+  font-family: 'toyotatext_bd';
+  src: url(../assets/fonts/toyotatext_bd.eot);
+  src: url(../assets/fonts/toyotatext_bd.eot?#iefix) format("eot"), url(../assets/fonts/toyotatext_bd.woff) format("woff"), url(../assets/fonts/toyotatext_bd.ttf) format("truetype"), url(../assets/fonts/toyotatext_bd.svg) format("svg"); }
+@font-face {
+  font-family: 'toyotatext_rg';
+  src: url(../assets/fonts/toyotatext_rg.eot);
+  src: url(../assets/fonts/toyotatext_rg.eot?#iefix) format("eot"), url(../assets/fonts/toyotatext_rg.woff) format("woff"), url(../assets/fonts/toyotatext_rg.ttf) format("truetype"), url(../assets/fonts/toyotatext_rg.svg) format("svg"); }
+@font-face {
+  font-family: 'toyotaicons';
+  src: url(../assets/fonts/toyotaicons.eot);
+  src: url(../assets/fonts/toyotaicons.eot?#iefix) format("eot"), url(../assets/fonts/toyotaicons.woff) format("woff"), url(../assets/fonts/toyotaicons.ttf) format("truetype"), url(../assets/fonts/toyotaicons.svg) format("svg"); }
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(../assets/fonts/glyphicons-halflings-regular.eot);
+  src: url(../assets/fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(../assets/fonts/glyphicons-halflings-regular.woff) format("woff"), url(../assets/fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(../assets/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular) format("svg"); }
+
+/*# sourceMappingURL=fonts.css.map */
