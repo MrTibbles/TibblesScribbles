@@ -2,6 +2,7 @@
 
 require("Conn.php");
 require("MySQLDao.php");
+
 $email = htmlentities($_POST["email"]);
 $password = htmlentities($_POST["password"]);
 $returnValue = array();
