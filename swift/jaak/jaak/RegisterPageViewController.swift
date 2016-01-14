@@ -46,6 +46,12 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func viewTapped(sender : AnyObject) {
+        firstnameTextField.resignFirstResponder()
+        lastnameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
 
 
     @IBAction func libraryAction(sender: UIButton) {

@@ -204,6 +204,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="J9I-5N-xkE" secondAttribute="trailing" constant="39" id="0ms-vs-Zbx"/>
                             <constraint firstItem="0Hm-fw-j38" firstAttribute="top" secondItem="Xbn-49-OKc" secondAttribute="bottom" constant="5" id="Dag-mW-Zri"/>
@@ -237,6 +238,9 @@
                                 <exclude reference="e5m-Mu-PYq"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cNA-cI-UDe" appends="YES" id="hOR-Yq-Gxw"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="1s9-3G-WoE"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -254,6 +258,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hC1-va-RMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zgx-1m-O82" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="cNA-cI-UDe">
+                    <connections>
+                        <action selector="viewTapped:" destination="Gca-ND-gDM" id="UYT-Ec-A91"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1451" y="107"/>
         </scene>
