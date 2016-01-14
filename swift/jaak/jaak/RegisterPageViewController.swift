@@ -167,7 +167,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
     
     func myImageUploadRequest() {
         
-        let myUrl = NSURL(string: "http://jaak.reg/imageUpload.php")
+        let myUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/imageUpload.php")
         let request = NSMutableURLRequest(URL: myUrl!)
         request.HTTPMethod = "POST"
         
@@ -243,58 +243,58 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func registerUser(sender: UIButton) {
         
-//        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
-//        let userFirstname = firstnameTextField.text!
-//        let userLastname = lastnameTextField.text!
-//        let userPassword = passwordTextField.text!
-//        let groupName = randomStringWithLength(32)
+        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
+        let userFirstname = firstnameTextField.text!
+        let userLastname = lastnameTextField.text!
+        let userPassword = passwordTextField.text!
+        let groupName = randomStringWithLength(32)
         
 //        dispatch_async(dispatch_get_main_queue(), {
-          myImageUploadRequest()
+//          myImageUploadRequest()
 //        })
         
-//        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
-//        let request = NSMutableURLRequest(URL: regUrl!)
-//        request.HTTPMethod = "POST"
-//        
-//        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
-//        
-//        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-//        
-//        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-//            data, response, error in
-//            
-//            if error != nil {
-//                print("error=\(error)")
-//                return
+        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/userRegister.php")
+        let request = NSMutableURLRequest(URL: regUrl!)
+        request.HTTPMethod = "POST"
+        
+        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
+        
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            print("*** response data = \(response)")
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("*** response data=\(responseString)")
+            
+//            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
+            
+            do {
+                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                    print(jsonResponse)
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            
+//            if let parseJSON = jsonResponse {
+//                var emailValue = parseJSON["email"] as? String
+//                var groupNameValue = parseJSON["group_name"]
+//                var firstNameValue = parseJSON["firstname"] as? String
+//                var lastNameValue = parseJSON["lastname"] as? String
+//                
+//                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
 //            }
-//            
-//            print("*** response data = \(response)")
-//            
-//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//            print("*** response data=\(responseString)")
-//            
-////            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
-//            
-//            do {
-//                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-//                    print(jsonResponse)
-//                }
-//            } catch let error as NSError {
-//                print(error.localizedDescription)
-//            }
-//            
-////            if let parseJSON = jsonResponse {
-////                var emailValue = parseJSON["email"] as? String
-////                var groupNameValue = parseJSON["group_name"]
-////                var firstNameValue = parseJSON["firstname"] as? String
-////                var lastNameValue = parseJSON["lastname"] as? String
-////                
-////                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
-////            }
-//        }
-//        
-//        task.resume()
+        }
+        
+        task.resume()
         
     }
     

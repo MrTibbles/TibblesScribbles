@@ -35,16 +35,16 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iEg-zL-ZAz" secondAttribute="height" multiplier="100:7" id="ZUR-mT-VP0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with your favourite people" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNy-Ba-RZc">
-                                <rect key="frame" x="54" y="361" width="214" height="22"/>
+                                <rect key="frame" x="64" y="361" width="194" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WNy-Ba-RZc" secondAttribute="height" multiplier="209:21" id="Eio-Ch-mmA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
