@@ -99,7 +99,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             
          
             
-            let request = NSMutableURLRequest(URL: NSURL(string: "http://jaak.reg/imageUpload.php")!)
+            let request = NSMutableURLRequest(URL: NSURL(string: "http://tibblesscribbles.com/jaak-reg/imageUpload.php")!)
             
             request.HTTPMethod = "POST"
             

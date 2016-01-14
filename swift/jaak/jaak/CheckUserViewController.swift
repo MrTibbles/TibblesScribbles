@@ -36,7 +36,7 @@ class CheckUserViewController: UIViewController {
         }
         
         
-        let regUrl = NSURL(string: "http://jaak.reg/checkUser.php")
+        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/checkUser.php")
         let request = NSMutableURLRequest(URL: regUrl!)
         request.HTTPMethod = "POST"
         
