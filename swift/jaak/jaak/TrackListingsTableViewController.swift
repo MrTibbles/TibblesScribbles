@@ -13,7 +13,7 @@ class TrackListingsTableViewController: UITableViewController {
 
     var TrackListings:[TrackListing] = tracksData
 
-    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +46,10 @@ class TrackListingsTableViewController: UITableViewController {
         let track = TrackListings[indexPath.row] as TrackListing
         cell.track = track
         return cell
+    }
+    
+    @IBAction func playButtonTapped(sender: UIButton) {
+        self.performSegueWithIdentifier("playScreenSegue", sender: self)
     }
 
     /*

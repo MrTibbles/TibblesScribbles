@@ -292,6 +292,9 @@
                                             <rect key="frame" x="233" y="35" width="46" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Play"/>
+                                            <connections>
+                                                <action selector="playButtonTapped:" destination="uMw-H7-rvQ" eventType="touchUpInside" id="hkC-lg-mYk"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -312,7 +315,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="lGJ-Xb-k9A" kind="custom" identifier="playScreenSegue" customClass="PlayScreenCustomSegue" id="eKM-Qu-sBW"/>
+                        <segue destination="lGJ-Xb-k9A" kind="custom" identifier="playScreenSegue" customClass="PlayScreenCustomSegue" customModule="jaak" customModuleProvider="target" id="ZKk-qw-XdA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4u9-5a-QrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,6 +396,6 @@
         <image name="jaak-logo-wht" width="157" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LqY-UX-LcH"/>
+        <segue reference="rYe-Xp-6QG"/>
     </inferredMetricsTieBreakers>
 </document>
