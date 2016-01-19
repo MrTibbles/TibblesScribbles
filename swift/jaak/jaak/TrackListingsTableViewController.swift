@@ -51,6 +51,22 @@ class TrackListingsTableViewController: UITableViewController {
     @IBAction func playButtonTapped(sender: UIButton) {
         self.performSegueWithIdentifier("playScreenSegue", sender: self)
     }
+    
+    @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
+        
+    }
+    
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue? {
+        if let id = identifier {
+            if id == "PlayScreenSegueUnwind" {
+                let unwindSegue = PlayScreenSegueUnwind(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    
+                })
+                return unwindSegue
+            }
+        }
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+    }
 
     /*
     // Override to support conditional editing of the table view.

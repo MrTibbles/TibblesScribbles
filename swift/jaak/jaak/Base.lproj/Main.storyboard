@@ -344,8 +344,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="qKd-D6-uag"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="vPV-Cw-eUA" kind="unwind" identifier="PlayScreenSegueUnwind" unwindAction="returnFromSegueActions:" id="Bsi-0z-n5o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S00-QD-bhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vPV-Cw-eUA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-175" y="107"/>
         </scene>

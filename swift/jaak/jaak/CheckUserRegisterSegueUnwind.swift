@@ -11,6 +11,8 @@ import UIKit
 class CheckUserRegisterSegueUnwind: UIStoryboardSegue {
     
     override func perform() {
+        print("CheckUserRegisterSegueUnwind")
+
         // Assign the source and destination views to local variables.
         let registerVCView = self.sourceViewController.view as UIView!
         let initialVCView = self.destinationViewController.view as UIView!

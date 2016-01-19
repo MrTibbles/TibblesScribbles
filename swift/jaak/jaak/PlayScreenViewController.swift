@@ -15,12 +15,12 @@ class PlayScreenViewController: UIViewController {
         
         
         let swipeGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "PlayScreenToTrackListings")
-        swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
+        swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeGestureRecognizer)
     }
     
     func PlayScreenToTrackListings() {
-        self.performSegueWithIdentifier("ShowPlayScreenSegueUnwind", sender: self)
-    }
+        self.performSegueWithIdentifier("PlayScreenSegueUnwind", sender: self)
+    }    
 
 }

@@ -9,21 +9,9 @@
 import UIKit
 
 class PlayScreenCustomSegue: UIStoryboardSegue {
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let swipeGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "showPlayScreenViewController")
-//        swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
-//        self.view.addGestureRecognizer(swipeGestureRecognizer)
-//    }
-//    
-//    func showPlayScreenViewController() {
-//        self.performSegueWithIdentifier("playScreenSegue", sender: self)
-//    }
-    
+
     override func perform() {
-        
+       
         let trackListingsVCView = self.sourceViewController.view as UIView!
         let playScreenVCView: UIView = self.destinationViewController.view as UIView!
         
@@ -32,6 +20,7 @@ class PlayScreenCustomSegue: UIStoryboardSegue {
         
         let window = UIApplication.sharedApplication().keyWindow
         dispatch_async(dispatch_get_main_queue(), {
+            //Initial position of destination view
             playScreenVCView.frame = CGRectMake(0.0, screenHeight, screenWidth, screenHeight)
             
             window?.insertSubview(playScreenVCView, aboveSubview: trackListingsVCView)
