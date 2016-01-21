@@ -22,6 +22,22 @@ class TrackListingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        Alamofire.request(.GET, "https://httpbin.org/get")
+            .response { request, response, data, error in
+                //print(response.request)  // original URL request
+//                print(response.response) // URL response
+//                print(response.data)     // server data
+//                print(response.result)   // result of response serialization
+                
+                do {
+                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                        print("JSON: \(jsonResponse)")
+                    }
+                } catch let error as NSError {
+                    print(error)
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {
