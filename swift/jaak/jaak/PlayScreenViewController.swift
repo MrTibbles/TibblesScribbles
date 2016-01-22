@@ -24,3 +24,30 @@ class PlayScreenViewController: UIViewController {
     }    
 
 }
+
+
+class BackendService {
+    
+    
+    class func performLogin(#email: String, password: String, success:((res: NSHTTPURLResponse, json: JSON, statusCode: HTTPStatus))->(), failure: (NSError)->()) {
+        
+        let loginURL = baseURL + "/login"
+        let parameters = ["email": email, "password": password]
+        
+        Alamofire.request(.POST, loginURL, parameters: parameters).responseJSON { (req, res, json, err) in
+            
+            if(err != nil) {
+                let response = (error: err!)
+                failure(response)
+            }
+            else {
+                
+                
+                if let httpStatus = HTTPStatus(rawValue: res!.statusCode) {
+                    let response = (res: res, json: JSON(json!) , statusCode: httpStatus)
+                    success(response)
+                }
+            }
+        }
+        
+}

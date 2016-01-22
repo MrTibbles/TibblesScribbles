@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegisterPageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -97,210 +98,114 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         return randomString
     }
     
+    // this function creates the required URLRequestConvertible and NSData we need to use Alamofire.upload
+    func urlRequestWithComponents(urlString:String, parameters:Dictionary<String, String>, imageData:NSData) -> (URLRequestConvertible, NSData) {
+        
+        // create url request to send
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        mutableURLRequest.HTTPMethod = Alamofire.Method.POST.rawValue
+        let boundaryConstant = "myRandomBoundary12345";
+        let contentType = "multipart/form-data;boundary="+boundaryConstant
+        mutableURLRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        
+        
+        
+        // create upload data to send
+        let uploadData = NSMutableData()
+        
+        // add image
+        uploadData.appendData("\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("Content-Disposition: form-data; name=\"file\"; filename=\"file.png\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("Content-Type: image/png\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData(imageData)
+        
+        // add parameters
+        for (key, value) in parameters {
+            uploadData.appendData("\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            uploadData.appendData("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        }
+        uploadData.appendData("\r\n--\(boundaryConstant)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        
+        
+        // return URLRequestConvertible and NSData
+        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
+    }
+    
     func imageUploadRequest() {
         
+//        let imageUploadUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/imageUpload.php")
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
+        let parameters = ["task": "newImage"]
+        let urlRequest = urlRequestWithComponents("http://tibblesscribbles.com/jaak-reg/imageUpload.php", parameters: parameters, imageData: imageData!)
         
-        if imageData != nil {
-            
-         
-            
-            let request = NSMutableURLRequest(URL: NSURL(string: "http://tibblesscribbles.com/jaak-reg/imageUpload.php")!)
-            
-            request.HTTPMethod = "POST"
-            
-            let boundary = NSString(format: "_________________________12345567890112123123123123")
-            let contentType = NSString(format: "multipart/form-data: boundary=%@", boundary)
-            //            print("Content Type \(contentType)")
-            request.addValue(contentType as String, forHTTPHeaderField: "Content-Type")
-            
-            let body = NSMutableData.init()
-            
-            //title
-            body.appendData(NSString(format: "--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("%@\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
-            
-            body.appendData(NSString(format: "\r\n--%@\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Disposition: form-data; name=\"file\"; type=\"file\"; filename=\"title.jpeg\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(NSString(format: "Content-Type: image/jpeg\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(imageData!)
-            body.appendData(NSString(format: "\r\n--%@--\r\n", boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
-            
-            //var params = ["image":[ "content_type": "image/jpeg", "filename":"test.jpg", "file_data": base64String]]
-            
-            request.HTTPBody = body
-            
-//            self.activityIndicator.startAnimating()
-            
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-                data, response, error in
-                
-                if error != nil {
-                    print("error=\(error)")
-                    return
-                }
-                
-                print(response)
-                print("_________________________")
-                
-//                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//                print("*** response data=\(responseString)")
-                
-                //            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
-                
-                do {
-                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                        print(jsonResponse)
-                        
-                        dispatch_async(dispatch_get_main_queue(), {
-//                            self.activityIndicator.stopAnimating()
-                        })
-                    }
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                
+        Alamofire.upload(urlRequest.0, data: urlRequest.1)
+            .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
             }
-            
-            task.resume()
-            
-        } else {
-            //no image
+            .responseJSON {  response in
+                print("REQUEST \(response.request)")
+                print("RESPONSE \(response.response)")
+                print("JSON \(response.data)")
+                print("ERROR \(response.result)")
         }
         
     }
-    
-    func myImageUploadRequest() {
-        
-        let myUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/imageUpload.php")
-        let request = NSMutableURLRequest(URL: myUrl!)
-        request.HTTPMethod = "POST"
-        
-        let param = [
-            "firstName": "Bob",
-            "lastName": "jere",
-            "userId": "9"
-        ]
-        
-        let boundary = generateBoundaryString()
-        
-        request.setValue("multiplart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
-        
-        if imageData == nil {
-            return print("No image")
-        }
-        
-        request.HTTPBody = createBodyWithParameters(param, filePathKey: "newfile", imageDataKey: imageData!, boundary: boundary)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil {
-                print("error=\(error)")
-            }
-            
-            do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    print(jsonResult)
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
-            
-        }
-        
-        task.resume()
-    }
-    
-    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
-
-        let body = NSMutableData()
-        
-        if parameters != nil {
-            for (key, value) in parameters! {
-                body.appendString("--\(boundary)\r\n")
-                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-                body.appendString("\(value)\r\n")
-            }
-        }
-        
-        let filename = "user-profile.jpg"
-        let mimetype = "image/jpg"
-        
-        body.appendString("--\(boundary)\r\n")
-        body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
-        body.appendString("Content-Type: \(mimetype)\r\n\r\n")
-        body.appendData(imageDataKey)
-        body.appendString("\r\n")
-        
-        body.appendString("--\(boundary)--\r\n")
-        
-        return body
-    }
-    
-    func generateBoundaryString() -> String {
-        return "Boundary-\(NSUUID().UUIDString)"
-    }
-    
     
     @IBAction func registerUser(sender: UIButton) {
         
-        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
-        let userFirstname = firstnameTextField.text!
-        let userLastname = lastnameTextField.text!
-        let userPassword = passwordTextField.text!
-        let groupName = randomStringWithLength(32)
+//        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
+//        let userFirstname = firstnameTextField.text!
+//        let userLastname = lastnameTextField.text!
+//        let userPassword = passwordTextField.text!
+//        let groupName = randomStringWithLength(32)
         
-//        dispatch_async(dispatch_get_main_queue(), {
-//          myImageUploadRequest()
-//        })
+        dispatch_async(dispatch_get_main_queue(), {
+            self.imageUploadRequest()
+        })
         
-        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/userRegister.php")
-        let request = NSMutableURLRequest(URL: regUrl!)
-        request.HTTPMethod = "POST"
-        
-        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
-        
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil {
-                print("error=\(error)")
-                return
-            }
-            
-            print("*** response data = \(response)")
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("*** response data=\(responseString)")
-            
-//            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            do {
-                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    print(jsonResponse)
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
-//            if let parseJSON = jsonResponse {
-//                var emailValue = parseJSON["email"] as? String
-//                var groupNameValue = parseJSON["group_name"]
-//                var firstNameValue = parseJSON["firstname"] as? String
-//                var lastNameValue = parseJSON["lastname"] as? String
-//                
-//                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
+//        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/userRegister.php")
+//        let request = NSMutableURLRequest(URL: regUrl!)
+//        request.HTTPMethod = "POST"
+//        
+//        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
+//        
+//        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+//        
+//        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+//            data, response, error in
+//            
+//            if error != nil {
+//                print("error=\(error)")
+//                return
 //            }
-        }
-        
-        task.resume()
+//            
+//            print("*** response data = \(response)")
+//            
+//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("*** response data=\(responseString)")
+//            
+////            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
+//            
+//            do {
+//                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+//                    print(jsonResponse)
+//                }
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+//            
+////            if let parseJSON = jsonResponse {
+////                var emailValue = parseJSON["email"] as? String
+////                var groupNameValue = parseJSON["group_name"]
+////                var firstNameValue = parseJSON["firstname"] as? String
+////                var lastNameValue = parseJSON["lastname"] as? String
+////                
+////                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
+////            }
+//        }
+//        
+//        task.resume()
         
     }
     
