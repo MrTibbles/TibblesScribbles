@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class TrackListingsTableViewController: UITableViewController {
 
@@ -23,16 +24,18 @@ class TrackListingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        Alamofire.request(.GET, "https://httpbin.org/get")
+        Alamofire.request(.GET, "https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
             .response { request, response, data, error in
-                //print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-//                print(response.result)   // result of response serialization
+                let returnTracks:NSData = data!
+                let count = returnTracks.length
+                let cleanJson = JSON(data: data!)
+                print(cleanJson)
                 
                 do {
                     if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                        print("JSON: \(jsonResponse)")
+//                        print("JSON: \(jsonResponse)")
+                        let cleanJson = JSON(data: data!)
+                        print(cleanJson)
                     }
                 } catch let error as NSError {
                     print(error)
