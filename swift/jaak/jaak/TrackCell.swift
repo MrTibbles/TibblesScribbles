@@ -16,8 +16,8 @@ class TrackCell: UITableViewCell {
     
     var track: TrackListing! {
         didSet {
-            trackNameLabel.text = track.trackName
-            artistNameLabel.text = track.artistName
+            trackNameLabel.text = track.title
+            artistNameLabel.text = track.user
             //            artworkImageView.image = getImageFromUrl(track.artworkURL)
         }
     }

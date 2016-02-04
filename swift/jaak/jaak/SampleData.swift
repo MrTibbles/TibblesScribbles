@@ -7,7 +7,6 @@
 //
 
 let tracksData = [
-    TrackListing(trackId: 000, artistName: "Skepta", trackName: "Top Boy", playbackCount: 999, artworkURL: "https://i1.sndcdn.com/artworks-000131612249-cqi2zr-large.jpg", streamURL: "https://api.soundcloud.com/tracks/226853491/stream", duration: 9999, durationClean: 9999),
-    TrackListing(trackId: 001, artistName: "JME", trackName: "Man Dont Care", playbackCount: 9909, artworkURL: "https://i1.sndcdn.com/artworks-000131612249-cqi2zr-large.jpg", streamURL: "https://api.soundcloud.com/tracks/226853491/stream", duration: 99899, durationClean: 9999)
+    TrackListing(id: 00, user: "Skepta", title: "Top Boy", playback_count: 999, artwork_url: "https://i1.sndcdn.com/artworks-000131612249-cqi2zr-large.jpg", stream_url: "https://api.soundcloud.com/tracks/226853491/stream", duration: 9999, durationClean: 9990)
 ]
 

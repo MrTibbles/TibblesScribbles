@@ -13,6 +13,7 @@ import SwiftyJSON
 class TrackListingsTableViewController: UITableViewController {
 
     var TrackListings:[TrackListing] = tracksData
+    var soundcloudTracks:Array<Any> = []
 
        
     override func viewDidLoad() {
@@ -26,20 +27,30 @@ class TrackListingsTableViewController: UITableViewController {
         
         Alamofire.request(.GET, "https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
             .response { request, response, data, error in
-                let returnTracks:NSData = data!
-                let count = returnTracks.length
                 let cleanJson = JSON(data: data!)
-                print(cleanJson)
-                
-                do {
-                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-//                        print("JSON: \(jsonResponse)")
-                        let cleanJson = JSON(data: data!)
-                        print(cleanJson)
-                    }
-                } catch let error as NSError {
-                    print(error)
+//                print(cleanJson[0]["stream_url"])
+                for (key, cleanJson):(String, JSON) in cleanJson {
+                    var id = cleanJson["id"].int
+                    var user = cleanJson["user"]["username"].string
+                    var title = cleanJson["title"].string
+                    var playback_count = cleanJson["playback_count"].int
+                    var artwork_url = cleanJson["artwork_url"].string
+                    var stream_url = cleanJson["stream_url"].string
+                    var duration = cleanJson["duration"].int
+                    var durationClean = cleanJson["duration"].int
+                    
+                    
+                    self.soundcloudTracks.append(TrackListing(id: id, user: user, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url, duration: duration, durationClean: duration))
                 }
+                print(self.soundcloudTracks)
+                
+//                do {
+//                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+////                        print("JSON: \(jsonResponse)")
+//                    }
+//                } catch let error as NSError {
+//                    print(error)
+//                }
         }
     }
 
@@ -55,14 +66,14 @@ class TrackListingsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TrackListings.count
+        return soundcloudTracks.count
     }
     
     //heightForRowAtIndexPath - varying height cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackListingCell", forIndexPath: indexPath) as! TrackCell
 
-        let track = TrackListings[indexPath.row] as TrackListing
+        let track = soundcloudTracks[indexPath.row] as! TrackListing
         cell.track = track
         return cell
     }
