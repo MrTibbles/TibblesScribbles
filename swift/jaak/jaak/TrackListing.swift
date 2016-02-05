@@ -10,15 +10,15 @@ import UIKit
 
 struct TrackListing {
     
-    var id: Int? = 0
+    var id: Int? = 99
     var user: String? = "jaak"
     var title: String? = "jaak"
-    var playback_count: Int? = 0
+    var playback_count: Int? = 99
     var artwork_url: String? = "jaak"
     //    var artworkImage: UIImageView?
     var stream_url: String? = "jaak"
-    var duration: Int? = 0
-    var durationClean: Int? = 0
+    var duration: Int? = 99
+    var durationClean: Int? = 99
     
     init(id: Int?, user: String?, title: String?, playback_count: Int?, artwork_url: String?, stream_url: String?, duration: Int?, durationClean: Int?) {
         if id != nil {

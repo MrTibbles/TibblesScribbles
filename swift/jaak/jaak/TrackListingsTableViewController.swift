@@ -13,7 +13,7 @@ import SwiftyJSON
 class TrackListingsTableViewController: UITableViewController {
 
     var TrackListings:[TrackListing] = tracksData
-    var soundcloudTracks:Array<Any> = []
+    var soundcloudTracks:[TrackListing] = []
 
        
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class TrackListingsTableViewController: UITableViewController {
                     
                     self.soundcloudTracks.append(TrackListing(id: id, user: user, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url, duration: duration, durationClean: duration))
                 }
-                print(self.soundcloudTracks)
+                
                 
 //                do {
 //                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
@@ -62,18 +62,18 @@ class TrackListingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 5
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return soundcloudTracks.count
+        return self.soundcloudTracks.count
     }
     
     //heightForRowAtIndexPath - varying height cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackListingCell", forIndexPath: indexPath) as! TrackCell
-
-        let track = soundcloudTracks[indexPath.row] as! TrackListing
+        
+        let track = self.soundcloudTracks[indexPath.row] as! TrackListing
         cell.track = track
         return cell
     }
