@@ -12,8 +12,9 @@ import SwiftyJSON
 
 class TrackListingsTableViewController: UITableViewController {
 
-    var TrackListings:[TrackListing] = tracksData
-    var soundcloudTracks:[TrackListing] = []
+//    var TrackListings:[TrackListing] = Array < String >()
+    var TrackListings:[TrackListing] = []
+    var TableData:Array < String > = Array < String >()
 
        
     override func viewDidLoad() {
@@ -25,33 +26,7 @@ class TrackListingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        Alamofire.request(.GET, "https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
-            .response { request, response, data, error in
-                let cleanJson = JSON(data: data!)
-//                print(cleanJson[0]["stream_url"])
-                for (key, cleanJson):(String, JSON) in cleanJson {
-                    var id = cleanJson["id"].int
-                    var user = cleanJson["user"]["username"].string
-                    var title = cleanJson["title"].string
-                    var playback_count = cleanJson["playback_count"].int
-                    var artwork_url = cleanJson["artwork_url"].string
-                    var stream_url = cleanJson["stream_url"].string
-                    var duration = cleanJson["duration"].int
-                    var durationClean = cleanJson["duration"].int
-                    
-                    
-                    self.soundcloudTracks.append(TrackListing(id: id, user: user, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url, duration: duration, durationClean: duration))
-                }
-                
-                
-//                do {
-//                    if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-////                        print("JSON: \(jsonResponse)")
-//                    }
-//                } catch let error as NSError {
-//                    print(error)
-//                }
-        }
+        get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,24 +37,69 @@ class TrackListingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.soundcloudTracks.count
+        return self.TrackListings.count
     }
     
     //heightForRowAtIndexPath - varying height cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackListingCell", forIndexPath: indexPath) as! TrackCell
         
-        let track = self.soundcloudTracks[indexPath.row] as! TrackListing
+        let track = self.TrackListings[indexPath.row]
         cell.track = track
         return cell
     }
     
     @IBAction func playButtonTapped(sender: UIButton) {
         self.performSegueWithIdentifier("playScreenSegue", sender: self)
+    }
+    
+    func get_data_from_url(url: String) {
+        Alamofire.request(.GET, url)
+            .response { request, response, data, error in
+                self.extract_json(data!)
+        }
+    }
+    
+    func extract_json(jsonData:NSData) {
+        do {
+            if let tracks_list = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? NSArray  {
+                for (var i = 0; i < tracks_list.count; i++ ) {
+                    if let track_obj = tracks_list[i] as? NSDictionary {
+                        if let track_id = track_obj["id"] as? Int {
+                            if let user_obj = track_obj["user"] as? NSDictionary {
+                                if let user = user_obj["username"] as? String {
+                                    if let title = track_obj["title"] as? String {
+                                        if let playback_count = track_obj["playback_count"] as? Int {
+                                            if let artwork_url = track_obj["artwork_url"] as? String {
+                                                if let stream_url = track_obj["stream_url"] as? String {
+                                                    if let duration = track_obj["duration"] as? Int {
+                                                        TrackListings.append(TrackListing(id: track_id, user: user, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url, duration: duration, durationClean: duration))
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+        do_table_refresh();
+    }
+    
+    func do_table_refresh() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+            return
+        })
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
