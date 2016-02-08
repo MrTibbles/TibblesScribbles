@@ -18,12 +18,25 @@ class TrackCell: UITableViewCell {
         didSet {
             trackNameLabel.text = track.title
             artistNameLabel.text = track.user
-            //            artworkImageView.image = getImageFromUrl(track.artworkURL)
+            
+            downloadImage(track.artwork_url!)
         }
     }
     
-    //    func getImageFromURL(url: String) -> UIImage? {
-    //        let imageURL = NSURL(string: url)
-    //        return UIImage(imageURL)
-    //    }
+    func getDataFromUrl(url:String, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
+    }
+    
+    func downloadImage(url: String){
+        let newUrl = url.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
+        getDataFromUrl(newUrl) { (data, response, error)  in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                self.artworkImageView.image = UIImage(data: data)
+            }
+        }
+    }
+
 }
