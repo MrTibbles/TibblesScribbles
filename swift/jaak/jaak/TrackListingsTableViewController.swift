@@ -12,10 +12,12 @@ import SwiftyJSON
 
 class TrackListingsTableViewController: UITableViewController {
 
-//    var TrackListings:[TrackListing] = Array < String >()
     var TrackListings:[TrackListing] = []
-    var TableData:Array < String > = Array < String >()
 
+    @IBAction func refreshTrackListings(sender: AnyObject) {
+//        get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
+        print("Updating feed")
+    }
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,11 @@ class TrackListingsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print(self.TrackListings[indexPath.row])
+        self.performSegueWithIdentifier("playScreenSegue", sender: self)
+    }
+    
     @IBAction func playButtonTapped(sender: UIButton) {
         self.performSegueWithIdentifier("playScreenSegue", sender: self)
     }
@@ -60,11 +67,17 @@ class TrackListingsTableViewController: UITableViewController {
     func get_data_from_url(url: String) {
         Alamofire.request(.GET, url)
             .response { request, response, data, error in
-                self.extract_json(data!)
+                do {
+                    if data != nil && error == nil {
+                        self.extractJSON(data!)
+                    }
+                } catch let error as NSError  {
+                    print(error)
+                }
         }
     }
     
-    func extract_json(jsonData:NSData) {
+    func extractJSON(jsonData:NSData) {
         do {
             if let tracks_list = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? NSArray  {
                 for (var i = 0; i < tracks_list.count; i++ ) {
@@ -81,6 +94,8 @@ class TrackListingsTableViewController: UITableViewController {
                                                     }
                                                 }
                                             }
+                                        } else {
+                                            print("no artwork for: \(track_obj["title"])")
                                         }
                                     }
                                 }
@@ -92,14 +107,22 @@ class TrackListingsTableViewController: UITableViewController {
         } catch let error as NSError {
             print(error)
         }
-        do_table_refresh();
+        doTableRefresh();
     }
     
-    func do_table_refresh() {
+    func doTableRefresh() {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
             return
         })
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
@@ -117,6 +140,7 @@ class TrackListingsTableViewController: UITableViewController {
         }
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -152,15 +176,6 @@ class TrackListingsTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

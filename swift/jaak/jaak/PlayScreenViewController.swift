@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlayScreenViewController: UIViewController {
+    
+    var player = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,10 +20,23 @@ class PlayScreenViewController: UIViewController {
         let swipeGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "PlayScreenToTrackListings")
         swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeGestureRecognizer)
+        
+        self.setupPlayer()
     }
     
     func PlayScreenToTrackListings() {
         self.performSegueWithIdentifier("PlayScreenSegueUnwind", sender: self)
-    }    
+    }
+    
+    func setupPlayer() {
+        
+        let url = NSURL(string: "https://api.soundcloud.com/tracks/244967972/stream")
+        let playerItem = AVPlayerItem(URL:url!)
+        self.player = AVPlayer(playerItem: playerItem)
+        
+        self.player.rate = 1.0
+        player.play()
+        
+    }
 
 }
