@@ -13,6 +13,7 @@ class TrackCell: UITableViewCell {
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artworkImageView: UIImageView!
+    @IBOutlet weak var artistProfileImageView: UIImageView!
     
     var track: TrackListing! {
         didSet {

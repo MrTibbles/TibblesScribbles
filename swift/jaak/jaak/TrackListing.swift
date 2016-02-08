@@ -12,10 +12,10 @@ struct TrackListing {
     
     var id: Int? = 99
     var user: String? = "jaak"
+//    var userProfile: String? = "jaak"
     var title: String? = "jaak"
     var playback_count: Int? = 99
     var artwork_url: String? = "jaak"
-    //    var artworkImage: UIImageView?
     var stream_url: String? = "jaak"
     var duration: Int? = 99
     var durationClean: Int? = 99

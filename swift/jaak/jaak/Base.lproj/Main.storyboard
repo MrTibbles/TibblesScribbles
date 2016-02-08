@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uUZ-rt-jcW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uUZ-rt-jcW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -270,29 +270,32 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6k-2y-TDI" id="TMu-yV-vrc">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="103" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jaak-logo-50x23" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-ta-1mt">
+                                        <imageView userInteractionEnabled="NO" tag="103" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="jaak-logo-50x23" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-ta-1mt">
                                             <rect key="frame" x="94" y="28" width="100" height="46"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzR-iC-lDp">
-                                            <rect key="frame" x="10" y="57" width="36" height="17"/>
+                                            <rect key="frame" x="75" y="57" width="36" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.14779829175864412" green="1" blue="0.79309884007249198" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAq-Kd-q4Z">
-                                            <rect key="frame" x="10" y="23" width="76" height="17"/>
+                                            <rect key="frame" x="75" y="23" width="76" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.14779829175864412" green="1" blue="0.79309884007249198" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sb3-3f-o3H">
+                                            <rect key="frame" x="10" y="25" width="50" height="50"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="FzR-iC-lDp" secondAttribute="bottom" constant="17.5" id="FEN-de-Wfw"/>
-                                        <constraint firstItem="oAq-Kd-q4Z" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="2" id="HkD-fY-Qkk"/>
-                                        <constraint firstItem="FzR-iC-lDp" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="2" id="Hrh-jx-VMO"/>
+                                        <constraint firstItem="oAq-Kd-q4Z" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="67" id="HkD-fY-Qkk"/>
+                                        <constraint firstItem="FzR-iC-lDp" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="67" id="Hrh-jx-VMO"/>
                                         <constraint firstItem="oAq-Kd-q4Z" firstAttribute="top" secondItem="TMu-yV-vrc" secondAttribute="topMargin" constant="15" id="Zh1-fW-t9S"/>
                                         <constraint firstItem="tjp-ta-1mt" firstAttribute="centerY" secondItem="TMu-yV-vrc" secondAttribute="centerY" constant="1.25" id="sJA-5e-plh"/>
                                         <constraint firstItem="tjp-ta-1mt" firstAttribute="centerX" secondItem="TMu-yV-vrc" secondAttribute="centerX" id="wJZ-4s-zJ8"/>
@@ -302,6 +305,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="artistNameLabel" destination="FzR-iC-lDp" id="xxe-Fu-1hq"/>
+                                    <outlet property="artistProfileImageView" destination="sb3-3f-o3H" id="59L-Cz-Q5s"/>
                                     <outlet property="artworkImageView" destination="tjp-ta-1mt" id="maq-Vi-zje"/>
                                     <outlet property="trackNameLabel" destination="oAq-Kd-q4Z" id="Zju-bM-tmu"/>
                                 </connections>
