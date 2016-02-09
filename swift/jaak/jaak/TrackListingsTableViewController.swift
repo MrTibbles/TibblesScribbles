@@ -59,9 +59,9 @@ class TrackListingsTableViewController: UITableViewController {
         self.performSegueWithIdentifier("playScreenSegue", sender: self)
     }
     
-    @IBAction func playButtonTapped(sender: UIButton) {
-        self.performSegueWithIdentifier("playScreenSegue", sender: self)
-    }
+//    @IBAction func playButtonTapped(sender: UIButton) {
+//        self.performSegueWithIdentifier("playScreenSegue", sender: self)
+//    }
     
     func get_data_from_url(url: String) {
         Alamofire.request(.GET, url)
@@ -75,12 +75,22 @@ class TrackListingsTableViewController: UITableViewController {
                 }
         }
     }
+
     
     func extractJSON(jsonData:NSData) {
         do {
             if let tracks_list = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? NSArray  {
                 for (var i = 0; i < tracks_list.count; i++ ) {
                     if let track_obj = tracks_list[i] as? NSDictionary {
+//                        let artworkUrlString = track_obj["stream_url"] as? String {
+//                            
+//                        }
+//                        getDataFromUrl() { (data, response, error) in
+//                            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//                                // guard let data = data where error == nil else { return }
+//                                let streamData = data
+//                            }
+//                        }
                         if let track_id = track_obj["id"] as? Int {
                             if let user_obj = track_obj["user"] as? NSDictionary {
                                 if let user = user_obj["username"] as? String {
@@ -90,7 +100,7 @@ class TrackListingsTableViewController: UITableViewController {
                                                 if let artwork_url = track_obj["artwork_url"] as? String {
                                                     if let stream_url = track_obj["stream_url"] as? String {
                                                         if let duration = track_obj["duration"] as? Int {
-                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url+"?client_id=331226404e6d7bc552199d8887d17537", duration: duration, durationClean: duration))
+                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url, artwork_data: nil, stream_url: stream_url+"?client_id=331226404e6d7bc552199d8887d17537", duration: duration, durationClean: duration))
                                                         }
                                                     }
                                                 }

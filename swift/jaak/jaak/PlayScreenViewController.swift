@@ -35,12 +35,11 @@ class PlayScreenViewController: UIViewController {
         playerLayer.frame = CGRectMake(0,0,10,10)
         self.view.layer.addSublayer(playerLayer)
         
+        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
+        self.artworkBGImageView.downloadedFrom(link: newArtworkUrl, contentMode: UIViewContentMode.Center)
+        
         self.trackNameTextLabel.text = self.selectedTrackObject.title
-        self.artistNameTextLabel.text = self.selectedTrackObject.user
-        
-//        self.artworkBGImageView.image = 
-        
-//        print(self.selectedTrackObject.stream_url!)
+        self.artistNameTextLabel.text = self.selectedTrackObject.user    
 
         player!.play()
         playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)

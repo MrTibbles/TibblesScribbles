@@ -25,13 +25,19 @@ func countElements(str: String) -> Int {
     return str.characters.count
 }
 
+func getDataFromUrl(url:String, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+    NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data, response, error) in
+        completion(data: data, response: response, error: error)
+    }.resume()
+}
+
 extension UIImageView {
     
     func downloadedFrom(link link:String, contentMode mode: UIViewContentMode) {
         guard
             let url = NSURL(string: link)
             else {return}
-        contentMode = mode
+//        contentMode = mode
         NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             guard
                 let httpURLResponse = response as? NSHTTPURLResponse where httpURLResponse.statusCode == 200,
@@ -43,6 +49,12 @@ extension UIImageView {
                 self.image = image
             }
         }).resume()
+    }
+    
+    func getDataFromUrl(url:String, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
     }
     
 }

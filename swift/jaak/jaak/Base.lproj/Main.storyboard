@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uUZ-rt-jcW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uUZ-rt-jcW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -270,7 +270,7 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6k-2y-TDI" id="TMu-yV-vrc">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="103" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="jaak-logo-50x23" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-ta-1mt">
@@ -352,13 +352,17 @@
                         <viewControllerLayoutGuide type="top" id="ygz-Li-JBQ"/>
                         <viewControllerLayoutGuide type="bottom" id="dpA-9S-Y34"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HpF-Hy-PMF">
+                    <view key="view" contentMode="scaleAspectFill" id="HpF-Hy-PMF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ij-Yu-t0U">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ij-Yu-t0U">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <view alpha="0.33000000000000002" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-re-3Bc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrI-dj-iRY">
                                 <rect key="frame" x="140" y="173" width="40" height="49"/>
                                 <state key="normal" image="play-icon.40x49"/>
@@ -379,10 +383,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BrI-dj-iRY" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" id="6BD-bg-8yw"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="leading" secondItem="4Ij-Yu-t0U" secondAttribute="leading" id="7MX-ZR-WiY"/>
                             <constraint firstItem="b5q-CO-DIF" firstAttribute="top" secondItem="ygz-Li-JBQ" secondAttribute="bottom" constant="246" id="7nR-IG-jIC"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="bottom" secondItem="4Ij-Yu-t0U" secondAttribute="bottom" id="F7C-Lk-UrF"/>
                             <constraint firstItem="nmG-3R-KaS" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" constant="5" id="H8X-ab-14g"/>
                             <constraint firstItem="b5q-CO-DIF" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" constant="5" id="JM5-ob-0cy"/>
                             <constraint firstItem="dpA-9S-Y34" firstAttribute="top" secondItem="nmG-3R-KaS" secondAttribute="bottom" constant="272" id="Nun-sp-wSi"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="leading" secondItem="HpF-Hy-PMF" secondAttribute="leadingMargin" constant="-16" id="U7W-di-FL2"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="top" secondItem="4Ij-Yu-t0U" secondAttribute="top" id="VUU-0d-oln"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="top" secondItem="ygz-Li-JBQ" secondAttribute="bottom" id="knS-cz-a7w"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="bottom" secondItem="dpA-9S-Y34" secondAttribute="top" id="sRt-dj-thG"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="trailing" secondItem="4Ij-Yu-t0U" secondAttribute="trailing" id="v2V-LE-iWs"/>
+                            <constraint firstItem="sHv-re-3Bc" firstAttribute="centerX" secondItem="BrI-dj-iRY" secondAttribute="centerX" id="yQy-UC-JwD"/>
                             <constraint firstItem="BrI-dj-iRY" firstAttribute="top" secondItem="ygz-Li-JBQ" secondAttribute="bottom" constant="173" id="zbo-8V-kW3"/>
                         </constraints>
                     </view>
@@ -390,7 +402,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="artistNameTextLabel" destination="nmG-3R-KaS" id="wNb-8y-2P4"/>
-                        <outlet property="artworkBackgroundImageView" destination="4Ij-Yu-t0U" id="Ezd-zi-sS4"/>
+                        <outlet property="artworkBGImageView" destination="4Ij-Yu-t0U" id="TGj-fE-oKm"/>
                         <outlet property="playButton" destination="BrI-dj-iRY" id="tHO-cN-b8h"/>
                         <outlet property="trackNameTextLabel" destination="b5q-CO-DIF" id="p5B-oj-FTk"/>
                         <segue destination="vPV-Cw-eUA" kind="unwind" identifier="PlayScreenSegueUnwind" unwindAction="returnFromSegueActions:" id="Bsi-0z-n5o"/>

@@ -20,14 +20,17 @@ class TrackCell: UITableViewCell {
     
     var track: TrackListing! {
         didSet {
+            let newArtworkUrl = track.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
+            artworkImageView.downloadedFrom(link: newArtworkUrl, contentMode: UIViewContentMode.Center)
+            
+            self.artistProfileImageView.downloadedFrom(link: track.user_profile!, contentMode: UIViewContentMode.Center)
+            self.artistProfileImageView.layer.cornerRadius = self.artistProfileImageView.frame.size.width/2
+            self.artistProfileImageView.layer.borderColor = UIColor(red:141/255.0, green:141/255.0, blue:141/255.0, alpha: 0.75).CGColor
+            self.artistProfileImageView.layer.borderWidth = 2.0
+            self.artistProfileImageView.clipsToBounds = true
+            
             trackNameLabel.text = track.title!.truncate(30)
             artistNameLabel.text = track.user
-            
-            //cannot assign to immutable expression of type CIImage - trying to send object
-            downloadImage(track.artwork_url!, targetElement: "artwork")
-            var artworkImage = artworkImageView.downloadedFrom(link: track.artwork_url!, contentMode: UIViewContentMode.ScaleToFill)
-            artworkImageView.image = artworkImageView.downloadedFrom(link: track.artwork_url!, contentMode: UIViewContentMode.ScaleToFill)
-            downloadImage(track.user_profile!, targetElement: "avatar")
         }
     }
     
@@ -44,7 +47,7 @@ class TrackCell: UITableViewCell {
                 guard let data = data where error == nil else { return }
                 
                 if targetElement == "artwork" {
-                    self.artworkImageView.image = UIImage(data: data)
+//                    self.artworkImageView.image = UIImage(data: data)                
                 } else {
                     self.artistProfileImageView.image = UIImage(data: data)
                     self.artistProfileImageView.layer.cornerRadius = self.artistProfileImageView.frame.size.width/2
