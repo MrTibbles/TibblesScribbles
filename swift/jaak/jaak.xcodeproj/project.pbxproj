@@ -17,7 +17,7 @@
 		B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B664427E1C184B0D008983B4 /* RegisterPageViewController.swift */; };
 		C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */; };
 		C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1D1C219400005F5D03 /* TrackListing.swift */; };
-		C5173C201C219546005F5D03 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1F1C219546005F5D03 /* SampleData.swift */; };
+		C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52483381C6A2A6F00BE8FD5 /* extensions.swift */; };
 		C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226161C21C06C00EA1F5B /* TrackCell.swift */; };
 		C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */; };
 		C59E9B321C47D6B5002709C6 /* PlayScreenCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E9B311C47D6B5002709C6 /* PlayScreenCustomSegue.swift */; };
@@ -42,7 +42,7 @@
 		C42DEE2E26757D4454A2B134 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = TrackListingsTableViewController.swift; sourceTree = "<group>"; };
 		C5173C1D1C219400005F5D03 /* TrackListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListing.swift; sourceTree = "<group>"; };
-		C5173C1F1C219546005F5D03 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		C52483381C6A2A6F00BE8FD5 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C56226161C21C06C00EA1F5B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
 		C59E9B311C47D6B5002709C6 /* PlayScreenCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenCustomSegue.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 				C5FF4E781C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift */,
 				C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */,
 				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
-				C5173C1F1C219546005F5D03 /* SampleData.swift */,
 				C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */,
 				C56226161C21C06C00EA1F5B /* TrackCell.swift */,
+				C52483381C6A2A6F00BE8FD5 /* extensions.swift */,
 				B66442711C18401D008983B4 /* Assets.xcassets */,
 				B66442731C18401D008983B4 /* LaunchScreen.storyboard */,
 				B66442761C18401D008983B4 /* Info.plist */,
@@ -248,9 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */,
-				C5173C201C219546005F5D03 /* SampleData.swift in Sources */,
 				C59E9B341C47D6DC002709C6 /* PlayScreenSegueUnwind.swift in Sources */,
 				B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */,
+				C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */,
 				B664426D1C18401D008983B4 /* CheckUserViewController.swift in Sources */,
 				B664426B1C18401D008983B4 /* AppDelegate.swift in Sources */,
 				B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */,

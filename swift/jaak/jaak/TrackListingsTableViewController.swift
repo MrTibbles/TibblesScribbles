@@ -56,7 +56,6 @@ class TrackListingsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(self.TrackListings[indexPath.row])
         self.performSegueWithIdentifier("playScreenSegue", sender: self)
     }
     
@@ -85,17 +84,19 @@ class TrackListingsTableViewController: UITableViewController {
                         if let track_id = track_obj["id"] as? Int {
                             if let user_obj = track_obj["user"] as? NSDictionary {
                                 if let user = user_obj["username"] as? String {
-                                    if let title = track_obj["title"] as? String {
-                                        if let playback_count = track_obj["playback_count"] as? Int {
-                                            if let artwork_url = track_obj["artwork_url"] as? String {
-                                                if let stream_url = track_obj["stream_url"] as? String {
-                                                    if let duration = track_obj["duration"] as? Int {
-                                                        TrackListings.append(TrackListing(id: track_id, user: user, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url, duration: duration, durationClean: duration))
+                                    if let user_profile = user_obj["avatar_url"] as? String {
+                                        if let title = track_obj["title"] as? String {
+                                            if let playback_count = track_obj["playback_count"] as? Int {
+                                                if let artwork_url = track_obj["artwork_url"] as? String {
+                                                    if let stream_url = track_obj["stream_url"] as? String {
+                                                        if let duration = track_obj["duration"] as? Int {
+                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url, stream_url: stream_url+"?client_id=331226404e6d7bc552199d8887d17537", duration: duration, durationClean: duration))
+                                                        }
                                                     }
                                                 }
+                                            } else {
+                                                print("no artwork for: \(track_obj["title"])")
                                             }
-                                        } else {
-                                            print("no artwork for: \(track_obj["title"])")
                                         }
                                     }
                                 }
@@ -123,6 +124,13 @@ class TrackListingsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let playScreenVC: PlayScreenViewController = segue.destinationViewController
+            as! PlayScreenViewController
+        
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            let selectedTrack = self.TrackListings[indexPath.row]
+            playScreenVC.selectedTrackObject = selectedTrack
+        }
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {

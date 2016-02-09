@@ -15,12 +15,17 @@ class TrackCell: UITableViewCell {
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var artistProfileImageView: UIImageView!
     
+    let borderWidth: CGFloat = 2.0
+//    let borderColour
+    
     var track: TrackListing! {
         didSet {
-            trackNameLabel.text = track.title
+            trackNameLabel.text = track.title!.truncate(30)
             artistNameLabel.text = track.user
             
-            downloadImage(track.artwork_url!)
+            //cannot assign to immutable expression of type CIImage - trying to send object
+            downloadImage(track.artwork_url!, targetElement: "artwork")
+            downloadImage(track.user_profile!, targetElement: "avatar")
         }
     }
     
@@ -30,12 +35,22 @@ class TrackCell: UITableViewCell {
             }.resume()
     }
     
-    func downloadImage(url: String){
+    func downloadImage(url: String, targetElement: String){
         let newUrl = url.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
         getDataFromUrl(newUrl) { (data, response, error)  in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
-                self.artworkImageView.image = UIImage(data: data)
+                
+                if targetElement == "artwork" {
+                    self.artworkImageView.image = UIImage(data: data)
+                } else {
+                    self.artistProfileImageView.image = UIImage(data: data)
+                    self.artistProfileImageView.layer.cornerRadius = self.artistProfileImageView.frame.size.width/2
+                    self.artistProfileImageView.layer.borderColor = UIColor(red:141/255.0, green:141/255.0, blue:141/255.0, alpha: 0.75).CGColor
+                    self.artistProfileImageView.layer.borderWidth = 2.0
+                    
+                    self.artistProfileImageView.clipsToBounds = true
+                }
             }
         }
     }

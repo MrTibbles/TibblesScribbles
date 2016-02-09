@@ -12,7 +12,7 @@ struct TrackListing {
     
     var id: Int? = 99
     var user: String? = "jaak"
-//    var userProfile: String? = "jaak"
+    var user_profile: String? = "jaak"
     var title: String? = "jaak"
     var playback_count: Int? = 99
     var artwork_url: String? = "jaak"
@@ -20,12 +20,15 @@ struct TrackListing {
     var duration: Int? = 99
     var durationClean: Int? = 99
     
-    init(id: Int?, user: String?, title: String?, playback_count: Int?, artwork_url: String?, stream_url: String?, duration: Int?, durationClean: Int?) {
+    init(id: Int?, user: String?, user_profile: String?, title: String?, playback_count: Int?, artwork_url: String?, stream_url: String?, duration: Int?, durationClean: Int?) {
         if id != nil {
             self.id = id!
         }
         if user != nil {
             self.user = user!
+        }
+        if user_profile != nil {
+            self.user_profile = user_profile!
         }
         if title != nil {
             self.title = title!
@@ -47,5 +50,11 @@ struct TrackListing {
         }
         
     }
+    
+    func getValue(key: String!) -> String {
+        print(self)
+        return key
+    }
+
     
 }

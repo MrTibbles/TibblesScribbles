@@ -11,7 +11,10 @@ import AVFoundation
 
 class PlayScreenViewController: UIViewController {
     
-    var player = AVPlayer()
+    var playerItem:AVPlayerItem?
+    var player:AVPlayer?
+    var selectedTrackObject:TrackListing!
+    @IBOutlet weak var playButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,22 +24,32 @@ class PlayScreenViewController: UIViewController {
         swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeGestureRecognizer)
         
-        self.setupPlayer()
+        let url = NSURL(string: self.selectedTrackObject.stream_url!)
+        playerItem = AVPlayerItem(URL: url!)
+        player = AVPlayer(playerItem: playerItem!)
+        
+        let playerLayer = AVPlayerLayer(player: player!)
+        playerLayer.frame = CGRectMake(0,0,10,10)
+        self.view.layer.addSublayer(playerLayer)
+        
+//        print(self.selectedTrackObject.stream_url!)
+
+        player!.play()
+        playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
     }
     
     func PlayScreenToTrackListings() {
         self.performSegueWithIdentifier("PlayScreenSegueUnwind", sender: self)
     }
     
-    func setupPlayer() {
-        
-        let url = NSURL(string: "https://api.soundcloud.com/tracks/244967972/stream")
-        let playerItem = AVPlayerItem(URL:url!)
-        self.player = AVPlayer(playerItem: playerItem)
-        
-        self.player.rate = 1.0
-        player.play()
-        
+    func playButtonTapped(sender: AnyObject) {
+        if player?.rate == 0 {
+            player!.play()
+//            playButton.setImage(UIImage(named: "bla-bla.png"), forState: UIControlState.Normal)
+        } else {
+            player!.pause()
+        }
     }
+
 
 }
