@@ -356,18 +356,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrI-dj-iRY">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Play"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ij-Yu-t0U">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrI-dj-iRY">
+                                <rect key="frame" x="140" y="173" width="40" height="49"/>
+                                <state key="normal" image="play-icon.40x49"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5q-CO-DIF">
+                                <rect key="frame" x="65" y="246" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmG-3R-KaS">
+                                <rect key="frame" x="90" y="275" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.65188301280000005" green="0.65188301280000005" blue="0.65188301280000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BrI-dj-iRY" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" id="6BD-bg-8yw"/>
+                            <constraint firstItem="b5q-CO-DIF" firstAttribute="top" secondItem="ygz-Li-JBQ" secondAttribute="bottom" constant="246" id="7nR-IG-jIC"/>
+                            <constraint firstItem="nmG-3R-KaS" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" constant="5" id="H8X-ab-14g"/>
+                            <constraint firstItem="b5q-CO-DIF" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" constant="5" id="JM5-ob-0cy"/>
+                            <constraint firstItem="dpA-9S-Y34" firstAttribute="top" secondItem="nmG-3R-KaS" secondAttribute="bottom" constant="272" id="Nun-sp-wSi"/>
+                            <constraint firstItem="BrI-dj-iRY" firstAttribute="top" secondItem="ygz-Li-JBQ" secondAttribute="bottom" constant="173" id="zbo-8V-kW3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qKd-D6-uag"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="artistNameTextLabel" destination="nmG-3R-KaS" id="wNb-8y-2P4"/>
+                        <outlet property="artworkBackgroundImageView" destination="4Ij-Yu-t0U" id="Ezd-zi-sS4"/>
                         <outlet property="playButton" destination="BrI-dj-iRY" id="tHO-cN-b8h"/>
+                        <outlet property="trackNameTextLabel" destination="b5q-CO-DIF" id="p5B-oj-FTk"/>
                         <segue destination="vPV-Cw-eUA" kind="unwind" identifier="PlayScreenSegueUnwind" unwindAction="returnFromSegueActions:" id="Bsi-0z-n5o"/>
                     </connections>
                 </viewController>
@@ -421,6 +446,7 @@
         <image name="camera-gradient-145x145" width="145" height="145"/>
         <image name="jaak-logo-50x23" width="50" height="23"/>
         <image name="jaak-logo-wht" width="157" height="66"/>
+        <image name="play-icon.40x49" width="40" height="49"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LqY-UX-LcH"/>

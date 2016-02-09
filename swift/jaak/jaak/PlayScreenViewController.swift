@@ -15,6 +15,9 @@ class PlayScreenViewController: UIViewController {
     var player:AVPlayer?
     var selectedTrackObject:TrackListing!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var trackNameTextLabel: UILabel!
+    @IBOutlet weak var artistNameTextLabel: UILabel!
+    @IBOutlet weak var artworkBGImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,11 @@ class PlayScreenViewController: UIViewController {
         let playerLayer = AVPlayerLayer(player: player!)
         playerLayer.frame = CGRectMake(0,0,10,10)
         self.view.layer.addSublayer(playerLayer)
+        
+        self.trackNameTextLabel.text = self.selectedTrackObject.title
+        self.artistNameTextLabel.text = self.selectedTrackObject.user
+        
+//        self.artworkBGImageView.image = 
         
 //        print(self.selectedTrackObject.stream_url!)
 

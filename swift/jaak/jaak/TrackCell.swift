@@ -25,6 +25,8 @@ class TrackCell: UITableViewCell {
             
             //cannot assign to immutable expression of type CIImage - trying to send object
             downloadImage(track.artwork_url!, targetElement: "artwork")
+            var artworkImage = artworkImageView.downloadedFrom(link: track.artwork_url!, contentMode: UIViewContentMode.ScaleToFill)
+            artworkImageView.image = artworkImageView.downloadedFrom(link: track.artwork_url!, contentMode: UIViewContentMode.ScaleToFill)
             downloadImage(track.user_profile!, targetElement: "avatar")
         }
     }
