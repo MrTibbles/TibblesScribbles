@@ -1,25 +1,12 @@
 <?php
 
-$firstName = $_REQUEST["firstName"];
-$targetDir = "uploads/avatars/";
-// $targetDir = "/Users/freddie.tibbles/sites/TibblesScribbles/jaak-reg/uploads/avatars/";
+// $targetDir = "uploads/avatar";
+$targetDir = "/Users/freddie.tibbles/sites/TibblesScribbles/jaak-reg/uploads/avatars/";
 
-if (!file_exists($targetDir)) {
-  mkdir($targetDir, 777, true);
-}
-
-// echo json_encode([
-//   "full" => $_FILES["newfile"],
-//   "Name" => $_FILES["newfile"]["name"],
-//   "tmp" => $_FILES["newfile"]["tmp_name"],
-//   "error" => $_FILES["newfile"]["error"],
-//   "name" => $firstName
-// ]);
-
-echo json_encode([
-  "full" => $_REQUEST["firstName"]
-])
-die();
+// if (!file_exists($targetDir)) {
+//   echo "directory did not exist";
+//   mkdir($targetDir, 777, true);
+// }
 
 $targetDir = $targetDir . "/" . basename($_FILES["file"]["name"]);
 

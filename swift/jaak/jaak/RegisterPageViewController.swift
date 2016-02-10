@@ -134,86 +134,50 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
     
     func imageUploadRequest() {
         
-//        let imageUploadUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/imageUpload.php")
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
-        let parameters = ["task": "newImage"]
-        let urlRequest = urlRequestWithComponents("http://tibblesscribbles.com/jaak-reg/imageUpload.php", parameters: parameters, imageData: imageData!)
-        
-        Alamofire.upload(urlRequest.0, data: urlRequest.1)
-            .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
-                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
-            }
-            .responseJSON {  response in
-                print("REQUEST \(response.request)")
-                print("RESPONSE \(response.response)")
-                print("JSON \(response.data)")
-                print("ERROR \(response.result)")
+        let imageUrl = NSURL(string: "http://jaak.reg/imageUpload.php")
+        let parameters = [
+            "file": imageData
+        ]
+
+        Alamofire.upload(.POST, imageUrl!, data: imageData!)
+            .response { request, response, data, error in
+                print(response)
+                
         }
         
     }
     
     @IBAction func registerUser(sender: UIButton) {
         
-//        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
-//        let userFirstname = firstnameTextField.text!
-//        let userLastname = lastnameTextField.text!
-//        let userPassword = passwordTextField.text!
-//        let groupName = randomStringWithLength(32)
+        let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
+        let userFirstname = firstnameTextField.text!
+        let userLastname = lastnameTextField.text!
+        let userPassword = passwordTextField.text!
+        let groupName = randomStringWithLength(32)
         
-        dispatch_async(dispatch_get_main_queue(), {
-            self.imageUploadRequest()
-        })
+        let userParameters = [
+            "email": userEmail,
+            "firstname": userFirstname,
+            "lastname": userLastname,
+            "password": userPassword,
+            "group_name": groupName
+        ]
         
-//        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/userRegister.php")
-//        let request = NSMutableURLRequest(URL: regUrl!)
-//        request.HTTPMethod = "POST"
-//        
-//        let postString = "email=\(userEmail)&password=\(userPassword)&group_name=\(groupName)&firstname=\(userFirstname)&lastname=\(userLastname)"
-//        
-//        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-//        
-//        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-//            data, response, error in
-//            
-//            if error != nil {
-//                print("error=\(error)")
-//                return
-//            }
-//            
-//            print("*** response data = \(response)")
-//            
-//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//            print("*** response data=\(responseString)")
-//            
-////            var jsonResponse = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
-//            
-//            do {
-//                if let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-//                    print(jsonResponse)
-//                }
-//            } catch let error as NSError {
-//                print(error.localizedDescription)
-//            }
-//            
-////            if let parseJSON = jsonResponse {
-////                var emailValue = parseJSON["email"] as? String
-////                var groupNameValue = parseJSON["group_name"]
-////                var firstNameValue = parseJSON["firstname"] as? String
-////                var lastNameValue = parseJSON["lastname"] as? String
-////                
-////                print("Email:\(emailValue), Groupname:\(groupNameValue), Firstname:\(firstNameValue), Lastname:\(lastNameValue)")
-////            }
-//        }
-//        
-//        task.resume()
+        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/userRegister.php")
+        
+        Alamofire.request(.POST, regUrl!, parameters: userParameters)
+            .response { request, response, data, error in
+                do {
+                    if data != nil && error == nil {
+                        print(response)
+                        self.imageUploadRequest()
+                    }
+                } catch let error as NSError  {
+                    print(error)
+                }
+        }
         
     }
     
-}
-
-extension NSMutableData {
-    func appendString(string: String) {
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        appendData(data!)
-    }
 }
