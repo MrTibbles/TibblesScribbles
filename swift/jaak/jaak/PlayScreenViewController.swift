@@ -52,9 +52,10 @@ class PlayScreenViewController: UIViewController {
     func playButtonTapped(sender: AnyObject) {
         if player?.rate == 0 {
             player!.play()
-//            playButton.setImage(UIImage(named: "bla-bla.png"), forState: UIControlState.Normal)
+            playButton.setImage(UIImage(named: "pause-icon.40x49"), forState: UIControlState.Normal)
         } else {
             player!.pause()
+            playButton.setImage(UIImage(named: "play-icon.40x49"), forState: UIControlState.Normal)
         }
     }
 

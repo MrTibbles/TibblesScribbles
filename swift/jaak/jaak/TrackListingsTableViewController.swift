@@ -14,6 +14,9 @@ class TrackListingsTableViewController: UITableViewController {
 
     var TrackListings:[TrackListing] = []
 
+    @IBOutlet weak var plusBarButton: UIButton!
+    @IBOutlet weak var equaliserBarButton: UIButton!
+    
     @IBAction func refreshTrackListings(sender: AnyObject) {
 //        get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
         print("Updating feed")
