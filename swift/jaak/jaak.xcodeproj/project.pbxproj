@@ -20,6 +20,7 @@
 		C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52483381C6A2A6F00BE8FD5 /* extensions.swift */; };
 		C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226161C21C06C00EA1F5B /* TrackCell.swift */; };
 		C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */; };
+		C58057D51C6B7BFC00DDABDD /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58057D41C6B7BFC00DDABDD /* UserProfileViewController.swift */; };
 		C59E9B321C47D6B5002709C6 /* PlayScreenCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E9B311C47D6B5002709C6 /* PlayScreenCustomSegue.swift */; };
 		C59E9B341C47D6DC002709C6 /* PlayScreenSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E9B331C47D6DC002709C6 /* PlayScreenSegueUnwind.swift */; };
 		C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */; };
@@ -45,6 +46,7 @@
 		C52483381C6A2A6F00BE8FD5 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C56226161C21C06C00EA1F5B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
+		C58057D41C6B7BFC00DDABDD /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		C59E9B311C47D6B5002709C6 /* PlayScreenCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenCustomSegue.swift; sourceTree = "<group>"; };
 		C59E9B331C47D6DC002709C6 /* PlayScreenSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenSegueUnwind.swift; sourceTree = "<group>"; };
 		C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckUserRegisterCustomSegue.swift; path = ../CheckUserRegisterCustomSegue.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				B664426C1C18401D008983B4 /* CheckUserViewController.swift */,
 				B664426E1C18401D008983B4 /* Main.storyboard */,
 				C59E9B311C47D6B5002709C6 /* PlayScreenCustomSegue.swift */,
+				C58057D41C6B7BFC00DDABDD /* UserProfileViewController.swift */,
 				C59E9B331C47D6DC002709C6 /* PlayScreenSegueUnwind.swift */,
 				C5FF4E7A1C231807005E8E65 /* CheckUserTrackListingsCustomSegue.swift */,
 				C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */,
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */,
+				C58057D51C6B7BFC00DDABDD /* UserProfileViewController.swift in Sources */,
 				C59E9B341C47D6DC002709C6 /* PlayScreenSegueUnwind.swift in Sources */,
 				B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */,
 				C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */,
