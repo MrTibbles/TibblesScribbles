@@ -155,6 +155,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         let userLastname = lastnameTextField.text!
         let userPassword = passwordTextField.text!
         let groupName = randomStringWithLength(32)
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 1)
         
         let userParameters = [
             "email": userEmail,
@@ -164,14 +165,18 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             "group_name": groupName
         ]
         
-        let regUrl = NSURL(string: "http://tibblesscribbles.com/jaak-reg/userRegister.php")
+        NSUserDefaults.standardUserDefaults().setObject(imageData, forKey: "userProfileImage")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
         
         Alamofire.request(.POST, regUrl!, parameters: userParameters)
             .response { request, response, data, error in
                 do {
                     if data != nil && error == nil {
                         print(response)
-                        self.imageUploadRequest()
+                        //replace with NSUserDefaults
+//                        self.imageUploadRequest()
                     }
                 } catch let error as NSError  {
                     print(error)

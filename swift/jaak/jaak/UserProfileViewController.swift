@@ -22,7 +22,9 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         let background = CAGradientLayer().jaakGrdnt()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
+        let userProfileImage = NSUserDefaults.standardUserDefaults().objectForKey("userProfileImage")!
         
+        userProfileImageView.image = UIImage(data: NSData(data: userProfileImage as! NSData))
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width/2
         
         jaakCreditCountView.layer.cornerRadius = jaakCreditCountView.frame.size.width/14
