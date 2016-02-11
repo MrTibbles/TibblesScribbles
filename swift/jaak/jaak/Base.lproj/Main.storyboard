@@ -316,8 +316,8 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.14779829175864412" green="1" blue="0.79309884007249198" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sb3-3f-o3H">
-                                            <rect key="frame" x="10" y="25" width="50" height="50"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sb3-3f-o3H">
+                                            <rect key="frame" x="15" y="25" width="50" height="50"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzR-iC-lDp">
                                             <rect key="frame" x="75" y="52" width="35" height="15"/>
@@ -327,11 +327,15 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="sb3-3f-o3H" firstAttribute="centerY" secondItem="TMu-yV-vrc" secondAttribute="centerY" id="8Go-0E-Z9b"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="FzR-iC-lDp" secondAttribute="bottom" constant="25" id="FEN-de-Wfw"/>
                                         <constraint firstItem="oAq-Kd-q4Z" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="67" id="HkD-fY-Qkk"/>
                                         <constraint firstItem="FzR-iC-lDp" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="67" id="Hrh-jx-VMO"/>
                                         <constraint firstItem="oAq-Kd-q4Z" firstAttribute="top" secondItem="TMu-yV-vrc" secondAttribute="topMargin" constant="22" id="Zh1-fW-t9S"/>
+                                        <constraint firstItem="FzR-iC-lDp" firstAttribute="leading" secondItem="sb3-3f-o3H" secondAttribute="trailing" constant="10" id="fxk-jd-FdI"/>
+                                        <constraint firstItem="sb3-3f-o3H" firstAttribute="leading" secondItem="TMu-yV-vrc" secondAttribute="leadingMargin" constant="7" id="lxk-TJ-9QT"/>
                                         <constraint firstItem="tjp-ta-1mt" firstAttribute="centerY" secondItem="TMu-yV-vrc" secondAttribute="centerY" constant="1.25" id="sJA-5e-plh"/>
+                                        <constraint firstItem="sb3-3f-o3H" firstAttribute="top" secondItem="TMu-yV-vrc" secondAttribute="topMargin" constant="17" id="uHa-6G-EZZ"/>
                                         <constraint firstItem="tjp-ta-1mt" firstAttribute="centerX" secondItem="TMu-yV-vrc" secondAttribute="centerX" id="wJZ-4s-zJ8"/>
                                     </constraints>
                                 </tableViewCellContentView>

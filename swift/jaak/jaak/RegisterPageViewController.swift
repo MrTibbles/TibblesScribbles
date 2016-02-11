@@ -175,8 +175,8 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
                 do {
                     if data != nil && error == nil {
                         print(response)
-                        //replace with NSUserDefaults
-//                        self.imageUploadRequest()
+                        NSUserDefaults.standardUserDefaults().setObject(userParameters, forKey: "userObject")
+                        NSUserDefaults.standardUserDefaults().synchronize()
                     }
                 } catch let error as NSError  {
                     print(error)
