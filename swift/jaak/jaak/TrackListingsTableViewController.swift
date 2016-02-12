@@ -33,6 +33,8 @@ class TrackListingsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         if let userProfileImage = NSUserDefaults.standardUserDefaults().objectForKey("userProfileImage") {
             self.userProfileImageView.image = UIImage(data: userProfileImage as! NSData)
+            self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.frame.size.width/2
+            self.userProfileImageView.clipsToBounds = true
         }
         
         get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")

@@ -282,18 +282,22 @@
                                     <state key="normal" image="plus-icon.16x17"/>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cAQ-Pz-LfY">
-                                    <rect key="frame" x="15" y="16" width="40" height="40"/>
+                                    <rect key="frame" x="15" y="24" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="eX8-ig-c7y"/>
+                                        <constraint firstAttribute="width" constant="30" id="nob-Ih-jrI"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="AIO-d9-Vdd" firstAttribute="centerX" secondItem="wCv-6m-bSJ" secondAttribute="centerX" id="69o-hh-zdy"/>
-                                <constraint firstAttribute="bottom" secondItem="cAQ-Pz-LfY" secondAttribute="bottom" constant="4" id="GVe-Dv-ox0"/>
+                                <constraint firstAttribute="bottom" secondItem="cAQ-Pz-LfY" secondAttribute="bottom" constant="6" id="GVe-Dv-ox0"/>
                                 <constraint firstItem="EaP-5L-ac5" firstAttribute="top" secondItem="wCv-6m-bSJ" secondAttribute="top" constant="26" id="JGT-Ct-gQq"/>
                                 <constraint firstAttribute="trailing" secondItem="F5r-PC-a5p" secondAttribute="trailing" constant="8" id="Nk0-ZA-j50"/>
-                                <constraint firstItem="cAQ-Pz-LfY" firstAttribute="top" secondItem="wCv-6m-bSJ" secondAttribute="top" constant="16" id="SNf-ct-N7e"/>
+                                <constraint firstItem="cAQ-Pz-LfY" firstAttribute="top" secondItem="wCv-6m-bSJ" secondAttribute="top" constant="24" id="SNf-ct-N7e"/>
                                 <constraint firstItem="F5r-PC-a5p" firstAttribute="top" secondItem="wCv-6m-bSJ" secondAttribute="top" constant="26" id="Yck-t2-Rh7"/>
-                                <constraint firstItem="AIO-d9-Vdd" firstAttribute="leading" secondItem="cAQ-Pz-LfY" secondAttribute="trailing" constant="72" id="rsU-LY-mqr"/>
+                                <constraint firstItem="AIO-d9-Vdd" firstAttribute="leading" secondItem="cAQ-Pz-LfY" secondAttribute="trailing" constant="82" id="rsU-LY-mqr"/>
                                 <constraint firstItem="cAQ-Pz-LfY" firstAttribute="leading" secondItem="wCv-6m-bSJ" secondAttribute="leading" constant="15" id="szm-AE-ami"/>
                                 <constraint firstItem="AIO-d9-Vdd" firstAttribute="top" secondItem="wCv-6m-bSJ" secondAttribute="top" constant="22" id="wEW-lh-gha"/>
                                 <constraint firstItem="F5r-PC-a5p" firstAttribute="leading" secondItem="EaP-5L-ac5" secondAttribute="trailing" constant="17" id="yjd-3x-LOw"/>
