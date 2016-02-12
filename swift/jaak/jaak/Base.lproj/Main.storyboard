@@ -138,21 +138,21 @@
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="asW-57-kis">
                                 <rect key="frame" x="16" y="388" width="288" height="160"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-kM-8hC">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-kM-8hC">
                                         <rect key="frame" x="5" y="25" width="278" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Xi4-kM-8hC" secondAttribute="height" multiplier="136:15" id="9X4-ec-VH6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g12-R2-zyg">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="g12-R2-zyg">
                                         <rect key="frame" x="5" y="60" width="278" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g12-R2-zyg" secondAttribute="height" multiplier="136:15" id="KQx-IT-1yw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVc-9Q-L2H">
                                         <rect key="frame" x="5" y="96" width="278" height="31"/>
@@ -160,7 +160,7 @@
                                             <constraint firstAttribute="width" secondItem="NVc-9Q-L2H" secondAttribute="height" multiplier="136:15" id="gy9-MS-muT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFV-aq-eXL">
                                         <rect key="frame" x="237" y="95" width="46" height="30"/>
@@ -205,6 +205,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="J9I-5N-xkE" secondAttribute="trailing" constant="39" id="0ms-vs-Zbx"/>
                             <constraint firstItem="0Hm-fw-j38" firstAttribute="top" secondItem="Xbn-49-OKc" secondAttribute="bottom" constant="5" id="Dag-mW-Zri"/>
@@ -238,6 +239,9 @@
                                 <exclude reference="e5m-Mu-PYq"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3nZ-YC-CY0" appends="YES" id="wyN-x6-VPR"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="1s9-3G-WoE"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -255,6 +259,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hC1-va-RMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zgx-1m-O82" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="3nZ-YC-CY0">
+                    <connections>
+                        <action selector="viewTapped:" destination="Gca-ND-gDM" id="V7T-HB-elR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1451" y="107"/>
         </scene>
@@ -276,6 +285,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5r-PC-a5p">
                                     <rect key="frame" x="291" y="26" width="21" height="22"/>
                                     <state key="normal" image="equaliser-icon.21x17"/>
+                                    <connections>
+                                        <action selector="showCurrentPlaying:" destination="uMw-H7-rvQ" eventType="touchUpInside" id="N2a-fb-TbT"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaP-5L-ac5">
                                     <rect key="frame" x="258" y="26" width="16" height="22"/>

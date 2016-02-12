@@ -8,6 +8,8 @@
 
 import UIKit
 
+let jaakDomain = "tibblesscribbles.com/jaak-reg"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

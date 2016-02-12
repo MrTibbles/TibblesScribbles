@@ -9,10 +9,12 @@
 import UIKit
 import AVFoundation
 
+var playerItem:AVPlayerItem?
+var player:AVPlayer?
+
 class PlayScreenViewController: UIViewController {
     
-    var playerItem:AVPlayerItem?
-    var player:AVPlayer?
+    
     var selectedTrackObject:TrackListing!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var trackNameTextLabel: UILabel!
@@ -21,6 +23,19 @@ class PlayScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         
         
         let swipeGestureRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "PlayScreenToTrackListings")

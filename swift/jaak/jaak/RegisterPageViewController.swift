@@ -118,13 +118,12 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         NSUserDefaults.standardUserDefaults().setObject(imageData, forKey: "userProfileImage")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        let regUrl = NSURL(string: "http://jaak.reg/userRegister.php")
+        let regUrl = NSURL(string: "http://\(jaakDomain)/userRegister.php")
         
         Alamofire.request(.POST, regUrl!, parameters: userParameters)
             .response { request, response, data, error in
                 do {
                     if data != nil && error == nil {
-                        print(response)
                         NSUserDefaults.standardUserDefaults().setObject(userParameters, forKey: "userObject")
                         NSUserDefaults.standardUserDefaults().synchronize()
                     }

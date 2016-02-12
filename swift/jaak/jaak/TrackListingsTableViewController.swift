@@ -17,11 +17,6 @@ class TrackListingsTableViewController: UITableViewController {
     @IBOutlet weak var plusBarButton: UIButton!
     @IBOutlet weak var equaliserBarButton: UIButton!
     @IBOutlet weak var userProfileImageView: UIImageView!
-    
-    @IBAction func refreshTrackListings(sender: AnyObject) {
-//        get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
-        print("Updating feed")
-    }
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,10 +62,6 @@ class TrackListingsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("playScreenSegue", sender: self)
     }
-    
-//    @IBAction func playButtonTapped(sender: UIButton) {
-//        self.performSegueWithIdentifier("playScreenSegue", sender: self)
-//    }
     
     func get_data_from_url(url: String) {
         Alamofire.request(.GET, url)
@@ -153,7 +144,7 @@ class TrackListingsTableViewController: UITableViewController {
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
-        
+//        if
     }
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue? {
@@ -168,6 +159,14 @@ class TrackListingsTableViewController: UITableViewController {
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
     }
     
+    @IBAction func refreshTrackListings(sender: AnyObject) {
+        //        get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
+        print("Updating feed")
+    }
+       
+    @IBAction func showCurrentPlaying(sender: AnyObject) {
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

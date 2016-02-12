@@ -34,8 +34,7 @@ class CheckUserViewController: UIViewController {
             displayAlertMsg("Please complete the form in order to continue")
             return
         }
-        
-        let regUrl = NSURL(string: "http://jaak.reg/checkUser.php")
+        let regUrl = NSURL(string: "http://\(jaakDomain)/checkUser.php")
 
         let userParameters = [
             "email": userEmail
