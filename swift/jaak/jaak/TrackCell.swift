@@ -20,8 +20,8 @@ class TrackCell: UITableViewCell {
     
     var track: TrackListing! {
         didSet {
-            let newArtworkUrl = track.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
-            artworkImageView.downloadedFrom(link: newArtworkUrl, contentMode: UIViewContentMode.Center)
+//            let newArtworkUrl = track.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
+            artworkImageView.downloadedFrom(link: track.artwork_url!, contentMode: UIViewContentMode.Center)
             
             self.artistProfileImageView.downloadedFrom(link: track.user_profile!, contentMode: UIViewContentMode.Center)
             self.artistProfileImageView.layer.cornerRadius = self.artistProfileImageView.frame.size.width/2

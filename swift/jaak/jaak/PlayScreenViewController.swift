@@ -55,8 +55,8 @@ class PlayScreenViewController: UIViewController {
         playerLayer.frame = CGRectMake(0,0,10,10)
         self.view.layer.addSublayer(playerLayer)
         
-        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
-        self.artworkBGImageView.downloadedFrom(link: newArtworkUrl, contentMode: UIViewContentMode.Center)
+//        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
+        self.artworkBGImageView.downloadedFrom(link: self.selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
         
         self.trackNameTextLabel.text = self.selectedTrackObject.title
         self.artistNameTextLabel.text = self.selectedTrackObject.user    
@@ -79,6 +79,8 @@ class PlayScreenViewController: UIViewController {
                 player!.play()
             case .RemoteControlPause:
                 player!.pause()
+            case .RemoteControlNextTrack:
+                self.goToNextTrack(self)
             default:break
         }
         
@@ -99,6 +101,10 @@ class PlayScreenViewController: UIViewController {
         }
     }
     
+    func goToNextTrack(sender: AnyObject) {
+//        let currentTrackIdx = TrackListings.indexOf("G")
+    }
+    
     func setTrackInfo() {
 //        
 //        commandCenter.playCommand.addTarget(self, action: "playButtonTapped")
@@ -106,11 +112,8 @@ class PlayScreenViewController: UIViewController {
         
         nowPlayingInfo[MPMediaItemPropertyArtist] = self.selectedTrackObject.user!
         nowPlayingInfo[MPMediaItemPropertyTitle] = self.selectedTrackObject.title!
-//        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
 //        nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: self.artworkBGImageView.downloadedFrom(link: newArtworkUrl, contentMode: UIViewContentMode.Center))
         
-//        for item in self.selectedTrackObject! {
-//            if item.commonKey != nil && item.value != nil {
 //                if item.commonKey  == "title" {
 //                    print(item.stringValue)
 //                    nowPlayingInfo[MPMediaItemPropertyTitle] = item.stringValue
@@ -133,8 +136,6 @@ class PlayScreenViewController: UIViewController {
 //                        print(image.description)
 //                    }
 //                }
-//            }
-//        }
         audioInfo.nowPlayingInfo = nowPlayingInfo
         
     }
