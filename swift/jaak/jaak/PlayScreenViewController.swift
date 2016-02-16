@@ -28,6 +28,8 @@ class PlayScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             do {
@@ -67,6 +69,22 @@ class PlayScreenViewController: UIViewController {
         self.setTrackInfo()
     }
     
+    override func remoteControlReceivedWithEvent(event: UIEvent?) { // *
+        let rc = event!.subtype
+        print("received remote control \(rc.rawValue)") // 101 = pause, 100 = play
+        switch rc {
+            case .RemoteControlTogglePlayPause:
+                self.playButtonTapped(self)
+            case .RemoteControlPlay:
+                player!.play()
+            case .RemoteControlPause:
+                player!.pause()
+            default:break
+        }
+        
+    }
+
+    
     func PlayScreenToTrackListings() {
         self.performSegueWithIdentifier("PlayScreenSegueUnwind", sender: self)
     }
@@ -82,9 +100,9 @@ class PlayScreenViewController: UIViewController {
     }
     
     func setTrackInfo() {
-        
-        commandCenter.playCommand.addTarget(self, action: "playButtonTapped")
-        commandCenter.pauseCommand.addTarget(self, action: "playButtonTapped")
+//        
+//        commandCenter.playCommand.addTarget(self, action: "playButtonTapped")
+//        commandCenter.pauseCommand.addTarget(self, action: "playButtonTapped")
         
         nowPlayingInfo[MPMediaItemPropertyArtist] = self.selectedTrackObject.user!
         nowPlayingInfo[MPMediaItemPropertyTitle] = self.selectedTrackObject.title!
