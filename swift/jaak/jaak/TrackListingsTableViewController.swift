@@ -53,7 +53,6 @@ class TrackListingsTableViewController: UITableViewController {
     //heightForRowAtIndexPath - varying height cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackListingCell", forIndexPath: indexPath) as! TrackCell
-        
         let track = TrackListings[indexPath.row]
         cell.track = track
         return cell
@@ -139,7 +138,7 @@ class TrackListingsTableViewController: UITableViewController {
         
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let selectedTrack = TrackListings[indexPath.row]
-            playScreenVC.selectedTrackObject = selectedTrack
+            selectedTrackObject = selectedTrack
         }
     }
     

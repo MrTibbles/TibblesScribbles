@@ -15,11 +15,11 @@ var player:AVPlayer?
 let audioInfo = MPNowPlayingInfoCenter.defaultCenter()
 let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
 var nowPlayingInfo:[String:AnyObject] = [:]
+var selectedTrackObject:TrackListing!
 
 class PlayScreenViewController: UIViewController {
     
     
-    var selectedTrackObject:TrackListing!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var trackNameTextLabel: UILabel!
     @IBOutlet weak var artistNameTextLabel: UILabel!
@@ -47,7 +47,7 @@ class PlayScreenViewController: UIViewController {
         swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeGestureRecognizer)
         
-        let url = NSURL(string: self.selectedTrackObject.stream_url!)
+        let url = NSURL(string: selectedTrackObject.stream_url!)
         playerItem = AVPlayerItem(URL: url!)
         player = AVPlayer(playerItem: playerItem!)
         
@@ -56,17 +56,24 @@ class PlayScreenViewController: UIViewController {
         self.view.layer.addSublayer(playerLayer)
         
 //        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
-        self.artworkBGImageView.downloadedFrom(link: self.selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
+//        print(self.selectedTrackObject.artwork_data)
+//        var artworkData:NSData? = nil
+        print(selectedTrackObject.artwork_url)
+        getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            //                                guard let data = data where error == nil else { return }
+                selectedTrackObject.artwork_data = data!
+                self.setTrackInfo()
+            }
+        }
+        self.artworkBGImageView.downloadedFrom(link: selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
         
-        self.trackNameTextLabel.text = self.selectedTrackObject.title
-        self.artistNameTextLabel.text = self.selectedTrackObject.user    
+        self.trackNameTextLabel.text = selectedTrackObject.title
+        self.artistNameTextLabel.text = selectedTrackObject.user
 
         player!.play()
         
         playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
-
-        
-        self.setTrackInfo()
     }
     
     override func remoteControlReceivedWithEvent(event: UIEvent?) { // *
@@ -109,10 +116,11 @@ class PlayScreenViewController: UIViewController {
 //        
 //        commandCenter.playCommand.addTarget(self, action: "playButtonTapped")
 //        commandCenter.pauseCommand.addTarget(self, action: "playButtonTapped")
+        let image = UIImage(data: selectedTrackObject.artwork_data!)
         
-        nowPlayingInfo[MPMediaItemPropertyArtist] = self.selectedTrackObject.user!
-        nowPlayingInfo[MPMediaItemPropertyTitle] = self.selectedTrackObject.title!
-//        nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: self.artworkBGImageView.downloadedFrom(link: newArtworkUrl, contentMode: UIViewContentMode.Center))
+        nowPlayingInfo[MPMediaItemPropertyArtist] = selectedTrackObject.user!
+        nowPlayingInfo[MPMediaItemPropertyTitle] = selectedTrackObject.title!
+        nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image!)
         
 //                if item.commonKey  == "title" {
 //                    print(item.stringValue)
