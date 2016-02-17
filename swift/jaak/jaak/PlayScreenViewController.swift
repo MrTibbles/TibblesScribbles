@@ -65,7 +65,6 @@ class PlayScreenViewController: UIViewController {
         
         player!.play()
         countDownTimer.start()
-//        trackDuration()
         
         playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
 
@@ -99,9 +98,14 @@ class PlayScreenViewController: UIViewController {
     }
     
     func trackDuration() {
+//        while self.countDownTimer.isValid() {
+//            print("g")
+//        }
+        let trackDuration = selectedTrackObject.durationRaw!
+        print(trackDuration)
         dispatch_async(dispatch_get_main_queue()) {
-            while self.countDownTimer.isValid() {
-                print("g")
+            for var index = 0; index < trackDuration; ++index {
+                print(index)
             }
         }
     }
@@ -132,10 +136,12 @@ class PlayScreenViewController: UIViewController {
         nowPlayingInfo[MPMediaItemPropertyArtist] = selectedTrackObject.user!
         nowPlayingInfo[MPMediaItemPropertyTitle] = selectedTrackObject.title!
         nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image!)
-        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 1
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 1 //to make the duration move maaaaan
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = NSTimeInterval(selectedTrackObject.durationClean!)
         
         audioInfo.nowPlayingInfo = nowPlayingInfo
+        
+        trackDuration()
     }
 
 

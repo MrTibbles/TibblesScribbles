@@ -19,15 +19,14 @@ class CountdownTimer {
     
     func start() {
         startTime = NSDate()
-        print(startTime)
     }
     
     func isValid() -> Bool {
         if (startTime != nil) {
             let timePassed: NSTimeInterval = -(startTime!.timeIntervalSinceNow)
             
-            print(time)
-            print(time - timePassed)
+//            print(time)
+//            print(time - timePassed)
             
             return timePassed < time
         }
