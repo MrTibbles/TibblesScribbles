@@ -59,10 +59,7 @@ extension UIImageView {
     
 }
 
-extension NSTimeInterval {
-    var minuteSecondMS: String {
-        return String(format:"%d:%02d.%03d", minute, second, millisecond)
-    }
+extension NSTimeInterval {    
     var minute: Int {
         return Int(self/60.0 % 60)
     }
@@ -71,6 +68,9 @@ extension NSTimeInterval {
     }
     var millisecond: Int {
         return Int(self*1000 % 1000 )
+    }
+    var minuteSecondMS: String {
+        return String(format:"%d:%02d.%03d", minute, second, millisecond)
     }
 }
 

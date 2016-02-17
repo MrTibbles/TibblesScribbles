@@ -24,6 +24,9 @@ class PlayScreenViewController: UIViewController {
     @IBOutlet weak var trackNameTextLabel: UILabel!
     @IBOutlet weak var artistNameTextLabel: UILabel!
     @IBOutlet weak var artworkBGImageView: UIImageView!
+    @IBOutlet weak var durationTextLabel: UILabel!
+    
+    var countDownTimer = CountdownTimer(countDownFrom: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,12 +55,17 @@ class PlayScreenViewController: UIViewController {
         player = AVPlayer(playerItem: playerItem!)
         
         let playerLayer = AVPlayerLayer(player: player!)
+        countDownTimer = CountdownTimer(countDownFrom: selectedTrackObject.durationClean!)
+        
         playerLayer.frame = CGRectMake(0,0,10,10)
         self.view.layer.addSublayer(playerLayer)
         self.trackNameTextLabel.text = selectedTrackObject.title
         self.artistNameTextLabel.text = selectedTrackObject.user
+        self.durationTextLabel.text = selectedTrackObject.durationString!
         
         player!.play()
+        countDownTimer.start()
+//        trackDuration()
         
         playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
 
@@ -70,23 +78,32 @@ class PlayScreenViewController: UIViewController {
             }
         }
 //        self.artworkBGImageView.downloadedFrom(link: selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
+        
     }
     
     override func remoteControlReceivedWithEvent(event: UIEvent?) { // *
         let rc = event!.subtype
-        print("received remote control \(rc.rawValue)") // 101 = pause, 100 = play
+        print("received remote control \(rc)") // 101 = pause, 100 = play
         switch rc {
             case .RemoteControlTogglePlayPause:
-                self.playButtonTapped(self)
+                playButtonTapped(self)
             case .RemoteControlPlay:
-                player!.play()
+                playButtonTapped(self)
             case .RemoteControlPause:
-                player!.pause()
+                playButtonTapped(self)
             case .RemoteControlNextTrack:
-                self.goToNextTrack(self)
+                goToNextTrack(self)
             default:break
         }
         
+    }
+    
+    func trackDuration() {
+        dispatch_async(dispatch_get_main_queue()) {
+            while self.countDownTimer.isValid() {
+                print("g")
+            }
+        }
     }
 
     
@@ -115,31 +132,10 @@ class PlayScreenViewController: UIViewController {
         nowPlayingInfo[MPMediaItemPropertyArtist] = selectedTrackObject.user!
         nowPlayingInfo[MPMediaItemPropertyTitle] = selectedTrackObject.title!
         nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image!)
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 1
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = NSTimeInterval(selectedTrackObject.durationClean!)
         
-//                if item.commonKey  == "title" {
-//                    print(item.stringValue)
-//                    nowPlayingInfo[MPMediaItemPropertyTitle] = item.stringValue
-//                }
-//                if item.commonKey   == "type" {
-//                    print(item.stringValue)
-//                    nowPlayingInfo[MPMediaItemPropertyGenre] = item.stringValue
-//                }
-//                if item.commonKey  == "albumName" {
-//                    print(item.stringValue)
-//                    nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = item.stringValue
-//                }
-//                if item.commonKey   == "artist" {
-//                    print(item.stringValue)
-//                    nowPlayingInfo[MPMediaItemPropertyArtist] = item.stringValue
-//                }
-//                if item.commonKey  == "artwork" {
-//                    if let image = UIImage(data: item.value as! NSData) {
-//                        nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image)
-//                        print(image.description)
-//                    }
-//                }
         audioInfo.nowPlayingInfo = nowPlayingInfo
-        
     }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uUZ-rt-jcW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uUZ-rt-jcW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -320,7 +320,7 @@
                                 <rect key="frame" x="0.0" y="110" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6k-2y-TDI" id="TMu-yV-vrc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="103" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="jaak-logo-50x23" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-ta-1mt">
@@ -526,15 +526,23 @@
                                 <color key="textColor" red="0.65188301280000005" green="0.65188301280000005" blue="0.65188301280000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-V1-avL">
+                                <rect key="frame" x="139" y="314" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BrI-dj-iRY" firstAttribute="centerX" secondItem="HpF-Hy-PMF" secondAttribute="centerX" id="6BD-bg-8yw"/>
                             <constraint firstItem="sHv-re-3Bc" firstAttribute="leading" secondItem="4Ij-Yu-t0U" secondAttribute="leading" id="7MX-ZR-WiY"/>
+                            <constraint firstItem="cXX-V1-avL" firstAttribute="centerX" secondItem="sHv-re-3Bc" secondAttribute="centerX" id="AZo-st-3Rb"/>
                             <constraint firstItem="sHv-re-3Bc" firstAttribute="bottom" secondItem="4Ij-Yu-t0U" secondAttribute="bottom" id="F7C-Lk-UrF"/>
                             <constraint firstItem="b5q-CO-DIF" firstAttribute="centerX" secondItem="BrI-dj-iRY" secondAttribute="centerX" id="FW2-U2-5eE"/>
                             <constraint firstItem="sHv-re-3Bc" firstAttribute="leading" secondItem="HpF-Hy-PMF" secondAttribute="leadingMargin" constant="-16" id="U7W-di-FL2"/>
                             <constraint firstItem="sHv-re-3Bc" firstAttribute="top" secondItem="4Ij-Yu-t0U" secondAttribute="top" id="VUU-0d-oln"/>
+                            <constraint firstItem="cXX-V1-avL" firstAttribute="top" secondItem="nmG-3R-KaS" secondAttribute="bottom" constant="18" id="W6h-EP-lwQ"/>
                             <constraint firstItem="nmG-3R-KaS" firstAttribute="top" secondItem="b5q-CO-DIF" secondAttribute="bottom" constant="8" id="eJ0-jk-xVi"/>
                             <constraint firstItem="nmG-3R-KaS" firstAttribute="leading" secondItem="b5q-CO-DIF" secondAttribute="leading" id="i01-O2-neG"/>
                             <constraint firstItem="sHv-re-3Bc" firstAttribute="top" secondItem="ygz-Li-JBQ" secondAttribute="bottom" id="knS-cz-a7w"/>
@@ -552,6 +560,7 @@
                     <connections>
                         <outlet property="artistNameTextLabel" destination="nmG-3R-KaS" id="wNb-8y-2P4"/>
                         <outlet property="artworkBGImageView" destination="4Ij-Yu-t0U" id="TGj-fE-oKm"/>
+                        <outlet property="durationTextLabel" destination="cXX-V1-avL" id="VQE-Hs-HrS"/>
                         <outlet property="playButton" destination="BrI-dj-iRY" id="tHO-cN-b8h"/>
                         <outlet property="trackNameTextLabel" destination="b5q-CO-DIF" id="p5B-oj-FTk"/>
                         <segue destination="vPV-Cw-eUA" kind="unwind" identifier="PlayScreenSegueUnwind" unwindAction="returnFromSegueActions:" id="Bsi-0z-n5o"/>

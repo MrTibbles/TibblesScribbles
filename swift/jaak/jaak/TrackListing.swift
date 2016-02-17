@@ -18,10 +18,11 @@ struct TrackListing {
     var artwork_url: String? = "jaak"
     var artwork_data:NSData? = nil
     var stream_url: String? = "jaak"
-    var duration: Int? = 0
-    var durationClean: NSNumber? = 0
+    var durationRaw: Int? = 0
+    var durationClean: Double? = 0.0
+    var durationString: String? = "0:0.00"
     
-    init(id: Int?, user: String?, user_profile: String?, title: String?, playback_count: Int?, artwork_url: String?, artwork_data: NSData?, stream_url: String?, duration: Int?, durationClean: NSNumber?) {
+    init(id: Int?, user: String?, user_profile: String?, title: String?, playback_count: Int?, artwork_url: String?, artwork_data: NSData?, stream_url: String?, durationRaw: Int?, durationClean: Double?, durationString: String?) {
         if id != nil {
             self.id = id!
         }
@@ -46,15 +47,15 @@ struct TrackListing {
         if stream_url != nil {
             self.stream_url = stream_url!+"?client_id=13c08d059109e6e6e7144bef8e8d82ba"
         }
-        if duration != nil {
-            self.duration = duration!
+        if durationRaw != nil {
+            self.durationRaw = durationRaw!
         }
-        if duration != nil {
-            let formatted = duration!.msToSeconds.minuteSecondMS
-            if let number = Int(formatted) {
-                self.durationClean = NSNumber(integer: number)
-                print(self.durationClean)
-            }
+        if durationClean != nil {
+            self.durationClean = durationRaw!.msToSeconds
+        }
+        if durationRaw != nil {
+            let formatted = durationRaw?.msToSeconds.minuteSecondMS
+            self.durationString = formatted!
         }
         
     }

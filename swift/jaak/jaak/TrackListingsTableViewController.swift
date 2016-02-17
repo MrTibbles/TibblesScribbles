@@ -99,7 +99,7 @@ class TrackListingsTableViewController: UITableViewController {
                                                 if let artwork_url = track_obj["artwork_url"] as? String {
                                                     if let stream_url = track_obj["stream_url"] as? String {
                                                         if let duration = track_obj["duration"] as? Int {
-                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url, artwork_data: nil, stream_url: stream_url, duration: duration, durationClean: duration))
+                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url, artwork_data: nil, stream_url: stream_url, durationRaw: duration, durationClean: 0.0, durationString: ""))
                                                         }
                                                     }
                                                 }

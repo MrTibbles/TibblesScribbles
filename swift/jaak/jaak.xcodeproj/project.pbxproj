@@ -18,6 +18,7 @@
 		C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */; };
 		C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1D1C219400005F5D03 /* TrackListing.swift */; };
 		C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52483381C6A2A6F00BE8FD5 /* extensions.swift */; };
+		C55AE9DF1C749C6D00EB7DDC /* utilityClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */; };
 		C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226161C21C06C00EA1F5B /* TrackCell.swift */; };
 		C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */; };
 		C58057D51C6B7BFC00DDABDD /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58057D41C6B7BFC00DDABDD /* UserProfileViewController.swift */; };
@@ -44,6 +45,7 @@
 		C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = TrackListingsTableViewController.swift; sourceTree = "<group>"; };
 		C5173C1D1C219400005F5D03 /* TrackListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListing.swift; sourceTree = "<group>"; };
 		C52483381C6A2A6F00BE8FD5 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilityClasses.swift; sourceTree = "<group>"; };
 		C56226161C21C06C00EA1F5B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
 		C572CB321C6E3289004E8537 /* jaak.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = jaak.entitlements; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */,
 				C56226161C21C06C00EA1F5B /* TrackCell.swift */,
 				C52483381C6A2A6F00BE8FD5 /* extensions.swift */,
+				C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */,
 				B66442711C18401D008983B4 /* Assets.xcassets */,
 				B66442731C18401D008983B4 /* LaunchScreen.storyboard */,
 				B66442761C18401D008983B4 /* Info.plist */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */,
+				C55AE9DF1C749C6D00EB7DDC /* utilityClasses.swift in Sources */,
 				C58057D51C6B7BFC00DDABDD /* UserProfileViewController.swift in Sources */,
 				C59E9B341C47D6DC002709C6 /* PlayScreenSegueUnwind.swift in Sources */,
 				B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */,
