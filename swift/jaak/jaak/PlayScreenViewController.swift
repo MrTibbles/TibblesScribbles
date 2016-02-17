@@ -58,15 +58,15 @@ class PlayScreenViewController: UIViewController {
 //        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
 //        print(self.selectedTrackObject.artwork_data)
 //        var artworkData:NSData? = nil
-        print(selectedTrackObject.artwork_url)
         getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                             //                                guard let data = data where error == nil else { return }
                 selectedTrackObject.artwork_data = data!
+                self.artworkBGImageView.image = UIImage(data: data!)
                 self.setTrackInfo()
             }
         }
-        self.artworkBGImageView.downloadedFrom(link: selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
+//        self.artworkBGImageView.downloadedFrom(link: selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
         
         self.trackNameTextLabel.text = selectedTrackObject.title
         self.artistNameTextLabel.text = selectedTrackObject.user
@@ -113,9 +113,7 @@ class PlayScreenViewController: UIViewController {
     }
     
     func setTrackInfo() {
-//        
-//        commandCenter.playCommand.addTarget(self, action: "playButtonTapped")
-//        commandCenter.pauseCommand.addTarget(self, action: "playButtonTapped")
+
         let image = UIImage(data: selectedTrackObject.artwork_data!)
         
         nowPlayingInfo[MPMediaItemPropertyArtist] = selectedTrackObject.user!
