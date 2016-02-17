@@ -54,10 +54,13 @@ class PlayScreenViewController: UIViewController {
         let playerLayer = AVPlayerLayer(player: player!)
         playerLayer.frame = CGRectMake(0,0,10,10)
         self.view.layer.addSublayer(playerLayer)
+        self.trackNameTextLabel.text = selectedTrackObject.title
+        self.artistNameTextLabel.text = selectedTrackObject.user
         
-//        let newArtworkUrl = self.selectedTrackObject.artwork_url!.stringByReplacingOccurrencesOfString("large", withString: "t500x500")
-//        print(self.selectedTrackObject.artwork_data)
-//        var artworkData:NSData? = nil
+        player!.play()
+        
+        playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
+
         getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                             //                                guard let data = data where error == nil else { return }
@@ -67,13 +70,6 @@ class PlayScreenViewController: UIViewController {
             }
         }
 //        self.artworkBGImageView.downloadedFrom(link: selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
-        
-        self.trackNameTextLabel.text = selectedTrackObject.title
-        self.artistNameTextLabel.text = selectedTrackObject.user
-
-        player!.play()
-        
-        playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
     }
     
     override func remoteControlReceivedWithEvent(event: UIEvent?) { // *

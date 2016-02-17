@@ -9,6 +9,7 @@
 import UIKit
 
 let jaakDomain = "tibblesscribbles.com/jaak-reg"
+let scUrl = "https://api.soundcloud.com/users/149454089/favorites?client_id=13c08d059109e6e6e7144bef8e8d82ba"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

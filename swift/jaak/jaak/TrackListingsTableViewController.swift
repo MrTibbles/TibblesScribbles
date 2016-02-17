@@ -32,7 +32,7 @@ class TrackListingsTableViewController: UITableViewController {
             self.userProfileImageView.clipsToBounds = true
         }
         
-        get_data_from_url("https://api.soundcloud.com/users/149454089/favorites?client_id=331226404e6d7bc552199d8887d17537")
+        get_data_from_url(scUrl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,7 +99,7 @@ class TrackListingsTableViewController: UITableViewController {
                                                 if let artwork_url = track_obj["artwork_url"] as? String {
                                                     if let stream_url = track_obj["stream_url"] as? String {
                                                         if let duration = track_obj["duration"] as? Int {
-                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url.stringByReplacingOccurrencesOfString("large", withString: "t500x500"), artwork_data: nil, stream_url: stream_url+"?client_id=331226404e6d7bc552199d8887d17537", duration: duration, durationClean: duration))
+                                                            TrackListings.append(TrackListing(id: track_id, user: user, user_profile: user_profile, title: title, playback_count: playback_count, artwork_url: artwork_url, artwork_data: nil, stream_url: stream_url, duration: duration, durationClean: duration))
                                                         }
                                                     }
                                                 }
