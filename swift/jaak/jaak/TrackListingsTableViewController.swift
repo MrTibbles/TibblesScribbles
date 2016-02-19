@@ -17,6 +17,7 @@ class TrackListingsTableViewController: UITableViewController {
     @IBOutlet weak var plusBarButton: UIButton!
     @IBOutlet weak var equaliserBarButton: UIButton!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var userNameButton: UIButton!
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,17 +134,19 @@ class TrackListingsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let playScreenVC: PlayScreenViewController = segue.destinationViewController
-            as! PlayScreenViewController
+        if segue.identifier! == "playScreenSegue" {
+            let playScreenVC: PlayScreenViewController = segue.destinationViewController
+                as! PlayScreenViewController
         
-        if let indexPath = self.tableView.indexPathForSelectedRow {
-            let selectedTrack = TrackListings[indexPath.row]
-            selectedTrackObject = selectedTrack
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let selectedTrack = TrackListings[indexPath.row]
+                selectedTrackObject = selectedTrack
+            }
         }
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
-//        if
+        print(sender)
     }
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue? {
@@ -167,6 +170,9 @@ class TrackListingsTableViewController: UITableViewController {
         
     }
 
+    @IBAction func userProfileButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("userProfileImageSegue", sender: self)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

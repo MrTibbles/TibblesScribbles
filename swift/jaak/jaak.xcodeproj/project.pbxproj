@@ -18,6 +18,8 @@
 		C5173C1C1C2193A2005F5D03 /* TrackListingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */; };
 		C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5173C1D1C219400005F5D03 /* TrackListing.swift */; };
 		C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52483381C6A2A6F00BE8FD5 /* extensions.swift */; };
+		C53FD1A81C7768F8006472BB /* UserProfileImageCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FD1A71C7768F8006472BB /* UserProfileImageCustomSegue.swift */; };
+		C53FD1AA1C777DCB006472BB /* UserProfileImageUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FD1A91C777DCB006472BB /* UserProfileImageUnwindSegue.swift */; };
 		C55AE9DF1C749C6D00EB7DDC /* utilityClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */; };
 		C56226171C21C06C00EA1F5B /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226161C21C06C00EA1F5B /* TrackCell.swift */; };
 		C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */; };
@@ -45,6 +47,8 @@
 		C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = TrackListingsTableViewController.swift; sourceTree = "<group>"; };
 		C5173C1D1C219400005F5D03 /* TrackListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListing.swift; sourceTree = "<group>"; };
 		C52483381C6A2A6F00BE8FD5 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		C53FD1A71C7768F8006472BB /* UserProfileImageCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileImageCustomSegue.swift; sourceTree = "<group>"; };
+		C53FD1A91C777DCB006472BB /* UserProfileImageUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileImageUnwindSegue.swift; sourceTree = "<group>"; };
 		C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilityClasses.swift; sourceTree = "<group>"; };
 		C56226161C21C06C00EA1F5B /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScreenViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				B664426A1C18401D008983B4 /* AppDelegate.swift */,
 				B664426C1C18401D008983B4 /* CheckUserViewController.swift */,
 				B664426E1C18401D008983B4 /* Main.storyboard */,
+				C53FD1A91C777DCB006472BB /* UserProfileImageUnwindSegue.swift */,
+				C53FD1A71C7768F8006472BB /* UserProfileImageCustomSegue.swift */,
 				C59E9B311C47D6B5002709C6 /* PlayScreenCustomSegue.swift */,
 				C58057D41C6B7BFC00DDABDD /* UserProfileViewController.swift */,
 				C59E9B331C47D6DC002709C6 /* PlayScreenSegueUnwind.swift */,
@@ -266,6 +272,7 @@
 				C5173C1E1C219400005F5D03 /* TrackListing.swift in Sources */,
 				C55AE9DF1C749C6D00EB7DDC /* utilityClasses.swift in Sources */,
 				C58057D51C6B7BFC00DDABDD /* UserProfileViewController.swift in Sources */,
+				C53FD1A81C7768F8006472BB /* UserProfileImageCustomSegue.swift in Sources */,
 				C59E9B341C47D6DC002709C6 /* PlayScreenSegueUnwind.swift in Sources */,
 				B664427F1C184B0D008983B4 /* RegisterPageViewController.swift in Sources */,
 				C52483391C6A2A6F00BE8FD5 /* extensions.swift in Sources */,
@@ -273,6 +280,7 @@
 				B664426B1C18401D008983B4 /* AppDelegate.swift in Sources */,
 				B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */,
 				C5FF4E791C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift in Sources */,
+				C53FD1AA1C777DCB006472BB /* UserProfileImageUnwindSegue.swift in Sources */,
 				C59E9B321C47D6B5002709C6 /* PlayScreenCustomSegue.swift in Sources */,
 				C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */,
 				C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */,

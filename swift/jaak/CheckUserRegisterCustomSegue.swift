@@ -30,7 +30,6 @@ class CheckUserRegisterCustomSegue: UIStoryboardSegue {
             
                 }) { (Finished) -> Void in
                     self.sourceViewController.presentViewController(self.destinationViewController as UIViewController, animated: false, completion: nil)
-                
             }
         })
     }
