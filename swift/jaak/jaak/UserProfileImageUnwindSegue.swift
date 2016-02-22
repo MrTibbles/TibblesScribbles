@@ -17,7 +17,7 @@ class UserProfileImageUnwindSegue: UIStoryboardSegue {
         
         let screenHeight = UIScreen.mainScreen().bounds.size.height
         
-        let window= UIApplication.sharedApplication()
+        let window = UIApplication.sharedApplication()
         
     }
 }

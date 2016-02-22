@@ -6,7 +6,7 @@ var
 	api = new ParseServer({
 		databaseURI: 'mongodb://data/db/',
 		appId: 'jaakParseServer',
-		masterKey: 'BallsDeep'
+		masterKey: 'jaakFl45hB4ng'
 	});
 
 app.use('/parse', api);
@@ -14,4 +14,5 @@ app.use('/parse', api);
 var port = 1337;
 app.listen(port, function() {
 	console.info('Shit th bed');
-})
+	console.log(app);
+});
