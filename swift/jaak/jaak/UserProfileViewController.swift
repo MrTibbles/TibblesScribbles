@@ -27,10 +27,10 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         userProfileImageView.image = UIImage(data: NSData(data: userProfileImage as! NSData))
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width/2
         
-        jaakCreditCountView.layer.cornerRadius = jaakCreditCountView.frame.size.width/14
+        jaakCreditCountView.layer.cornerRadius = jaakCreditCountView.frame.size.width/10
         jaakCreditCountView.clipsToBounds = true
         
-        friendsCountView.layer.cornerRadius = friendsCountView.frame.size.width/14
+        friendsCountView.layer.cornerRadius = friendsCountView.frame.size.width/10
         friendsCountView.clipsToBounds = true
         
         let username = NSUserDefaults.standardUserDefaults().objectForKey("username")!

@@ -28,7 +28,7 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
         let background = CAGradientLayer().jaakGrdnt()
         background.frame = self.view.bounds
         inputFieldsBg.layer.insertSublayer(background, atIndex: 0)
-        inputFieldsBg.layer.cornerRadius = inputFieldsBg.frame.size.width/14
+        inputFieldsBg.layer.cornerRadius = inputFieldsBg.frame.size.width/10
         inputFieldsBg.clipsToBounds = true
         
         imageView.layer.cornerRadius = imageView.frame.size.width/2

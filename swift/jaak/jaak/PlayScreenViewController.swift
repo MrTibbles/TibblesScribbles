@@ -65,17 +65,15 @@ class PlayScreenViewController: UIViewController {
             case .RemoteControlPause:
                 playButtonTapped(self)
             case .RemoteControlNextTrack:
-                goToNextTrack(self)
+                goToNextPrevTrack(self, direction: "next")
+            case .RemoteControlPreviousTrack:
+                goToNextPrevTrack(self, direction: "prev")
             default:break
         }
         
     }
     
     func playTrack(track: TrackListing) {
-        playerItem = nil
-        player = nil
-        selectedTrackObject = track
-        
         let url = NSURL(string: selectedTrackObject.stream_url!)
         playerItem = AVPlayerItem(URL: url!)
         player = AVPlayer(playerItem: playerItem!)
@@ -85,13 +83,9 @@ class PlayScreenViewController: UIViewController {
         
         playerLayer.frame = CGRectMake(0,0,10,10)
         self.view.layer.addSublayer(playerLayer)
-        self.trackNameTextLabel.text = selectedTrackObject.title
-        self.artistNameTextLabel.text = selectedTrackObject.user
-        self.durationTextLabel.text = selectedTrackObject.durationString!
         
         player!.play()
         countDownTimer.start()
-        
         playButton.addTarget(self, action: "playButtonTapped:", forControlEvents: .TouchUpInside)
         
         getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
@@ -108,7 +102,7 @@ class PlayScreenViewController: UIViewController {
 //        while self.countDownTimer.isValid() {
 //            print("g")
 //        }
-        let trackDuration = selectedTrackObject.durationRaw!
+        let trackDuration = selectedTrackObject.durationRaw
         print(trackDuration)
 //        dispatch_async(dispatch_get_main_queue()) {
 //            for var index = 0; index < trackDuration; ++index {
@@ -132,16 +126,32 @@ class PlayScreenViewController: UIViewController {
         }
     }
     
-    func goToNextTrack(sender: AnyObject) {
+    func goToNextPrevTrack(sender: AnyObject, direction: String) {
 //        let currentTrackIdx = TrackListings.indexOf("G")
         for var idx = TrackListings.count - 1; idx >= 0; --idx {
             if TrackListings[idx].id == selectedTrackObject.id {
-                self.playTrack(TrackListings[idx + 1])
+                selectedTrackObject = (direction == "next") ? TrackListings[idx + 1] : TrackListings[idx - 1]
+                let url = NSURL(string: selectedTrackObject.stream_url!)
+                playerItem = AVPlayerItem(URL: url!)
+                player!.replaceCurrentItemWithPlayerItem(playerItem!)
+
+                getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        //                                guard let data = data where error == nil else { return }
+                        selectedTrackObject.artwork_data = data!
+                        self.artworkBGImageView.image = UIImage(data: data!)
+                        self.setTrackInfo()
+                    }
+                }
             }
         }
     }
     
     func setTrackInfo() {
+
+        self.trackNameTextLabel.text = selectedTrackObject.title
+        self.artistNameTextLabel.text = selectedTrackObject.user
+        self.durationTextLabel.text = selectedTrackObject.durationString!
 
         let image = UIImage(data: selectedTrackObject.artwork_data!)
         
