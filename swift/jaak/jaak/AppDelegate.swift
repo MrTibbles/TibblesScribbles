@@ -23,26 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
        
-        let parseConfiguration = ParseClientConfiguration {
-            $0.applicationId = "jaakParseServer"
-            $0.clientKey = "GGGG"
-            $0.server = "http://localhost.com:1337/parse"
-        }
-        Parse.initializeWithConfiguration(parseConfiguration)
-        
-        let testObject = PFObject(className: "jaakTestClass")
-        testObject["testProp"] = "G"
-        
-        print("starting")
-        
-        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
-            if error != nil {
-                print(error)
-            }
-            if success {
-                print("Great success")
-            }
-        }
+//        let parseConfiguration = ParseClientConfiguration {
+//            $0.applicationId = "jaakParseServer"
+//            $0.clientKey = "GGGG"
+//            $0.server = "http://localhost.com:1337/parse"
+//        }
+//        Parse.initializeWithConfiguration(parseConfiguration)
+//        
+//        let testObject = PFObject(className: "jaakTestClass")
+//        testObject["testProp"] = "G"
+//        
+//        print("starting")
+//        
+//        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
+//            if error != nil {
+//                print(error)
+//            }
+//            if success {
+//                print("Great success")
+//            }
+//        }
         
         return true
     }
