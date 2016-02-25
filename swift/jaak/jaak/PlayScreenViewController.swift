@@ -65,9 +65,9 @@ class PlayScreenViewController: UIViewController {
             case .RemoteControlPause:
                 playButtonTapped(self)
             case .RemoteControlNextTrack:
-                goToNextPrevTrack(self, direction: "next")
+                goToTrack(self, direction: "next")
             case .RemoteControlPreviousTrack:
-                goToNextPrevTrack(self, direction: "prev")
+                goToTrack(self, direction: "prev")
             default:break
         }
         
@@ -126,8 +126,7 @@ class PlayScreenViewController: UIViewController {
         }
     }
     
-    func goToNextPrevTrack(sender: AnyObject, direction: String) {
-//        let currentTrackIdx = TrackListings.indexOf("G")
+    func goToTrack(sender: AnyObject, direction: String) {
         for var idx = TrackListings.count - 1; idx >= 0; --idx {
             if TrackListings[idx].id == selectedTrackObject.id {
                 selectedTrackObject = (direction == "next") ? TrackListings[idx + 1] : TrackListings[idx - 1]
