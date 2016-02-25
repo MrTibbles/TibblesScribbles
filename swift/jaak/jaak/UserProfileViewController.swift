@@ -17,7 +17,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var friendsCountView: UIView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()                
         
         let background = CAGradientLayer().jaakGrdnt()
         background.frame = self.view.bounds
@@ -33,6 +33,11 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         friendsCountView.layer.cornerRadius = friendsCountView.frame.size.width/14
         friendsCountView.clipsToBounds = true
         
+        let username = NSUserDefaults.standardUserDefaults().objectForKey("username")!
+        let lastname = NSUserDefaults.standardUserDefaults().objectForKey("lastname")!
+        let fullName:String = "\(username) \(lastname)"
+        
+        userNameLabel.text = fullName
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +62,13 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         dismissViewControllerAnimated(true, completion: nil)
         
         //save data to DB
+        let imageData = UIImageJPEGRepresentation(userProfileImageView.image!, 1)
+        NSUserDefaults.standardUserDefaults().setObject(imageData, forKey: "userProfileImage")
+        NSUserDefaults.standardUserDefaults().synchronize()
         
+    }
+    
+    @IBAction func exitUserProfile(sender: AnyObject) {
+        self.performSegueWithIdentifier("userProfileImageUnwindSegue", sender: self)
     }
 }

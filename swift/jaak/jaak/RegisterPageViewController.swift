@@ -101,10 +101,10 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func registerUser(sender: UIButton) {
         
         let userEmail = NSUserDefaults.standardUserDefaults().stringForKey("userEmail")!
-        let userFirstname = firstnameTextField.text!
-        let userLastname = lastnameTextField.text!
-        let userPassword = passwordTextField.text!
-        let groupName = randomStringWithLength(32)
+        let userFirstname:String = firstnameTextField.text!
+        let userLastname:String = lastnameTextField.text!
+        let userPassword:String = passwordTextField.text!
+        let groupName:String = randomStringWithLength(32) as String
         let imageData = UIImageJPEGRepresentation(imageView.image!, 1)
         
         let userParameters = [
@@ -124,7 +124,10 @@ class RegisterPageViewController: UIViewController, UIImagePickerControllerDeleg
             .response { request, response, data, error in
                 do {
                     if data != nil && error == nil {
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userRecognised")
                         NSUserDefaults.standardUserDefaults().setObject(userParameters, forKey: "userObject")
+                        NSUserDefaults.standardUserDefaults().setObject(userFirstname, forKey: "username")
+                        NSUserDefaults.standardUserDefaults().setObject(userLastname, forKey: "lastname")
                         NSUserDefaults.standardUserDefaults().synchronize()
                     }
                 } catch let error as NSError  {

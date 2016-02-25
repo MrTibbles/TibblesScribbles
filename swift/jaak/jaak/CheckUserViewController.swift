@@ -16,9 +16,19 @@ class CheckUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        NSUserDefaults.standardUserDefaults().removeObjectForKey("userRecognised")
+//        for key in NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys {
+//            NSUserDefaults.standardUserDefaults().removeObjectForKey(key)
+//        }
+        
+        if NSUserDefaults.standardUserDefaults().stringForKey("userRecognised") != nil {
+            return self.performSegueWithIdentifier("checkUserTrackListingsSegue", sender: self);
+        }
+        
         let background = CAGradientLayer().jaakGrdnt()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
+        
     }
 
     override func didReceiveMemoryWarning() {

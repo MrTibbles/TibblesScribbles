@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+//import Foundation
 
 var TrackListings:[TrackListing] = []
 
@@ -31,6 +32,10 @@ class TrackListingsTableViewController: UITableViewController {
             self.userProfileImageView.image = UIImage(data: userProfileImage as! NSData)
             self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.frame.size.width/2
             self.userProfileImageView.clipsToBounds = true
+        }
+        
+        if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") {
+            userNameButton.setTitle(username as? String, forState: .Normal)
         }
         
         get_data_from_url(scUrl)
