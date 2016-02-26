@@ -37,7 +37,6 @@ class PlayScreenViewController: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             do {
                 try AVAudioSession.sharedInstance().setActive(true)
-                print("AVAudioSession is Active")
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -56,7 +55,7 @@ class PlayScreenViewController: UIViewController {
     
     override func remoteControlReceivedWithEvent(event: UIEvent?) { // *
         let rc = event!.subtype
-        print("received remote control \(rc)") // 101 = pause, 100 = play
+        print("received remote control \(event!.subtype)") // 101 = pause, 100 = play
         switch rc {
             case .RemoteControlTogglePlayPause:
                 playButtonTapped(self)

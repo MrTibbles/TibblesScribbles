@@ -32,6 +32,7 @@
 		C53693291C7B6D9400BE1DAE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53693281C7B6D9400BE1DAE /* Accounts.framework */; };
 		C536932B1C7B6DB400BE1DAE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C536932A1C7B6DB400BE1DAE /* Parse.framework */; };
 		C536932D1C7B6DCA00BE1DAE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C536932C1C7B6DCA00BE1DAE /* Bolts.framework */; };
+		C53DB4691C80B06400B17513 /* PlayControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53DB4681C80B06400B17513 /* PlayControls.swift */; };
 		C53FD1A81C7768F8006472BB /* UserProfileImageCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FD1A71C7768F8006472BB /* UserProfileImageCustomSegue.swift */; };
 		C53FD1AA1C777DCB006472BB /* UserProfileImageUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FD1A91C777DCB006472BB /* UserProfileImageUnwindSegue.swift */; };
 		C55AE9DF1C749C6D00EB7DDC /* utilityClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */; };
@@ -75,6 +76,7 @@
 		C53693281C7B6D9400BE1DAE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		C536932A1C7B6DB400BE1DAE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "Pods/../build/Debug-iphoneos/Parse.framework"; sourceTree = "<group>"; };
 		C536932C1C7B6DCA00BE1DAE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Bolts.framework"; sourceTree = "<group>"; };
+		C53DB4681C80B06400B17513 /* PlayControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayControls.swift; sourceTree = "<group>"; };
 		C53FD1A71C7768F8006472BB /* UserProfileImageCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileImageCustomSegue.swift; sourceTree = "<group>"; };
 		C53FD1A91C777DCB006472BB /* UserProfileImageUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileImageUnwindSegue.swift; sourceTree = "<group>"; };
 		C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilityClasses.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */,
 				C5FF4E781C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift */,
 				C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */,
+				C53DB4681C80B06400B17513 /* PlayControls.swift */,
 				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
 				C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */,
 				C56226161C21C06C00EA1F5B /* TrackCell.swift */,
@@ -337,6 +340,7 @@
 				B664427D1C184734008983B4 /* CAGradientLayer+Convenience.swift in Sources */,
 				C5FF4E791C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift in Sources */,
 				C53FD1AA1C777DCB006472BB /* UserProfileImageUnwindSegue.swift in Sources */,
+				C53DB4691C80B06400B17513 /* PlayControls.swift in Sources */,
 				C59E9B321C47D6B5002709C6 /* PlayScreenCustomSegue.swift in Sources */,
 				C56226191C21C9B900EA1F5B /* PlayScreenViewController.swift in Sources */,
 				C5FF4E771C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift in Sources */,

@@ -54,7 +54,7 @@ struct TrackListing {
             self.durationClean = durationRaw!.msToSeconds
         }
         if durationRaw != nil {
-            let formatted = durationRaw?.msToSeconds.minuteSecondMS
+            let formatted = durationRaw?.msToSeconds.minuteSecond
             self.durationString = formatted!
         }
         

@@ -286,6 +286,7 @@
                                     <rect key="frame" x="291" y="26" width="21" height="22"/>
                                     <state key="normal" image="equaliser-icon.21x17"/>
                                     <connections>
+                                        <action selector="backToCurrentTrack:" destination="uMw-H7-rvQ" eventType="touchUpInside" id="Jr9-xm-gWr"/>
                                         <action selector="showCurrentPlaying:" destination="uMw-H7-rvQ" eventType="touchUpInside" id="N2a-fb-TbT"/>
                                     </connections>
                                 </button>

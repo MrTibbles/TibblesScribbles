@@ -69,6 +69,9 @@ extension NSTimeInterval {
     var millisecond: Int {
         return Int(self*1000 % 1000 )
     }
+    var minuteSecond: String {
+        return String(format:"%d:%02d", minute, second)
+    }
     var minuteSecondMS: String {
         return String(format:"%d:%02d.%03d", minute, second, millisecond)
     }

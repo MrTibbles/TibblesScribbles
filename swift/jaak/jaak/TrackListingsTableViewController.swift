@@ -81,6 +81,9 @@ class TrackListingsTableViewController: UITableViewController {
         }
     }
 
+    @IBAction func backToCurrentTrack(sender: AnyObject) {
+        self.performSegueWithIdentifier("playScreenSegue", sender: self)
+    }
     
     func extractJSON(jsonData:NSData) {
         do {
@@ -143,6 +146,10 @@ class TrackListingsTableViewController: UITableViewController {
             let playScreenVC: PlayScreenViewController = segue.destinationViewController
                 as! PlayScreenViewController
         
+            if player?.rate == 1 {
+                return
+            }
+            
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let selectedTrack = TrackListings[indexPath.row]
                 selectedTrackObject = selectedTrack
