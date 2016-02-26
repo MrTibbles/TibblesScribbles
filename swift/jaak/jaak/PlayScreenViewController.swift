@@ -129,12 +129,19 @@ class PlayScreenViewController: UIViewController {
     func goToTrack(sender: AnyObject, direction: String) {
         for var idx = TrackListings.count - 1; idx >= 0; --idx {
             if TrackListings[idx].id == selectedTrackObject.id {
-                selectedTrackObject = (direction == "next") ? TrackListings[idx + 1] : TrackListings[idx - 1]
+                if direction == "next" && (idx + 1) > (TrackListings.count - 1) {
+                    selectedTrackObject = TrackListings[0]
+                } else if direction == "prev" && (idx - 1) < 0 {
+                    selectedTrackObject = TrackListings[TrackListings.count - 1]
+                }else {
+                    selectedTrackObject = (direction == "next") ? TrackListings[idx + 1] : TrackListings[idx - 1]
+                }
+                
                 let url = NSURL(string: selectedTrackObject.stream_url!)
                 playerItem = AVPlayerItem(URL: url!)
                 player!.replaceCurrentItemWithPlayerItem(playerItem!)
 
-                getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
+                return getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
                     dispatch_async(dispatch_get_main_queue()) { () -> Void in
                         //                                guard let data = data where error == nil else { return }
                         selectedTrackObject.artwork_data = data!
