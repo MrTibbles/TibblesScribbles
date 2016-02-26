@@ -279,7 +279,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jaak-wht-head-logo.67x30" translatesAutoresizingMaskIntoConstraints="NO" id="AIO-d9-Vdd">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jaak-wht-head-logo.67x30" translatesAutoresizingMaskIntoConstraints="NO" id="AIO-d9-Vdd">
                                     <rect key="frame" x="127" y="22" width="67" height="30"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5r-PC-a5p">

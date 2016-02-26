@@ -21,14 +21,14 @@ class PlayScreenCustomSegue: UIStoryboardSegue {
         let window = UIApplication.sharedApplication().keyWindow
         dispatch_async(dispatch_get_main_queue(), {
             //Initial position of destination view
-            playScreenVCView.frame = CGRectMake(0.0, screenHeight, screenWidth, screenHeight)
+            playScreenVCView.frame = CGRectMake(screenWidth, screenHeight, screenWidth, screenHeight)
             
             window?.insertSubview(playScreenVCView, aboveSubview: trackListingsVCView)
             
             
             UIView.animateWithDuration(0.2, animations: { () -> Void in
-                trackListingsVCView.frame = CGRectOffset(trackListingsVCView.frame, 0.0, -screenHeight)
-                playScreenVCView.frame = CGRectOffset(playScreenVCView.frame, 0.0, -screenHeight)
+                trackListingsVCView.frame = CGRectOffset(trackListingsVCView.frame, -screenWidth, 0.0)
+                playScreenVCView.frame = CGRectOffset(playScreenVCView.frame, -screenWidth, 0.0)
                 
                 }) { (Finished) -> Void in
                     self.sourceViewController.presentViewController(self.destinationViewController as UIViewController, animated: false, completion: nil)

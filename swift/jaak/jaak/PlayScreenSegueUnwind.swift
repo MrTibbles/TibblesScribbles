@@ -21,6 +21,8 @@ class PlayScreenSegueUnwind: UIStoryboardSegue {
         let window = UIApplication.sharedApplication().keyWindow
         window?.insertSubview(trackListingsVCView, aboveSubview: playScreenVCView)
         
+//        trackListingsVCView.frame = CGRectMake(screenWidth, screenHeight, screenWidth, screenHeight)
+        
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             trackListingsVCView.frame = CGRectOffset(trackListingsVCView.frame, 0.0, screenHeight)
             playScreenVCView.frame = CGRectOffset(playScreenVCView.frame, 0.0, screenHeight)
