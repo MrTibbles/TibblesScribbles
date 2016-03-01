@@ -90,15 +90,6 @@ class TrackListingsTableViewController: UITableViewController {
             if let tracks_list = try NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? NSArray  {
                 for (var i = 0; i < tracks_list.count; i++ ) {
                     if let track_obj = tracks_list[i] as? NSDictionary {
-//                        let artworkUrlString = track_obj["stream_url"] as? String {
-//                            
-//                        }
-//                        getDataFromUrl() { (data, response, error) in
-//                            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//                                // guard let data = data where error == nil else { return }
-//                                let streamData = data
-//                            }
-//                        }
                         if let track_id = track_obj["id"] as? Int {
                             if let user_obj = track_obj["user"] as? NSDictionary {
                                 if let user = user_obj["username"] as? String {
@@ -146,9 +137,9 @@ class TrackListingsTableViewController: UITableViewController {
             let playScreenVC: PlayScreenViewController = segue.destinationViewController
                 as! PlayScreenViewController
         
-            if player?.rate == 1 {
-                return
-            }
+//            if player?.rate == 1 {
+//                return
+//            }
             
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let selectedTrack = TrackListings[indexPath.row]
@@ -158,7 +149,7 @@ class TrackListingsTableViewController: UITableViewController {
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
-        print(sender)
+        print(sender.identifier)
     }
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue? {
