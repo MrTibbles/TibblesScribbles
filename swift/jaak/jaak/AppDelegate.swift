@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import Parse
-import Bolts
 import AVFoundation
 import MediaPlayer
+import Parse
+import Bolts
+import Alamofire
 
 let jaakDomain = "tibblesscribbles.com/jaak-reg"
 let scUrl = "https://api.soundcloud.com/users/149454089/favorites?client_id=13c08d059109e6e6e7144bef8e8d82ba"
-let backAndApiUrl = "https://api.backand.com"
+let backAndApiUrl = "https://api.backand.com/1"
 
 
 @UIApplicationMain
@@ -24,14 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-       
+
+//        let tokenUrl = (backAndApiUrl) + "/token?username=&password=Clough88&appname=jaak"
+//        let params = [
+//            "username": "freddie@tibblesscribbles.com",
+//            "password": "Clough88",
+//            "appname": "jaak"
+//        ]
+        
 //        let parseConfiguration = ParseClientConfiguration {
-//            $0.applicationId = "jaakParseServer"
-//            $0.clientKey = "GGGG"
-//            $0.server = "http://localhost.com:1337/parse"
+//            $0.applicationId = "jaak"
+//            $0.clientKey = "dc3ca130f823817f93aba812fd0cf8a980bdb261"
 //        }
 //        Parse.initializeWithConfiguration(parseConfiguration)
-//        
+        
+//        Parse.setBackandAppName("jaak")
+//        Parse.setSignupToken("3b096ca4-8b45-4782-9be3-b83937719e3a")
+       
 //        let testObject = PFObject(className: "jaakTestClass")
 //        testObject["testProp"] = "G"
 //        
@@ -39,12 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
 //            if error != nil {
-//                print(error)
+//                print(error!)
 //            }
 //            if success {
 //                print("Great success")
 //            }
 //        }
+
         
         return true
     }
