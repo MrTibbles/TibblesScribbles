@@ -51,6 +51,9 @@ class PlayScreenViewController: UIViewController {
         playTrack(selectedTrackObject)
 //        self.artworkBGImageView.downloadedFrom(link: selectedTrackObject.artwork_url!, contentMode: UIViewContentMode.Center)
         
+        player?.actionAtItemEnd = .None
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: player?.currentItem)
     }
     
     override func remoteControlReceivedWithEvent(event: UIEvent?) { // *
@@ -150,6 +153,11 @@ class PlayScreenViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func playerDidFinishPlaying(note: NSNotification) {
+        print(note)
+        goToTrack(self, direction: "next")
     }
     
     func setTrackInfo() {

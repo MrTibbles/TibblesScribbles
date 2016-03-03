@@ -184,15 +184,15 @@
 				C5FF4E761C2304E7005E8E65 /* CheckUserRegisterCustomSegue.swift */,
 				C5FF4E781C230DF7005E8E65 /* CheckUserRegisterSegueUnwind.swift */,
 				C56226181C21C9B900EA1F5B /* PlayScreenViewController.swift */,
-				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
 				C5173C1B1C2193A2005F5D03 /* TrackListingsTableViewController.swift */,
+				B664427E1C184B0D008983B4 /* RegisterPageViewController.swift */,
+				C5173C1D1C219400005F5D03 /* TrackListing.swift */,
 				C56226161C21C06C00EA1F5B /* TrackCell.swift */,
 				C52483381C6A2A6F00BE8FD5 /* extensions.swift */,
 				C55AE9DE1C749C6D00EB7DDC /* utilityClasses.swift */,
 				B66442711C18401D008983B4 /* Assets.xcassets */,
 				B66442731C18401D008983B4 /* LaunchScreen.storyboard */,
 				B66442761C18401D008983B4 /* Info.plist */,
-				B664427E1C184B0D008983B4 /* RegisterPageViewController.swift */,
 			);
 			path = jaak;
 			sourceTree = "<group>";
