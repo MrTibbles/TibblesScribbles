@@ -142,6 +142,8 @@ class PlayScreenViewController: UIViewController {
                 let url = NSURL(string: selectedTrackObject.stream_url!)
                 playerItem = AVPlayerItem(URL: url!)
                 player!.replaceCurrentItemWithPlayerItem(playerItem!)
+                
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: player?.currentItem)
 
                 return getDataFromUrl(selectedTrackObject.artwork_url!) { (data, response, error)  in
                     dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -156,7 +158,7 @@ class PlayScreenViewController: UIViewController {
     }
     
     func playerDidFinishPlaying(note: NSNotification) {
-        print(note)
+//        print(note)
         goToTrack(self, direction: "next")
     }
     
