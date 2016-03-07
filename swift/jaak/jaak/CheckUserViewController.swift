@@ -16,6 +16,7 @@ class CheckUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Remove stored data in user defaults
 //        NSUserDefaults.standardUserDefaults().removeObjectForKey("userRecognised")
 //        for key in NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys {
 //            NSUserDefaults.standardUserDefaults().removeObjectForKey(key)
