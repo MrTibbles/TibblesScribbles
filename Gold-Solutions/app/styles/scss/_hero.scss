@@ -1,0 +1,24 @@
+//Hero
+.hero {
+	height: 100vh;
+	background: {
+		image: url('../images/watch-hero-bg.jpg');
+		position: center 0;
+		size: 200% auto;
+		repeat: no-repeat;
+	}
+
+	@include breakpoint(min-width, $xsBreakpoint) {
+	  padding-top: 150px;
+	  height: 425px;
+	}
+
+	@include breakpoint(min-width, $smBreakpoint) {
+		background-size: 2000px auto;
+		.hero-inner {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+	}	
+
+}
