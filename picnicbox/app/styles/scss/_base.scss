@@ -1,0 +1,28 @@
+//base 
+* {
+  box-sizing: border-box;
+}
+ 
+body, figure {
+  margin: 0;
+}
+
+body, html {
+  // @include linearGradient($liteBlue, $darkBlue);
+  background: {
+  	image: url('../images/cupcakes-bg.1600x1600.jpg');
+  	repeat: no-repeat;
+  	position: center center;
+  	size: cover;
+  }
+  height: 100vh;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+.main-area {
+	padding-top: 60px;
+}
