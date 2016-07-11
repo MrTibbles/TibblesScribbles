@@ -8,14 +8,8 @@ body, figure {
 }
 
 body, html {
-  // @include linearGradient($liteBlue, $darkBlue);
-  background: {
-  	image: url('../images/cupcakes-bg.1600x1600.jpg');
-  	repeat: no-repeat;
-  	position: center center;
-  	size: cover;
-  }
-  height: 100vh;
+  min-height: 100vh;
+  // @include linearGradient($liteBlue, $darkBlue);  
 }
 
 button {

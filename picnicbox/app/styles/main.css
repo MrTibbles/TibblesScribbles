@@ -5,11 +5,7 @@ body, figure {
   margin: 0; }
 
 body, html {
-  background-image: url("../images/cupcakes-bg.1600x1600.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 100vh; }
+  min-height: 100vh; }
 
 button {
   outline: none;
@@ -20,15 +16,107 @@ button {
 
 body, html {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 100%; }
+  speak: none;
+  font-style: normal;
+  font-weight: 100;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 75%; }
+  @media (min-width: 738px) {
+    body, html {
+      font-size: 100%; } }
+
+.main-title {
+  font-size: 4.28571rem;
+  color: #fff;
+  margin: 0; }
 
 .body-copy {
-  font-size: 1.14286rem;
-  color: #f7f7f7;
-  text-align: center; }
+  font-size: 1.42857rem;
+  color: #333333;
+  text-align: center;
+  line-height: 2.14286rem;
+  margin-bottom: 4.28571rem; }
+
+.text-link {
+  display: block;
+  font-size: 2.14286rem;
+  color: #9b9b9b;
+  width: 100%;
+  max-width: 350px;
+  transition: color 0.5s ease-in-out; }
+  .text-link:hover {
+    text-decoration: none;
+    color: #ffffff; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("fonts/icomoon.eot?ahz8aa");
+  src: url("fonts/icomoon.eot?ahz8aa#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?ahz8aa") format("truetype"), url("fonts/icomoon.woff?ahz8aa") format("woff"), url("fonts/icomoon.svg?ahz8aa#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  [class^="icon-"]:before,
+  [class*=" icon-"]:before {
+    margin-right: 10px; }
+
+.icon-glass:before {
+  content: "\e9a1"; }
+
+.icon-fire:before {
+  content: "\e9a9"; }
+
+.icon-checkmark:before {
+  content: "\ea11"; }
+
+.icon-facebook:before {
+  content: "\ea91"; }
+
+.icon-instagram:before {
+  content: "\ea92"; }
 
 .header {
   width: 100vw;
-  height: 100px;
+  height: 3.92857rem;
   background: url("../images/picnicbox-main-logo.883x99@3x.png") no-repeat center 15px;
-  background-size: 50% auto; }
+  background-size: 275px auto;
+  background-position: center center;
+  position: fixed;
+  background-color: #0f2229;
+  z-index: 200; }
+
+.footer {
+  height: 35vh;
+  background-color: #0f2229;
+  padding-top: 3.92857rem; }
+  .footer .footer-row {
+    padding-bottom: 15px; }
+
+.hero {
+  height: 100vh;
+  padding-top: 80vh;
+  width: 100vw;
+  background-image: url("../images/naughty-brownie.1200x1600.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
+
+.main-area {
+  min-height: 115vh;
+  padding-top: 25vh; }

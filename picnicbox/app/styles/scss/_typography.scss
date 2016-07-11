@@ -1,11 +1,44 @@
 // typography
 body, html {
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 100%;
+	speak: none;
+  font-style: normal;
+  font-weight: 100;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  // color: $greyishBrown;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 75%;
+
+  @include breakpoint(min-width, $xsBreakpoint) {
+		font-size: 100%;
+	}
 }
 
+.main-title {
+	font-size: rem(60px);
+	color: #fff;
+	margin: 0;
+}
 .body-copy {
-	font-size: rem(16px);
-	color: #f7f7f7;
-	text-align: center;
+	font-size: rem(20px);
+	color: #333333;
+	text-align: center;	
+	line-height: rem(30px);
+	margin-bottom: rem(60px);
+}
+.text-link {
+	display: block;
+	font-size: rem(30px);
+	color: $darkGrey;
+	width: 100%;
+	max-width: 350px;
+	@include transition(color .5s ease-in-out);
+
+	&:hover {
+		text-decoration: none;
+		color: #ffffff;
+	}
 }

@@ -1,7 +1,11 @@
 //header
 .header {
 	width: 100vw;
-	height: 100px;
+	height: rem(55px);
 	background: url('../images/picnicbox-main-logo.883x99@3x.png') no-repeat center 15px;
-	background-size: 50% auto;
+	background-size: 275px auto;
+	background-position: center center;
+	position: fixed;
+	background-color: $darkBlue;
+	z-index: 200;
 }
