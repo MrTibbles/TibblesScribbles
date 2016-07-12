@@ -36,6 +36,11 @@ body, html {
   color: #fff;
   margin: 0; }
 
+.sub-title {
+  font-size: 2.85714rem;
+  color: #f7f7f7;
+  margin-top: 0.71429rem; }
+
 .body-copy {
   font-size: 1.42857rem;
   color: #333333;
