@@ -9,7 +9,8 @@ body, figure {
 
 body, html {
   min-height: 100vh;
-  // @include linearGradient($liteBlue, $darkBlue);  
+  background: #f7f7f7;
+  background-color: #f7f7f7;
 }
 
 button {

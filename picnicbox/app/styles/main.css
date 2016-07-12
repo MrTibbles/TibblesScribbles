@@ -5,7 +5,9 @@ body, figure {
   margin: 0; }
 
 body, html {
-  min-height: 100vh; }
+  min-height: 100vh;
+  background: #f7f7f7;
+  background-color: #f7f7f7; }
 
 button {
   outline: none;
@@ -115,8 +117,11 @@ body, html {
   background-image: url("../images/naughty-brownie.1200x1600.jpg");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed; }
 
 .main-area {
-  min-height: 115vh;
-  padding-top: 25vh; }
+  min-height: 100vh;
+  padding-top: 25vh;
+  background: #f7f7f7;
+  background-color: #f7f7f7; }
