@@ -10,7 +10,7 @@ body, html {
   // color: $greyishBrown;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 75%;
+  font-size: 70%;
 
   @include breakpoint(min-width, $xsBreakpoint) {
 		font-size: 100%;

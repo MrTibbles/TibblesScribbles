@@ -26,7 +26,7 @@ body, html {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 75%; }
+  font-size: 70%; }
   @media (min-width: 738px) {
     body, html {
       font-size: 100%; } }
