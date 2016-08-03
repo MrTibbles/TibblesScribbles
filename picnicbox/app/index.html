@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico" />
 </head>
 
-<body>
+<body ng-app="PicnicBoxApp">
 
 <header class="header"></header>
 
@@ -31,6 +31,15 @@
 			<p class="body-copy">For more information or to book us for an event please contact us <a href="mailto:thepicnicboxgroup@gmail.com" target="_blank">thepicnicboxgroup@gmail.com</a> or take a look at some of our recent events on <a href="http://www.facebook.com/thepicnicboxgroup">facebook.com/thepicnicboxgroup</a></p>
 		</div>
 	</div>
+
+	<div class="row" ng-controller="instaFeed">
+		<div class="insta-feed col-xs-12">
+			<div class="insta-item" ng-repeat="item in instaResponse">
+				<img src="{{ item.imgUrl }}" alt="imgCaption" class="insta-img" />
+				<p ng-if="item.caption" class="col-xs-12 insta-caption">{{ item.caption }}</p>
+			</div>
+		</div>
+	</div>
 </main>
 
 <footer class="footer">
@@ -45,6 +54,9 @@
 	</div>
 </footer>
 
+<script src="js/jquery.1.11.0.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/picnic-scripts.js"></script>
 </body>
 
 </html>

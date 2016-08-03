@@ -128,7 +128,7 @@ gulp.task('watch', function() {
     debounceDelay: 2000
   }).on('change', reload);
 
-  gulp.watch('app/js/*', ['lint']).on('change', reload);
+  gulp.watch('app/js/*').on('change', reload);
 
   gulp.watch('app/styles/scss/*.scss', ['styles']).on('change', reload);
 
