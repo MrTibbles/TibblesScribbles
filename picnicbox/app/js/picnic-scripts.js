@@ -2,9 +2,10 @@
 angular.module('PicnicBoxApp', [])
   .controller('instaFeed', ['$scope', '$http', function instaFeed($scope, $http) {
 
-    const instaUrl = 'https://api.instagram.com/v1/users/self/media/recent?access_token=5161271.a38db20.ce31784768d94875a91d2c8efbbe7408';
+    const instaUrl = 'https://api.instagram.com/v1/users/self/media/recent?access_token=3534812594.8b53de6.43efce3bd9214f5b85fb55c5a5d90cca&count=3';
 
-    $scope.instaResponse = [];
+    $scope.instaResponses = [];
+    // ng-repeat being super weird    
 
     $.ajax({
       type: 'GET',
@@ -23,12 +24,11 @@ angular.module('PicnicBoxApp', [])
     			}
     			if (ele.hasOwnProperty('caption') && ele.caption !== null) {
     				instaItem.caption = ele.caption.text;
-    			}
-    			console.info(instaItem);
-    			$scope.instaResponse.push(instaItem);
+            $('.insta-feed').prepend('<img src="' + instaItem.imgUrl + '" alt="' + instaItem.caption + '" class="insta-img" /><p class="insta-caption">' + instaItem.caption + '</p><a href="' + instaItem.link + '" target="_blank" class="insta-link">view on instagram</a>');
+    			} else {
+            $('.insta-feed').prepend('<img src="' + instaItem.imgUrl + '" alt="' + instaItem.caption + '" class="insta-img" /><a href="' + instaItem.link + '" target="_blank" class="insta-link">view on instagram</a>');
+          } 
     		});
-
-    		console.info($scope.instaResponse.length);
       },
       error: function(err) {
         console.error(err);

@@ -130,3 +130,25 @@ body, html {
   padding-top: 25vh;
   background: #f7f7f7;
   background-color: #f7f7f7; }
+
+.insta-feed .insta-img {
+  width: 100%;
+  max-width: 640px;
+  display: block;
+  margin: 0 auto; }
+
+.insta-feed .insta-caption {
+  padding: 15px 0 5px;
+  color: #4a4a4a;
+  text-align: center;
+  font-size: 1.57143rem;
+  margin-bottom: 0; }
+
+.insta-feed .insta-link {
+  font-size: 1.28571rem;
+  color: #0f2229;
+  text-align: center;
+  display: block;
+  margin-bottom: 15px; }
+  .insta-feed .insta-link:hover {
+    text-decoration: line-through; }
