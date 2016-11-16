@@ -1,0 +1,20 @@
+// Animation Keyframes
+@include keyframes(invalidElement) {
+	25% {
+		transform: translate3d(-15px, 0, 0);
+	}
+	75% {
+		transform: translate3d(15px, 0, 0);
+	}
+}
+
+@include keyframes(fadeInPhone) {
+	0% {
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+	100% {
+		opacity: 1;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";	
+	}
+}

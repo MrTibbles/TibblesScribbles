@@ -1,0 +1,54 @@
+@mixin add_prefix($property, $value, $prefixes: webkit moz ms o spec){
+  @each $p in $prefixes {
+    @if $p == spec {
+      #{$property}: $value;
+    } @else{
+      -#{$p}-#{$property}: $value;
+    }
+  }
+}
+
+@mixin empty_circle($width, $height, $border-width, $colour){
+  display: block;
+  width: $width;
+  height: $height;
+  content: '';
+  border: $border-width solid $colour;
+  @include add_prefix(border-radius, 50%);
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}
+
+@mixin animation($parameters) {
+    -webkit-animation: $parameters;
+    animation: $parameters;
+}
+
+@mixin breakpoint($property, $value) {
+
+  @media ($property: $value) {
+    @content;
+  }
+}
+
+@function rem($pixels, $context: $baseText) {
+  @return #{$pixels/$context}rem;
+}
+
+@mixin vAlign($position) {
+  position: $position !important;
+  top: 50% !important;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.v-align {
+  @media (min-height: 700px) and (min-width: $smBreakpoint) {
+    padding-top: 0;
+    @include vAlign(absolute);
+  }
+}

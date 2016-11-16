@@ -1,0 +1,8 @@
+{
+	"parser": "babel-eslint",
+	"esversion": 6,
+	"env": {
+		"browser": true,
+		"node": true
+	}
+}

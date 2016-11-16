@@ -1,0 +1,49 @@
+//Sign up Form
+.signup-form {	
+	height: 100vh;
+	position: relative;
+
+	.form-wrap {
+		padding-top: 160px;
+		@extend .container;
+		@extend .v-align;
+
+		@include breakpoint(min-width, $smBreakpoint) {
+			padding-top: 60px;
+		}
+	}
+
+	.form-inner {
+		max-width: 555px;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.btn-close {
+		position: absolute;
+		left: 15px;
+		top: -50px;
+		width: 25px;
+		height: 25px;
+		background: url('../images/cross-icon-blush.49x49@3x.png') no-repeat 0 0 transparent;
+		background-size: contain;
+
+		@at-root .jaakOS .btn-close {
+			background-image: url('../images/cross-icon-white.49x49@3x.png');
+		}
+	}
+
+	.body-copy {
+		margin-bottom: 0;
+		padding-bottom: 28px;
+	}
+
+	.dropdown-toggle, .dropdown-menu {
+		width: 100%;
+	}
+
+	.dropdown-menu>li>a {
+		padding: 3px 15px;
+	}
+
+}

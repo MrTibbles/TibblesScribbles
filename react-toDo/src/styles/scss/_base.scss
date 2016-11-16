@@ -1,0 +1,98 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  min-height: 100vh;
+  background: #ffffff;
+  background-color: #ffffff;
+  transition: background $animationDuration $ease-in;
+  
+  &.jaakOS {
+    background: $peach;
+    background-color: $peach;
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+.indent {
+  text-indent: -999999px;
+}
+
+.col-xs-12,
+.col-xs-4 {
+  padding-bottom: 30px;
+
+  &.no-bottom {
+    padding-bottom: 0;
+  }
+}
+
+.form-control {  
+  &.invalid {
+    @include animation(invalidElement $animationDuration / 2 0s 1);
+    border: 1px solid red;
+  }
+}
+
+.container {}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 1032px
+  }
+}
+
+.main-info {
+  min-height: 100vh;
+}
+
+@include breakpoint(min-width, $xsBreakpoint) {
+  .blurb {
+    padding-top: 80px;
+  }
+}
+
+.ctas {  
+  @include breakpoint(min-width, $smBreakpoint) {
+    width: 70%;
+  }
+  @include breakpoint(min-width, $mdBreakpoint) {
+    width: 72%;
+  }
+}
+
+.swap-content {
+  transition: opacity $animationDuration * 2 $ease-in-out;
+}
+
+.show-form {
+  opacity: 0 !important;
+}
+
+.center-social {
+  margin: 15px auto;
+  display: table;
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.no-padd {
+  padding: 0 !important;
+}

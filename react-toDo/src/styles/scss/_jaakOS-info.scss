@@ -1,0 +1,69 @@
+//jaakOS-info
+.jaakOS-info {
+	position: absolute;	
+	top: -2000%;
+	text-align: center;
+	padding-top: 90px;
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	@extend .container;
+	@extend .swap-content;
+
+	@include breakpoint(min-width, $smBreakpoint) {
+		text-align: left;
+	}
+
+	.iphone	{
+		width: 100%;
+		height: calc(75vh + 40px);
+		max-height: 640px;
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		animation: fadeInPhone $animationDuration * 2 $animationDuration 1 forwards;
+		background: {
+			image: url('../images/ip6-threeQuarterLeft-blueprints.249x518@3x.png');
+			repeat: no-repeat;
+			position: center 70px;
+			size: auto 85%;
+		}
+
+		@include breakpoint(min-width, $smBreakpoint) {
+			height: 80vh;
+			min-height: 600px;
+			background-size: auto 100%;
+			background-position: 100% -40px;
+		}
+
+
+		@include breakpoint(max-height, 625px) {
+			background-position: center 0;
+		}
+	}
+
+	.jaakOS-icon {
+		height: 30px;
+		z-index: 100;
+		margin-bottom: rem(40px);
+		background: {
+			image: url('../images/jaakOS-logo.336x39@3x.png');
+			position: 0 0;
+			repeat: no-repeat;
+			size: contain;
+		}
+	}
+
+	@at-root body.jaakOS .jaakOS-info {
+		position: static;
+		top: 0;
+		opacity: 1;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	}
+
+	@include breakpoint(min-width, $smBreakpoint) {
+		.center-social {
+			float: left;
+			width: inherit;
+			transform: translate3d(0, -75px, 0);
+		}
+	}
+}
