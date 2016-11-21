@@ -4,6 +4,7 @@ import * as types from '../constants/constants';
 const web3 = new web3Lib();
 
 export const requestBalance = (address) => {
+	console.info(address);
 	return {
 		type: types.BALANCE_REQUESTED,
 		address

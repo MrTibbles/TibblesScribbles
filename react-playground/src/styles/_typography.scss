@@ -1,0 +1,23 @@
+// _typography.scss
+body,
+html {
+    min-height: 100vh;
+    background: #ffffff;
+    speak: none;
+    font-style: normal;
+    font-family: 'avenir', sans-serif;
+    font-weight: 100;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    color: $greyishBrown;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 75%;
+    @include breakpoint(min-width, $xsBreakpoint) {
+        font-size: 100%;
+    }
+    &.dashboard {
+        background: #ffffff;
+    }
+}

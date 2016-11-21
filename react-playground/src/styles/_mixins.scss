@@ -1,0 +1,57 @@
+@mixin add_prefix($property, $value, $prefixes: webkit moz ms o spec){
+  @each $p in $prefixes {
+    @if $p == spec {
+      #{$property}: $value;
+    } @else{
+      -#{$p}-#{$property}: $value;
+    }
+  }
+}
+
+@mixin empty_circle($width, $height, $border-width, $colour){
+  display: block;
+  width: $width;
+  height: $height;
+  content: '';
+  border: $border-width solid $colour;
+  @include add_prefix(border-radius, 50%);
+}
+
+@keyframes music {
+  0% {
+    height: 0;
+  }
+  
+  50% {
+    height: 20px;
+  }
+  
+  100% {
+    height: 5px;
+  }
+}
+
+@mixin equalize($number) {
+  animation: music #{$number}s linear infinite;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}
+
+@mixin animation($parameters) {
+    -webkit-animation: $parameters;
+    animation: $parameters;
+}
+
+@mixin breakpoint($property, $value) {
+
+  @media ($property: $value) {
+    @content;
+  }
+}
+
+@function rem($pixels, $context: $baseText) {
+  @return #{$pixels/$context}rem;
+}

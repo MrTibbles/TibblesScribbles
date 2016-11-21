@@ -7,7 +7,7 @@ import { IndexLink, Link } from 'react-router';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className='container'>
         <IndexLink to="/">Home</IndexLink>
         <Link to="balance-checker">Balance</Link>
         { this.props.children }
