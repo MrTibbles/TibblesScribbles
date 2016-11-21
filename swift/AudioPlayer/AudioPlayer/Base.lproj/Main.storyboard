@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AudioPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-pa-i9U">
+                                <rect key="frame" x="227" y="502" width="125" height="32"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.19161617460971181" blue="0.22967957519324944" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Restart"/>
+                                <connections>
+                                    <action selector="Restart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xcS-tK-eAO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-4Y-vuZ">
+                                <rect key="frame" x="249" y="250" width="103" height="100"/>
+                                <animations/>
+                                <state key="normal" title="play" image="jaak-play-icon">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="PlayAudio1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KDw-f5-8mL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-qw-ixK">
+                                <rect key="frame" x="227" y="432" width="125" height="32"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.13383732444826746" green="1" blue="0.83887424947627365" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="PausePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4pa-YN-fUc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="6Az-QX-egx"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Fih-Y2-UZs"/>
+                            <constraint firstItem="a22-qw-ixK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GtL-Pj-BAd"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XpQ-Ys-fpJ"/>
+                            <constraint firstItem="Bcb-4Y-vuZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eFD-KU-6oc"/>
+                            <constraint firstItem="vLI-pa-i9U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jaJ-HQ-YQz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="PausePlay" destination="a22-qw-ixK" id="Din-j8-k2y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="238"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="jaak-play-icon" width="100" height="100"/>
+    </resources>
+</document>
