@@ -1,4 +1,4 @@
-import * as types from '../constants/constants';
+import * as types from '../constants/action-types';
 import { web3 } from '../utils/web3-utilities';
 
 export const selectAddress = (address) => {

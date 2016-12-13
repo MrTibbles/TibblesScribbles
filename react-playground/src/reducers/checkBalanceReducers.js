@@ -1,4 +1,4 @@
-import * as types from '../constants/constants';
+import * as types from '../constants/action-types';
 
 export const selectedAddress = (state = '0x0', action) => {
 	switch (action.type) {
