@@ -2,10 +2,19 @@
 // This boilerplate file is likely to be the same for each project that uses Redux.
 // With Redux, the actual stores are in /reducers.
 
-import {createStore, compose, applyMiddleware} from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
+
+const logger = store => next => action => {
+  console.info('Dispatching: ', action);
+  let result = next(action);
+  console.info('Next state: ', store.getState());
+  return result;
+};
+
+// const crashReporter = store => 
 
 export default function configureStore(initialState) {
   const middlewares = [
@@ -13,6 +22,8 @@ export default function configureStore(initialState) {
 
     // Redux middleware that spits an error on you when you try to mutate your state either inside a dispatch or between dispatches.
     reduxImmutableStateInvariant(),
+
+    logger,
 
     // thunk middleware can also accept an extra argument to be passed to each thunk action
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
@@ -22,8 +33,7 @@ export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(...middlewares),
     window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools
-    )
-  );
+  ));
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

@@ -1,7 +1,20 @@
 import * as types from '../constants/constants';
 
+export const selectedAddress = (state = '0x0', action) => {
+	switch (action.type) {
+		case types.SELECT_ADDRESS:
+			return action.address;
+		default:
+			return state;
+	}
+};
+
 export const balanceRequest = (state = { isFetching: false, didInvalidate: false, balance: 0 }, action) => {
 	switch (action.type) {
+		case types.REFRESH_BALANCE:
+			return  Object.assign({}, state, {
+				didInvalidate: true
+			});
 		case types.BALANCE_REQUESTED:
 			return Object.assign({}, state, {
 				isFetching: true,
@@ -10,7 +23,9 @@ export const balanceRequest = (state = { isFetching: false, didInvalidate: false
 		case types.BALANCE_REQUEST_SUCCESS:
 			return Object.assign({}, state, {
 				isFetching: false,
-				didInvalidate: false
+				didInvalidate: false,
+				balance: action.balance,
+				lastUpdated: action.receviedAt
 			});
 		default:
 			return state;
@@ -18,12 +33,14 @@ export const balanceRequest = (state = { isFetching: false, didInvalidate: false
 };
 
 export const checkBalance = (state = {}, action) => {
-	switch (action.types) {
+	switch (action.type) {
+		case types.REFRESH_BALANCE:
 		case types.BALANCE_REQUESTED:
 		case types.BALANCE_REQUEST_SUCCESS:
-			return Object.assign({}, state, {
-				[action.address]: balanceRequest(state[action.address], action)
-			});
+			// return Object.assign({}, state, {
+			// 	balanceInfo: balanceRequest(state[action.address], action)
+			// });
+			return Object.assign({}, state, balanceRequest(state[action.address], action));
 		default:
 			return state;
 	}
