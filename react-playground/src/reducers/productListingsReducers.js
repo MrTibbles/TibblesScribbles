@@ -9,7 +9,7 @@ export const selectedCreatorId = (state = '0x123', action) => {
 	}
 };
 
-export const products = (state = { isFetching: true, didInvalidate: false, items: [] }, action) => {
+export const products = (state = { isFetching: true, didInvalidate: false, productItems: [] }, action) => {
 	switch (action.type) {
 		case types.REFRESH_ASSETS:
 			return Object.assign({}, state, {
@@ -24,7 +24,7 @@ export const products = (state = { isFetching: true, didInvalidate: false, items
 			return Object.assign({}, state, {
 				isFetching: false,
 				didInvalidate: false,
-				items: action.products,
+				productItems: action.productItems,
 				receivedAt: action.receivedAt
 			});
 		default:
@@ -38,7 +38,7 @@ export const productsByCreatorId = (state = {}, action) => {
 		case types.ASSETS_REQUESTED:
 		case types.ASSET_REQUEST_SUCCESS:
 			return Object.assign({}, state, {
-				creatorProducts: products(state[action.creatorId], action)
+				products: products(state[action.creatorId], action)
 			});
 		default:
 			return state;

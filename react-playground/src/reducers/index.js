@@ -5,7 +5,7 @@ import { productsByCreatorId } from './productListingsReducers';
 
 const rootReducer = combineReducers({
 	checkBalance,
-	productsByCreatorId,
+	products: productsByCreatorId,
   routing: routerReducer
 });
 

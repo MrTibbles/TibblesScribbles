@@ -4,17 +4,22 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/productListingsActions';
 import AssetListings from './AssetListings';
 
-export const AssetListingsContainer = (props) => {
+export const AssetListingsContainer = (state) => {
+
+	const { products } = state;
 
 	return (
-		<AssetListings products={ props.products } />
+		
+		<AssetListings
+			shouldFetchProducts={ actions.shouldFetchProducts }
+			products={ products } />
 	);
 
 };
 
 AssetListingsContainer.propTypes = {	
 	actions: PropTypes.object.isRequired,
-	products: PropTypes.array.isRequired
+	products: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {

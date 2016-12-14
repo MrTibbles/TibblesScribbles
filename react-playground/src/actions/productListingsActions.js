@@ -16,23 +16,23 @@ export const refreshProducts = (creatorId) => {
   };
 };
 
-export const requestProducts = (creatorId) => {
+const requestProducts = (creatorId) => {
   return {
     type: types.ASSETS_REQUESTED,
     creatorId
   };
 };
 
-export const receiveProducts = (creatorId, products) => {
+const receiveProducts = (creatorId, products) => {
   return {
     type: types.ASSET_REQUEST_SUCCESS,
     creatorId,
-    products: products,
+    productItems: products,
     receivedAt: Date.now()
   };
 };
 
-export const fetchProducts = (assetCount, creatorId) => {
+const fetchProducts = (assetCount, creatorId) => {
   return dispatch => {
     dispatch(requestProducts(creatorId));
     let products = [];
@@ -107,7 +107,7 @@ export const fetchProducts = (assetCount, creatorId) => {
   };
 };
 
-export const canFetchProducts = (creatorId) => {
+const canFetchProducts = (creatorId) => {
 	creatorId = creatorId || undefined;  
   console.info('creatorId: ', creatorId);
 
