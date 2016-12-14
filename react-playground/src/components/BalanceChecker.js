@@ -38,7 +38,7 @@ const BalanceChecker = ({ actions, address, balanceInfo }) => {
       <div className='row'>
         <div className='col-xs-12'>
           <input
-            value="0xe0b472b69def6ab26d92156bc5f97671cf109203"
+            value={ web3.eth.accounts[0] }
             readOnly
           />
         </div>
