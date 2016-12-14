@@ -1,35 +1,18 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-// import { web3 } from '../utils/web3-utilities';
-import AssetListing from '../components/AssetListing';
 
-const AssetListings = ({ actions, creatorId }) => {
-
-	actions.
+export const AssetListing = ({ products }) => {
 
 	return (
-		<AssetListing creatorId={ creatorId } />
+		<ul>
+			{products.map((product, i) => 
+				<li key={ i }>{ product.previewLocation }</li>
+			)}
+		</ul>
 	);
-
 };
 
-const mapStateToProps = (state) => {
-	const { selectedCreatorId, creatorId }	= state;
-	const { isFetching, lastUpdated, products: products } = productsByCreatorId[selectedCreatorId] || { isFetching: true, products };
-
-	return {
-		selectedCreatorId,
-		products,
-		isFetching,
-		lastUpdated
-	}
+AssetListing.propTypes = {
+	products: PropTypes.array.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-};
-
-export default connect(mapStateToProps)(AssetListings);
+export default AssetListing;

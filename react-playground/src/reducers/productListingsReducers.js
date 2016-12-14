@@ -1,6 +1,6 @@
 import * as types from '../constants/action-types';
 
-export const selectedCreatorId = (state = '0x0', action) => {
+export const selectedCreatorId = (state = '0x123', action) => {
 	switch (action.types) {
 		case types.SELECT_CREATOR_ID:
 			return action.creatorId;
@@ -9,7 +9,7 @@ export const selectedCreatorId = (state = '0x0', action) => {
 	}
 };
 
-export const products = (state = { isFetching: true, didInvalidate: false, products: [] }, action) => {
+export const products = (state = { isFetching: true, didInvalidate: false, items: [] }, action) => {
 	switch (action.type) {
 		case types.REFRESH_ASSETS:
 			return Object.assign({}, state, {
@@ -24,7 +24,7 @@ export const products = (state = { isFetching: true, didInvalidate: false, produ
 			return Object.assign({}, state, {
 				isFetching: false,
 				didInvalidate: false,
-				products: action.products,
+				items: action.products,
 				receivedAt: action.receivedAt
 			});
 		default:

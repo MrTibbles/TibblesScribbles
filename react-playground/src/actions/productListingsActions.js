@@ -1,7 +1,13 @@
 import * as types from '../constants/action-types';
-// import { web3 } from '../utils/web3-utilities';
 import { jaakDB } from '../constants/contracts';
 import asyncLoop from '../utils/asyncLoop';
+
+export const selectCreatorId = (creatorId) => {
+  return {
+    type: types.SELECT_CREATOR_ID,
+    creatorId
+  };
+};
 
 export const refreshProducts = (creatorId) => {
   return {
@@ -102,7 +108,9 @@ export const fetchProducts = (assetCount, creatorId) => {
 };
 
 export const canFetchProducts = (creatorId) => {
-	console.info(creatorId);
+	creatorId = creatorId || undefined;  
+  console.info('creatorId: ', creatorId);
+
   let productsLength = jaakDB.product_quantity.call().toNumber();
   if (!productsLength) {
     return false;
@@ -111,7 +119,8 @@ export const canFetchProducts = (creatorId) => {
   }
 };
 
-export const shouldFetchProducts = (state, creatorId) => (dispatch) => {
+// export const shouldFetchProducts = (state, creatorId) => (dispatch) => {
+export const shouldFetchProducts = (creatorId) => (dispatch) => {
   let productCount = canFetchProducts(creatorId);
   // let products = state.productsByCreatorId[creatorId];
 

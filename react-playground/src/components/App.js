@@ -9,6 +9,9 @@ class App extends React.Component {
     return (
       <div className='container'>
         <IndexLink to="/">Home</IndexLink>
+        &nbsp;|&nbsp;
+        <Link to="get-products">Products</Link>
+        &nbsp;|&nbsp;
         <Link to="balance-checker">Balance</Link>
         { this.props.children }
       </div>

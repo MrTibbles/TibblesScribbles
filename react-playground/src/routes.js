@@ -4,13 +4,13 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import HomePage from './components/HomePage';
 import BalanceChecker from './components/BalanceChecker';
-import AssetListings from './components/AssetListings';
+import AssetListingsContainer from './containers/AssetListingsContainer';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage}/>
+    <Route path="get-products" component={AssetListingsContainer} />
     <Route path="balance-checker" component={BalanceChecker} />
-    <Route path="get-assets" component={AssetListings} />
     <Route path="*" component={HomePage} />
   </Route>
 );
