@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 export const ProductListingItem = ({ product }) => {
 
 	return (
-			<li className="product-listing">{ product.creatorName }</li>
+			<li className="product-listing">{ product.author }</li>
 	);
 };
 

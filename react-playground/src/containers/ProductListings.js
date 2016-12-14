@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { shouldFetchProducts } from '../actions/productListingsActions';
 import ProductListingItem from '../components/ProductListingItem';
 
-class AssetListing extends React.Component {
+class ProductListings extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);		
@@ -20,8 +20,7 @@ class AssetListing extends React.Component {
 		dispatch(shouldFetchProducts());
 	}
 
-	ComponentWillReceiveProps(nextProps) {
-		// if (nextProps.selectedCreatorId !== this.)
+	componentWillReceiveProps(nextProps) {
 		console.info('nextProps: ', nextProps);
 	}
 
@@ -31,12 +30,22 @@ class AssetListing extends React.Component {
 	}
 
 	render() {
-		const { products } = this.props;
+		const { products, receivedAt, isFetching } = this.props;
 
 		return (
 			<section className="Product-wrapper">
-				<button onClick={ this.refreshProductListings() }>refresh</button>
-				{products.length &&
+				<p>
+					{receivedAt &&
+						<span>Received at: { new Date(receivedAt).toLocaleTimeString()}. { ' ' }</span>
+					}
+				</p>
+				{!isFetching &&
+					<a href='#' onClick={ this.refreshProductListings }>Refresh Listings</a>
+				}
+				{isFetching && products.length === 0 &&
+					<h3>Loading...</h3>
+				}
+				{products.length > 0 &&
 					products.map((product, idx) =>
 						<ProductListingItem product={ product } key={ idx } />
 					)
@@ -47,14 +56,22 @@ class AssetListing extends React.Component {
 
 }
 
-AssetListing.propTypes = {
-	products: PropTypes.object.isRequired,
-	dispatch: PropTypes.func.isRequired
+ProductListings.propTypes = {
+	products: PropTypes.array.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	isFetching: PropTypes.bool.isRequired,
+	receivedAt: PropTypes.number
 };
 
 function mapStateToProps(state) {
-	const { productsByCreatorId } = state;
-	const { isFetching, receivedAt, productItems: products } = productsByCreatorId || { isFetching: true, productItems: []};
+	const { productListings } = state;
+	const {
+		isFetching,
+		receivedAt,
+		productItems: products } = productListings || {
+			isFetching: true, 
+			productItems: []
+		};
 
 	return {
 		products,
@@ -63,4 +80,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(AssetListing);
+export default connect(mapStateToProps)(ProductListings);

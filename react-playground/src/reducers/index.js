@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { checkBalance } from './checkBalanceReducers';
-import { productsByCreatorId } from './productListingsReducers';
+import { products } from './productListingsReducers';
 
 const rootReducer = combineReducers({
 	checkBalance,
-	products: productsByCreatorId,
+	productListings: products,
   routing: routerReducer
 });
 
