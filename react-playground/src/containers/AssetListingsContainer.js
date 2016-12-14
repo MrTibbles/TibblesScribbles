@@ -4,49 +4,22 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/productListingsActions';
 import AssetListings from './AssetListings';
 
-const AssetListingsContainer = ({ actions, products, isFetching, receivedAt }) => {
-
-	const ini = () => {
-		actions.shouldFetchProducts();
-	};
-
-	const handleRefresh = () => {
-		actions.refreshProducts();
-		actions.shouldFetchProducts();
-	};
+export const AssetListingsContainer = (props) => {
 
 	return (
-		<section>			
-			<button onClick={ ini }>Start</button>
-			{receivedAt &&		
-				<span>Received at: { new Date(receivedAt).toLocaleTimeString() }</span>
-			}
-			{!isFetching &&
-				<a href='#' onClick={ handleRefresh }>Refresh Listings</a>
-			}
-			<AssetListings products={ products } />
-		</section>
+		<AssetListings products={ props.products } />
 	);
 
 };
 
-AssetListingsContainer.propTypes = {
-	products: PropTypes.array,
-	isFetching: PropTypes.bool,
-	receivedAt: PropTypes.bool,
-	actions: PropTypes.object.isRequired	
+AssetListingsContainer.propTypes = {	
+	actions: PropTypes.object.isRequired,
+	products: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => {
-	const { selectedCreatorId, productsByCreatorId }	= state;
-	const { isFetching, receivedAt, items: products } = productsByCreatorId[selectedCreatorId] ||
-		{ isFetching: true, items: [] };
-
 	return {
-		selectedCreatorId,
-		products,
-		isFetching,
-		receivedAt
+		products: state.products
 	};
 };
 
