@@ -1,10 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export const Logout = () => {
-
-	const handleClick = (event) => {
-		console.info(event);
-	};
+const Logout = ({ onLogOutClick }) => {
 
 	return (
 		<div className='account-info col-xs-8'>

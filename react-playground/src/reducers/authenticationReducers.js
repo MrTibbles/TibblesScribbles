@@ -2,15 +2,12 @@ import {
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,
 	LOGIN_FAILURE,
-	LOGOUT_REQUEST,
+	// LOGOUT_REQUEST,
 	LOGOUT_SUCCESS,
 	LOGOUT_FAILURE
 } from '../constants/action-types';
 
-const auth = (state = {
-		isFetching: false,
-		isAuthenticated: localStorage.getItem('id_token') ? true : false
-	}, action) {
+const auth = (state = { isFetching: false, isAuthenticated: localStorage.getItem('id_token') ? true : false}, action) => {
 
 	switch (action.type) {
 		case LOGIN_REQUEST:
@@ -26,7 +23,13 @@ const auth = (state = {
 				user: action.creds
 			});
 		case LOGIN_FAILURE:
-			return Object.assign({}, state {
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: false
+			});
+		case LOGOUT_SUCCESS:
+		case LOGOUT_FAILURE:
+			return Object.assign({}, state, {
 				isFetching: false,
 				isAuthenticated: false
 			});
@@ -35,3 +38,5 @@ const auth = (state = {
 	}
 	
 };
+
+export default auth;

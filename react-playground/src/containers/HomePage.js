@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import HeaderBar from '../components/HeaderBar';
+// import { IndexLink, Link } from 'react-router';
+import { connect } from 'react-redux';
+
+import '../styles/jaak-steez.css';
 
 class HomePage extends React.Component {
 
@@ -15,6 +19,22 @@ class HomePage extends React.Component {
 	}
 }
 
-HomePage
+HomePage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string
+};
 
-export default HomePage;
+const mapStateToProps = (state) => {
+
+  const { auth } = state;
+  const { isAuthenticated, errorMessage } = auth;
+
+  return {
+    isAuthenticated,
+    errorMessage
+  };
+
+};
+
+export default connect(mapStateToProps)(HomePage);

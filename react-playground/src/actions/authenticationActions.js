@@ -1,14 +1,13 @@
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 import {
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,
-	LOGIN_FAILURE,
+	// LOGIN_FAILURE,
 	LOGOUT_REQUEST,
-	LOGOUT_SUCCESS,
-	LOGOUT_FAILURE
+	LOGOUT_SUCCESS
 } from '../constants/action-types';
 
-const requestLogin = (creds) => {
+export const requestLogin = (creds) => {
 	return {
 		type: LOGIN_REQUEST,
 		isFetching: true,
@@ -17,7 +16,7 @@ const requestLogin = (creds) => {
 	};
 };
 
-const receiveLogin = (creds) => {
+export const receiveLogin = (creds) => {
 	return {
 		type: LOGIN_SUCCESS,
 		isFetching: false,
@@ -26,16 +25,16 @@ const receiveLogin = (creds) => {
 	};
 };
 
-const loginFailure = (msg) => {
-	return {
-		type: LOGIN_FAILURE,
-		isFetching: false,
-		isAuthenticated: false,
-		msg
-	};
-};
+// export const loginFailure = (msg) => {
+// 	return {
+// 		type: LOGIN_FAILURE,
+// 		isFetching: false,
+// 		isAuthenticated: false,
+// 		msg
+// 	};
+// };
 
-const requestLogOut = () => {
+export const requestLogOut = () => {
 	return {
 		type: LOGOUT_REQUEST,
 		isFetching: true,
@@ -43,7 +42,7 @@ const requestLogOut = () => {
 	};
 };
 
-const receiveLogOut = () => {
+export const receiveLogOut = () => {
 	return {
 		type: LOGOUT_SUCCESS,
 		isFetching: false,
@@ -51,7 +50,7 @@ const receiveLogOut = () => {
 	};
 };
 
-const logOutUser = () => {
+export const logOutUser = () => {
 	return dispatch => {
 		dispatch(requestLogOut);
 		localStorage.removeItem('id_token');
@@ -61,32 +60,32 @@ const logOutUser = () => {
 
 export const loginUser = (creds) => {
 
-	let config = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
-		},
-		body: `username=${creds.username}&password=${creds.password}`
-	}
+	// let config = {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Content-Type': 'application/x-www-form-urlencoded'
+	// 	},
+	// 	body: `username=${creds.username}&password=${creds.password}`
+	// }
 
 	return dispatch => {
 		dispatch(requestLogin(creds));
+		dispatch(receiveLogin(creds));
+		// return fetch('http://localhost:3001/sessions/create', config)
+		// 	.then(response => 
+		// 		response.json()
+		// 		.then(user => ({ user, response }))
+		// 	).then({ user, response }) => {
 
-		return fetch('http://localhost:3001/sessions/create', config)
-			.then(response => 
-				response.json()
-				.then(user => ({ user, response }))
-			).then({ user, response }) => {
-
-					if (!response.ok) {
-						dispatch(loginFailure(user.message))
-						return Promise.reject(user);
-					} else {
-						localStorage.setItem('id_token', user.id_token);
-						dispatch(receiveLogin(user));
-					}
-				}
-			)
-			.catch(err => console.log('Login error: ', err));
-	}
-}
+		// 			if (!response.ok) {
+		// 				dispatch(loginFailure(user.message))
+		// 				return Promise.reject(user);
+		// 			} else {
+		// 				localStorage.setItem('id_token', user.id_token);
+		// 				dispatch(receiveLogin(user));
+		// 			}
+		// 		}
+		// 	)
+		// 	.catch(err => console.log('Login error: ', err));
+	};
+};
