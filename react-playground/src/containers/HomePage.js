@@ -1,18 +1,22 @@
 import React, { PropTypes } from 'react';
-import HeaderBar from '../components/HeaderBar';
 // import { IndexLink, Link } from 'react-router';
 import { connect } from 'react-redux';
+import HeaderBar from '../components/HeaderBar';
+import SideBar from './SideBar';
 
 class HomePage extends React.Component {
 
 	render() {
 		const { dispatch, isAuthenticated, errorMessage } = this.props;
 		return (
-			<HeaderBar
-				isAuthenticated={ isAuthenticated }
-				errorMessage={ errorMessage }
-				dispatch={ dispatch }
-			/>
+			<div>
+				<HeaderBar
+					isAuthenticated={ isAuthenticated }
+					errorMessage={ errorMessage }
+					dispatch={ dispatch }
+				/>
+				<SideBar />
+			</div>
 		);
 	}
 }
