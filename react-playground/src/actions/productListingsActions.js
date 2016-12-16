@@ -130,3 +130,7 @@ export const shouldFetchProducts = (creatorId) => (dispatch) => {
     return false;
   }
 };
+
+export const selectProduct = (ele) => (dispatch) => {
+  console.info('selected: ', ele);
+};

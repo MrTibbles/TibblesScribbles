@@ -1,4 +1,4 @@
-import { SET_SIDEBAR_VISIBILITY_FILTER, SIDEBAR_FILTER_HEADERS } from '../constants/action-types';
+import { SET_SIDEBAR_VISIBILITY_FILTER } from '../constants/action-types';
 
 const sideBarVisibilityFilter = (state = 'SHOW_ASSET_TYPES', action) => {
 

@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import HeaderBar from '../components/HeaderBar';
 import SideBar from './SideBar';
+import ProductListings from './ProductListings';
 
 class HomePage extends React.Component {
 
@@ -16,6 +17,7 @@ class HomePage extends React.Component {
 					dispatch={ dispatch }
 				/>
 				<SideBar />
+				<ProductListings />
 			</div>
 		);
 	}

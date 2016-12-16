@@ -1,0 +1,121 @@
+// _content-listings.scss
+.latest-products {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    background: $off-white;
+    background-color: $off-white;
+    padding: 50px 15px;
+    float: left;
+    display: table;
+    position: relative;
+
+    @include breakpoint(min-width, $xsBreakpoint) {
+      padding: 50px 30px;
+      width: calc(100vw - 300px);
+    }
+
+    .selection-bar {
+        width: 100%;
+        height: 75px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #ffffff;
+        background: rgba(255,255,255, 0.7);
+        opacity: 0;
+        transition: opacity 0.5 $ease-in;
+
+        @include breakpoint(min-width, $xsBreakpoint) {
+            left: 300px;
+            padding: 20px 30px;
+            width: calc(100vw - 300px);
+        }
+
+        &.selecting {
+            opacity: 1;
+        }
+
+        p {
+            padding-top: 15px;
+        }
+
+        .confirm-selection {
+            float: right;   
+        }
+    }
+
+    .content-item {
+        float: left;
+        height: 180px;
+        padding: 0 15px;
+        margin-bottom: 30px;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+
+        &:after {
+            position: absolute;
+            top: 5px;
+            right: 20px;
+            content: '';
+            display: block;
+            width: 25px;
+            height: 25px;
+            background: url('../images/plus-icon@3x.42x42.png') no-repeat 0 0 transparent;
+            background-size: contain;
+        }
+        &.selected:after {
+            background-image: url('../images/check-icon@3x.25x25.png');
+        }
+
+        &[data-file="type-1"]{
+            width: 50%;
+        }
+
+        &[data-file="type-0"] {
+            width: 25%;
+        }
+
+        .preview {
+            // background: red;
+            width: 100%;
+            height: 100%;
+            
+            img {
+                max-width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .info {
+            width: calc(100% - 30px);
+            position: absolute;
+            left: 15px;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 6px 10px;
+        }
+
+    }
+
+    .latest-feed:nth-child(4n) {
+        .content-item {
+            // padding-right: 0;   
+        }    
+    }
+
+    .item-title {
+        letter-spacing: 2px;
+        font-size: 16px;
+        color: #000000;
+        text-transform: uppercase;
+    }
+
+    .item-creator {
+        letter-spacing: 1px;
+        color: #000000;
+        font-size: 12px;
+        font-weight: 300;
+        text-transform: capitalize;
+    }
+}
