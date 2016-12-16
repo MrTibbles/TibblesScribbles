@@ -3,8 +3,6 @@ import HeaderBar from '../components/HeaderBar';
 // import { IndexLink, Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import '../styles/jaak-steez.css';
-
 class HomePage extends React.Component {
 
 	render() {
